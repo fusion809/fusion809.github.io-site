@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>My Sunday, the 16th of October</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">My Sunday, the 16th of October</h1>
+    <p class="post-meta">
+      <br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/linux/" link="_blank">linux</a></span><span class="tag"><a href="/tag/fedora/" link="_blank">fedora</a></span><span class="tag"><a href="/tag/ubuntu/" link="_blank">ubuntu</a></span><br/>-->
+      <time datetime="2016-10-17T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Monday, 17 October 2016.</time>
+      <time datetime="05:18:00 PM, Monday 17 October 2016 " itemprop="dateModified"><br/><b><abbr title="Note that most modifications past the publication date will be largely cosmetic, like fixing spelling, grammar and links, not necessarily updating the content itself.">Last modified</abbr></b>: &nbsp;&nbsp;&nbsp;05:18 PM Monday, 17 October 2016 (<abbr title="Australian Eastern Standard Time, or UTC+10">AEST</abbr>).</time>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <p>My Sunday, the 16th of October 2016 started out quite a normal day. When I woke up at 9 am I started installing some needed software on a newly created Ubuntu 16.10 installation. Previously this 16.10 partition had openSUSE Tumbleweed on it. I personally find openSUSE Tumbleweed likened to wet cement, in how hard it is to do basic things on it (like install proprietary firmware and codecs), compared to Arch Linux and Ubuntu. Plus, I find it more prone to bugs and bug-fixing from a user point-of-view tends to be more challenging on openSUSE Tumbleweed, in my opinion, than say on Arch Linux. As building custom packages (like those with patches applied or other attempted fixes) on Arch Linux is easier using <code class="highlighter-rouge">makepkg</code> than using openSUSE Tumbleweed’s <code class="highlighter-rouge">rpmbuild</code>. My internal drives were partitioned as so:</p>
+
+<pre>
+/dev/sda
+&rarr; /dev/sda1 &mdash; EFI boot partition.
+&rarr; /dev/sda2 &mdash; 16.04 installation (ext4). Approximately 180 GB in size.
+&rarr; /dev/sda3 &mdash; Swap partition.
+&rarr; /dev/sda4 &mdash; 16.10 installation (ext4). Approximately 800 GB in size.
+/dev/sdb
+&rarr; /dev/sdb1 &mdash; Arch Linux installation (ext4). Approximately 1 TB in size.
+&rarr; /dev/sdb2 &mdash; Swap partition.
+</pre>
+
+<p>Later that day, I decided to install Fedora 24 on my old Ubuntu 16.04 partition, as I felt my 16.10 installation was now capable of doing everything my 16.04 installation had been used for. Why? Well, while I had tried Fedora 24 on a removable hard-drive and on virtual machines, I wanted to see how it compared to Ubuntu when installed on an internal drive.</p>
+
+<p>The installation (specifically of the MATE Compiz edition) was successful, using Fedora’s Anaconda installer, and it actually took less time than I had anticipated. Then I rebooted and logged into my Ubuntu 16.10 installation. What I wanted to do in my 16.10 installation was to, via a chroot into my Fedora 24 installation, install all the software I needed, including the Broadcom WiFi firmware (from the RPMFusion repository) I needed in order to use the WiFi on my Fedora 24 installation. This seemed to be successful, but when I booted into my Fedora 24 installation and tried to log into a MATE session, I found a major bug. For a reason that baffled me I could not log in! I tried pressing <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>F1</kbd>, to get a TTY session but that too would not allow me to log in.</p>
+
+<p>I think the reason for this might be because I followed the RuneScape NXT Client installation instructions <a href="https://www.reddit.com/r/runescape/comments/46n3fh/using_nxt_on_fedora/">here</a>, after changing the version number, <code class="highlighter-rouge">2.1.3</code>, to <code class="highlighter-rouge">2.2.2</code> (the latest release of the NXT Client). The reason why I think this is responsible, is that I know from VirtualBox VMs that Fedora is a very touchy operating system when you move files into the <code class="highlighter-rouge">/usr</code> folder, without using the DNF package manager to do so. This I learnt in the early stages of testing my <a href="https://github.com/fusion809/atom-installer"><code class="highlighter-rouge">atom-installer</code></a>, <a href="https://github.com/fusion809/brackets-installer"><code class="highlighter-rouge">brackets-installer</code></a>, <a href="https://github.com/fusion809/komodo-installer"><code class="highlighter-rouge">komodo-installer</code></a>, <a href="https://github.com/fusion809/lighttable-installer"><code class="highlighter-rouge">lighttable-installer</code></a> and <a href="https://github.com/fusion809/vscode-installer"><code class="highlighter-rouge">vscode-installer</code></a> programs.</p>
+
+<p>After I learnt my Fedora installation was a bust I decided to delete the Fedora partition and resize my Ubuntu 16.10 to take up the freed space. This I did on my Arch Linux installation. Unfortunately GParted crashed mid-resizing and my Ubuntu 16.10 installation was essentially destroyed. I then booted my Fedora 24 live USB and installed Fedora 24 in the space my 16.10 installation was. This I did so I could boot it and create a live USB for Ubuntu 16.04 on it. See on my Arch Linux partition I had a Ubuntu 16.04.1 ISO, ready to be used to create a live USB for this OS. Something I noticed was that the bootloader (GRUB2) installed by Fedora 24 would not boot my Arch Linux installation. It had an Arch Linux entry, but whenever I clicked them they reported that they could not find <code class="highlighter-rouge">initrd</code> and <code class="highlighter-rouge">linux</code>, so they took me back to the bootloader. Oh and yes, I did run <code class="highlighter-rouge">grub2-mkconfig -o /boot/grub2/grub.cfg</code>, in an attempt to fix this problem, but it failed to fix it. Ubuntu, on the other hand, has never given me this trouble.</p>
+
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/operating-systems/Ubuntu-MATE-16.04-20161017.png" alt="My Ubuntu 16.04 MATE desktop." style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>My Ubuntu 16.04 MATE desktop.</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p>After I created the live media for 16.04 I installed 16.04 on my <code class="highlighter-rouge">/dev/sda</code> partition. Now I am quite content to stick to my present operating systems, partly out of fear of another massive loss of data during resizing of partitions, like I experienced with my previous 16.10 installation. The Arch Linux entry in my Ubuntu’s GRUB2 bootloader works fine. Now partition table looks like:</p>
+
+<pre>
+/dev/sda
+&rarr; /dev/sda1 &mdash; EFI boot partition.
+&rarr; /dev/sda2 &mdash; 16.04 installation (ext4). Approximately 1 TB in size.
+&rarr; /dev/sda3 &mdash; Swap partition.
+/dev/sdb
+&rarr; /dev/sdb1 &mdash; Arch Linux installation (ext4). Approximately 1 TB in size.
+&rarr; /dev/sdb2 &mdash; Swap partition.
+</pre>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main2.css" rel="stylesheet" type="text/css">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/raphael.min.js" type="text/javascript"></script>
+  <script src="/js/flowchart-latest.js" type="text/javascript"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <title>Visual Studio Code Installer</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper1">
+        <article class="page">
+
+  <header class="page-header">
+    <h1 itemprop="name headline">Visual Studio Code Installer</h1>
+    <p class="page-meta">
+      <time><b>First published</b>: Wednesday, 25 May 2016.</time>
+      
+    </p>
+  </header>
+
+  <div class="page-content" itemprop="articleBody">
+    
+    <p><a href="http://code.visualstudio.com"><strong>Visual Studio Code</strong></a> (<strong>VSCode</strong>) is a free and open-source text editor developed by Microsoft. It is built on the Electron framework that was originally developed for use by GitHub’s Atom text editor, and is written in CSS, JavaScript and TypeScript. While its source code is released under the MIT License, official Linux binary packages for it (including Debian, RPM and zip archives) are licensed under a proprietary End-User License Agreement (EULA). These binaries are the safest and fastest way to install VSCode on Linux, but those that want to use an open-source version of VSCode are left to build VSCode from source code. This process can be daunting for those that are not used to compiling VSCode.</p>
+
+<p>In order to make the process of installing VSCode easier on Linux I created an automated shell script installer for it, <a href="https://github.com/fusion809/vscode-installer"><code class="highlighter-rouge">vscode-installer</code></a>. This page describes the technical details of this installer. The main script of it is <code class="highlighter-rouge">installer.sh</code>, which is usually invoked by the <code class="highlighter-rouge">quick-install.sh</code> script. The <code class="highlighter-rouge">quick-install.sh</code> script downloads the <code class="highlighter-rouge">vscode-installer</code> repository and then executes the main <code class="highlighter-rouge">installer.sh</code> script.</p>
+
+<div class="diagram">
+                                    ┌──&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/arch.sh" link="_blank">lib/arch.sh</a>
+                                    ├──&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/dest.sh" link="_blank">lib/dest.sh</a>
+                                    ├──&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/install.sh" link="_blank">lib/install.sh</a>
+                                    ├──&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/method.sh" link="_blank">lib/method.sh</a>
+                                    ├──&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/src_build.sh" link="_blank">lib/src_build.sh</a>
+                                    ├──&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/src_method.sh" link="_blank">lib/src_method.sh</a>
+                                    ├──&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/test.sh" link="_blank">lib/test.sh</a>
+                                    ├──&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/version.sh" link="_blank">lib/version.sh</a>
+                                    ├──&gt; <a href="https://github.com/fusion809/vscode-installer/tree/master/lib" link="_blank">lib</a> ─────────────────┐
+                                    |                         ├──┤ [[ Arch | Manjaro ]]    ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/aur.sh" link="_blank">build/aur.sh</a>       ─&gt; Builds VSCode from the <abbr title="Arch User Repository">AUR</abbr> (if binary build is selected) or
+                                    |                         |                                                     my <a href="https://github.com/fusion809/PKGBUILDs" link="_blank">PKGBUILDs</a> GitHub repo (if source build is selected).
+                                    |                         ├──┤ [[ CentOS ]]            ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/centos.sh" link="_blank">build/centos.sh</a>    ─&gt; [[ <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/node.sh" link="_blank">build/node.sh</a> ]] and <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/vscode.sh" link="_blank">build/vscode.sh</a>
+                                    |                         ├──┤ [[ Debian ]]            ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/debian.sh" link="_blank">build/debian.sh</a>    ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/vscode.sh" link="_blank">build/vscode.sh</a>
+                                    |                         ├──┤ [[ Fedora ]]            ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/fedora.sh" link="_blank">build/fedora.sh</a>    ─&gt; [[ <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/node.sh" link="_blank">build/node.sh</a> ]] and <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/vscode.sh" link="_blank">build/vscode.sh</a>
+                                    |                         ├──┤ [[ Mageia ]]            ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/mageia.sh" link="_blank">build/mageia.sh</a>    ─&gt; [[ <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/node.sh" link="_blank">build/node.sh</a> ]] and  <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/vscode.sh" link="_blank">build/vscode.sh</a>
+<a href="https://github.com/fusion809/vscode-installer/blob/master/quick-install.sh" link="_blank">quick-install.sh</a> ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/installer.sh" link="_blank">installer.sh</a> ─&gt; |                         ├──┤ [[ openSUSE ]]          ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/opensuse.sh" link="_blank">build/opensuse.sh</a>  ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/vscode.sh" link="_blank">build/vscode.sh</a>
+                                    |                         ├──┤ [[ PCLinuxOS ]]         ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/pclinuxos.sh" link="_blank">build/pclinuxos.sh</a> ─&gt; [[ <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/node.sh" link="_blank">build/node.sh</a> ]] and  <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/vscode.sh" link="_blank">build/vscode.sh</a>
+                                    |                         ├──┤ [[ Sabayon ]]           ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/sabayon.sh" link="_blank">build/sabayon.sh</a>   ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/vscode.sh" link="_blank">build/vscode.sh</a>
+                                    |                         ├──┤ [[ Ubuntu | Zorin OS ]] ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/ubuntu.sh" link="_blank">build/ubuntu.sh</a>    ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/vscode.sh" link="_blank">build/vscode.sh</a>
+                                    |                         └──┤ [[ other ]]             ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/other.sh" link="_blank">other.sh</a>           ─&gt; [[ <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/node.sh" link="_blank">build/node.sh</a> ]] and  <a href="https://github.com/fusion809/vscode-installer/blob/master/lib/build/vscode.sh" link="_blank">build/vscode.sh</a>
+                                    |
+                                    └──┤ [[ <a href="https://github.com/fusion809/vscode-installer/tree/master/i686" link="_blank">i686</a> | <a href="https://github.com/fusion809/vscode-installer/tree/master/x86_64" link="_blank">x86_64</a> ]] ─┐
+                                                              ├──┤ [[ Arch | Manjaro ]]    ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/x86_64/arch.sh" link="_blank">arch.sh</a>
+                                                              ├──┤ [[ CentOS ]]            ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/x86_64/centos.sh" link="_blank">centos.sh</a>
+                                                              ├──┤ [[ Debian ]]            ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/x86_64/debian.sh" link="_blank">debian.sh</a>
+                                                              ├──┤ [[ Fedora ]]            ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/x86_64/fedora.sh" link="_blank">fedora.sh</a>
+                                                              ├──┤ [[ Mageia ]]            ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/x86_64/mageia.sh" link="_blank">mageia.sh</a>
+                                                              ├──┤ [[ openSUSE ]]          ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/x86_64/opensuse.sh" link="_blank">opensuse.sh</a>
+                                                              ├──┤ [[ PCLinuxOS ]]         ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/x86_64/pclinuxos.sh" link="_blank">pclinuxos.sh</a>
+                                                              ├──┤ [[ Sabayon ]]           ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/x86_64/sabayon.sh" link="_blank">sabayon.sh</a>
+                                                              └──┤ [[ Ubuntu | Zorin OS ]] ─&gt; <a href="https://github.com/fusion809/vscode-installer/blob/master/x86_64/ubuntu.sh" link="_blank">ubuntu.sh</a>
+</div>
+<div class="caption">
+  Figure 1: An Overview of How vscode-installer Works
+</div>
+<p><br /></p>
+
+<table>
+  <caption>Table 1: Conventions used in Figure 1</caption>
+  <tbody>
+    <tr class="title1">
+      <td class="title1">Conventions</td>
+      <td class="title1">Meaning</td>
+    </tr>
+    <tr class="green">
+      <td class="green"><code>[[ ... ]]</code></td>
+      <td class="green">Conditional, dependent on what is in the double square brackets. e.g., <code>[[ build/node.sh ]]</code> indiciates that build/node.sh will be executed if Node.js is <b>not</b> already installed.</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Scripts in the <code class="highlighter-rouge">lib/</code> folder</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer1">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

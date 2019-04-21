@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>How to create your own Jekyll site with GitHub Pages</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">How to create your own Jekyll site with GitHub Pages</h1>
+    <p class="post-meta">
+      <br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/linux/" link="_blank">linux</a></span><span class="tag"><a href="/tag/jekyll/" link="_blank">jekyll</a></span><span class="tag"><a href="/tag/blogging/" link="_blank">blogging</a></span><br/>-->
+      <time datetime="2016-01-27T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Wednesday, 27 January 2016.</time>
+      <time datetime="05:59:52 PM, Sunday 30 April 2017 " itemprop="dateModified"><br/><b><abbr title="Note that most modifications past the publication date will be largely cosmetic, like fixing spelling, grammar and links, not necessarily updating the content itself.">Last modified</abbr></b>: &nbsp;&nbsp;&nbsp;05:59 PM Sunday, 30 April 2017 (<abbr title="Australian Eastern Standard Time, or UTC+10">AEST</abbr>).</time>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <div class="image-box" style="width:250px; float: right;">
+<figure>
+  <img src="https://fusion809.github.io/images/Jekyll/Jekyll_Logo.png" alt="The Jekyll logo" style="width:250px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(250px-5px); float: right;"><p>The Jekyll logo</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><strong>Jekyll</strong> is a free and open-source <strong>static site generator</strong> (<strong>SSG</strong>) that is written in Ruby and developed by GitHub. According to most sources it is the most popular free and open-source SSG available in the world today. It is the engine that powers this website and several others, most of which are hosted by <strong>GitHub Pages</strong> (<strong>GP</strong>). GitHub Pages enables users to create a website and maintain it in a GitHub repository. Using GP for hosting has several advantages, for one it is free, second it is possible to edit one’s website on GP from the command-line, from feature-packed text editors like Atom (also developed by GitHub) or even from the GitHub web interface. GP can be used with a number of different static site generators, the only other one, besides Jekyll, I have personally seen being used with GP is Hugo (a SSG written in Go), however.</p>
+
+<p>The major advantage of SSGs over their dynamic site generator counterparts, is that they minimize the client-side burden for viewing the site, which means that users of smartphones are less likely to wait long periods to view the site. Jekyll as a SSG has a few different advantages and disadvantages, from my point of view its most significant advantage is that it is easy to learn and use and its most significant disadvantage is that it is difficult (but not impossible, for the patient) to run it on Microsoft Windows, due to its Ruby dependency. I have tried one other SSG, Hugo, which was a nightmare, in terms of how difficult it was to set up a site.</p>
+
+<p>This post leaves out some advanced options mentioned in the <a href="http://jekyllrb.com/docs/home/">official Jekyll documentation</a>, partly because some of them I do not even understand, but also partly because I want this post to be simple enough to follow that even a twelve year old could follow these instructions without a problem.</p>
+
+<h2 id="setup">Setup</h2>
+<p><em>The Hornery</em> like most Jekyll-powered sites is hosted by <a href="https://pages.github.com/">GitHub Pages</a>, this section covers how to set up your website with GitHub pages and assumes you already have a GitHub account. If you do not have a GitHub account merely go to the <a href="https://github.com/">Home Page</a> and fill out the form there.</p>
+
+<p>The way I created <em>The Hornery</em> was by creating a GitHub repository with the name: <code class="highlighter-rouge">username.github.io</code>, where <code class="highlighter-rouge">username</code> was replaced by my username, fusion809. The next step requires that Jekyll be installed with RubyGems itself (even if Jekyll has already been installed with Bundle) on your computer. To do this run:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;gem install jekyll</div>
+
+<p>then move onto this next step I speak of, by running:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;jekyll new username.github.io</div>
+
+<p>this should create a new folder with the default layout of a Jekyll site in <code class="highlighter-rouge">/home/username/username.github.io</code> (assuming you ran this from your home directory and your PC username is the same as your GitHub username). Then change into this directory (<span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  cd /home/username/username.github.io</span>
+) and run <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  git init</span>
+ (to install Git see the <a href="#getting-the-dependencies">Getting the Dependencies</a> below). Then configure your git remote to point to your GitHub repo. This means, for me at least, running something like:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git remote add origin https://github.com/username/username.github.io</div>
+
+<p>after this you will likely wish to edit your site’s <code class="highlighter-rouge">_config.yml</code> file, adding information about your site, further details can be found in the <a href="#configuration">next section</a>. After you think you are finished editing <code class="highlighter-rouge">_config.yml</code> I would recommend you run Jekyll locally by following the Bundle instructions outlined in <a href="#running-locally">this section</a>, as this will tell you if there are any issues you need to fix with your Jekyll site and give you some hints as to where and what they might be. If no errors turn up then I would recommend you start making commits to your site’s Git repository with:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git add --all<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git commit -m &quot;Commit message&quot;<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git push origin master</div>
+
+<p>where, of course, <code class="highlighter-rouge">"Commit message"</code> is to be replaced with your actual commit message. Typing this out everytime one wishes to make a commit can get a little tedious and irritating so I would recommend adding this function to your <code class="highlighter-rouge">~/.bashrc</code> file:
+<script src="/js/gist/239ff3639cb9930b444d.js"></script></p>
+
+<p>and then sourcing this file with <code class="highlighter-rouge">source ~/.bashrc</code>. This way whenever you want to make a commit merely type <code class="highlighter-rouge">push "Commit message"</code> inside a terminal window running Bash.</p>
+
+<h2 id="configuring-jekyll">Configuring Jekyll</h2>
+<p>Jekyll’s main configuration file is <code class="highlighter-rouge">_config.yml</code>. In it there are several pieces of information about the website, like its title, as well as its associated email address, Facebook, GitHub and Twitter accounts. It also lists the Rubygems it needs besides the default set used by all Jekyll sites, along with what markdown parser is to be used by the site and the various extensions for said rendering engine that is required. Here is an example <code class="highlighter-rouge">_config.yml</code> (it is the one being used by <em>The Hornery</em> as of 25 January 2016) file:
+<script src="/js/gist/b3d9df27d9c71e75caaa.js"></script></p>
+
+<p>In this example the markdown parser being used is Redcarpet, while the Redcarpet extensions being loaded are listed on lines 32 to 45. The additional gems being used are <code class="highlighter-rouge">jekyll-redirect-from</code> and <code class="highlighter-rouge">jekyll-last-modified-at</code>. If you want to add extra gems to your site you will need to also add them to <code class="highlighter-rouge">Gemfile</code>, via adding the line <code class="highlighter-rouge">gem 'gem_name'</code> where, of course, <code class="highlighter-rouge">'gem_name'</code> is the gem’s name. After this you will also have to run <code class="highlighter-rouge">Bundle install</code> to install these gems.</p>
+
+<p>Further information on Jekyll configuration can be found <a href="http://jekyllrb.com/docs/configuration/">here</a>.</p>
+
+<h2 id="running-locally">Running Locally</h2>
+<p>If you are interested in setting up Jekyll locally on your Linux machine here is a Bash script that can do this for you (run this as standard, non-root user, from the top-level directory of the local copy of your Jekyll site), provided that RubyGems has already been installed on your Linux system (for instructions on installing RubyGems see the <a href="#dependencies">section below</a>):</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;gem install bundler<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;bundle install</div>
+
+<p>then to start Jekyll locally run: <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  bundle exec jekyll serve</span>
+. When I used this method of starting Jekyll I defined the Bash function <code class="highlighter-rouge">jekex</code> in my <code class="highlighter-rouge">~/.bashrc</code> file with contents of <code class="highlighter-rouge">bundle exec jekyll serve</code>. At the moment this will install Jekyll 2.4.0, while the latest version (which is run by GitHub pages) is 3.1.0. Running Jekyll locally gives debugging information, whenever any errors are countered which can be invaluable, it also gives you the opportunity to preview your site before you push any commits to your site’s Git repository. When Jekyll is run through Bundler it starts the Jekyll server at http://0.0.0.0:4000, so to preview your Jekyll site you would have to open up to http://0.0.0.0:4000.</p>
+
+<p>I have also managed to install Jekyll 3.1.0 and run it locally, without having to run <code class="highlighter-rouge">bundle exec</code> before executing any Jekyll commands line <code class="highlighter-rouge">jekyll serve</code>. If you would like to do this yourself, I suggest you copy my <code class="highlighter-rouge">Gemfile</code>:
+<script src="/js/gist/ee0c8b35a87f750c56b9.js"></script></p>
+
+<p>and this line from my <code class="highlighter-rouge">_config.yml</code>:
+<script src="/js/gist/4615f926eae346d93746.js"></script></p>
+
+<p>After this I suggest you run <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  bundle update jekyll</span>
+ and <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  bundle install</span>
+. Jekyll 3.1.0, by default, does not build posts who’s publish date is later than the current date, and quite often I give my posts that I am presently working on the publish date I expect them to be ready on. To overcome this issue I have used this modified <code class="highlighter-rouge">jekex</code> function: <code class="highlighter-rouge">jekyll serve --future</code>. The  <code class="highlighter-rouge">--future</code> causes future posts to be built. Note I can run <code class="highlighter-rouge">jekyll serve</code> with 3.1.0 without a problem, while running this same command with the default version of Jekyll, 2.4.0, fails, giving out errors. I think the reason why Bundler uses Jekyll 2.4.0 by default is because it is more stable than later versions like 3.1.0, but it is also slower to regenerate file changes.</p>
+
+<h2 id="dependencies">Dependencies</h2>
+<p>There are two package dependencies for Jekyll that should be installed with one’s package manager, Git and RubyGems. This section covers how to install them with the most popular Linux package managers.</p>
+
+<h3 id="apt">APT</h3>
+<div class="note">
+<div class="note-title">Used by:</div>
+<div class="div-col columns column-count column-count-4" style="-moz-column-count: 4; -webkit-column-count: 4; column-count: 4;">
+<ul>
+<li>antiX</li>
+<li>Bodhi Linux</li>
+<li>Debian</li>
+<li>Deepin</li>
+<li>elementary OS</li>
+<li>Kali Linux</li>
+<li>Linux Lite</li>
+<li>Linux Mint</li>
+<li>LXLE</li>
+<li>PCLinuxOS</li>
+<li>Tails</li>
+<li>Ubuntu</li>
+<li>Zorin OS</li>
+
+
+</ul></div></div>
+<p><br /></p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get install git ruby</div>
+
+<p>or:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-get install git ruby</div>
+
+<h3 id="dnf">DNF</h3>
+
+<div class="note">
+<div class="note-title">Used by:</div>
+<div class="div-col columns column-count column-count-4" style="-moz-column-count: 4; -webkit-column-count: 4; column-count: 4;">
+<ul>
+<li>Chapeau</li>
+<li>Fedora</li>
+<li>Korora</li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul></div></div>
+<p><br /></p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo dnf install git ruby</div>
+
+<p>or:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf install git ruby</div>
+
+<h3 id="entropy">Entropy</h3>
+
+<div class="note">
+<div class="note-title">Used by:</div>
+<div class="div-col columns column-count column-count-4" style="-moz-column-count: 4; -webkit-column-count: 4; column-count: 4;">
+<ul>
+<li>Sabayon</li>
+<li>Spike</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul></div></div>
+<p><br /></p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo equo i -av dev-vcs/git dev-ruby/rubygems</div>
+
+<p>or:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av dev-vcs/git dev-ruby/rubygems</div>
+
+<h3 id="pacman">pacman</h3>
+
+<div class="note">
+<div class="note-title">Used by:</div>
+<div class="div-col columns column-count column-count-4" style="-moz-column-count: 4; -webkit-column-count: 4; column-count: 4;">
+<ul>
+<li>Arch Linux</li>
+<li>Antergos</li>
+<li>ArchBang</li>
+<li>Chakra GNU/Linux</li>
+<li>Manjaro Linux</li>
+<li>Parabola GNU/Linux-libre</li>
+
+
+
+
+
+
+
+
+
+</ul></div></div>
+<p><br /></p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo pacman -S git rubygems</div>
+
+<p>or:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S git rubygems</div>
+
+<h3 id="portage">Portage</h3>
+
+<div class="note">
+<div class="note-title">Used by:</div>
+<div class="div-col columns column-count column-count-4" style="-moz-column-count: 4; -webkit-column-count: 4; column-count: 4;">
+<ul>
+<li>Calculate Linux</li>
+<li>Gentoo Linux</li>
+<li>Sabayon</li>
+
+
+
+
+
+
+
+
+
+
+
+
+</ul></div></div>
+<p><br /></p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo emerge -av dev-vcs/git dev-ruby/rubygems</div>
+
+<p>or:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av dev-vcs/git dev-ruby/rubygems</div>
+
+<h3 id="urpmi">urpmi</h3>
+
+<div class="note">
+<div class="note-title">Used by:</div>
+<div class="div-col columns column-count column-count-4" style="-moz-column-count: 4; -webkit-column-count: 4; column-count: 4;">
+<ul>
+<li>Mageia</li>
+<li>OpenMandriva LX</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul></div></div>
+<p><br /></p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo urpmi git ruby-RubyGems</div>
+
+<p>or:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;urpmi git ruby-RubyGems</div>
+
+<h3 id="yum">yum</h3>
+
+<div class="note">
+<div class="note-title">Used by:</div>
+<div class="div-col columns column-count column-count-4" style="-moz-column-count: 4; -webkit-column-count: 4; column-count: 4;">
+<ul>
+<li>CentOS</li>
+<li>Oracle Linux</li>
+<li>Red Hat Enterprise Linux</li>
+<li>Scientific Linux</li>
+
+
+
+
+
+
+
+
+
+
+
+</ul></div></div>
+<p><br /></p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo yum install git ruby</div>
+
+<p>or:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum install git ruby</div>
+
+<h3 id="zypp">ZYpp</h3>
+
+<div class="note">
+<div class="note-title">Used by:</div>
+<div class="div-col columns column-count column-count-4" style="-moz-column-count: 4; -webkit-column-count: 4; column-count: 4;">
+<ul>
+<li>openSUSE</li>
+<li>SUSE Linux Enterprise</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</ul></div></div>
+<p><br /></p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo zypper in git ruby</div>
+
+<p>or:<br /></p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper in git ruby</div>
+
+<h2 id="vendor-folder">Vendor Folder</h2>
+<p>Running <code class="highlighter-rouge">bundle install</code> will create a folder called <code class="highlighter-rouge">vendor</code> inside your Jekyll site. This directory contains gems (the package format used by RubyGems) and they can take up a large amount of space in your Jekyll site. Consequently you may wish to edit your <code class="highlighter-rouge">.gitignore</code> file to include this vendor folder (to see how to do this you are welcome to look at this repository’s <a href="https://github.com/fusion809/fusion809.github.io/blob/master/.gitignore"><code class="highlighter-rouge">.gitignore</code></a> file) so as to save space on your Jekyll site, it is important to do this <strong>before</strong> making any commits.</p>
+
+<h2 id="handling-errors">Handling Errors</h2>
+<p>If this returns errors then my guess is that your <code class="highlighter-rouge">Gemfile</code> and <code class="highlighter-rouge">_config.yml</code> files, which should both be in the top-level directory of your Jekyll site, are incorrectly written or you have made some syntactic error in the Liquid tags on your website. Including Liquid tags that are not defined is known to return errors like:
+<script src="/js/gist/d6e9ab458439c86ffc37.js"></script></p>
+
+<p>where in this example, <code class="highlighter-rouge">'last_modified_at'</code> is the name of the undefined tag in this case and <code class="highlighter-rouge">_posts/2015-11-26-bash-scripting-and-the-command-line-an-introduction-for-sabayon-users.md/#excerpt</code> is where the undefined tag is included in the website. Likewise if Liquid tags (like <code>&#123;&#37; include &#37;&#125;</code>) are not properly ended (in this example they may not be correctly ended with a <code>&#37;&#125;</code>, giving <code>&#123;&#37; include &#125;</code>) it can return errors like:
+<script src="/js/gist/4258ee4ad2495ad5c62c.js"></script></p>
+
+<p>. While if you include a file that does not exist you will get this error:
+<script src="/js/gist/6e73a98b03d0cdcf530b.js"></script></p>
+
+<p>where <code>&#123;&#37; include_relative SS/table2-builtins.html &#37;&#125;</code> appeared in the <code class="highlighter-rouge">_post/SS/syntax.md</code>, which in turn was included (by use of the line <code>&#123;&#37; include_relative SS/syntax.md &#37;&#125;</code> in <code class="highlighter-rouge">_posts/2016-01-30-shell-scripting-and-the-command-line-an-introduction.md</code> and the error shown is because the file <code class="highlighter-rouge">_post/SS/table2-builtins.html</code> does not exist.</p>
+
+<h2 id="directory-structure">Directory Structure</h2>
+<p>Jekyll sites have the following directory structure:
+<script src="/js/gist/838d04bda42897fd7167.js"></script></p>
+
+<p>where <code class="highlighter-rouge">()</code> are optional folders (some of which like <code class="highlighter-rouge">_data</code>, <code class="highlighter-rouge">images</code> and <code class="highlighter-rouge">js</code> are ones <em>The Hornery</em> uses, but are not widely used by Jekyll sites in general) or files that are not included by default, <code class="highlighter-rouge">{}</code> denotes folders or files generated by Bundler and <code class="highlighter-rouge">[]</code> denotes folders or files I would recommend is listed in <code class="highlighter-rouge">.gitignore</code>. Further details on this can be found in the official documentation <a href="http://jekyllrb.com/docs/structure/">here</a>.</p>
+
+<h2 id="writing-posts">Writing Posts</h2>
+<p><code class="highlighter-rouge">_posts</code> is the folder in which one’s completed posts go, while <code class="highlighter-rouge">_drafts</code> is where one’s draft posts go. <a href="http://jekyllrb.com/docs/posts/">Here</a> is the official documentation on writing posts. <a href="http://jekyllrb.com/docs/drafts/">Here</a> is the official documentation on working with drafts. By default Jekyll does not build drafts, unless the <code class="highlighter-rouge">--drafts</code> switch is passed to the <code class="highlighter-rouge">jekyll serve</code> command. In other words, if you use Bundler to run Jekyll, like I outlined in the <a href="#running-jekyll-locally">Running Jekyll Locally</a> section, the command you should run to build the drafts too is:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;bundle exec jekyll serve --drafts</div>
+
+<p>posts (both completed and drafts) can be written in markdown or HTML, by default, although with the use of extra extensions it is possible for Jekyll to work with textfile and other post formats. Regardless of what file format is used for posts, however, all completed posts in the <code class="highlighter-rouge">_posts</code> folder must have the name format: <code class="highlighter-rouge">YEAR-MONTH-DAY-title.MARKUP</code> where <code class="highlighter-rouge">.MARKUP</code> is dependent on the post’s file extension (e.g., it could take the form <code class="highlighter-rouge">.md</code> for markdown posts), while <code class="highlighter-rouge">YEAR-MONTH-DAY</code> should be the date the post is published and <code class="highlighter-rouge">title</code> should be the post’s title, delimitered by dashes (<code class="highlighter-rouge">-</code>). All of these are overridden by the YAML front matter’s values.</p>
+
+<p>All posts should include the YAML front matter, which is explained in greater detail <a href="http://jekyllrb.com/docs/frontmatter/">here</a>. It is essentially all the metadata for your post, like the date it is published, its title, its layout (which must appear in the <code class="highlighter-rouge">_layouts</code>) folder, <em>etc.</em> and appears at the start of the post. As previously mentioned if they conflict with the date the post was published and its title as provided by the post’s file name, the values in the YAML front matter will be used instead.</p>
+
+<h2 id="editing">Editing</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Atom/Using-Atom-1.4.0-to-edit-Jekyll-site.png" alt="&lt;i&gt;The Hornery&lt;/i&gt; opened in Atom 1.4.0" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p><i>The Hornery</i> opened in Atom 1.4.0</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p>Jekyll sites are essentially just GitHub repositories that contain several markup and source code files that can be edited in any text editor or through GitHub’s web-based interface. The way I edit <em>The Hornery</em> is by Git cloning its repository, editing its markup and source code files with Atom, GVim or Visual Studio Code and then committing any changes upstream with Git, after first testing for errors by <a href="#running-jekyll-locally">running Jekyll locally</a>. Jekyll sites can also be edited from the command-line with GNU nano or Vim, although one would still need commit any changes upstream with Git. I use the <code class="highlighter-rouge">push</code> function to push these changes upstream.</p>
+
+<h2 id="external-resources">External Resources</h2>
+<ul>
+  <li><a href="http://jekyllrb.com/docs/pages/">Creating pages</a></li>
+  <li>IRC Channel <a href="irc://irc.freenode.net/#jekyll">#jekyll</a></li>
+  <li><a href="https://github.com/Shopify/liquid/wiki/Liquid-for-Designers">Liquid documentation</a></li>
+  <li><a href="http://jekyllrb.com/docs/quickstart/">Quick-start guide</a></li>
+  <li><a href="https://www.staticgen.com/">StaticGen: Top Open-Source SSGs</a>, for those interested in learning about the alternatives to Jekyll.</li>
+</ul>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

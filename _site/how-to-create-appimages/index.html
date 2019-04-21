@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>How to create your own AppImages</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">How to create your own AppImages</h1>
+    <p class="post-meta">
+      <b>Revision</b>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2 (Tuesday, 22 November 2016).<br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/docker/" link="_blank">docker</a></span><span class="tag"><a href="/tag/appimage/" link="_blank">appimage</a></span><span class="tag"><a href="/tag/howto/" link="_blank">howto</a></span><br/>-->
+      <time datetime="2016-11-20T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Sunday, 20 November 2016.</time>
+      <time datetime="04:27:20 AM, Tuesday 22 November 2016 AEST" itemprop="dateModified"><br/><b><abbr title="Note that most modifications past the publication date will be largely cosmetic, like fixing spelling, grammar and links, not necessarily updating the content itself.">Last modified</abbr></b>: &nbsp;&nbsp;&nbsp;04:27 AM Tuesday, 22 November 2016 (<abbr title="Australian Eastern Standard Time, or UTC+10">AEST</abbr>).</time>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <p><strong>AppImages</strong> are my personal favourite cross-distribution packaging format, this is because unlike most packaging formats they are compact (which is something that binary tarballs lack, when they are decompressed in order to be run, that is) and do not need root privileges in order to be run. As with many other cross-distribution packaging formats, the fact that many upstream projects have not adopted the format as the primary way they distribute their software in binary format for Linux, is a real disappointment and roadblock hindering its widespread adoption. In my own personal efforts to counter this problem I have decided to write this post documenting the basics of how to create your own AppImage. If you have questions you can ask me, although I am not an expert on this and as such I frequently ask “the master” (my term, not his, rofl) for help on GitHub. The master, in this case, is <a href="https://github.com/probonopd">Simon Peter</a> (@probonopd on GitHub), the person that created the AppImage package format.</p>
+
+<p>This post will cover the following:</p>
+
+<ul>
+  <li>How to write a YAML file to build an AppImage</li>
+  <li>How to build an AppImage locally (although it will only cover how to do this on a Debian-based distribution like deepin, Linux Mint, Q4OS, Ubuntu, <em>etc.</em>)</li>
+  <li>How to automate an AppImage build using Travis CI</li>
+</ul>
+
+<h2 id="background">Background</h2>
+<p>The objective when building an AppImage is to create a directory, called an AppDir (usually with the folder name <code class="highlighter-rouge">&lt;APPNAME&gt;.AppDir</code> where <code class="highlighter-rouge">&lt;APPNAME&gt;</code> is the name of the application you are creating an AppImage for) with the following structure:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;FS&gt;
+AppRun
+&lt;APPNAME&gt;.desktop
+&lt;APPNAME&gt;.<span class="o">{</span>png,svg,xpm,jpg<span class="o">}</span>
+</code></pre></div></div>
+
+<p>The final file <code class="highlighter-rouge">&lt;APPNAME&gt;.{png,svg,xpm,jpg}</code> is whatever image file (in PNG, SVG, XPM, JPG formats, just to name a few possible formats) for the app that is referenced in the desktop configuration file. <code class="highlighter-rouge">&lt;FS&gt;</code> is the AppImage’s copy of the application’s file system, this is also known by the variable name <code class="highlighter-rouge">$PREFIX</code>. See every app installed via one’s package manager has a set of system directories that contain its files. In the case of AppImages this file system also includes extra file libraries and executables to ensure the program will work on whichever system it finds itself. <a href="https://gist.github.com/972ee179cefb92e32c2334cd8eae68ff">Here</a> is an example <code class="highlighter-rouge">&lt;FS&gt;</code> for the Code::Blocks AppImage, I provided a link to it instead of including it in this post because it is simply too large to fit in this post.</p>
+
+<p>Usually <code class="highlighter-rouge">&lt;FS&gt;</code> is created by downloading Debian or RPM packages for a package providing <code class="highlighter-rouge">&lt;APPNAME&gt;</code> and all of its dependencies for a <strong>source distribution</strong> and extracting their contents (usually if Debian packages are used they are extracted using the <code class="highlighter-rouge">dpkg-deb -x</code> command) to the AppDir. See these packages contain the files they provide in the location they are installed on your live system. For example, if you downloaded a Code::Blocks Debian package and extracted its contents to a local directory (say for argument’s sake <code class="highlighter-rouge">/home/fusion809</code>) then you would expect to see an executable file at <code class="highlighter-rouge">/home/fusion809/usr/bin/codeblocks</code>, as when that Code::Blocks Debian package is installed it installs an executable file to <code class="highlighter-rouge">/usr/bin/codeblocks</code> on your file system. The source distribution ideally should be the oldest (especially with regard to the age of the software in its official repositories), yet still supported distribution, that has a suitable package one can build the AppImage from. As an AppImage will only work on distributions of the same age or newer than the source distribution used to build the AppImage. So if you build an AppImage using packages from CentOS 7 you should not expect it to run on CentOS 6, as CentOS 6 is <em>older</em> than the source distribution, CentOS 7.</p>
+
+<p>Before I tell you some reasonable choices for a source distribution, I need to clarify some notation I am going to use. For the distributions listed later this will be my version notation:</p>
+<ul>
+  <li>Release <strong>n</strong> is the latest stable release. For Debian as of 20 November 2016 this would be version 8 (or Jessie).</li>
+  <li>Release <strong>n-1</strong> is the second latest stable release. For Debian as of 20 November 2016 this is version 7 (or Wheezy).</li>
+  <li>Release <strong>n-2</strong> is the third latest stable release. For Debian as of 20 November 2016 this is version 6 (Squeeze).
+Please note how in the above notation examples I did not include dot point releases. That is, technically 8.6 is the latest stable release of Debian as of 20 November 2016, but I dropped the dot point release .6 from that to give 8.</li>
+</ul>
+
+<p>So some reasonable choices for a source distribution include:</p>
+<ul>
+  <li>CentOS n-2/n-1/n, as of 20 November 2016 this would be 5, 6 or 7.</li>
+  <li>Debian n-1/n, although an older system would be preferable to n.</li>
+  <li>Mageia n-1/n. I personally would not recommend using Mageia, as their repositories are fairly minimalistic, in terms of the incldued software. Although, if you can get it to work, so be it.</li>
+  <li>openSUSE n-1. The latest Leap release of this distro as of 20 November 2016 is 42 (or if you include dot point releases 42.2). So n-1 is 13 (or 13.2 to be precise). I would say n-2 as well, but only n-1 and n are presently officially supported by the openSUSE development/packaging team.</li>
+  <li>Ubuntu LTS n-2/n-1. So presently, as of 20 November 2016, this would be 12.04/14.04.</li>
+</ul>
+
+<p>After a suitable AppDir has been created, one merely needs to run the command <a href="https://github.com/probonopd/AppImageKit"><code class="highlighter-rouge">appimagetool</code></a> on the AppDir.</p>
+
+<h2 id="recipe">Recipe</h2>
+<p><strong>Recipes</strong> are shell scripts that automate the process of building an AppImage. That is, they create a suitable AppDir for building an AppImage and then builds it using <code class="highlighter-rouge">appimagetool</code>. They were once the recommended way of building AppImages in an easily reproducible way, but this has since changed since the introduction of YAMLs. Although, it is important to note, that if you wish to use RPM packages to build your AppImage you will still likely need to use a Recipe, along with a Dockerfile (for details of this see the <a href="#docker">Docker</a> section of this post). YAMLs are essentially designed to reduce repetitiveness as most Recipes contain common lines of code to them, so by writing a generalized Recipe that is fed information by a YAML one cuts down on how much one has to type to build an AppImage. Recipes that @probonopd has written (a list can be found <a href="https://github.com/probonopd/AppImages/tree/master/recipes">here</a>) are designed to be built on a Travis CI build instance with the following characteristics (based on his <a href="https://github.com/probonopd/AppImages/blob/master/.travis.yml"><code class="highlighter-rouge">.travis.yml</code></a>):</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">sudo</span><span class="pi">:</span> <span class="s">required</span>
+<span class="na">dist</span><span class="pi">:</span> <span class="s">trusty</span>
+<span class="na">addons</span><span class="pi">:</span>
+  <span class="na">apt</span><span class="pi">:</span>
+    <span class="na">packages</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="s">bsdtar</span>
+    <span class="pi">-</span> <span class="s">curl</span>
+    <span class="pi">-</span> <span class="s">zsync</span>
+    <span class="pi">-</span> <span class="s">squashfs-tools</span>
+</code></pre></div></div>
+
+<p>so in other words, a build instance using the OS Ubuntu 14.04 (or Trusty), with <code class="highlighter-rouge">bsdtar</code>, <code class="highlighter-rouge">curl</code>, <code class="highlighter-rouge">sudo</code>, <code class="highlighter-rouge">zsync</code> and <code class="highlighter-rouge">squashfs-tools</code> available for usage by his Recipe. As such his Recipes are not designed to use RPM packages to build an AppImage. Although it is worthwhile noting that he does include a few Recipes with Dockerfiles. These Dockerfiles exist when his Recipe is to be run on a Red Hat-based system like CentOS. Why does he use Travis CI to build his AppImages? Well that is a question for a later section, specifically the <a href="#travis-ci">Travis CI</a> section.</p>
+
+<h2 id="yaml">YAML</h2>
+<p><strong>YAML</strong> files are metadata files that can be read by a specialized type of Recipe script to provide it the specifics of how it should build your AppImage. The main Recipe script that should be used to build an AppImage from the data in a YAML is <a href="https://github.com/probonopd/AppImages/recipes/meta/blob/master/Recipe">here</a>. They are only to be used when Debian packages are going to be used to build the AppImage or <a href="/glossary/#cross-distribution-package-formats">binary archives</a> are to be used. If you want to use RPM packages to build your AppImage I am afraid that you will need to see the next section <a href="#docker">Docker</a>. YAML files used to build AppImages have the following general format:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">app</span><span class="pi">:</span>      <span class="s">&lt;APP&gt;</span>          <span class="c1"># Name of the App; can be capitalized</span>
+<span class="na">binpatch</span><span class="pi">:</span> <span class="no">true</span>           <span class="c1"># Only specified as needed, most AppImages should not need this field</span>
+<span class="na">union</span><span class="pi">:</span>    <span class="no">true</span>           <span class="c1"># Ditto</span>
+
+<span class="na">ingredients</span><span class="pi">:</span>
+  <span class="na">packages</span><span class="pi">:</span>                <span class="c1"># Debian package(s) to be included in the final AppImage. Excl. the dependencies, these will be automatically downloaded!</span>
+    <span class="pi">-</span> <span class="s">&lt;PACK1&gt;</span>
+    <span class="pi">-</span> <span class="s">&lt;PACK2&gt;</span>
+    <span class="pi">-</span> <span class="s">&lt;PACK3&gt;</span>
+    <span class="pi">-</span> <span class="s">...</span>
+  <span class="na">dist</span><span class="pi">:</span>    <span class="s">&lt;DIST&gt;</span>      <span class="c1"># packaging distribution codename. For example jessie for Debian 8, oldstable for Debian 7, etc.</span>
+  <span class="na">sources</span><span class="pi">:</span>                 <span class="c1"># lines in /etc/apt/sources.list of your packaging distribution</span>
+    <span class="pi">-</span> <span class="s">&lt;SOURCE1&gt;</span>
+    <span class="pi">-</span> <span class="s">&lt;SOURCE2&gt;</span>
+    <span class="pi">-</span> <span class="s">&lt;SOURCE3&gt;</span>
+    <span class="pi">-</span> <span class="s">...</span>
+  <span class="na">script</span><span class="pi">:</span>                   <span class="c1"># Commands to be executed before (or perhaps even instead of) Debian binaries are downloaded.</span>
+    <span class="pi">-</span> <span class="s">&lt;LINE1-1&gt;</span>
+    <span class="pi">-</span> <span class="s">&lt;LINE1-2&gt;</span>
+    <span class="pi">-</span> <span class="s">&lt;LINE1-3&gt;</span>
+    <span class="pi">-</span> <span class="s">...</span>
+
+<span class="na">script</span><span class="pi">:</span>                     <span class="c1"># Commands to be run after Debian binaries are downloaded and extracted. Ideally there will not be any.</span>
+  <span class="pi">-</span> <span class="s">&lt;LINE2-1&gt;</span>
+  <span class="pi">-</span> <span class="s">&lt;LINE2-2&gt;</span>
+  <span class="pi">-</span> <span class="s">&lt;LINE2-3&gt;</span>
+  <span class="pi">-</span> <span class="s">...</span>
+</code></pre></div></div>
+
+<p>They are usually named <code class="highlighter-rouge">&lt;APPNAME&gt;.yml</code>, as this makes it easier to automate their build with Travis CI. It is important to note, however, that not all of these fields are mandatory. The binpatch and union fields are only needed in select cases when ommitting them causes errors, usually runtime errors. Please note that they are <em>mutually-exclusive</em>, that is, you can only use one and not both in the one YAML! The <code class="highlighter-rouge">packages</code>, <code class="highlighter-rouge">dist</code> and <code class="highlighter-rouge">sources</code> fields are only required if you are building your AppImage from Debian packages, if you are using binary archives you do not need them. See for example my <a href="https://github.com/fusion809/AppImages/blob/recipes/meta/atom-beta/atom-beta.yaml"><code class="highlighter-rouge">atom-beta</code></a> YAML. If you are running a Debian-based operating system (like Ubuntu) you can try building an AppImage from a YAML (as a means of testing it) by running:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;bash &lt;(curl -sL https://github.com/probonopd/AppImages/raw/master/recipes/meta/Recipe) &lt;APPNAME&gt;.yml</div>
+
+<p>although sometimes this will not work due to missing appdata XML in <code class="highlighter-rouge">usr/share/metainfo/&lt;APPNAME&gt;.metadata.xml</code> in <code class="highlighter-rouge">&lt;FS&gt;</code>. In this case you will get a warning message:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>WARNING: AppStream upstream metadata is missing, please consider creating it
+         <span class="k">in </span>usr/share/metainfo/&lt;APPNAME&gt;.appdata.xml
+         Please see https://www.freedesktop.org/software/appstream/docs/chap-Quickstart.html#sect-Quickstart-DesktopApps
+         <span class="k">for </span>more information.
+</code></pre></div></div>
+
+<p>At this stage you can either do as the warning message suggests and create the file <code class="highlighter-rouge">usr/share/metainfo/&lt;APPNAME&gt;.appdata.xml</code> in your <code class="highlighter-rouge">&lt;FS&gt;</code> or you may wish to instead use:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;bash &lt;(curl -sL https://github.com/fusion809/AppImages/raw/master/recipes/meta/qbittorrent/Recipe) &lt;APPNAME&gt;.yml</div>
+
+<p>as this modified Recipe will ignore this warning.</p>
+
+<h2 id="docker">Docker</h2>
+<p>As previously mentioned the YAML approach to building an AppImage is only valid for AppImages built from binary archives or Debian packages. So when you would like to build an AppImage from RPM packages you are stuck to using Recipes and Dockerfiles. Although theoretically, you could get around the need for Dockerfiles by building them locally on a system using the RPM package manager. If you used this technique, however, you could not use these Recipes to build an AppImage with Travis CI as Travis CI only supports the use of Ubuntu 12.04 and 14.04 build environments. If you would like to see some example Recipe and Dockerfile combinations that do this see:</p>
+
+<ul>
+  <li><a href="https://github.com/probonopd/AppImages/tree/master/recipes/inkscape">inkscape</a></li>
+  <li><a href="https://github.com/probonopd/AppImages/tree/master/recipes/kdevelop">kdevelop</a></li>
+  <li><a href="https://github.com/probonopd/AppImages/tree/master/recipes/krita">krita</a></li>
+  <li><a href="https://github.com/probonopd/AppImages/tree/master/recipes/scribusctl">scribusctl</a></li>
+  <li><a href="https://github.com/probonopd/AppImages/tree/master/recipes/subsurface">subsurface</a></li>
+  <li><a href="https://github.com/probonopd/AppImages/tree/master/recipes/vlc">vlc</a></li>
+</ul>
+
+<p>It is notable that many (if not most) of these Recipes do not just build the AppImage from RPM packages but they also build some of the components of the AppImage from source code. Most Docker and Recipe combinations that I have seen use CentOS 6 as the base Docker image. This is why so many components of the AppImage has to be built from source code, as CentOS 6 usually includes very old libraries, executables, <em>etc.</em> and some programs require newer versions of these libraries and executables to be present in order for them to be build successfully. Usually the Dockerfile has the layout:</p>
+
+<div class="language-docker highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">FROM</span><span class="s"> centos:6</span>
+<span class="k">ADD</span><span class="s"> https://github.com/&lt;USER&gt;/&lt;REPO&gt;/raw/master/recipes/&lt;RECIPE&gt;/Recipe /Recipe</span>
+<span class="k">RUN </span><span class="nb">sed</span> <span class="nt">-i</span> <span class="nt">-e</span> <span class="s1">'s|sudo ||g'</span> Recipe <span class="o">&amp;&amp;</span> bash <span class="nt">-ex</span> Recipe <span class="o">&amp;&amp;</span> yum clean all <span class="o">&amp;&amp;</span> <span class="nb">rm</span> <span class="nt">-rf</span> /dependencies <span class="o">&amp;&amp;</span> <span class="nb">rm</span> <span class="nt">-rf</span> /out <span class="o">&amp;&amp;</span> <span class="nb">rm</span> <span class="nt">-rf</span> /AppImage<span class="k">*</span> <span class="o">&amp;&amp;</span> <span class="nb">rm</span> <span class="nt">-rf</span> /AppDir
+</code></pre></div></div>
+
+<p>where <code class="highlighter-rouge">&lt;RECIPE&gt;</code> is the name of the Recipe, <code class="highlighter-rouge">&lt;USER&gt;</code> is the GitHub username for the repo who’s Recipe we are using and <code class="highlighter-rouge">&lt;REPO&gt;</code> is the name of the repo in which the Recipe is.</p>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

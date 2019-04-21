@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>A Comparison of Free and Open-Source Text Editors and IDEs for Manjaro and Sabayon Linux</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">A Comparison of Free and Open-Source Text Editors and IDEs for Manjaro and Sabayon Linux</h1>
+    <p class="post-meta">
+      <b>Revision</b>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3 (Thursday, 3 March 2016).<br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/comparisons/" link="_blank">comparisons</a></span><span class="tag"><a href="/tag/text-editors/" link="_blank">text-editors</a></span><span class="tag"><a href="/tag/integrated-development-environments/" link="_blank">integrated-development-environments</a></span><span class="tag"><a href="/tag/manjaro-linux/" link="_blank">manjaro-linux</a></span><span class="tag"><a href="/tag/sabayon-linux/" link="_blank">sabayon-linux</a></span><br/>-->
+      <time datetime="2016-01-18T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Monday, 18 January 2016.</time>
+      <time datetime="07:48:37 AM, Thursday 03 March 2016 " itemprop="dateModified"><br/><b><abbr title="Note that most modifications past the publication date will be largely cosmetic, like fixing spelling, grammar and links, not necessarily updating the content itself.">Last modified</abbr></b>: &nbsp;&nbsp;&nbsp;07:48 AM Thursday, 03 March 2016 (<abbr title="Australian Eastern Standard Time, or UTC+10">AEST</abbr>).</time>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Atom/Atom-1.3.2.png" alt="Atom 1.3.2 running under the Deepin Desktop Environment (DDE) on Manjaro Linux" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Atom 1.3.2 running under the Deepin Desktop Environment (DDE) on Manjaro Linux</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><strong>Text editors</strong> are essential programs for software developers and programmers in general, as they enable users to write and edit source code or markup files. They are popular tools used by both experienced and novice Linux users. In this post I will compare the various <em>free and open-source</em> text editors available for Manjaro and Sabayon, with regard to several features and properties of each. It is important to note that I am not a programmer, my experience with programming is limited to mostly MATLAB/GNU Octave scripts, a small handful of Python scripts I wrote for technical computing (that is, numerical analysis) and a few Bash scripts I have written to make my life easier, when I use Linux systems.</p>
+
+<p>Also covered in this post are <em>free and open-source</em> <strong>integrated development environments</strong> (see <a href="#integrated-development-environment">here</a> for a definition), or <strong>IDEs</strong> for short, which are essentially text editors with extra tools for programmers. Many of the IDEs compared here I have even less experience with than I do with standard text editors, due to the fact I am not a computer programmer.</p>
+
+<p>On Sabayon there are over a dozen different text editors (see, for example, the category <a href="http://gpo.zugaina.org/app-editors/">app-editors</a> at gpo.zugaina.org) and IDEs (see the category <a href="http://gpo.zugaina.org/dev-util/">dev-util</a>) available for installation, many of these are part of the core applications of complete desktop environments, such as GNOME or KDE Plasma. Each of these programs also have their own target market, with some being designed to be used only by seasoned programmers while others are useful only for writing simple text files. Entropy and Portage both use the category for programs relating to text editing of <code class="highlighter-rouge">app-editors</code>. To list the Entropy packages in this category, from the command-line, run:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;equo search &quot;app-editors&quot;</div>
+
+<p>While to list ebuilds in installed overlays, plus the Portage tree, within the category of app-editors run:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;emerge --search &quot;%@^app-editors&quot;</div>
+
+<p>To search all overlays run (the first two of these lines ):</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;eix-update<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;eix-remote update<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;eix -RCc &quot;app-editors&quot;</div>
+
+<p>This post will compare several different text editors that are available for Sabayon (I know as I have installed them all myself), with respect to several aspects.
+IDEs can usually be found in the <code class="highlighter-rouge">dev-util</code> category, so to list those available in the Entropy repositories, run:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;equo search &quot;dev-util&quot;</div>
+
+<p>to search all overlays (including the Portage Tree) run:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;eix -RCc &quot;dev-util&quot;</div>
+
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Package-Managers/PkgBrowser-text-editors.png" alt="How to list the text editors in PkgBrowser" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>How to list the text editors in PkgBrowser</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p>On Manjaro Linux many, if not all of these text editors/IDEs, are also available from the <a href="https://aur.archlinux.org">Arch User Repository</a> (AUR) or the Manjaro repositories. Unfortunately, pacman, does not use categories for its packages, so one cannot use this to search for TEs/IDEs. One can, however, use the graphical PkgBrowser program, which can be installed using the command:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S pkgbrowser</div>
+
+<p>to show the text editors in the pacman repositories go to the <code class="highlighter-rouge">Categories</code> menu, press the <code class="highlighter-rouge">app</code> submenu and then the <code class="highlighter-rouge">editor</code> submenu under there.</p>
+
+<h2 id="glossary">Glossary</h2>
+
+<h3 id="acronyms">Acronyms</h3>
+<ul>
+  <li><strong>CE</strong>: <strong>Community Edition</strong>. Some programs have both community (usually indicated they are licensed under a GPL-compatible FOSS license) and proprietary (sometimes alternatively named like Ultimate Edition in the case of IntelliJ IDEA) editions.</li>
+</ul>
+
+<h3 id="command-line-interface">Command-Line Interface</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Command-line_interface"><strong>command-line interface</strong></a> (<strong>CLI</strong>) or <strong>command-line interpreter</strong> is a type of user interface that allows users to interact with their computer by issuing a series of commands. On *nix systems the most common type of CLI are <a href="#unix-shells">Unix shells</a>.</p>
+
+<h3 id="fork">Fork</h3>
+<p>In the field of software development a <a href="https://en.wikipedia.org/wiki/Fork_(software_development)"><strong>fork</strong></a> is when software developers take a copy of a project’s source code and start working on it independently of its previous developers. Proprietary software licenses do not usually allow for forks except with the expressed permission of the software’s previous developer(s). In the FOSS community forks are common due to the fact that FOSS licenses permit the creation of forks without the previous developer(s)’s permission.</p>
+
+<h3 id="graphical-user-interface">Graphical User Interface</h3>
+<p>A <a href="https://en.wikipedia.org/wiki/Graphical_user_interface"><strong>graphical user interface</strong></a> (<strong>GUI</strong>) is a type of interface that allows users to interact with their computer using graphical icons and visual indicators. This is as opposed to command-line interfaces (CLIs) and textual user interfaces (TUIs), in which users interact with the computer by issuing lines of commands or by writing textual responses to prompts. The most notable type of GUI found on many *nix systems is that of a desktop environment like Cinnamon, GNOME, KDE, LXDE, MATE, Xfce, <em>etc.</em></p>
+
+<h3 id="integrated-development-environment">Integrated Development Environment</h3>
+<p>An 
+<a href="https://en.wikipedia.org/wiki/Integrated_Development_Environment"><strong>Integrated Development Environment</strong></a>
+ (<strong>IDE</strong>) is a program that provides users, supposedly comprehensive, facilities for software development. I used the word “<i>supposedly</i>”, to draw attention to the fact that the definition of comprehensive does vary quite substantially from IDE to IDE. IDEs are almost universally also <a href="#text-editor">text editors</a>, and it is quite often difficult to distinguish the more feature-packed text editors from IDEs.</p>
+
+<h3 id="ide-features">IDE Features</h3>
+<p>IDEs possess several features that are supposed to distinguish them from standard TEs, these features include:</p>
+
+<ul>
+  <li><strong>In-built implementation support</strong>: in other words, the ability to implement (compile or interpret, depending on the programming language) the files being edited or created in the IDE.</li>
+  <li><strong>Project Views</strong>: this is my way of saying that usually in IDEs you can navigate the contents of a project folder, editing each file therein without having to open up a new IDE window.</li>
+</ul>
+
+<h3 id="text-editor">Text Editor</h3>
+<p>A 
+<a href="https://en.wikipedia.org/wiki/Text_editor"><strong>Text editor</strong></a>
+ (<strong>TE</strong>) is any program that can be used to edit text files, they are particularly invaluable to computer programmers because they can be used to edit software source code or document markup.</p>
+
+<h2 id="comparisons">Comparisons</h2>
+<p>An ideal or perfect text editor would be one with the following features:</p>
+<ul>
+	<li><strong>Syntax highlighting</strong> for every computer language available (computer language includes programming languages (such as C, C++, JavaScript, Lua, Python, <em>etc.</em>), markup languages (such as HTML), style sheet languages (like CSS), <em>etc.</em>)</li>
+	<li>Be <strong>extensively customizable</strong> (or some would say "hackable"), with user-supplied scripts and style sheets.</li>
+	<li>Be <strong>accessible</strong> to <strong>inexperienced users</strong> and <strong>experienced users </strong>alike.</li>
+	<li>Be <strong>free and open-source</strong> (licensed under either a permissive (e.g., MIT) or copyleft (e.g., GNU GPL) license).</li>
+	<li>Be able to run on any <strong>operating system platform</strong>.</li>
+	<li>Has <strong>keyboard shortcuts</strong> (such as <kbd>Ctrl</kbd>+<kbd>C</kbd> for copy or <kbd>Ctrl</kbd>+<kbd>V</kbd> for paste) that are intuitive and easily editable.</li>
+	<li>Be <strong>fast</strong> to <strong>start </strong>and use minimal system resources to run.</li>
+	<li>Be <strong>stable</strong>, not likely to <strong>crash</strong> or experience other bugs. As part of this, the text editor should also have a community of developers to help with rapid and effective troubleshooting whenever an issue arises.</li>
+</ul>
+
+<p>In line with this, each section in which I discuss a particular text editor (TE) will have the following sections:</p>
+<ul>
+	<li><strong>Background</strong>: relevant history and technical details of the TE/IDE.</li>
+	<li><strong>Customizability</strong>: How customizable is the TE. Are there themes, plugins, extensions, <em>etc.</em> available for the TE?  Is it possible to customize the TE/IDE with user-supplied scripts.</li>
+	<li><strong>Features</strong>: What other features does the TE/IDE have? Like how many different computer languages does it offer syntax highlighting and auto-indentation for.</li>
+	<li><strong>Obtaining it</strong>: how can one get the TE/IDE on Manjaro and Sabayon?</li>
+	<li><strong>Advantages (Pros)</strong>/<strong>Disadvantages (Cons)</strong>: this is where I will summarize the positive and negative points of the previous sections as well as discuss how easy it is to use the TE.</li>
+	<li><strong>Summary</strong>: this is where I provide a numerical rating for each of the following points (from 0 to 10, 0 being awful/non-existent, 10 being perfect):
+    <ul>
+    	<li><strong>Availability</strong>: how easy it is to get the TE/IDE on Manjaro and Sabayon. A score of 10 would mean that the text editor is pre-installed on a default Manjaro and Sabayon installation. While a score of 8 would mean that it is possible to install the package quite easily with Entropy.</li>
+    	<li><strong>Beginner-friendliness</strong>: how steep is the learning curve of using this TE/IDE? That is, how difficult would it be for me, a non-programmer, to get to know this TE/IDE enough to write scripts in it, within an hour of first trying it?</li>
+    	<li><strong>Customizability</strong>: how easily and extensively customizable the TE/IDE is.</li>
+    	<li><strong>Features</strong>: how extensive is the TE's syntax-highlighting cover of computer languages (that is, what proportion of computer languages can the TE/IDE do syntax highlighting for?). Does the TE/IDE also have IDE-type features such as in-built Python terminal, or shell terminal, <em>etc?</em></li>
+			<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: how much experience with this TE/IDE do I have? 1 will indicate I have no experience with the TE/IDE, aside from that required to get the screenshot at the start of this review. Consequently, all information in this review will be based on my background research using sources such as the program's homepage.</li>
+    	<li><strong>System resource usage</strong> (<strong>SRU</strong>): how much CPU/RAM does this TE/IDE use? How much disk space does it take up? How much brandwidth is taken up downloading it? All Manjaro-related information in this section will be specific to the 64-bit version of this OS. Yet again I will be using <code>ps_mem</code> to assess RAM usage on both Manjaro and Sabayon.</li>
+    	<li><strong>Overall</strong>: overall how satisfied am I with this TE/IDE?</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="atom">Atom</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Atom/Atom-1.3.2.png" alt="Atom 1.3.2 running under DDE" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Atom 1.3.2 running under DDE</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background">Background</h3>
+<p><a href="https://atom.io"><strong>Atom</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/atom&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/atom"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/atom"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://aur.archlinux.org/packages/atom-editor"><abbr title="Arch User Repository Package">AU</abbr></a><sup><abbr title="Multiple AUR packages exist for this program">M</abbr></sup>
+; <a href="https://wiki.gentoo.org/wiki/Atom"><abbr title="ArchWiki">AW</abbr></a>, <a href="https://atom.io/docs/latest/"><abbr title="Manual">ML</abbr></a>, <a href="https://wiki.gentoo.org/wiki/Atom"><abbr title="Sabayon Wiki">SW</abbr></a>, <a href="https://en.wikipedia.org/wiki/Atom_(text_editor)"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://discuss.atom.io"><abbr title="Official Forum">FM</abbr></a>, <a href="https://github.com/atom/atom"><abbr title="Git Repository">GR</abbr></a>, <a href="irc://irc.freenode.net/##atom"><abbr title="Internet Relay Chat">IRC</abbr></a>
+)
+ is a free and open-source (licensed under MIT) text editor developed by GitHub, Inc. Its first public release was in 2014, although its first stable release (1.0 release) was not until June 2015. It is unique amongst the text editors listed here in a few different ways, firstly, its target audience is very wide with it being designed to be usable for inexperienced programmers as well as seasoned programmers and software developers. Secondly, it is written in CoffeeScript, HTML, JavaScript and Less — computer languages usually used to write web pages.</p>
+
+<h3 id="customizability">Customizability</h3>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Atom/atom-packages-homepage-20160108.png" alt="[Atom Packages Repository Homepage](https://atom.io/packages), note the current count of packages (themes and plugins included) is 3,433." style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p><a href="https://atom.io/packages">Atom Packages Repository Homepage</a>, note the current count of packages (themes and plugins included) is 3,433.</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p>Atom is very customizable, via a grand total of over 3,400 themes and plugins that can be installed from the command-line, using the <code class="highlighter-rouge">apm</code> command, or from within Atom itself. I personally prefer the command-line, as I have had some bad experiences with the built-in installer. From the command-line the command for installing new themes or plugins is:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;apm install &lt;PACKAGE&gt;</div>
+
+<p>where <code class="highlighter-rouge">&lt;PACKAGE&gt;</code> is the plugin/theme’s name. Customizations, including plugins and themes are stored in <code class="highlighter-rouge">~/.atom</code>. Advanced customization (for example, of keyboard shortcuts) must be done by directly editing files in this directory. For example, in order to edit your keyboard shortcuts you need to edit <code class="highlighter-rouge">~/.atom/keymap.cson</code>. A guide on how to do this can be found in <a href="https://atom.io/docs/latest/using-atom-basic-customization#customizing-key-bindings">Atom’s Flight Manual</a>. For example, to help me write this blog I have been using the following <code class="highlighter-rouge">~/.atom/keymap.cson</code>:
+<script src="/js/gist/93dd0d16cd40875faa9e.js"></script></p>
+
+<p>this is helpful because in order to bold text in a markdown file I merely need to select the text and press <kbd>Ctrl</kbd>+<kbd>B</kbd>. It also means that when I am editing HTML files, in order to wrap the code to make it easier to read, I merely press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>S</kbd>.</p>
+
+<h3 id="features">Features</h3>
+<p>Atom has plugins for syntax highlighting and auto-indentation of most major computer languages including (each language is hyperlinked to its respective package description page, <em>if and only if</em>, said package does not come preinstalled on Atom):</p>
+
+<div class="div-col columns column-count column-count-3" style="-moz-column-count: 3; -webkit-column-count: 3; column-count: 3;">
+<ul>
+  <li><a href="https://atom.io/packages/language-ada">Ada</a></li>
+  <li>C</li>
+  <li>C#</li>
+  <li>C++</li>
+  <li>CoffeeScript</li>
+  <li>CSS</li>
+  <li><a href="https://atom.io/packages/language-fortran">Fortran</a></li>
+  <li><a href="https://atom.io/packages/language-matlab-octave">GNU Octave/MATLAB</a></li>
+  <li>HTML</li>
+  <li>Java</li>
+  <li>JavaScript</li>
+  <li>Less</li>
+  <li><a href="https://atom.io/packages/language-lua">Lua</a></li>
+  <li>Markdown</li>
+  <li><a href="https://atom.io/packages/language-mediawiki">MediaWiki markup</a></li>
+  <li><a href="https://atom.io/packages/language-pymol">PyMOL</a></li>
+  <li>Python</li>
+  <li><a href="https://atom.io/packages/language-r">R</a></li>
+  <li><a href="https://atom.io/packages/language-sage">SageMath</a></li>
+  <li><a href="https://atom.io/packages/language-scilab">Scilab</a></li>
+  <li>Shell script</li>
+  <li>XML</li>
+</ul>
+</div>
+<p>and several others. It has packages that provide other features, including previews for markup languages such as <a href="https://atom.io/packages/atom-html-preview">HTML</a> and <a href="https://atom.io/packages/markdown-preview">Markdown</a> (which comes preinstalled with Atom) and <a href="https://atom.io/packages/markdown-writer">one</a> that turns Atom into an excellent markdown writer. <a href="https://atom.io/packages/jekyll">One package</a> can even enable one to run Jekyll (the static site generator used to power <em>The Hornery</em>) from within Atom, I personally avoid it due to the fact it continuously creates popups whenever one saves any changes to a file in one’s Jekyll site directory and instead I use the <a href="https://atom.io/packages/terminal-plus"><code class="highlighter-rouge">terminal-plus</code></a> package to run Jekyll from within a terminal in Atom. This also gives me more detailed debugging information when issues are encountered on my site. These packages make it very convenient for me to write <em>The Hornery</em> in Atom, which I did for over a year since I created the website in late 2015, although since 2017 I mostly use GVim to edit <em>The Hornery</em>.</p>
+
+<p>Atom also has packages that give it IDE capabilities, including compiling and interpreting source code files from within Atom’s own interface as well as the ability to run git commands from within Atom (the later is provided by <a href="https://atom.io/packages/git-plus"><span class="package">git-plus</span></a>).
+ It also has a package (<a href="https://atom.io/packages/mercurial"><span class="package">mercurial</span></a>)
+ that provides support for managing Mercurial (<code class="highlighter-rouge">hg</code>) repositories, support for GNU Bazaar and Subversion repositories, from my understanding, is not yet available. I personally have installed the <a href="https://atom.io/packages/script"><code class="highlighter-rouge">script</code></a> package for the purpose of running Python scripts from within Atom, C/C++ developers may also wish to install the <a href="https://atom.io/packages/build"><code class="highlighter-rouge">build</code></a> or <a href="https://atom.io/packages/build-tools"><code class="highlighter-rouge">build-tools</code></a> packages. One can also do Gentoo/Sabayon development in Atom using the <a href="https://atom.io/packages/language-gentoo"><span class="package">language-gentoo</span></a>
+ package, specifically it is helpful in maintaining Portage overlays as it can create and update manifests without the need for opening up a terminal. It also provides syntax highlighting for ebuilds.</p>
+
+<p>One package I like, that I would recommend if you wish to use Atom on more than one PC, but with the same packages on each PC, is <a href="https://atom.io/packages/package-sync"><code class="highlighter-rouge">package-sync</code></a>. It reads a file, <code class="highlighter-rouge">~/.atom/packages.cson</code>, and when it is run, it will install all packages listed in this cson file. To save all my Atom customizations (in <code class="highlighter-rouge">~/.atom</code>) I use <a href="https://github.com/fusion809/atom">this</a> GitHub repository. In it you can find my package.cson, keymap.cson, <em>etc.</em></p>
+
+<h3 id="obtaining-it">Obtaining It</h3>
+
+<h4 id="manjaro">Manjaro</h4>
+<p>Manjaro users must install Atom via the Arch User Repository (AUR), or via using my own <a href="https://github.com/fusion809/PKGBUILDs/blob/master/atom-editor/PKGBUILD">PKGBUILD</a>. At the time of writing the AUR contains five Atom packages, you can check to see if this statement has become outdated by going to <a href="https://aur.archlinux.org/packages/?O=0&amp;SeB=nd&amp;K=atom-editor&amp;outdated=&amp;SB=n&amp;SO=a&amp;PP=50&amp;do_Search=Go">here</a>. These Atom packages are (<strong>bold</strong> is used to highlight keywords or points):</p>
+
+<ul>
+  <li><a href="https://aur.archlinux.org/packages/atom-editor"><strong>atom-editor</strong></a><sup><abbr title="Arch User Repository">AUR</abbr></sup>
+ which builds a package for the <strong>latest stable release</strong> of Atom from <strong>source code</strong>. As it builds Atom from source code any momentary glitches in Internet connectivity can cause the build to fail, which would require one to start building the package again from scratch. My PKGBUILD is a more resilient version of this one, it will not fail due to momentary Internet connectivity issues.</li>
+  <li><a href="https://aur.archlinux.org/packages/atom-editor-bin"><strong>atom-editor-bin</strong></a><sup><abbr title="Arch User Repository">AUR</abbr></sup>
+ which builds a package for the <strong>latest stable release</strong> of Atom from a <strong>precompiled Debian binary</strong>. This PKGBUILD tends to lag behind its source code counterpart, in terms of how soon it is updated after a new version of Atom comes out.</li>
+  <li><a href="https://aur.archlinux.org/packages/atom-editor-beta"><strong>atom-editor-beta</strong></a><sup><abbr title="Arch User Repository">AUR</abbr></sup>
+ which builds a package for the <strong>latest beta release</strong> of Atom from <strong>source code</strong>. This package <strong>cannot</strong> be installed simultaneously, on the same machine, as the <code class="highlighter-rouge">atom-editor</code> package. If you would like to install the latest beta release of Atom and the latest stable release of Atom, simultaneously, on the same machine I suggest you use the <code class="highlighter-rouge">atom-editor</code> PKGBUILD in the AUR, or my GitHub repository, and the <a href="https://github.com/fusion809/PKGBUILDs/blob/master/atom-editor-beta/PKGBUILD"><code class="highlighter-rouge">atom-editor-beta</code></a> PKGBUILD in my GitHub repository. My <code class="highlighter-rouge">atom-editor-beta</code> PKGBUILD is specifically designed so that its installed files do <strong>not</strong> conflict with the installed files of <code class="highlighter-rouge">atom-editor</code>, it also has the same “perseverance” of the <code class="highlighter-rouge">atom-editor</code> PKGBUILD, and should keep running even if it runs into momentary Internet connectivity issues.</li>
+  <li><a href="https://aur.archlinux.org/packages/atom-editor-beta-bin"><strong>atom-editor-beta-bin</strong></a><sup><abbr title="Arch User Repository">AUR</abbr></sup>
+ which builds a package for the <strong>latest beta release</strong> of Atom from its <strong>Debian binary package</strong>. This package <strong>can</strong> be installed simultaneously, on the same machine, as the <code class="highlighter-rouge">atom-editor</code> or <code class="highlighter-rouge">atom-editor-bin</code> package.</li>
+  <li><a href="https://aur.archlinux.org/packages/atom-editor-git"><strong>atom-editor-git</strong></a><sup><abbr title="Arch User Repository">AUR</abbr></sup>
+ which builds a package for the <strong>latest git snapshot</strong> of Atom from <strong>source code</strong>.</li>
+</ul>
+
+<h4 id="sabayon">Sabayon</h4>
+<p>Recently, I have noticed that Atom in the Entropy repositories is usually updated within a week or so of me updating it in the <a href="https://github.com/Sabayon/for-gentoo"><code class="highlighter-rouge">sabayon</code></a> overlay, so it should almost always be the latest version available. So to install it from the command-line one would merely run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/atom</div>
+
+<p>If, the version(s) of Atom in the Entropy repositories are significantly out-of-date I usually use the ebuild in my overlay, <a href="https://github.com/fusion809/sabayon-tools"><code class="highlighter-rouge">sabayon-tools</code></a>
+ to install it. The advantage of my ebuild over other ebuilds (including the one in the <code class="highlighter-rouge">sabayon</code> overlay, which I too help mantain) is that if you experience any momentary disruption of your Internet connection the other ebuilds may fail and you will have to start the build from the beginning again, while my ebuild will keep soldering on. This is unless the glitches in your Internet connection are so great in severity or length that it overwhelms my ebuild. To install Atom from this ebuild, run (this code assumes you have not added my overlay already, if you have, you may wish to substitute <code class="highlighter-rouge">layman -a sabayon-tools</code> with <code class="highlighter-rouge">layman -s sabayon-tools</code>):</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;layman -a sabayon-tools<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/atom::sabayon-tools</div>
+
+<h4 id="building-from-source-code">Building from Source Code</h4>
+<p>If you are using some other platform, or for whatever reason none of the methods previously mentioned is applicable I suggest you compile and install Atom from source code. Official instructions on this can be found <a href="https://github.com/atom/atom/blob/master/docs/build-instructions/linux.md">here</a>. To do this, you need to:</p>
+<ul>
+  <li><p>Get the source code. This can be done via git with: <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  git clone https://github.com/atom/atom</span>
+ and then checking out the latest release with:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd atom<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git fetch -p<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git checkout $(git describe --tags `git rev-list --tags --max-count=1`)</div>
+
+<p>or via wget with (this will create a folder entitled <code class="highlighter-rouge">atom</code> with the 1.4.0 version of Atom’s source code — replace 1.4.0 in the following code with the version of Atom you want):</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;wget -cO- https://github.com/atom/atom/archive/v1.4.0.tar.gz &gt; atom.tar.gz<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;tar -xz -f atom.tar.gz -C atom --strip-components=1</div>
+<p>Using git to get the source code takes up more hard drive space on your machine and uses up more bandwidth to download the source code, so odds are it will be best for you to use this wget approach to get the source code.</p>
+</li>
+  <li><p>Compile the source code, by running: <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  script/build</span>
+ from within the <code class="highlighter-rouge">atom</code> directory (to get into it run <code class="highlighter-rouge">cd atom</code>). This step requires a reliable Internet connection, as otherwise it will fail and you will then need to re-run this step.</p>
+</li>
+  <li><p>Install Atom by issuing the command <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  sudo script/grunt install</span></p>
+</li>
+</ul>
+
+<h3 id="advantages-pros">Advantages (Pros)</h3>
+<ul>
+  <li>Easily and extensively customizable. Customization beyond that afforded by plugins provided by the Atom community must be done via writing plugins or scripts in CoffeeScript or JavaScript.</li>
+  <li>Intuitive and easy to learn.</li>
+  <li>Support for a wide range of different computer languages.</li>
+  <li>Displays directory structure in (left) side panel.</li>
+  <li>Very feature-packed, so feature packed it can be used as both a text editor and an IDE</li>
+</ul>
+
+<h3 id="disadvantages-cons">Disadvantages (Cons)</h3>
+<ul>
+  <li>Slow to start, although with the release of version 1.3.0 the start time has been supposedly cut by 20-30%.<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> I personally have not noticed any such improvement, although I cannot say for certain I would even if there was such an improvement.</li>
+</ul>
+
+<h3 id="summary">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: 8. Available from the official Entropy and pacman repositories.</li>
+	<li><strong>Beginner-friendliness</strong>: &geq;8. It is easy for beginners to use it, as it uses the same keymap as several basic text editors like gedit and Notepad.</li>
+	<li><strong>Customizability</strong>: 8. It is totally customizable, for those with the skill and time. For lay persons its customizability is more limited, to customization with available packages and themes.</li>
+	<li><strong>Features</strong>: 8. Most computer languages are covered by Atom's syntax highlighting plugins, but some are not, for example, it does not yet have support for <a href="https://discuss.atom.io/t/syntax-highlighting-for-desktop-configuration-files/21764">desktop configuration files</a>.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: &geq;8. It is my default text editor.</li>
+	<li><strong>System Resource Usage</strong>: 2-3. On Sabayon, <a href="https://packages.sabayon.org/show/atom,163154,sabayon-weekly,amd64,5,standard" link="_blank">Atom 1.3.2</a> is a 63.1 MB download, when it is installed it takes up a total space of 196.2 MB. Here is my <code>ps mem</code> table for running Atom 1.3.2 under MATE: <script src="/js/gist/b8e4d2082e93f52a5467.js"></script>
+ on Manjaro Linux with version 1.3.2 of Atom I got this <code>ps_mem</code> table: <script src="/js/gist/49025ad8574ecd9bf72f.js"></script>
+ and Atom 1.3.3 is a 201.1 MB program when installed. As for its download size well it is difficult for me to ascertain as the source code tarball is a 7.9 MB download for version 1.3.3, but as this package is installed from the AUR this means that the source code must be compiled too, which in itself also requires some downloading to occur.</li>
+	<li><strong>Overall</strong>: 7-9. It is my favourite text editor, but it is still early days, its System Resource Usage and boot time are issues that are being worked on, new packages and themes are created every week.</li>
+</ul>
+
+<h2 id="bluefish">Bluefish</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/Bluefish.png" alt="Bluefish running under LXDE" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Bluefish running under LXDE</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-1">Background</h3>
+<p><a href="http://bluefish.openoffice.nl/index.html"><strong>Bluefish</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/bluefish&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/bluefish"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/bluefish"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/bluefish/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="http://bfwiki.tellefsen.net/index.php/Manual_2_ToC"><abbr title="Manual">ML</abbr></a>, <a href="http://bfwiki.tellefsen.net/index.php/Main_Page"><abbr title="Wiki">WK</abbr></a>, <a href="https://en.wikipedia.org/wiki/Bluefish_(software)"><abbr title="Wikipedia">WP</abbr></a>
+)
+ is a text editor, primarily intended for web development and programming, as it provides syntax highlighting support and other features mostly for web markup, programming and style sheet languages.</p>
+
+<h3 id="customizability-1">Customizability</h3>
+<p>I have limited experience with Bluefish but from what I can gather, it is customizable, although I cannot comment on how extensive this customizability is.</p>
+
+<h3 id="features-1">Features</h3>
+<p>Syntax highlighting is available for almost (if not all) all computer languages used in web development.</p>
+
+<h3 id="obtaining-it-1">Obtaining It</h3>
+
+<h4 id="manjaro-1">Manjaro</h4>
+<p>Bluefish is in the official pacman repositories for Manjaro so merely running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S bluefish</div>
+
+<p>should install it.</p>
+
+<h4 id="sabayon-1">Sabayon</h4>
+<p>It can be installed with Entropy or Portage (and is available in the Portage Tree). With Entropy run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/bluefish</div>
+
+<p>While to install it with Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/bluefish</div>
+
+<h3 id="advantages-pros-1">Advantages (Pros)</h3>
+<ul>
+  <li>Customizable</li>
+  <li>Has features that would appeal to a web developer</li>
+</ul>
+
+<h3 id="disadvantages-cons-1">Disadvantages (Cons)</h3>
+<ul>
+  <li>Support for non-web markup/programming languages is less than adequate.</li>
+</ul>
+
+<h3 id="summary-1">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: &gt;8. Available in the Entropy Store and from Portage</li>
+	<li><strong>Beginner-friendliness</strong>: &gt;4. Its keyboard shortcuts are intuitive (e.g., <kbd>Ctrl</kbd>+<kbd>C</kbd> to copy), beyond this my experience with it is not extensive enough for me to comment.</li>
+	<li><strong>Customizability</strong>: &gt;4. It is customizable, but as I do not have much experience with this text editor, I do not know just how customizable it is.</li>
+	<li><strong>Features</strong>: &gt;7. It is possible to do compiling and use integrated development environment (IDE)-type features.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 2. Fairly little experience with it, as I am not really into web development.</li>
+	<li><strong>System Resource Usage</strong>: 5. Bluefish (<a href="https://packages.sabayon.org/show/bluefish,155845,sabayon-weekly,amd64,5,standard" target="_blank">2.2.7</a>) is a 3.1 MB download with Entropy and takes up 9.5 MB HDD space when installed. This is my <code>ps mem</code> table on Sabayon: <script src="/js/gist/9605606058969f3532e4.js"></script>
+ while on Manjaro Bluefish 2.2.7 is a 2.5 MB download and takes up 9.2 MB when installed. On Manjaro I got this <code>ps_mem</code> table: <script src="/js/gist/cd8a29d32bc600a0567e.js"></script>
+</li>
+	<li><strong>Overall</strong>: ~7. Cannot be too confident as to this rating without using this text editor more.</li>
+</ul>
+
+<h2 id="codeblocks">Code::Blocks</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Code::Blocks/Code::Blocks-13.12.png" alt="Code::Blocks 13.12 running under Manjaro" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Code::Blocks 13.12 running under Manjaro</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-2">Background</h3>
+<p><a href="http://www.codeblocks.org/"><strong>Code::Blocks</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=dev-util/codeblocks&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-util/codeblocks"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/dev-util/codeblocks"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/community/x86_64/codeblocks"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="http://wiki.codeblocks.org/index.php/Main_Page"><abbr title="Wiki">WK</abbr></a>, <a href="https://en.wikipedia.org/wiki/Code::Blocks"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="http://forums.codeblocks.org/"><abbr title="Official Forum">FM</abbr></a>, <a href="https://github.com/jenslody/codeblocks"><abbr title="Git Repository">GR</abbr></a>, <a href="http://sourceforge.net/projects/http://sourceforge.net/projects/codeblocks/"><abbr title="SourceForge">SF</abbr></a>
+)
+ is a free and open-source cross-platform IDE for C, C++ and Fortran, that is written predominantly in C++ and to a lesser extent C. Its GUI is based on the wxWidgets toolkit. It is compatible with a wide range of different compilers, including GCC, Clang and Visual C++. Its development began ca. 2004.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup></p>
+
+<h3 id="customizability-2">Customizability</h3>
+<p>It is extensible through plugins<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup>, although I have limited experience with this program so I cannot really comment any further on this.</p>
+
+<h3 id="features-2">Features</h3>
+<p>It provides many of the advanced features of text editors like syntax highlighting, code folding, code completion, <em>etc.</em> for C, C++, Fortran and XML files.</p>
+
+<h3 id="obtaining-it-2">Obtaining It</h3>
+
+<h4 id="manjaro-2">Manjaro</h4>
+<p>On Manjaro Code::Blocks can be very easily installed using pacman:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S codeblocks</div>
+
+<h4 id="sabayon-2">Sabayon</h4>
+<p>Code::Blocks is in the Entropy repositories and Portage Tree, consequently it can be installed via running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av dev-util/codeblocks</div>
+
+<p>or:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av dev-util/codeblocks</div>
+
+<h3 id="advantages-pros-2">Advantages (Pros)</h3>
+<ul>
+  <li>Cross-platform and able to run on Windows, OS X and Linux.</li>
+  <li>Fairly lightweight.</li>
+  <li>Feature-packed.</li>
+  <li>Easy to install on both distributions.</li>
+</ul>
+
+<h3 id="disadvantages-cons-2">Disadvantages (Cons)</h3>
+<ul>
+  <li>Only supports three programming languages: C, C++ and Fortran.</li>
+  <li>Fairly infrequently updated. As of the time of writing (12 January 2016) the latest version was released in December 2013. although a new version is expected to be released within the next month or so.</li>
+</ul>
+
+<h3 id="summary-2">Summary</h3>
+<ul>
+  <li><strong>Availability</strong>: 8.</li>
+  <li><strong>Beginner-friendliness</strong>: 6.</li>
+  <li><strong>Customizability</strong>: &gt;5. Not enough experience with it to be confident in this rating.</li>
+  <li><strong>Features</strong>: 8.</li>
+  <li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 1.</li>
+  <li><strong>System Resource Usage</strong>: 4-5. Under Manjaro it is a 10.0 MB download and takes up 36.6 MB when installed. Here is my <code>ps_mem</code> table under Manjaro: <script src="/js/gist/4ae61b68a83ead1e5cfc.js"></script>
+. Under Sabayon, it is a 17.3 MB download and takes up 56.3 MB when installed. Here is my <code>ps_mem</code> table under Sabayon: <script src="/js/gist/1db3f63380ba841db331.js"></script>
+</li>
+  <li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h2 id="codelite">CodeLite</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/CodeLite-9.0.0.png" alt="CodeLite 9.0.0 running under Manjaro" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>CodeLite 9.0.0 running under Manjaro</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-3">Background</h3>
+<p><a href="http://codelite.org/"><strong>CodeLite</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=dev-util/codelite&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-util/codelite"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/dev-util/codelite"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://aur.archlinux.org/packages/codelite"><abbr title="Arch User Repository Package">AU</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/CodeLite"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://github.com/eranif/codelite"><abbr title="Git Repository">GR</abbr></a>
+)
+ is a lightweight IDE for C, C++, PHP and Node.js that is written in C and C++. It does not support other programming languages, just these four.</p>
+
+<h3 id="customizability-3">Customizability</h3>
+<p>I have limited experience with CodeLite, so I cannot really comment with confidence on its customizability, but from what I understand it is designed to be lightweight and their website does not really mention any plugins or other customizations.</p>
+
+<h3 id="features-3">Features</h3>
+<p>It is fairly feature-packed (including git, subversion, GUI-building, <em>etc.</em> support) for the programming languages it supports.</p>
+
+<h3 id="obtaining-it-3">Obtaining It</h3>
+
+<h4 id="manjaro-3">Manjaro</h4>
+<p>On Manjaro CodeLite must be installed from the AUR, by running:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;yaourt -S codelite</div>
+
+<p>for example. At the time of writing this version of the latest (9.0).</p>
+
+<h4 id="sabayon-3">Sabayon</h4>
+<p>An old (from February 2013) version of CodeLite (4.1.5770) is presently in the Entropy repositories, to install it run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av dev-util/codelite</div>
+
+<p>alternatively, one can install it from an unofficial Portage overlay. At the time of writing the following overlays have the latest version of CodeLite:</p>
+
+<ul>
+  <li><a href="http://gpo.zugaina.org/Overlays/kaa"><code class="highlighter-rouge">kaa</code></a></li>
+  <li><a href="https://github.com/killer2tester/gentoo-overlay-lif"><code class="highlighter-rouge">lif</code></a></li>
+  <li><a href="https://github.com/fusion809/sabayon-tools"><code class="highlighter-rouge">sabayon-tools</code></a>
+I have tried building CodeLite using the <code class="highlighter-rouge">kaa</code> overlay’s ebuild and it failed due to a missing dependency:
+<code class="highlighter-rouge">x11-libs/wxGTK:3.0</code>. I would personally recommend using my overlay’s ebuild, because I have some control over it, so I can personally vouch for the fact it manages to build under Sabayon Linux.</li>
+</ul>
+
+<h3 id="advantages-pros-3">Advantages (Pros)</h3>
+<ul>
+  <li>Cross-platform able to run on Windows, OS X and Linux.</li>
+  <li>Fairly lightweight for an IDE.</li>
+  <li>Feature-packed</li>
+</ul>
+
+<h3 id="disadvantages-cons-3">Disadvantages (Cons)</h3>
+<ul>
+  <li>Support for only four programming languages.</li>
+  <li>Not in the official binary package repositories for either Manjaro or Sabayon.</li>
+</ul>
+
+<h3 id="summary-3">Summary</h3>
+<ul>
+  <li><strong>Availability</strong>: 6. Not available in either distribution's official repositories, but can be installed via unofficial channels.</li>
+  <li><strong>Beginner-friendliness</strong>: 8? Fairly limited experience with it, but it dos not seem to difficult to use. Its keymap is standard (e.g., <kbd>Ctrl</kbd>+<kbd>C</kbd> for copy) and intuitive.</li>
+  <li><strong>Customizability</strong>: &lt;5. From what I can tell, it is not customizable.</li>
+  <li><strong>Features</strong>: &gt;8.</li>
+  <li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 1.</li>
+  <li><strong>System Resource Usage</strong>: 4. The source code tarball of CodeLite 9.0 is about 69.5 MiB in size and as neither of these distributions have any binary packages from which CodeLite 9.0 can be installed, I cannot really say its installed size on Sabayon, while on Manjaro its size is 38.5 MiB. My <code>ps_mem</code> table on Sabayon is: <script src="/js/gist/da4d22c58eb9f28645ff.js"></script>
+ while here is my <code>ps_mem</code> table on Manjaro: <script src="/js/gist/508664d07b434e74f7f4.js"></script>
+</li>
+  <li><strong>Overall</strong>: 7-8. The fact it only supports these four programming languages is a weakness in my books.</li>
+</ul>
+
+<h2 id="eclipse">Eclipse</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Eclipse/Eclipse-4.5.1.png" alt="Eclipse 4.5.1 running under Manjaro" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Eclipse 4.5.1 running under Manjaro</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-4">Background</h3>
+<p><a href="http://eclipse.org/eclipse"><strong>Eclipse</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=dev-util/eclipse-sdk&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-util/eclipse-sdk"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/dev-util/eclipse-sdk"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/eclipse"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://wiki.gentoo.org/wiki/Eclipse"><abbr title="ArchWiki">AW</abbr></a>, <a href="https://wiki.gentoo.org/wiki/Eclipse"><abbr title="Gentoo Wiki">GW</abbr></a>, <a href="http://wiki.eclipse.org/Main_Page"><abbr title="Wiki">WK</abbr></a>, <a href="https://en.wikipedia.org/wiki/Eclipse_(software)"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://www.eclipse.org/forums/"><abbr title="Official Forum">FM</abbr></a>, <a href="irc://irc.freenode.net/#eclipse"><abbr title="Internet Relay Chat">IRC</abbr></a>
+)
+ is an free and open-source Integrated Development Environment (IDE) written in Java, that is primarily used for programming in C, C++, Java and PHP, although it is possible to program in other languages (such as Lua, Perl and Python) using it too. These other languages usually require the installation of additional plugins, such as <a href="https://aur.archlinux.org/packages/pydev">PyDev</a><sup><abbr title="Arch User Repository">AUR</abbr></sup>
+ for Python. It features in-built support for several compilers and interpreters.</p>
+
+<h3 id="customizability-4">Customizability</h3>
+<p>I do not have enough experience with Eclipse to make any comment on its customizability, but I do know that extra functionality is usually added using plugins. Many of these plugins are also in the Arch User Repository, but not in any official or unofficial Portage overlays.</p>
+
+<h3 id="features-4">Features</h3>
+<p>Eclipse features a text editor with syntax-highlighting, debugging and auto-complete support for most programming languages, in-built support for several compilers and interpreters, it also supports the use of project views, <em>etc.</em></p>
+
+<h3 id="obtaining-it-4">Obtaining It</h3>
+
+<h4 id="manjaro-4">Manjaro</h4>
+<p>Eclipse comes in several different versions. To install what is common to every version available in the Manjaro repositories one would simply issue the command:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S eclipse-common</div>
+
+<p>while, if you would like to list all Eclipse-related programs in the AUR and pacman repositories (most of which will be plugins) run:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;yaourt -Ss eclipse</div>
+
+<h4 id="sabayon-4">Sabayon</h4>
+<p>On Sabayon, Eclipse should not be installed via the default package managers: Entropy and Portage, due to the fact that it is not in the Entropy repositories and the versions found in the official and unofficial Portage overlays are fairly out-of-date and present security risks. Instead I would recommend you go to the download page, https://eclipse.org/downloads/, find the version you want (which will depend on the specifics of the programming you would like to perform) and download the respective tarball. This tarball should contain the executable script for launching the program. Alternatively, you can install it using the new installer, assuming you have all the dependencies already installed. I cannot find a comprehensive list of dependencies for Eclipse, but based on <a href="http://gpo.zugaina.org/AJAX/Ebuild/13519201/View">this</a> ebuild I would hazard a guess that they are:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;=</span>virtual/jdk-1.6
+x11-libs/gtk+:2
+</code></pre></div></div>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Set this mirror variable, according to whichever mirror is closest and best for you</span>
+<span class="nv">MIRROR</span><span class="o">=</span>http://mirror.internode.on.net
+wget <span class="nt">-cqO-</span> <span class="nv">$MIRROR</span>/pub/eclipse/oomph/epp/mars/R1a/eclipse-inst-linux64.tar.gz | <span class="nb">tar</span> <span class="nt">-xz</span>
+<span class="nb">cd </span>eclipse-installer
+./eclipse-inst
+</code></pre></div></div>
+
+<p><strong>Update</strong>: Soon after I posted this, Francesco Ferro added <a href="https://packages.sabayon.org/quicksearch?q=dev-util%2Feclipse-sdk-bin&amp;x=0&amp;y=0"><code class="highlighter-rouge">dev-util/eclipse-sdk-bin</code></a> (version 4.4.2, not quite the latest but it is fairly recent) to the <a href="https://github.com/Sabayon/for-gentoo/commit/38234bc122094ca4cc818d92e2e42bd32fe749d9"><code class="highlighter-rouge">sabayon</code></a> overlay and then to the sabayon-limbo repository. To install it run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av dev-util/eclipse-sdk-bin</div>
+
+<h3 id="advantages-pros-4">Advantages (Pros)</h3>
+<ul>
+  <li>Written in Java, so it is incredibly cross-platform. Any Java-capable platform should be able to run Eclipse without a problem.</li>
+  <li>Easy to install, using the new installer.</li>
+</ul>
+
+<h3 id="disadvantages-cons-4">Disadvantages (Cons)</h3>
+<ul>
+  <li>Cannot be installed using Entropy.</li>
+  <li>Fairly heavy on system resource usage.</li>
+  <li>Slow to boot.</li>
+  <li>Extra plugins are required in order to program in other programming languages.</li>
+</ul>
+
+<h3 id="summary-4">Summary</h3>
+<ul>
+  <li><strong>Availability</strong>: 7-8.</li>
+  <li><strong>Beginner-Friendliness</strong>: 8. It seems fairly intuitive from my limited experience.</li>
+  <li><strong>Customizability</strong>: 8. I have not used it, for anymore than a couple of minutes.</li>
+  <li><strong>Features</strong>: 8.</li>
+  <li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 1-2.</li>
+  <li><strong>System Resource Usage</strong>: 1-2. The new installer is a 43.6 MB download and when installed Eclipse should take up at least 110 MB (exact figures are not available). Eclipse 4.5.1 (Java edition) <code>ps_mem</code> table on Sabayon is: <script src="/js/gist/a9a62ebb56651844832a.js"></script>
+ On Manjaro it (specifically <code>eclipse-common</code>, which is the bare minimum of the IDE) is 108 MB, when installed, download size is 99.5 MB and this is my <code>ps_mem</code> table: <script src="/js/gist/bc06e7b0cb72b31e4465.js"></script>
+</li>
+  <li><strong>Overall</strong>: 8. Its high SRU is a significant disadvantage.</li>
+</ul>
+
+<h2 id="gnu-emacs">GNU Emacs</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Emacs/GNU-Emacs.png" alt="GNU Emacs running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>GNU Emacs running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-5">Background</h3>
+<p><a href="https://www.gnu.org/software/emacs"><strong>GNU Emacs</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/emacs&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/emacs"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/emacs"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/emacs/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://wiki.gentoo.org/wiki/Emacs"><abbr title="ArchWiki">AW</abbr></a>, <a href="https://wiki.gentoo.org/wiki/GNU_Emacs"><abbr title="Gentoo Wiki">GW</abbr></a>, <a href="https://www.gnu.org/software/emacs/manual/"><abbr title="Manual">ML</abbr></a>, <a href="http://www.emacswiki.org/"><abbr title="Wiki">WK</abbr></a>, <a href="https://en.wikipedia.org/wiki/GNU_Emacs"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="http://git.savannah.gnu.org/cgit/emacs.git"><abbr title="Git Repository">GR</abbr></a>
+)
+ is an extensively-customizable text editor that is developed as part of the GNU Project. Its original developer was Richard Stallman, the founder of the GNU Project and its first release was in 1985. It belongs to a family of text editors called Emacs, which are text editors that are extensively customizable for users with sufficient programming knowledge. Emacs is abbreviated from <b>E</b>ditor <b>Mac</b>ro<b>s</b>, which refers to its origin as editor macros for the TECO text editor, that were developed, in part, by Richard Stallman. GE is written in C and Emacs Lisp (ELisp), a dialect of the Lisp programming language devised just for GE. ELisp is used to write extensions and provide extra functionalities for GE and related text editors like XEmacs.</p>
+
+<h3 id="customizability-5">Customizability</h3>
+<p>GE is one of the most customizable text editors available, but much of this customization must be done via writing code in ELisp, which limits much of this customization to advanced users only.</p>
+
+<h3 id="features-5">Features</h3>
+<p>GNU Emacs provides syntax highlighting for dozens of different computer languages, along with several features of IDEs like shell access, compiling code, using git from within GE, <em>etc.</em> The <a href="http://gpo.zugaina.org/app-emacs/">app-emacs</a> Portage category contains several plugins for GNU Emacs.</p>
+
+<h3 id="obtaining-it-5">Obtaining It</h3>
+
+<h4 id="manjaro-5">Manjaro</h4>
+<p>GNU Emacs is in the official pacman repository for Manjaro and can be installed using:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S emacs</div>
+
+<p>should install it.</p>
+
+<h4 id="sabayon-5">Sabayon</h4>
+<p>GNU Emacs is available from the Entropy Store and the Portage Tree. To install it with Entropy run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/emacs</div>
+
+<p>while to install it with Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/emacs</div>
+
+<h3 id="advantages-pros-5">Advantages (Pros)</h3>
+<ul>
+  <li>Extensively customizable.</li>
+  <li>Heavy on features, especially for advanced users that can extend it using ELisp.</li>
+  <li>Provides syntax highlighting for dozens, if not hundreds, of computer languages.</li>
+  <li>Has its own Wiki, manual and other documentation.</li>
+</ul>
+
+<h3 id="disadvantages-cons-5">Disadvantages (Cons)</h3>
+<ul>
+  <li>Has a steep learning curve for newcomers, hence making it inaccessible to newcomers to Linux and programming, in general.</li>
+  <li>Has an unconventional keymap, which can take some time to learn. For example, to cut text you use <kbd>Ctrl+W</kbd>, as opposed to the usual <kbd>Ctrl+X</kbd>, while to paste text you use <kbd>Ctrl+Y</kbd>.</li>
+</ul>
+
+<h3 id="summary-5">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: &gt;8. Readily available for installation on Sabayon.</li>
+	<li><strong>Beginner-friendliness</strong>: &leq;5. Not particularly difficult for a newcomer to use as a basic text editor, but any further usage requires extensive knowledge of ELisp.</li>
+	<li><strong>Customizability</strong>: &gt;9. Extensively customizable for all those that understand ELisp sufficiently.</li>
+	<li><strong>Features</strong>: &gt;9. It is one of the most feature-packed text editors available today.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 3. Used to use it when it was the default TE of GNU Octave. Like Vim, I have found it fustrating in its unconventional keybindings.</li>
+	<li><strong>System Resource Usage</strong>: 7-8. <a href="https://packages.sabayon.org/show/emacs,158951,sabayon-weekly,amd64,5,standard" target="_blank">Emacs 24.5</a> is a 35.8 MB download and takes up 142.2 MB HDD space when installed. Fairly lightweight as far as text editors go, RAM-wise. Here is my <code>ps mem</code> table: <script src="/js/gist/ae46ee9afdfdd2d13c91.js"></script>
+ on Manjaro Linux, GNU Emacs 24.5 is a 36.3 MB download and takes up 99.4 MB when installed and gave this <code>ps_mem</code> table: <script src="/js/gist/2a25829b131e9c96d6b3.js"></script>
+</li>
+	<li><strong>Overall</strong>: 8. It is a very powerful text editor, but to me, its lack of customizability by those that do not understand ELisp is a significant disadvantage.</li>
+</ul>
+
+<h2 id="eric-python-ide">Eric Python IDE</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/Eric6.png" alt="Eric 6 running under Manjaro Linux" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Eric 6 running under Manjaro Linux</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-6">Background</h3>
+<p><a href="http://eric-ide.python-projects.org/"><strong>Eric Python IDE</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=dev-util/eric&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-util/eric"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/dev-util/eric"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/community/any/eric/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/Eric_Python_IDE"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="http://die-offenbachs.homelinux.org:48888/hg/eric/"><abbr title="Mercurial Repository">HR</abbr></a>, <a href="http://sourceforge.net/projects/eric-ide"><abbr title="SourceForge">SF</abbr></a>
+)
+ is a free and open-source IDE that is developed by its own community of donation-sponsored developers. It is written in and used to program in Python. As of Eric version 6, it supports both Python 2 and Python 3.</p>
+
+<h3 id="customizability-6">Customizability</h3>
+<p>Eric has an extensive in-built plugin system. These plugins can be installed from within Eric’s interface by going to “Plugins→Plugin Repository” and selecting the required plugin. I have limited experience with it so I cannot comment on its customizability.</p>
+
+<h3 id="features-6">Features</h3>
+<p>Its features include support for managing Mercurial, Subversion and Git repositories, an integrated Python debugger, an interactive embedded Python shell with syntax-highlighting, syntax-highlighting for its text editor component, code autocompletion, <em>etc.</em></p>
+
+<h3 id="obtaining-it-6">Obtaining It</h3>
+<p>The platform-independent method of installing the latest Eric Python IDE release, is three-step:</p>
+
+<ol>
+  <li>Download the latest tarball release of the Eric Python IDE from <a href="http://sourceforge.net/projects/eric-ide/files/latest/download">here at SourceForge</a></li>
+  <li>Extract the contents of said tarball</li>
+  <li><code class="highlighter-rouge">cd</code> into the extracted directory of Eric</li>
+  <li>Install the dependencies: PyQt5, QScintilla2, Qt5 and sip.</li>
+  <li>Run <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  python install.py -b /usr/bin</span></li>
+</ol>
+
+<h4 id="manjaro-6">Manjaro</h4>
+<p>On Manjaro Eric can be installed from the official pacman repositories with:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S eric</div>
+
+<p>this will install <code class="highlighter-rouge">eric</code> and <code class="highlighter-rouge">eric-common</code> packages, which have a net installed size of 46.6 MB and download size of approximately 8.1 MB.</p>
+
+<h4 id="sabayon-6">Sabayon</h4>
+<p>The version of Eric in the Entropy repository is 4.5.25, which is very out-of-date. The versions of Eric in the Portage Tree are 4.5.25 and 5.5.2, which support only Python 2 and Python 3, respectively. These two versions are slotted differently, which means that they can both be installed simultaneously on the same machine. To install Eric 4.5.25 with Entropy run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av eric</div>
+
+<p>while to install Eric 4.5.25 with Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av eric:4</div>
+
+<p>and to install Eric 5.5.2 with Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av eric:5</div>
+
+<p>It is possible to install the latest release of Eric from my Portage Overlay, <a href="https://github.com/fusion809/sabayon-tools"><code class="highlighter-rouge">sabayon-tools</code></a>,
+ by running (assuming this overlay is not currently added):</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;layman -a sabayon-tools<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av dev-util/eric::sabayon-tools</div>
+
+<p>To install the latest release of Eric on Sabayon, via following the general instructions outlined earlier, run:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo equo i -av dev-python/pyqt5 dev-python/sip dev-python/qscintilla-python<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;mkdir eric<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;wget -c http://sourceforge.net/projects/eric-ide/files/latest/download -O- &gt; eric.tar.gz<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;tar -xz -f eric.tar.gz -C eric --strip-components=1<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo python install.py -b /usr/bin<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo install -Dm644 eric/eric6.desktop /usr/share/applications/eric6.desktop</div>
+
+<h3 id="advantages-pros-6">Advantages (Pros)</h3>
+<ul>
+  <li>Cross-platform</li>
+  <li>Supports both Python versions</li>
+  <li>Feature-packed for Python developers</li>
+  <li>Lightweight</li>
+</ul>
+
+<h3 id="disadvantages-cons-6">Disadvantages (Cons)</h3>
+<ul>
+  <li>The latest version is not available via the usual channels on Sabayon</li>
+</ul>
+
+<h3 id="summary-6">Summary</h3>
+<ul>
+  <li><strong>Availability</strong>: 6-7.</li>
+  <li><strong>Beginner-friendliness</strong>: 8.</li>
+  <li><strong>Customizability</strong>: 8.</li>
+  <li><strong>Features</strong>: 9.</li>
+  <li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 2.</li>
+  <li><strong>System resource usage</strong>: 8. On Manjaro its net download size is 8.1 MB and installed size of 46.6 MB, with a <code>ps_mem</code> table: <script src="/js/gist/d900256d5b9759688e8c.js"></script>
+. Under Sabayon, its installed size is 58.36 MB, the <code>ps_mem</code> table I got is: <script src="/js/gist/ad85ad257499ed52af9b.js"></script>
+.</li>
+  <li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h2 id="geany">Geany</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Geany/Geany-1.24.1.png" alt="Geany 1.24.1 running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Geany 1.24.1 running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-7">Background</h3>
+<p><a href="http://geany.org/"><strong>Geany</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=dev-util/geany&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-util/geany"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/dev-util/geany"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/community/x86_64/geany/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="http://wiki.geany.org/"><abbr title="Wiki">WK</abbr></a>, <a href="https://en.wikipedia.org/wiki/Geany"><abbr title="Wikipedia">WP</abbr></a>
+)
+ is a lightweight GTK+ and Scintilla-based text editor with basic IDE-type features that was originally developed by Enrico Tröger in 2005. It is licensed under GNU GPLv2.</p>
+
+<h3 id="customizability-7">Customizability</h3>
+<p>The <code class="highlighter-rouge">~/.geany</code> directory is where customizations are kept. This customization can be made with code <a href="http://www.geany.org/Download/Extras">snippets</a> (written in HTML, LaTeX, PHP and Python), <a href="http://www.geany.org/Support/Plugins">plugins</a>, <a href="https://github.com/geany/geany-themes/">themes</a>, <em>etc</em>.</p>
+
+<h3 id="features-7">Features</h3>
+<p>Geany provides auto-indentation and syntax-highlighting for over a dozen different computer languages. Geany has an embedded terminal emulator. Several extra features can be added to Geany, using plugins.</p>
+
+<h3 id="obtaining-it-7">Obtaining It</h3>
+
+<h4 id="manjaro-7">Manjaro</h4>
+<p>The latest version of Geany (1.26) is presently in the official pacman repositories of Manjaro, so running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S geany</div>
+
+<p>should install it.</p>
+
+<h4 id="sabayon-7">Sabayon</h4>
+<p>Geany can be easily installed using Entropy or Portage. Using Entropy run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av dev-util/geany</div>
+
+<p>while to install it using Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av dev-util/geany</div>
+
+<p>The latest version of Geany in the <a href="https://packages.sabayon.org/show/geany,126394,sabayon-weekly,amd64,5,standard">Entropy Store</a> is 1.24.1, while the latest version of Geany as of 18 January 2016 is 1.26 (released 15 November 2015) which is available from the <a href="https://packages.gentoo.org/packages/dev-util/geany">Portage Tree</a>.</p>
+
+<h3 id="advantages-pros-7">Advantages (Pros)</h3>
+<ul>
+  <li>It has a few IDE-type features.</li>
+  <li>It is fairly lightweight.</li>
+  <li>It is cross-platform, hence if you switch from Sabayon to another OS fairly frequently, it should not be too difficult to get Geany on said OS.</li>
+  <li>Keyboard shortcuts are fairly intuitive.</li>
+</ul>
+
+<h3 id="disadvantages-cons-7">Disadvantages (Cons)</h3>
+<ul>
+  <li>The list of supported computer languages, for syntax-highlighting and other features is fairly small, compared to Atom, Gedit, GNU Emacs and Vim. See for example, the screenshot below, showing allowed file types.</li>
+</ul>
+<div class="image-box" style="width:1100px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Geany/Geany-Document-File-Type-Programming-Languages.png" alt="" style="width:1100px" />
+  
+</figure>
+</div>
+
+<ul>
+  <li>The version of Geany in the Entropy Store is not the latest available</li>
+</ul>
+
+<h3 id="summary-7">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: 7-8. I am rating it a little lower than 8, as the latest version in the Entropy Store is not the latest, even though the latest has been available for three months, thus far.</li>
+	<li><strong>Beginner-friendliness</strong>: 8. It seems fairly user-friendly, as its keyboard shortcuts are fairly intuitive.</li>
+	<li><strong>Customizability</strong>: 7? My experience with this TE is too limited for me to be confident with this rating.</li>
+	<li><strong>Features</strong>: 8.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 2. Fairly minimal, I have attempted to use it as a Python IDE, with limited success.</li>
+	<li><strong>System Resource Usage</strong>: 8. <a href="https://packages.sabayon.org/show/geany,126394,sabayon-weekly,amd64,5,standard" target="_blank">Geany 1.24.1</a> is a 3.4 MB download and takes up 9.8 MB HDD space when installed. Here is my <code>ps mem</code> table (remember I have neglected to include the RAM used by the embedded terminal emulator): <script src="/js/gist/9bf5b312368c9701e7a4.js"></script>
+ while under Manjaro Linux Geany 1.26.2 is a 2.9 MB download and takes up 10.9 MB when installed. Geany 1.26.2 also gave this <code>ps_mem</code> table under Manjaro: <script src="/js/gist/ea322f19dfbc2e1a984a.js"></script>
+</li>
+	<li><strong>Overall</strong>: 8. Seems fairly good.</li>
+</ul>
+
+<h2 id="gedit">gedit</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/text-editors/gedit-screenshot-under-Moksha.png" alt="gedit running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>gedit running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-8">Background</h3>
+<p><a href="https://wiki.gnome.org/Apps/Gedit"><strong>gedit</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/gedit&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/gedit"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/gedit"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/gedit/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://wiki.gentoo.org/wiki/GNOME/Gedit"><abbr title="ArchWiki">AW</abbr></a>, <a href="https://help.gnome.org/users/gedit/"><abbr title="Manual">ML</abbr></a>, <a href="https://en.wikipedia.org/wiki/gedit"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://github.com/GNOME/gedit"><abbr title="Git Repository">GR</abbr></a>
+)
+ is a GTK+ based text editor that is one of the core applications of GNOME. In my opinion, it is the second most advanced text editor (after Kate) that is part of a desktop environment’s core application suite. It is also more advanced than Windows’ Notepad and Wordpad text editors. Despite this it is also beginner-friendly and uses a standard keymap.</p>
+
+<h3 id="customizability-8">Customizability</h3>
+<p>gedit is able to be customized, although from what I have gathered from reading its Wiki, customization options are limited as it does not seem to support advanced customization (via editing configure files, for example), rather there are some themes and plugins available but the plugins seem fairly limited.</p>
+
+<h3 id="features-8">Features</h3>
+<p>It supports syntax highlighting of several computer languages, including Desktop Configuration files (<code class="highlighter-rouge">.desktop</code> or <code class="highlighter-rouge">.directory</code>), MATLAB, MediaWiki, GNU Octave, Scilab and shell script, just to name a few I know are absent in a few basic text editors. Although it does not support syntax highlighting for PyMOL or SageMath, so I would not say its syntax highlighting is as extensive as Atom’s or Vim’s.</p>
+
+<h3 id="obtaining-it-8">Obtaining It</h3>
+
+<h3 id="manjaro-8">Manjaro</h3>
+<p>gedit is in the official pacman repositories of Manjaro so merely running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S gedit</div>
+
+<p>should install it.</p>
+
+<h4 id="sabayon-8">Sabayon</h4>
+<p>It is easy to obtain gedit on Sabayon, via either Entropy or Portage (and yes it is available in the Portage Tree). gedit comes with a default installation of Sabayon GNOME edition. To install it using Entropy on an existing Sabayon machine, simply run (you can omit the <code class="highlighter-rouge">-av</code> options, if you are sure gedit is not already installed on your system, I am using these options in case it is and you are not aware of it):</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/gedit</div>
+
+<p>Alternatively to install it using Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/gedit</div>
+
+<h3 id="advantages-pros-8">Advantages (Pros)</h3>
+<ul>
+  <li>Light on resources</li>
+  <li>Easy to obtain on Manjaro and Sabayon</li>
+</ul>
+
+<h3 id="disadvantages-cons-8">Disadvantages (Cons)</h3>
+<ul>
+  <li>Customization options, beyond with a limited set of available themes and plugins, are limited.</li>
+  <li>Fairly light on features, beyond syntax highlighting.</li>
+</ul>
+
+<h3 id="summary-8">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: &gt;8.</li>
+	<li><strong>Beginner-friendliness</strong>: &gt;8.</li>
+	<li><strong>Customizability</strong>: 6.</li>
+	<li><strong>Features</strong>: 8.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 3. I have used a few times, usually when I am using GNOME.</li>
+	<li><strong>System Resource Usage</strong>: 7. Its Entropy package (<a href="https://packages.sabayon.org/show/gedit,158117,sabayon-weekly,amd64,5,standard" target="_blank">3.16.3</a>) size is 2.4 MB, while when installed it takes up 11.5 MB HDD space. Here is my <code>ps mem</code> table: <script src="/js/gist/d26029c6216a6b1335ac.js"></script>
+ under Manjaro Linux gedit is a 2.1 MB download and takes up 14.2 MB when it is installed. On Manjaro Linux version 3.18.2 of gedit gave this <code>ps_mem</code> table: <script src="/js/gist/cec70a5bd6cf97ec6bf6.js"></script>
+</li>
+	<li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h2 id="intellij-idea-ce">IntelliJ IDEA CE</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/IntellijIDE-CE-15.0.2.png" alt="IntelliJ IDEA Community Edition 15.0.2 running under Manjaro Linux" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>IntelliJ IDEA Community Edition 15.0.2 running under Manjaro Linux</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-9">Background</h3>
+<p><a href="http://www.jetbrains.com/idea/"><strong>IntelliJ IDEA Community Edition</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=dev-util/idea-community&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-util/idea-community"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/dev-util/idea-community"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://aur.archlinux.org/packages/intellij-idea-ce-eap"><abbr title="Arch User Repository Package">AU</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/IntelliJ_IDEA"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://devnet.jetbrains.com/community/idea"><abbr title="Official Forum">FM</abbr></a>, <a href="https://github.com/JetBrains/intellij-community"><abbr title="Git Repository">GR</abbr></a>
+)
+, which I will abbreviate as <strong>IJCE</strong>, is a free and open-source IDE developed by JetBrains that is designed specifically for Java development. It is the free counterpart to a proprietary IDE (called IntelliJ IDEA Ultimate Edition) that is more feature-packed with support for several additional programming languages. Its support for programming languages is extended by use of plugins — the ultimate edition can even get a Python plugin that will provide it with all the features of PyCharm Professional Edition, which is also developed by JetBrains.</p>
+
+<h3 id="customizability-9">Customizability</h3>
+<p>IntelliJ IDEA’s customizability is something I really cannot comment on, but I would imagine it is not very customizable due to the fact that this would defeat the purpose of JetBeans creating a community edition, which is to tempt users to buy the proprietary, Ultimate Edition, with the extra features it has as opposed to the community edition.</p>
+
+<h3 id="features-9">Features</h3>
+<p>Its features is something I cannot really comment on as I have limited experience with it, but it does not support any programming languages beyond a limited set including and related to Java like the Groovy programming language.</p>
+
+<h3 id="obtaining-it-9">Obtaining It</h3>
+<p>IJCE is installable on both distributions covered in this post (theoretically these instructions should also work for most other distributions as well), via downloading the tarball (in <code class="highlighter-rouge">.tar.gz</code> format) from their website, extracting its contents and running the install script <code class="highlighter-rouge">idea.sh</code> in the <code class="highlighter-rouge">bin/</code> folder within. If you want me to hold your hand through it, here we go, assuming the latest version of IntelliJ IDEA is still 15.02 when you try this, run:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;wget -cqO- https://d1opms6zj7jotq.cloudfront.net/idea/ideaIC-15.0.2.tar.gz | tar -xz<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd idea-IC-143.1184.17/bin<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;./idea.sh</div>
+
+<p>to get the installer for the program running. From there just follow the installer through its various steps and hopefully you should have IJCE install on your system.</p>
+
+<h4 id="manjaro-9">Manjaro</h4>
+<p>On Manjaro an experimental version of IJCE is also installable from the AUR by running:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;yaourt -S intellij-idea-ce-eap</div>
+
+<h4 id="sabayon-9">Sabayon</h4>
+<p><strong>Update</strong>: soon after posting this Francesco Ferro added IntelliJ Community Edition 15.0.0 to the <a href="https://github.com/Sabayon/for-gentoo/commit/51194fcbbf4fa67a83519fbebd1c1ec3036fdf99"><code class="highlighter-rouge">sabayon</code></a> overlay, which was then added to the sabayon-limbo repository. To install it run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av dev-util/idea-community</div>
+
+<h3 id="advantages-pros-9">Advantages (Pros)</h3>
+<ul>
+  <li>Easy to install on any Linux platform.</li>
+  <li>Cross-platform</li>
+</ul>
+
+<h3 id="disadvantages-cons-9">Disadvantages (Cons)</h3>
+<ul>
+  <li>Cannot be installed via the usual methods on Manjaro and Sabayon.</li>
+  <li>Limited set of features and supported languages</li>
+</ul>
+
+<h3 id="summary-9">Summary</h3>
+<ul>
+  <li><strong>Availability</strong>: 6. Not available in the Entropy or pacman repositories, but it is fairly easy to install the latest version from the official binary tarball releases.</li>
+  <li><strong>Beginner-friendliness</strong>: 8? Seems fairly beginner-friendly.</li>
+  <li><strong>Customizability</strong>: 6? Never used it, just guessing at its customizability.</li>
+  <li><strong>Features</strong>: 6? Never used it, beyond to just take a screenshot of it.</li>
+  <li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 1.</li>
+  <li><strong>System Resource Usage</strong>: 1. The binary tarball for 15.0.2 is a 220 MB download, takes up about 450 MB when installed. This is my <code>ps_mem</code> table on Manjaro: <script src="/js/gist/10a5a4f1c696e523da5c.js"></script>
+ Here is my <code>ps_mem</code> table under Sabayon: <script src="/js/gist/7da5ac68cdb84e7d8199.js"></script>
+</li>
+  <li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h2 id="jedit">jEdit</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/text-editors/jEdit-screenshot.png" alt="jEdit 5.2.0 running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>jEdit 5.2.0 running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-10">Background</h3>
+<p><a href="http://www.jedit.org/"><strong>jEdit</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/jedit&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/jedit"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/jedit"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/community/x86_64/jedit/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="http://www.jedit.org/users-guide/"><abbr title="Manual">ML</abbr></a>, <a href="https://en.wikipedia.org/wiki/jEdit"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="http://sourceforge.net/p/jedit/svn/HEAD/tree/"><abbr title="Subversion Repository">SR</abbr></a>, <a href="http://sourceforge.net/projects/jedit"><abbr title="SourceForge">SF</abbr></a>
+)
+ is a Java-based text editor that began life in 1998, when Slava Pestov started developing it. Pestov later left the project in 2006, when he handed the reigns to the free software community. jEdit provides syntax highlighting for dozens of computer languages so far, and can be customized using scripts written in a variety of different programming languages such as JavaScript and Jython. As it is written in Java it can run on any Java-capable platform, including Manjaro and Sabayon.</p>
+
+<h3 id="customizability-10">Customizability</h3>
+<p>It is extensively customizable, via scripts in supported languages. Several plugins, that provide extra functionality, are available via a built-in plugin installer (under the “Plugins” menu).</p>
+
+<h3 id="features-10">Features</h3>
+<p>As previously mentioned auto-indentation and syntax-highlighting support exists for a long list of computer languages. Plugins with extra IDE-like capabilities also exist, including a plugin for using git from within jEdit, another for using a Jython interpreter from within jEdit, another for a Python shell, <em>etc.</em></p>
+
+<h3 id="obtaining-it-10">Obtaining It</h3>
+
+<h4 id="manjaro-10">Manjaro</h4>
+<p>On Manjaro jEdit can be installed with:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S jedit</div>
+
+<h4 id="sabayon-10">Sabayon</h4>
+<p>On Sabayon jEdit can be installed via Entropy or Portage (from the Portage Tree, no need to add unofficial overlays for it). To install it using Entropy run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/jedit</div>
+
+<p>while to install it using Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/jedit</div>
+
+<h3 id="advantages-pros-10">Advantages (Pros)</h3>
+<ul>
+  <li>Easy to obtain it on Sabayon</li>
+  <li>Extensively customizable</li>
+  <li>Has intuitive keyboard shortcuts</li>
+  <li>Written in Java, hence can run on most platforms, if you end up switching to a new operating system in the future</li>
+  <li>User-friendly</li>
+</ul>
+
+<h3 id="disadvantages-cons-10">Disadvantages (Cons)</h3>
+<ul>
+  <li>Heavy on system resources.</li>
+</ul>
+
+<h3 id="summary-10">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: 8.</li>
+	<li><strong>Beginner-friendliness</strong>: 8. Fairly beginner-friendly, but extra functionalities beyond that available via existing plugins must be added using self-made scripts.</li>
+	<li><strong>Customizability</strong>: &gt;8. Very customizabile.</li>
+	<li><strong>Features</strong>: 8. Extensive auto-indentation and syntax-highlighting support for a range of computer languages, as has some IDE features.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 2. Not too much experience as it is quite SRU-heavy and is not feature-packed enough to justify me putting up with its SRU.</li>
+	<li><strong>System Resource Usage</strong>: 3. <a href="https://packages.sabayon.org/show/jedit,156957,sabayon-weekly,amd64,5,standard" target="_blank">jEdit 5.2.0</a> is a 2.6 MB download and takes up 10 MB HDD space when installed. Second heaviest text editor compared in this post, after Atom, RAM-wise. Here is my <code>ps mem</code> table: <script src="/js/gist/fd976335d6931cf964b7.js"></script>
+ jEdit 5.3.0 is a 2.9 download and takes up 29.2 MB when it is installed. It also gave this <code>ps_mem</code> table for jEdit 5.3.0: <script src="/js/gist/302b48a141294a5103c6.js"></script>
+</li>
+	<li><strong>Overall</strong>: 8. Seems like quite a useful text editor.</li>
+</ul>
+
+<h2 id="katekwrite">Kate/KWrite</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/text-editors/Kate-under-Moksha.png" alt="Kate 15.08.1 running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Kate 15.08.1 running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/text-editors/KWrite-15.08.0-under-Moksha.png" alt="KWrite 15.08.0 running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>KWrite 15.08.0 running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-11">Background</h3>
+<p><a href="http://kate-editor.org"><strong>Kate</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=kde-apps/kate&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/kde-apps/kate"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/kde-apps/kate"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/kate/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/Kate_(text_editor)"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="http://kate-editor.org/support/"><abbr title="Official Forum">FM</abbr></a>, <a href="https://projects.kde.org/projects/kde/applications/kate/repository"><abbr title="Git Repository">GR</abbr></a>
+)
+ which is abbreviated from <b>K</b>DE <b>A</b>dvanced <b>T</b>ext <b>E</b>ditor, is a text editor that is a KDE Core Application (a part of the KDE Software Compilation or KDE SC) and combines features of an advanced text editor (that is, one geared towards software developers and experienced programmers) such as customizability, extensive syntax-highlighting, code-indentation, <em>etc.</em> support with sufficient user-friendliness for it to be suitable for inexperienced Linux users. Its development began in 2001 and has been a central part of KDE SC ever since.</p>
+
+<p><strong>KWrite</strong> (<a href="https://packages.sabayon.org/quicksearch?q=kde-apps/kwrite&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/kde-apps/kwrite"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/kde-apps/kwrite"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/kwrite"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/KWrite"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://projects.kde.org/projects/kde/applications/kate/repository"><abbr title="Git Repository">GR</abbr></a>
+)
+ as I understand it (but I must admit I am a little confused by the degree of overlap between Kate and KWrite) is designed to be a lightweight derivative of Kate.</p>
+
+<h3 id="customizability-11">Customizability</h3>
+<p>Some customization (such as of keyboard shortcuts, the toolbar and a few other features) can be done graphically via going to the “Settings” menu and selecting an option from the menu. From what I can gather, however, limited customization can be done textually via user-supplied scripts.</p>
+
+<h3 id="features-11">Features</h3>
+<p>It has syntax-highlighting and auto-indentation support for over 180 different computer languages, including MediaWiki and shell script, but excluding PyMOL. It also has embedded terminal support.</p>
+
+<h3 id="obtaining-it-11">Obtaining It</h3>
+
+<h4 id="manjaro-11">Manjaro</h4>
+<p>Kate/KWrite can be installed using pacman, via running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S kate</div>
+
+<p>and:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S kwrite</div>
+
+<p>, respectively.</p>
+
+<h4 id="sabayon-11">Sabayon</h4>
+<p>Kate can be quite easily obtained from Entropy or Portage. To install it from Entropy run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av kde-apps/kate</div>
+
+<p>while to install it with Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av kde-apps/kate</div>
+
+<p>Getting KWrite is similarly easy, just use (for installation with Entropy):</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av kde-apps/kwrite</div>
+
+<p>while to install KWrite with Portage run (no need to add any overlays, it is in the Portage Tree):</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av kde-apps/kwrite</div>
+
+<h3 id="advantages-pros-11">Advantages (Pros)</h3>
+<ul>
+  <li>Easily customizable via graphical tools</li>
+  <li>Intuitive keyboard shortcuts by default</li>
+  <li>Extensive support for a wide range of computer languages</li>
+</ul>
+
+<h3 id="disadvantages-cons-11">Disadvantages (Cons)</h3>
+<ul>
+  <li>Minimal customization can be made to Kate/KWrite, via user-supplied scripts.</li>
+  <li>Due to it being part of KDE SC it cannot be too easily ported to Microsoft Windows or OS X, although it is readily available on most Linux distributions.</li>
+</ul>
+
+<h3 id="summary-11">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: 8. Easy to get on Sabayon.</li>
+	<li><strong>Beginner-friendliness</strong>: 9. Easy for beginners to use.</li>
+	<li><strong>Customizability</strong>: 7-8. Fairly customizable, but unlike Atom say where advanced users have the option of extending the TE further using their own scripts, Kate does not seem to have this capability</li>
+	<li><strong>Features</strong>: 8. Extensive support for computer languages and has some IDE-like features.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 2. Fairly minimal.</li>
+	<li><strong>System Resource Usage</strong>: 7. <a href="https://packages.sabayon.org/show/kate,113072,sabayon-limbo,amd64,5,standard" target="_blank">Kate 15.08.2</a> is a 2.4 MB download and 9.2 MB package when installed, while <a href="https://packages.sabayon.org/show/kwrite,113128,sabayon-limbo,amd64,5,standard" target="_blank">KWrite 15.08.2</a> is a 0.1 MB download and 177 kB package when installed. Fairly lightweight for a graphical TE. Here are my <code>ps mem</code> tables (for Kate 15.08.1 and KWrite 15.08.0, respectively): <script src="/js/gist/cf8ade356c01c2169b0c.js"></script>
+ <script src="/js/gist/d98c78aaddceb1cab2e6.js"></script>
+ Kate 15.12 while under Manjaro Linux takes up 7.1 MB when installed and is a 1.7 MB download. KWrite 15.12 takes up 203 KiB when installed and is a ~110 KiB download. Kate 15.12 and KWrite 15.12, respectively, gave these <code>ps_mem</code> tables: <script src="/js/gist/81b1bb4ba22621413f96.js"></script>
+<script src="/js/gist/c344504e294452ec74f8.js"></script>
+</li>
+	<li><strong>Overall</strong>: 8-9. User-friendly and fairly customizable.</li>
+</ul>
+
+<h2 id="kdevelop">KDevelop</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/KDevelop-4.7.2.png" alt="KDevelop 4.7.2 running under Manjaro Linux" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>KDevelop 4.7.2 running under Manjaro Linux</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-12">Background</h3>
+<p><a href="https://www.kdevelop.org/"><strong>KDevelop</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=dev-util/kdevelop&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-util/kdevelop"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/dev-util/kdevelop"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/kdevelop"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/KDevelop"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://projects.kde.org/projects/extragear/kdevelop/kdevelop/repository"><abbr title="Git Repository">GR</abbr></a>
+)
+ is an IDE that is part of the KDE Core Applications (KDE-CA) suite, unlike most other members of the KDE-CA suite it is still based on Qt4 and has not yet made the transition to KDE Frameworks 5 (KF5). Plans to transition to KF5 are currently in place for the near future. It is designed for C, C++, PHP and Python development.</p>
+
+<h3 id="customizability-12">Customizability</h3>
+<p>KDevelop is a program I have little experience with, but if you go to the “Settings” menu you can choose to modify the program’s keyboard shortcuts and other aspects of its behaviour.</p>
+
+<h3 id="features-12">Features</h3>
+<p>KDevelop features source code editor support (including syntax highlighting, autocompletion, autoindentation, <em>etc.</em>) for its four programming languages, it also has in-built support for git and compilers/interpreters for C, C++, PHP and Python.</p>
+
+<h3 id="obtaining-it-12">Obtaining It</h3>
+
+<h4 id="manjaro-12">Manjaro</h4>
+<p>KDevelop is in Manjaro’s pacman repositories and can be installed by running the command:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S kdevelop</div>
+
+<h4 id="sabayon-12">Sabayon</h4>
+<p>KDevelop is in the Entropy repositories and Portage Tree. The version in the Entropy repositories is a developmental version based on Qt5. To install KDevelop on Sabayon, merely run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av dev-util/kdevelop</div>
+
+<p>or:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av dev-util/kdevelop</div>
+
+<h3 id="advantages-pros-12">Advantages (Pros)</h3>
+<ul>
+  <li>Easy to install.</li>
+</ul>
+
+<h3 id="disadvantages-cons-12">Disadvantages (Cons)</h3>
+<ul>
+  <li>Only supports four programming languages.</li>
+  <li>Not very customizable.</li>
+</ul>
+
+<h3 id="ratings">Ratings</h3>
+<ul>
+  <li><strong>Availability</strong>: 8.</li>
+  <li><strong>Beginner-friendliness</strong>: 8.</li>
+  <li><strong>Customizability</strong>: &lt;5.</li>
+  <li><strong>Features</strong>: 6.</li>
+  <li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 1.</li>
+  <li><strong>System Resource Usage</strong>: 4-5. On Manjaro KDevelop is a 4.9 MB download and takes up 12.2 MB when installed. Here is my <code>ps_mem</code> table under Manjaro: <script src="/js/gist/36795a1d8cdbc72bdd1f.js"></script>
+. Under Sabayon it is a 5.7 MB download and takes up 13.4 MB when installed. Here is my <code>ps_mem</code> table under Sabayon: <script src="/js/gist/6899e31f999156e85ea2.js"></script>
+</li>
+  <li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h2 id="komodo-edit">Komodo Edit</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Komodo/Komodo-Edit-9.3.1.png" alt="Komodo Edit 9.3.1 running under Manjaro Linux" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Komodo Edit 9.3.1 running under Manjaro Linux</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-13">Background</h3>
+<p><a href="http://komodoide.com/komodo-edit/"><strong>Komodo Edit</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/komodo-edit-bin&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/komodo-edit-bin"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/komodo-edit-bin"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://aur.archlinux.org/packages/komodo-edit"><abbr title="Arch User Repository Package">AU</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/Komodo_Edit"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://github.com/Komodo/KomodoEdit"><abbr title="Git Repository">GR</abbr></a>
+)
+ is a free and open-source text editor developed by ActiveState that is based on the Mozilla Platform. ActiveState also develops a proprietary IDE based on Komodo Edit called <a href="https://en.wikipedia.org/wiki/Komodo_IDE">Komodo IDE</a>. It supports several popular computer languages, including: Bash, C, C++, C#, CoffeeScript, CSS, Go, HTML, JavaScript, Less, Markdown, Perl, PHP, Python, Python3, <em>etc.</em></p>
+
+<h3 id="customizability-13">Customizability</h3>
+<p>Komodo Edit can be customized and extended by use of packages that come in the <code class="highlighter-rouge">.xpi</code> file format (the same format used by Firefox extensions) and can be downloaded from http://komodoide.com/packages/. I have limited experience with Komodo Edit, so I do not know just how customizable it is by use of these extensions.</p>
+
+<h3 id="features-13">Features</h3>
+<p>Komodo Edit can have extra features added to it by use of plugins.</p>
+
+<h3 id="obtaining-it-13">Obtaining It</h3>
+<p>Komodo Edit is built from precompiled binaries on both Manjaro and Sabayon, when installed via the methods outlined below.</p>
+
+<h4 id="manjaro-13">Manjaro</h4>
+<p>Komodo Edit can be installed from the AUR by running:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;yaourt -S komodo-edit</div>
+
+<h4 id="sabayon-13">Sabayon</h4>
+<p>Komodo Edit can be installed from the <a href="https://github.com/Spike-Pentesting/spike-overlay"><code class="highlighter-rouge">spike</code></a> overlay, but it is a fairly old version (9.0.0, as of 18 January 2016
+ the latest version is 9.3.2). Presently my overlay, <a href="https://github.com/fusion809/sabayon-tools"><code class="highlighter-rouge">sabayon-tools</code></a>, contains a newer Komodo Edit ebuild (9.3.2), but it is presently not working. The following code should install Komodo Edit on Sabayon:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;layman -a spike<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/komodo-edit-bin::spike</div>
+
+<h3 id="advantages-pros-13">Advantages (Pros)</h3>
+<ul>
+  <li>Seems fairly feature-packed, something tells me that its feature set is likely similar to Atom.</li>
+</ul>
+
+<h3 id="disadvantages-cons-13">Disadvantages (Cons)</h3>
+<ul>
+  <li>Komodo Edit is fairly heavy on SRU.</li>
+  <li>Not in the pacman repos for Manjaro. Komodo Edit 9.3.2 cannot be installed from any ebuilds in the Layman remote list.</li>
+</ul>
+
+<h3 id="ratings-1">Ratings</h3>
+<ul>
+  <li><strong>Availability</strong>: 5. It can only be installed via unofficial methods like from PKGBUILDs for Manjaro users and from unofficial overlays for Sabayon users.</li>
+  <li><strong>Beginner-friendliness</strong>: 8-9. Seems fairly beginner-friendly.</li>
+  <li><strong>Customizability</strong>: 8. Seems fairly customizable.</li>
+  <li><strong>Features</strong>: 7. Has the standard features of a text editor, but no IDE-type features.</li>
+  <li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 1. Fairly minimal.</li>
+  <li><strong>System Resource Usage</strong>: 2. Komodo Edit's install size on Manjaro is roughly 240.8 MB. Here is my <code>ps_mem</code> table on Manjaro: <script src="/js/gist/a924b31d8547a0ea5599.js"></script>
+. Komodo Edit takes up 247.38 MB when installed on Sabayon and gave this <code>ps_mem</code> table: <script src="/js/gist/34742c950a668a58d58c.js"></script>
+</li>
+  <li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h2 id="leafpad">Leafpad</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/text-editors/Leafpad-running-under-Moksha.png" alt="Leafpad 0.8.18.1 running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Leafpad 0.8.18.1 running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-14">Background</h3>
+<p><a href="http://tarot.freeshell.org/leafpad/"><strong>Leafpad</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/leafpad&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/leafpad"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/leafpad"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/leafpad/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/Leafpad"><abbr title="Wikipedia">WP</abbr></a>
+)
+ is a lightweight and basic GTK+ based text editor. Its capabilities (or rather lack thereof) are very similar to those of Windows’ Notepad.</p>
+
+<h3 id="customizability-14">Customizability</h3>
+<p>There is little, if any, customizability for Leafpad.</p>
+
+<h3 id="features-14">Features</h3>
+<p>It offers no syntax highlighting support or auto-indentation support that I am aware of.</p>
+
+<h3 id="obtaining-it-14">Obtaining It</h3>
+
+<h4 id="manjaro-14">Manjaro</h4>
+<p>To install Leafpad on Manjaro merely run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S leafpad</div>
+
+<h4 id="sabayon-14">Sabayon</h4>
+<p>To install it on Sabayon with Entropy run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/leafpad</div>
+
+<p>while to install it with Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/leafpad</div>
+
+<h3 id="advantages-pros-14">Advantages (Pros)</h3>
+<ul>
+  <li>Its chief advantage is its low system resource usage</li>
+  <li>Easy to install on Sabayon</li>
+</ul>
+
+<h3 id="disadvantages-cons-14">Disadvantages (Cons)</h3>
+<ul>
+  <li>It is very basic, has minimal customizability or features</li>
+</ul>
+
+<h3 id="ratings-2">Ratings</h3>
+<ul>
+	<li><strong>Availability</strong>: 8.</li>
+	<li><strong>Beginner-friendliness</strong>: 10.</li>
+	<li><strong>Customizablity</strong>: 0.</li>
+	<li><strong>Features</strong>: 0.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 2. Fairly minimal, just the occasional use when I am using LXDE.</li>
+	<li><strong>System Resource Usage</strong>: 9. <a href="https://packages.sabayon.org/show/leafpad,54626,sabayon-weekly,amd64,5,standard" target="_blank">Leafpad 0.8.18.1</a> is a 0.1 MB download and 3.3 MB package when installed. It is the most lightweight graphical TE in this comparison. Here is my <code>ps mem</code> table: <script src="/js/gist/00cdc4c41a2d1a63c2c0.js"></script>
+ Leafpad 0.8.18 is a 79.5 KiB download and takes up 300 KiB when installed. It also gave the following <code>ps_mem</code> table: <script src="/js/gist/c8b9686f94cb465d32e7.js"></script>
+
+</li>
+	<li><strong>Overall</strong>: 7. Fairly basic, but at least it is stable and easy to use.</li>
+</ul>
+
+<h2 id="mousepad">Mousepad</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/text-editors/Mousepad-under-Moksha.png" alt="Mousepad 0.4.0 running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Mousepad 0.4.0 running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-15">Background</h3>
+<p><strong>Mousepad</strong> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/mousepad&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/mousepad"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/mousepad"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/mousepad/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/Xfce#Mousepad"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="http://git.xfce.org/apps/mousepad/"><abbr title="Git Repository">GR</abbr></a>
+)
+ is a core application of the Xfce desktop environment, that was originally forked from Leafpad. Like Leafpad it is fairly lightweight, but unlike Leafpad, Mousepad can be customized and has a few basic features that are absent from Leafpad, such as syntax highlighting support for a few computer languages.</p>
+
+<h3 id="customizability-15">Customizability</h3>
+<p>Some basic customization can be done, graphically, by going to Edit←Preferences in the toolbar. Some customization of its appearance can be done by going to the View menu. Beyond this, to my knowledge, it cannot be customized.</p>
+
+<h3 id="features-15">Features</h3>
+<p>It supports syntax-highlighting for roughly, a couple of dozen computer languages.</p>
+
+<h3 id="obtaining-it-15">Obtaining It</h3>
+
+<h4 id="manjaro-15">Manjaro</h4>
+<p>It can be easily installed by running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S mousepad</div>
+
+<h4 id="sabayon-15">Sabayon</h4>
+<p>It is fairly easy to obtain it on Sabayon, to install it with Entropy run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/mousepad</div>
+
+<p>while to install it with Portage (and yes it is available in the Portage Tree):</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/mousepad</div>
+
+<h3 id="advantages-pros-15">Advantages (Pros)</h3>
+<ul>
+  <li>Lightweight</li>
+  <li>All customization can be done graphically</li>
+  <li>User-friendly</li>
+</ul>
+
+<h3 id="disadvantages-cons-15">Disadvantages (Cons)</h3>
+<ul>
+  <li>Basic, limited computer language support</li>
+  <li>Limited customization options</li>
+</ul>
+
+<h3 id="ratings-3">Ratings</h3>
+<ul>
+	<li><strong>Availability</strong>: 8. Easy to obtain on Sabayon</li>
+	<li><strong>Beginner-friendliness</strong>: 10.</li>
+	<li><strong>Customizability</strong>: 2-4.</li>
+	<li><strong>Features</strong>: 4</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 1. Fairly minimal.</li>
+	<li><strong>System Resource Usage</strong>: 8. <a href="https://packages.sabayon.org/show/mousepad,146192,sabayon-weekly,amd64,5,standard" target="_blank">Mousepad 0.4.0</a> is a 0.4 MB download and takes up 1.1 MB when installed. Very lightweight. Here is my <code>ps mem</code> table: <script src="/js/gist/773389df379d411516c7.js"></script>
+ Mousepad 0.4.0 is a ~210 KiB download and takes up 1.1 MiB when installed. It also gave the <code>ps_mem</code> table: <script src="/js/gist/6517bc5dc8df053d1d9a.js"></script>
+
+</li>
+	<li><strong>Overall</strong>: 7. The next step up from Leafpad, in complexity it is.</li>
+</ul>
+
+<h2 id="gnu-nano">GNU nano</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/text-editors/GNU-nano-under-LXTerminal.png" alt="GNU nano 2.4.2 running within LXTerminal under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>GNU nano 2.4.2 running within LXTerminal under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-16">Background</h3>
+<p><a href="http://www.nano-editor.org/"><strong>GNU nano</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/nano&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/nano"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/nano"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/core/x86_64/nano/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://wiki.gentoo.org/wiki/Nano"><abbr title="ArchWiki">AW</abbr></a>, <a href="https://wiki.gentoo.org/wiki/Nano"><abbr title="Gentoo Wiki">GW</abbr></a>, <a href="http://www.nano-editor.org/docs.php"><abbr title="Manual">ML</abbr></a>, <a href="https://en.wikipedia.org/wiki/GNU nano"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="http://svn.sv.gnu.org/viewvc/?root=nano"><abbr title="Subversion Repository">SR</abbr></a>
+)
+ is a command-line text editor that is developed as part of the GNU Project. Its development began in 1999 by Chris Allegretta, as a free alternative to the proprietary Pico text editor. Later, in 2001, it officially became part of the GNU Project. Several features (like search, search and replace, save, exit, <em>etc.</em>) are accessed using keyboard shortcuts. It can be invoked by running the command “nano” from the command-line. nano can be passed several different options from the command-line, to see a full list see its man page (invoked by running <code class="highlighter-rouge">man nano</code> or, if you would prefer to view it in your browser, go <a href="/man/nano.1.html">here</a>). Usually when I want to edit a file with nano I simply run <code class="highlighter-rouge">nano &lt;FILE&gt;</code> where <code class="highlighter-rouge">&lt;FILE&gt;</code> is the file’s name (potentially also with its path if it is not in my current directory).</p>
+
+<h3 id="customizability-16">Customizability</h3>
+<p>I have been informed that the inferface’s colouring can be adjusted, as can keybindings and syntax highlighting.</p>
+
+<h3 id="features-16">Features</h3>
+<p>It offers syntax-highlighting, auto-indenting and miscellaneous other support for several computer languages. It also auto-detects the computer language using file extensions. It also has search functions (accessable via pressing <kbd>Ctrl</kbd>+<kbd>W</kbd>).</p>
+
+<h3 id="obtaining-it-16">Obtaining It</h3>
+
+<h4 id="manjaro-16">Manjaro</h4>
+<p>It is simple to install it on Manjaro, to do so merely run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S nano</div>
+
+<p>it is found in Manjaro’s core repository, which makes it unique amongst text editors and IDEs on Manjaro, which are usually found in the community or extra repositories.</p>
+
+<h4 id="sabayon-16">Sabayon</h4>
+<p>It is fairly simple to get nano on Sabayon. Odds are it will already be installed by default on your Sabayon machine, so check to see if it is with <code class="highlighter-rouge">nano</code> (does not matter if you execute this as root or standard user). If you do not have it, you can try to install it with Entropy, via running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/nano</div>
+
+<p>alternatively, to install it with Portage, run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/nano</div>
+
+<h3 id="advantages-pros-16">Advantages (Pros)</h3>
+<ul>
+  <li>Easy to install on both Manjaro and Sabayon, likely to come preinstalled too.</li>
+  <li>It is also the lightest-weight of TEs/IDEs.</li>
+</ul>
+
+<h3 id="disadvantages-cons-16">Disadvantages (Cons)</h3>
+<ul>
+  <li>Command-line TE only, no advanced IDE-like features.</li>
+  <li>Lacks customizability.</li>
+  <li>Unintuitive keymap, can take a little getting used to.</li>
+</ul>
+
+<h3 id="summary-12">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: 10.</li>
+	<li><strong>Beginner-friendliness</strong>: 7. Fairly easy to get used to, but its keyboard shortcuts are not totally intuitive.</li>
+	<li><strong>Customizability</strong>: 0?</li>
+	<li><strong>Features</strong>: 8.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 8. It is usually the first TE I go to, when I have a small text file I want to edit.</li>
+	<li><strong>System Resource Usage</strong>: 10. On Sabayon, <a href="https://packages.sabayon.org/show/nano,163035,sabayon-weekly,amd64,5,standard" target="_blank">GNU nano 2.5.0</a> is a 0.6 MB download and takes up 1.8 MB HDD space when installed. It is incredibly light, here is my <code>ps mem</code> table: <script src="/js/gist/fe0fd56e9edca5050f69.js"></script>
+ on Manjaro Linux, GNU nano 2.5.0 is a ~400 KiB download and takes up 2.1 MiB when installed. It also gave the <code>ps_mem</code> table: <script src="/js/gist/81d4c657d36daf22073d.js"></script>
+</li>
+	<li><strong>Overall</strong>: 8. I rather like it for basic editing, but whenever I want to edit a several dozen-line file, or bigger, I usually switch to Atom as it is easier to navigate in Atom, in my experience.</li>
+</ul>
+
+<h2 id="netbeans">NetBeans</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/NetBeans-8.1.png" alt="NetBeans 8.1 running under Manjaro" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>NetBeans 8.1 running under Manjaro</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-17">Background</h3>
+<p><a href="https://netbeans.org/"><strong>NetBeans</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=dev-util/netbeans&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-util/netbeans"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/dev-util/netbeans"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/community/any/netbeans"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://wiki.gentoo.org/wiki/Netbeans"><abbr title="ArchWiki">AW</abbr></a>, <a href="https://en.wikipedia.org/wiki/NetBeans"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="http://forums.netbeans.org/"><abbr title="Official Forum">FM</abbr></a>, <a href="http://hg.netbeans.org/"><abbr title="Mercurial Repository">HR</abbr></a>
+)
+ is a cross-platform free and open-source IDE written in Java and developed by the Oracle Corporation. It was originally proprietary, but it has since been re-released under the <abbr title="Common Development and Distribution License">CDDL</abbr> and GNU GPL licenses. It can be used to write programs in C, C++, Java, PHP and HTML5.</p>
+
+<h3 id="customizability-17">Customizability</h3>
+<p>NetBeans is extensible via plugins provided at its <a href="http://plugins.netbeans.org/PluginPortal/">website</a>. I have little experience with it myself, but I suspect it is reasonably extensible, but not totally.</p>
+
+<h3 id="features-17">Features</h3>
+<p>NetBeans has the usual features of IDEs, including those of TEs like syntax highlighting, autocompletion and auto-indentation for its programming languages and the ability to compile programs written in it.</p>
+
+<h3 id="obtaining-it-17">Obtaining It</h3>
+
+<h4 id="manjaro-17">Manjaro</h4>
+<p>On Manjaro installing NetBeans is as simple as running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S netbeans</div>
+
+<h4 id="sabayon-17">Sabayon</h4>
+<p>On Sabayon installing NetBeans can be done using Entropy or Portage. To install NetBeans using Entropy run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av dev-util/netbeans</div>
+
+<p>while to install it with Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av dev-util/netbeans</div>
+
+<h3 id="advantages-pros-17">Advantages (Pros)</h3>
+<ul>
+  <li>It is extensible</li>
+  <li>Cross-platform and is able to run on any Java-capable platform.</li>
+  <li>Feature-packed</li>
+</ul>
+
+<h3 id="disadvantages-cons-17">Disadvantages (Cons)</h3>
+<ul>
+  <li>Fairly heavy on system resources</li>
+  <li>Fairly limited set of supported languages</li>
+</ul>
+
+<h3 id="summary-13">Summary</h3>
+<ul>
+  <li><strong>Availability</strong>: 8. Easy to install on both Manjaro and Sabayon.</li>
+  <li><strong>Beginner-friendliness</strong>: 8? Seems fairly intuitive, but it is used to program in fairly beginner-unfriendly programming languages.</li>
+  <li><strong>Customizability</strong>: 6. Only customizable via plugins.</li>
+  <li><strong>Features</strong>: 8.</li>
+  <li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 1.</li>
+  <li><strong>System Resource Usage</strong>: 1. <code>ps_mem</code> tables are: <script src="/js/gist/a495febee47a9a338ecf.js"></script>
+ and <script src="/js/gist/d2f056d8d66f29a7941f.js"></script>
+ for Manjaro and Sabayon, respectively. Manjaro's NetBeans 8.1 package is a 264 MB download and takes up 637.2 MB disk space when installed. Sabayon's NetBeans 8.0.2 package is a 39.2 MB download and takes up 56.3 MB disk space when installed.</li>
+  <li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h2 id="ninja-ide">Ninja-IDE</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Ninja-IDE/Ninja-IDE-2.3.0.png" alt="Ninja IDE 2.3.0 running under Manjaro" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Ninja IDE 2.3.0 running under Manjaro</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-18">Background</h3>
+<p><a href="http://ninja-ide.org/"><strong>Ninja IDE</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=dev-util/ninja-ide&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-util/ninja-ide"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/dev-util/ninja-ide"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/community/any/ninja-ide"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/Ninja_IDE"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://groups.google.com/forum/#!forum/ninja-ide"><abbr title="Official Forum">FM</abbr></a>, <a href="https://github.com/ninja-ide/ninja-ide"><abbr title="Git Repository">GR</abbr></a>
+)
+ is a free and open-source IDE that is designed specifically for Python development. It is developed by its own small donation-sponsored community of developers and only supports Python 2.</p>
+
+<h3 id="customizability-18">Customizability</h3>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Ninja-IDE/Ninja-IDE-Preferences.png" alt="Ninja IDE Preferences Window" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Ninja IDE Preferences Window</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p>Ninja-IDE can be customized via its preferences window. Its keyboard shortcuts can be customized in this interface. The theme can also be customized and fewer than 100 plugins can also be installed.</p>
+
+<h3 id="features-18">Features</h3>
+<p>Ninja-IDE seems to be fairly light on features, but it has basic TE features like syntax-highlighting and  auto-indentation, it also has an embedded Python shell and can run Python scripts by the user right-clicking them and clicking the “Run” option.</p>
+
+<h3 id="obtaining-it-18">Obtaining It</h3>
+<p>It is in the official binary package repositories of both Manjaro and Sabayon. It is possible to run it without install it too, by getting the source code and running &lt;div class = "console"&gt;<span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  python ninja-ide.py&lt;/div&gt;
+ from within its top-level directory. Although on platforms that use Python 3 as their default Python (that is invoked by the <code class="highlighter-rouge">python</code> command), such as Manjaro Linux and other Arch descendants, one will have to call Python 2 instead of Python in this command. Thus amending this command to:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;python2 ninja-ide.py</div>
+
+<h4 id="manjaro-18">Manjaro</h4>
+<p>Ninja-IDE can be installed on Manjaro by running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S ninja-ide</div>
+
+<h4 id="sabayon-18">Sabayon</h4>
+<p>It can be installed on Sabayon by running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av dev-util/ninja-ide</div>
+
+<p>or:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av dev-util/ninja-ide</div>
+
+<h3 id="advantages-pros-18">Advantages (Pros)</h3>
+<ul>
+  <li>It is easily installable via binary packages on both Manjaro and Sabayon.</li>
+  <li>Fairly lightweight</li>
+</ul>
+
+<h3 id="disadvantages-cons-18">Disadvantages (Cons)</h3>
+<ul>
+  <li>Does not support many programming languages</li>
+</ul>
+
+<h3 id="summary-14">Summary</h3>
+<ul>
+  <li><strong>Availability</strong>: 8. Easily installable on both platforms.</li>
+  <li><strong>Beginner-friendliness</strong>: 8. Pretty intuitive, but its default keymap is a little unconventional with <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>C</kbd> for copy.</li>
+  <li><strong>Customizability</strong>: 6.</li>
+  <li><strong>Features</strong>: 6.</li>
+  <li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 1-2. A little experience I have gained running a mathematics Python script in it.</li>
+  <li><strong>System Resource Usage</strong>: 7. For an IDE it is lightweight. It is a 1.0 MB download on Sabayon and takes up 4.0 MB when installed on this platform, here is my <code>ps_mem</code> table: <script src="/js/gist/430d6322b56c7f4f2fb6.js"></script>
+. On Manjaro it is a 701 KB download and takes up 4.0 MB when installed, here is my <code>ps_mem</code> table: <script src="/js/gist/c36048380d02e7711921.js"></script>
+</li>
+  <li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h2 id="pluma">pluma</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/text-editors/Pluma-1.8.1-running-under-Mokhsa.png" alt="pluma 1.8.1 running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>pluma 1.8.1 running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-19">Background</h3>
+<p><strong>pluma</strong> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/pluma&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/pluma"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/pluma"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/pluma/"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/Pluma_(editor)"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://github.com/mate-desktop/pluma"><abbr title="Git Repository">GR</abbr></a>
+)
+ is a fork of gedit 2 created for the MATE desktop environment. It has many of the same features as gedit.</p>
+
+<h3 id="customizability-19">Customizability</h3>
+<p>Some customization (to the theme or adding some plugins) can be done by going to Edit→Preferences.</p>
+
+<h3 id="features-19">Features</h3>
+<p>pluma has a few plugins that can be used to add features (mostly IDE-like features) to the text editor. It also has syntax-highlighting and auto-indenting support for several computer languages.</p>
+
+<h3 id="obtaining-it-19">Obtaining It</h3>
+
+<h4 id="manjaro-19">Manjaro</h4>
+<p>pluma can be installed from the pacman extra repository by running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S pluma</div>
+
+<h4 id="sabayon-19">Sabayon</h4>
+<p>It can be installed with Entropy by running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/pluma</div>
+
+<p>or with Portage by running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/pluma</div>
+
+<h3 id="advantages-pros-19">Advantages (Pros)</h3>
+<ul>
+  <li>Customization is done graphically, making it easier for beginners.</li>
+  <li>Has intuitive keyboard shortcuts.</li>
+  <li>Has several IDE-like features like a Python terminal.</li>
+  <li>Has syntax-highlighting and auto-indenting support for several computer languages</li>
+</ul>
+
+<h3 id="disadvantages-cons-19">Disadvantages (Cons)</h3>
+<ul>
+  <li>Customization options are fairly limited</li>
+</ul>
+
+<h3 id="summary-15">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: 8. Easy to get on Sabayon.</li>
+	<li><strong>Beginner-friendliness</strong> 9. Customization is done graphically, making it more user-friendly.</li>
+	<li><strong>Customizability</strong>: 6. Fairly limited customization options, but they can be done graphically at least.</li>
+	<li><strong>Features</strong>: 8.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 2. Fairly minimal, because of how basic it is.</li>
+	<li><strong>System Resource Usage</strong>: 8. <a href="https://packages.sabayon.org/show/pluma,130458,sabayon-weekly,amd64,5,standard" target="_blank">Pluma 1.8.1</a> is a 3.4 MB download and 12.7 MB package when installed. Fairly lightweight. Here is my <code>ps mem</code> table: <script src="/js/gist/3da927ce9abcf2a077b5.js"></script>
+ under Manjaro, Pluma 1.12.1 is a 2.9 MiB download and takes up 15.1 MiB when installed. It also gave the following <code>ps_mem</code> table: <script src="/js/gist/b3496016f8f2c38cb669.js"></script>
+
+</li>
+	<li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h2 id="pycharm-ce">PyCharm CE</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/PyCharm-CE-5.0.3.png" alt="PyCharm Community Edition 5.0.3" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>PyCharm Community Edition 5.0.3</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-20">Background</h3>
+<p><a href="https://www.jetbrains.com/pycharm/"><strong>PyCharm Community Edition</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=dev-util/pycharm-community&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-util/pycharm-community"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/dev-util/pycharm-community"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://aur.archlinux.org/packages/pycharm-community"><abbr title="Arch User Repository Package">AU</abbr></a>
+; <a href="https://en.wikipedia.org/wiki/PyCharm"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://github.com/JetBrains/intellij-community/tree/master/python"><abbr title="Git Repository">GR</abbr></a>
+),
+ or <strong>PyCharm CE</strong>, is a free and open-source IDE for Python development that is written in Java and developed by JetBrains (the same company that develops IntelliJ IDEA). As it is written in Java it is cross-platform and able to run on Linux, OS X and Windows. Like IntelliJ IDEA it has a proprietary counterpart that is more feature-packed than its FOSS equivalent that this section is about.</p>
+
+<h3 id="customizability-20">Customizability</h3>
+<p>It has a <a href="https://plugins.jetbrains.com/?pycharm">plugin repository</a>, with plugins to extend its capabilities.</p>
+
+<h3 id="features-20">Features</h3>
+<p>It is not as feature-packed as its proprietary counterpart, but it does have a pretty good feature set. This includes the basic text editor amenities such as syntax highlighting for Python, auto-indentation, <em>etc.</em> as well as an in-built interpreter for Python that can be set to use whichever interpreter one has installed on one’s system.</p>
+
+<h3 id="obtaining-it-20">Obtaining It</h3>
+<p>There is a 130 MB binary tarball available for installing PyCharm on any Linux platform that can be downloaded from <a href="https://www.jetbrains.com/pycharm/download/#section=linux">here</a>. Merely extract it and run the <code class="highlighter-rouge">bin/pycharm.sh</code> installer script inside.</p>
+
+<h4 id="manjaro-20">Manjaro</h4>
+<p>PyCharm CE can be installed from the AUR by running:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;yaourt -S pycharm-community</div>
+
+<h4 id="sabayon-20">Sabayon</h4>
+<p>PyCharm CE can be installed from the Tree using Portage, although it is not in the Entropy repositories at the moment. To install it using Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av dev-util/pycharm-community</div>
+
+<h3 id="advantages-pros-20">Advantages (Pros)</h3>
+<ul>
+  <li>Cross-platform</li>
+  <li>feature-packed</li>
+</ul>
+
+<h3 id="disadvantages-cons-20">Disadvantages (Cons)</h3>
+<ul>
+  <li>Heavy on system resource usage</li>
+</ul>
+
+<h3 id="summary-16">Summary</h3>
+<ul>
+  <li><b>Availability</b>: 6-7.</li>
+  <li><b>Beginner-friendliness</b>: 8.</li>
+  <li><b>Customizability</b>: 8.</li>
+  <li><b>Features</b>: 8.</li>
+  <li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 1.</li>
+  <li><strong>System Resource Usage</strong>: 3. Fairly heavy. Its tarball is a 130 MB download, while on Manjaro when installed it takes up 242 MB. <code>ps_mem</code> on Manjaro gives: <script src="/js/gist/d399b1e82f879c9d3154.js"></script>
+ On Sabayon my <code>ps_mem</code> table is: <script src="/js/gist/06da252369fb85dddf2e.js"></script>
+</li>
+  <li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h2 id="scite">SciTE</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/text-editors/SciTE-3.6.1-running-under-Moksha.png" alt="SciTE 3.6.1 running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>SciTE 3.6.1 running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-21">Background</h3>
+<p><a href="http://www.scintilla.org/SciTE.html"><strong>SciTE</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/scite&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/scite"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/scite"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/community/x86_64/scite"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://wiki.gentoo.org/wiki/SciTE"><abbr title="ArchWiki">AW</abbr></a>, <a href="https://en.wikipedia.org/wiki/SciTE"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="http://sourceforge.net/p/scintilla/scite/ci/default/tree/"><abbr title="Mercurial Repository">HR</abbr></a>, <a href="http://sourceforge.net/projects/scintilla"><abbr title="SourceForge">SF</abbr></a>
+)
+ (abbreviated from <b>SCi</b>ntilla based <b>T</b>ext <b>E</b>ditor) is a Scintilla-based text editor originally developed by Neil Hodgson, that is licensed under a GPL-compatible license. It is a fairly user-friendly text editor, that can be customized and scripted with using Lua. Its syntax-highlighting is based on the contents of the <code class="highlighter-rouge">.properties</code> files it loads. SciTE is cross-platform, available on Microsoft Windows and most Linux distributions for free, although for OS X users it is only available for a fee of 41.99 USD.</p>
+
+<p>I first tried it when it was the default text editor used by GNU Octave to edit m files.</p>
+
+<h3 id="customizability-21">Customizability</h3>
+<p>SciTE can be customized by editing <code class="highlighter-rouge">.properties</code> files or via scripting with Lua. There are no major graphical tools for customizing SciTE.</p>
+
+<h3 id="features-21">Features</h3>
+<p>It provides syntax-highlighting for dozens of computer languages. Support for extra languages can be added by creating <code class="highlighter-rouge">.properties</code> files for them.</p>
+
+<h3 id="obtaining-it-21">Obtaining It</h3>
+
+<h4 id="manjaro-21">Manjaro</h4>
+<p>It is easy to install SciTE on Manjaro using pacman. To do this run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S scite</div>
+
+<h4 id="sabayon-21">Sabayon</h4>
+<p>It is easy to install it with Entropy or Portage. To install it with Entropy, run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/scite</div>
+
+<p>To install it with Portage, run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/scite</div>
+
+<h3 id="disadvantages-cons-21">Disadvantages (Cons)</h3>
+<ul>
+  <li>The list of languages it automatically supports is &lt;30.</li>
+</ul>
+
+<h3 id="advantages-pros-21">Advantages (Pros)</h3>
+<ul>
+  <li>Fairly lightweight</li>
+  <li>Extensively customizable</li>
+  <li>Easy to get on Sabayon and other Linux distributions like Manjaro.</li>
+</ul>
+
+<h3 id="summary-17">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: 8.</li>
+	<li><strong>Beginner-friendliness</strong>: 8. You should be able to get started with SciTE without much experience in programming or using text editors.</li>
+	<li><strong>Customizability</strong>: 8. Fairly customizable, textually only.</li>
+	<li><strong>Features</strong>: 7.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 4. I used to use it a lot when it was the default text editor used by GNU Octave (back when it was purely a CLI).</li>
+	<li><strong>System Resource Usage</strong>: 8. <a href="https://packages.sabayon.org/show/scite,158952,sabayon-weekly,amd64,5,standard">SciTE 3.6.1</a> is a 1.7 MB download and 5.4 MB package when installed. Here is my <code>ps mem</code> table: <script src="/js/gist/221918c21553c42a9f43.js"></script>
+ SciTE 3.6.2 is a 1.2 MiB download and takes up 4.5 MiB when installed under Manjaro and it gave the <code>ps_mem</code> table: <script src="/js/gist/fdeb5375255b86e4ce5b.js"></script>
+
+</li>
+	<li><b>Overall</b>: 8.</li>
+</ul>
+
+<h2 id="vim">Vim</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Vim/gVim-7.4.827-running-under-Moksha.png" alt="gVim 7.4.827 running under Moksha" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>gVim 7.4.827 running under Moksha</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="background-22">Background</h3>
+<p><a href="http://www.vim.org/"><strong>Vim</strong></a> (<a href="https://packages.sabayon.org/quicksearch?q=app-editors/vim&amp;x=0&amp;y=0"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-editors/vim"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/app-editors/vim"><abbr title="Portage Tree">PT</abbr></a>
+; <a href="https://www.archlinux.org/packages/extra/x86_64/vim"><abbr title="Arch Linux Package">AP</abbr></a>
+; <a href="https://wiki.gentoo.org/wiki/Vim"><abbr title="ArchWiki">AW</abbr></a>, <a href="https://wiki.gentoo.org/wiki/Vim"><abbr title="Gentoo Wiki">GW</abbr></a>, <a href="https://en.wikipedia.org/wiki/Vim"><abbr title="Wikipedia">WP</abbr></a>
+; <a href="https://bitbucket.org/vim-mirror/vim"><abbr title="Mercurial Repository">HR</abbr></a>
+)
+ (short for <strong>Vi</strong>-<b>IM</b>proved) is a text editor that was first released in 1991 by Bram Moolenaar, as a clone of Bill Joy’s Vi text editor. It and GNU Emacs are seen as the most powerful free text editors available for experienced programmers. Vim is available as a command-line text editor (which is its default and is invoked by running the <code class="highlighter-rouge">vim</code> command), where users can edit text files from the command-line, or as a graphical text editor (which is called <strong>gVim</strong>). There is also a Qt-based GUI for Vim called Vim-Qt that is available via the Entropy Store for Sabayon users, although unfortunately it does not seem to available for Manjaro users via the usual methods. Compared to most text editors, Vim is far less intuitive and has a steep learning curve. For one, its keyboard shortcuts are far from conventional, with <kbd>Ctrl</kbd>+<kbd>C</kbd> for copy, <kbd>Ctrl</kbd>+<kbd>V</kbd> for paste, <em>etc.</em> not being available. Vim also has its own scripting language (Vim script) for adding functionalities to it.</p>
+
+<h3 id="customizability-22">Customizability</h3>
+<p>Vim is extensively customizable, for people with the required level of finesse in programming. There are also several extensions and other plugins available for it, from the Internet. <a href="http://vimawesome.com/">Here</a> is a centralized database of Vim plugins, with search tools to help you find the plugin you want. There are several plugin managers available for Vim, some of the more popular ones include:</p>
+
+<ul>
+  <li><a href="https://github.com/egalpin/apt-vim">apt-vim</a>, a cross-platform package manager that is written in Python. It is fairly easy to install, just go to the GitHub repository I just linked and follow the instructions.</li>
+  <li><a href="https://github.com/MarcWeber/vim-addon-manager">vim-addon-manager</a>, a plugin manager written almost entirely in VimL (the scripting language of Vim).</li>
+  <li><a href="https://github.com/bronson/vim-update-bundles">vim-update-bundles</a>, a plugin manager written in Ruby, its development has ceased but it still seems to work fine.</li>
+  <li><a href="https://github.com/c9s/Vimana">Vimana</a>, a cross-platform plugin manager that is written in Perl. It is fairly easy to install.</li>
+  <li><a href="https://github.com/VundleVim/Vundle.vim">Vundle</a>, a plugin manager written in VimL, it is probably the most popular package manager for Vim.</li>
+</ul>
+
+<h3 id="features-22">Features</h3>
+<p>It has syntax-highlighting support for almost (if not every) every computer language. It also has several IDE-type features, like compiling source code from within it. Several other features can be added to it, for example, I wrote some of this post in Vim when my blog was powered by WordPress, using the <a href="https://github.com/PotHix/Vimpress">Vimpress plugin</a>. Several plugins are available in the <a href="http://gpo.zugaina.org/app-vim/">app-vim</a> Portage category and in PkgBrowser they can be found under the app→vim category.</p>
+
+<h3 id="obtaining-it-22">Obtaining It</h3>
+
+<h4 id="manjaro-22">Manjaro</h4>
+<p>It is easy to install Vim on Manjaro using pacman. To do this run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S vim</div>
+
+<p>if you want to be able to use the graphical user interface of Vim too run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S gvim</div>
+
+<p>instead. The Vim and gVim packages <strong>cannot</strong> be installed simultaneously on the same machine. The gVim package, not only provides the graphical user interface, but it also provides the <code class="highlighter-rouge">vim</code> command for the command-line.</p>
+
+<h4 id="sabayon-22">Sabayon</h4>
+<p>It is easy to obtain Vim and gVim on Sabayon using Entropy or Portage. To install Vim and gVim using Entropy, run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo i -av app-editors/vim app-editors/gvim</div>
+
+<p>whereas to install it with Portage run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -av app-editors/vim app-editors/gvim</div>
+
+<h3 id="advantages-pros-22">Advantages (Pros)</h3>
+
+<ul>
+  <li>Easy to obtain it on Manjaro, Sabayon and virtually every *nix system.</li>
+  <li>Extremely customizable</li>
+  <li>Fairly light on system resources</li>
+</ul>
+
+<h3 id="disadvantages-cons-22">Disadvantages (Cons)</h3>
+
+<ul>
+  <li>Steep learning curve, making it difficult to learn. If you run <code class="highlighter-rouge">vimtutor</code> from the command-line after installing it, you will be taken through a tutorial of how to use it, which can be helpful.</li>
+</ul>
+
+<h3 id="summary-18">Summary</h3>
+<ul>
+	<li><strong>Availability</strong>: 8.</li>
+	<li><strong>Beginner-friendliness</strong>: 2.</li>
+	<li><strong>Customizability</strong>: 9-10.</li>
+	<li><strong>Features</strong>: 10.</li>
+	<li><abbr title="My Experience With It"><strong>MEWI</strong></abbr>: 3. I have used it a little, mostly because of its Vimpress plugin, but it is so fustrating in its keymap I try to avoid it.</li>
+	<li><strong>System Resource Usage</strong>: 8-9. <a href="https://packages.sabayon.org/show/vim,157584,sabayon-weekly,amd64,5,standard">Vim 7.4.827</a> is a 1.3 MB download and takes up 3.1 MB when installed. <a href="https://packages.sabayon.org/show/gvim,157583,sabayon-weekly,amd64,5,standard">gVim 7.4.827</a> is a 1.4 MB download and takes up 3.4 MB HDD space when installed. <a href="https://packages.sabayon.org/show/vim-qt,156692,sabayon-weekly,amd64,5,standard">Vim-Qt 20150102-r1</a> is a 1.4 MB download and 3.4 MB package when installed. Here are my <code>ps mem</code> tables: <script src="/js/gist/0414037b51a5d59bc076.js"></script>
+<script src="/js/gist/118e6d23825d6c73786c.js"></script>
+<script src="/js/gist/8b1aac211a1d2520b0cc.js"></script>
+ under Manjaro gVim 7.4.944 is a 1.3 MiB download, takes up 2.8 MiB when installed and gave the following <code>ps_mem</code> tables (note Vim-Qt is not available from the official Manjaro repositories): <script src="/js/gist/3037ed9e12a3206f68a5.js"></script>
+<script src="/js/gist/65dc8950ee77a0693f52.js"></script>
+</li>
+	<li><strong>Overall</strong>: 8-9.</li>
+</ul>
+
+<h2 id="poll">Poll</h2>
+<div id="debate_1_2324434"></div>
+<script>
+  (function () {
+    var opst = document.createElement('script');
+    opst.type = 'text/javascript';
+    opst.async = true;
+    opst.src = '/js/embed-2324434.js';
+    (document.getElementsByTagName('head')[0] ||
+      document.getElementsByTagName('body')[0]).appendChild(opst);
+  }());
+</script>
+
+<h2 id="sru-comparison">SRU Comparison</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Graphs/ISRAM-usage-TEs-Sab.svg" alt="" style="width:1130px" />
+  
+</figure>
+</div>
+
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Graphs/ISRAM-usage-TEs-Man.svg" alt="" style="width:1130px" />
+  
+</figure>
+</div>
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Ben Ogle (11 November 2015). <a href="http://blog.atom.io/2015/12/11/atom-1-3.html"><em>Atom 1.3</em></a>. <em>blog.atom.io</em>: Atom. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://github.com/jenslody/codeblocks/releases?after=CODEBLOCKS_1_0_BETA5">Releases · jenslody/codeblocks</a>. Retrieved 12 January 2016. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p><a href="http://codeblocks.org/cbplugins">Plugins</a>. Retrieved 12 January 2016. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

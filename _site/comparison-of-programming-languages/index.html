@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>A Comparison of Programming Languages</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">A Comparison of Programming Languages</h1>
+    <p class="post-meta">
+      <br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/comparisons/" link="_blank">comparisons</a></span><span class="tag"><a href="/tag/programming-languages/" link="_blank">programming-languages</a></span><br/>-->
+      <time datetime="2016-01-07T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Thursday, 7 January 2016.</time>
+      
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <p><strong>Programming languages</strong> are the most important tools of any software developer or computer programmer, without them software development and computer programming, as it we know it, would not be possible. This post started out as a section of the glossary of the <a href="/comparison-of-free-operating-systems/"><em>A Comparison of Free Operating Systems</em></a> post, but I have decided to make it a whole new post. I should mention, however, that my programming knowledge is in its infancy (mostly limited to some Bash, MATLAB/GNU Octave and Python knowledge), so much of this post is based on external resources that I have read and digested into a (hopefully) coherent blog post.</p>
+
+<h2 id="an-introduction-to-classification">An Introduction to Classification</h2>
+<p>Programming languages can be <a href="https://en.wikipedia.org/wiki/Programming_language_implementation"><strong>implemented</strong></a> (or executed, that is, run) via one of two methods:</p>
+
+<ul>
+  <li><strong>Interpretation</strong>. This method is basically what it sounds like: it is when the program’s source code is translated into a series of actions implemented by the computer’s hardware.</li>
+  <li><strong>Compilation</strong>. <a href="https://en.wikipedia.org/wiki/Compiler"><strong>Compilers</strong></a> essentially serve as translators between languages — transforming one programming language into another computer language, which can then be compiled further into another language or fed into an interpreter. Some compilers (<strong>native code compilers</strong> [<strong>NCCs</strong>]) compile programming languages directly into machine code (which as its name suggests is a set of instructions that can be directly interpreted by a computer’s Central Processing Unit). Assembly languages (explained later) are usually compiled using NCCs. The most popular type of compiler, overall, however, is one that compiles source code into object code (which is machine-readable, hence readily executed).
+As a general rule of thumb, compiled languages are faster than interpreted languages, although interpreted languages tend to be more convenient and human-readable.</li>
+</ul>
+
+<p>Programming languages can be classed according to several different properties, including their <strong>level of abstraction</strong> (which refers to how different they are from machine code — high-level programming languages are more abstract than mid- and low-level programming languages. Higher-level programming languages are more human-readable than their lower-level counterparts, hence making them easier to work with), <strong>implementation method</strong>, <a href="https://en.wikipedia.org/wiki/Programming_paradigm"><strong>programming paradigm</strong></a> and <strong>purpose</strong> (e.g., some programming languages are designed for numerical calculations while others are designed to write application software). For example, <a href="https://en.wikipedia.org/wiki/Python_(programming_language)">Python</a> is a general-purpose, high-level, interpreted programming language that supports multiple paradigms.</p>
+
+<p>A <strong>programming paradigm</strong> is a difficult concept for me to explain, but I will give it my best try. It essentially refers to the internal workings of the programming language. For example, object-oriented programming is based on the concept of objects, which are data structures, and procedures, or in other words, actions performed using the objects.</p>
+
+<p>Another feature of programming languages that can be used to categorize them, that is also distinct from those previously mentioned, is that of <strong>dynamic vs. static programming languages</strong>. Dynamic programming languages are those that execute many of the tasks that static programming languages perform during compilation, during interpretation. Dynamic programming languages usually (but not always) also support scripts, which are special programs (that are usually fairly short) written for special interpreters that can automate the execution of tasks that would otherwise have to be performed manually by a human operator. Languages that support scripts are also called <a href="https://en.wikipedia.org/wiki/Scripting_language"><strong>scripting languages</strong></a>.</p>
+
+<h2 id="specifics-on-common-languages">Specifics on Common Languages</h2>
+
+<h3 id="ada">Ada</h3>
+<p><b>Ada</b> (<span class="category">dev-ada</span> [category]: <a href="https://packages.sabayon.org/category/dev-ada&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-ada" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/categories/dev-ada" link="_blank"><abbr title="Portage Tree">PT</abbr></a>)
+ is a high-level programming language that supports multiple paradigms and is descended from Pascal. The most popular free compiler for Ada is <b>GNAT</b> (<span class="package">dev-lang/gnat-gcc</span>: <a href="https://packages.sabayon.org/quicksearch?q=dev-lang/gnat-gcc&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-lang/gnat-gcc" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/dev-lang/gnat-gcc" link="_blank"><abbr title="Portage Tree">PT</abbr></a><a href="https://en.wikipedia.org/wiki/GNAT" link="_blank"><abbr title="Wikipedia">WP</abbr></a>),
+ a front-end of the <strong>GNU Compiler Collection</strong> (<strong>GCC</strong>).</p>
+
+<h3 id="assembly-language">Assembly Language</h3>
+<p><strong>Assembly language</strong> is a low-level programming language that has a very strong correspondence to machine code. Due to this, it is very hardware-specific — an assembly language for one processor may not work for another. The only  program that I am aware of that is written, even partly, in assembly language is the Linux kernel. Although, I know other programs written in Assembly do exist, after all it is listed in the <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">TIOBE top 20 programming language (by popularity) list</a>, I just cannot personally name them.</p>
+
+<h3 id="bash">Bash</h3>
+<p><b>Bash</b> (<span class="package">app-shells/bash</span> [package]: <a href="https://packages.sabayon.org/quicksearch?q=app-shells/bash&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/app-shells/bash" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/app-shells/bash" link="_blank"><abbr title="Portage Tree">PT</abbr></a>; <span class="category">dev-bash</span> [category]: <a href="https://packages.sabayon.org/category/dev-bash&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-bash" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/categories/dev-bash" link="_blank"><abbr title="Portage Tree">PT</abbr></a>)
+ is the most commonly-encountered Unix shell and command language. Few have compared its speed to other programming languages, hence I cannot provide an average for it. Despite this I know that for most things it is considered slower than Python. Most code written for Bash should also be compatible with Zsh, although whether it is compatible with the syntax of other Unix shells is something I cannot comment on. The programming language of Unix shells, in general (that is, not with particular reference to any specific shell like Bash), is usually called <strong>shell script</strong>. Shell script, with some particular reference to Bash and Zsh, is the programming language I have, by far, the most experience with. For an introduction to the Bash syntax, see <a href="/bash-scripting-and-the-command-line-an-introduction-for-sabayon-users/"><em>An Introduction to Bash Scripting for Sabayon Users</em></a>. Due to the fact it is a Unix shell, it is not considered cross-platform.</p>
+
+<h3 id="c">C</h3>
+<p><strong>C</strong> was originally developed for use by Research Unix, by Dennis Ritchie (1941-2011), while he was working at Bell Labs. Since then it has become one of the most widely-used programming languages in the world. The reason for this is several fold, <em>firstly</em>, it is cross-platform and able to run on most, if not all, computing platforms, <em>secondly</em>, it is fast and <em>thirdly</em>, it is powerful, giving developers complete control over their program. It was originally considered high-level, but it has since become considered low-level, and its low-level nature is best illustrated by the fact that developers have to allocate memory to their program manually. The most popular free compiler of C is the GCC.</p>
+
+<p>Programs written, predominantly, in it, that I have experience with, include:</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Bash">Bash</a>
+ — the Unix shell is predominantly written in C.</li>
+  <li><a href="https://en.wikipedia.org/wiki/dpkg">dpkg</a>
+ (dpkg)<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup>, the default package manager of Debian and its derivatives like Ubuntu.</li>
+  <li><a href="https://en.wikipedia.org/wiki/FreeBSD">FreeBSD</a>
+ — the Unix-like operating system, is predominantly written in C.</li>
+  <li><a href="https://en.wikipedia.org/wiki/GIMP">GIMP</a>
+ — a free and open-source photo-editing program, with similar features to Adobe Photoshop.</li>
+</ul>
+<div class="image-box" style="width:1100px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Graphics/GIMP-2.8-editing.png" alt="" style="width:1100px" />
+  
+</figure>
+</div>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/GNU_Coreutils">GNU Coreutils</a>
+ — the command-line utilities package for *nix systems is written predominantly in C.</li>
+  <li><a href="https://en.wikipedia.org/wiki/GTK+">GTK+</a>
+ or the GIMP Toolkit — is a free widget toolkit developed for use by the GNOME desktop environment.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Linux_kernel">Linux kernel</a>
+ — the kernel of Linux operating systems.</li>
+  <li><a href="https://en.wikipedia.org/wiki/VLC_media_player">VLC media player</a>
+ (71.2% C, 17.7% C++, 6.7% Objective-C, 1.3% Lua, <em>etc.</em> according to GitHub<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>) — a free and open-source cross-platform multimedia player. Its main advantage over its competitors is that it supports virtually every media type. It uses the Qt widget toolkit, so this is where some of the C++ comes from in its source code.</li>
+</ul>
+
+<h3 id="c-1">C++</h3>
+<p><strong>C++</strong> (pronounced <em>See-plus-plus</em>) is a programming language that was originally developed by Bjarne Stroustrup (1950-) while he was working at Bell Labs. Stroustrup wanted a programming language with similar features and speed to C, except with greater support for additional programming paradigms as well as some extra high-level features. Its most popular free compiler is probably the GCC too. The list of programs written mostly in C++ is very long and includes:</p>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Adobe_Photoshop">Adobe Photoshop</a> (and several other Adobe products), the photo-editing program in the proprietary Adobe suite.</li>
+<li><a href="https://en.wikipedia.org/wiki/Advanced_Packaging_Tool">Advanced Packaging Tool</a> (APT)<sup id="fnref3"><a href="#fn3" rel="footnote">3</a></sup>, the default package manager of Debian and its derivatives like Ubuntu.</li>
+<li><a href="https://en.wikipedia.org/wiki/Avidemux">Avidemux</a>, a free and open-source video-editing program.</li>
+<li><a href="https://en.wikipedia.org/wiki/Avogadro_(software)">Avogadro</a>, a free and open-source molecule editor and cheminformatics program.</li>
+<li><a href="https://en.wikipedia.org/wiki/Chromium_(web%20browser)">Chromium</a>, a free and open-source web browser that&#39;s source code is used as the basis for the proprietary-licensed Google Chrome web browser.</li>
+<li><a href="https://en.wikipedia.org/wiki/FBReader">FBReader</a>, a free and open-source document viewer.</li>
+<li><a href="https://en.wikipedia.org/wiki/FileZilla">FileZilla</a>, a free and open-source FTP client.</li>
+<li><a href="https://en.wikipedia.org/wiki/Firefox">Firefox</a>, a free and open-source web browser created by the Mozilla Foundation, that is amongst the most popular on the market.</li>
+<li><a href="https://en.wikipedia.org/wiki/Fluxbox">Fluxbox</a>, a free and open-source window manager for the X windowing system.</li>
+<li><a href="https://en.wikipedia.org/wiki/Google_Chrome">Google Chrome</a>, a freeware web browser, based on Chromium.
+<div class="image-box" style="width:1100px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Google-Chrome-47.0.2526.106.png" alt="" style="width:1100px" />
+  
+</figure>
+</div>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Inkscape">Inkscape</a>, a free and open-source vector graphics editing program.</li>
+<div class="image-box" style="width:1100px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Graphics/Inkscape-0.91.png" alt="" style="width:1100px" />
+  
+</figure>
+</div>
+
+<li><a href="https://en.wikipedia.org/wiki/MariaDB">MariaDB</a>, a free and open-source fork of MySQL, developed due to fears that MySQL may not be forever free.<sup id="fnref4"><a href="#fn4" rel="footnote">4</a></sup></li>
+<li><a href="https://en.wikipedia.org/wiki/MySQL">MySQL</a>, a free and open-source relational database management system (RDBMS).<sup id="fnref5"><a href="#fn5" rel="footnote">5</a></sup></li>
+<li><a href="https://en.wikipedia.org/wiki/Opera_(software)">Opera</a>, a free and open-source web browser.</li>
+<li><a href="https://en.wikipedia.org/wiki/Qt_(software)">Qt</a>, a widget toolkit that has both a freely- (LGPL/GPL-licensed) and a proprietary-licensed version available. Its free version is used as the default widget toolkit of Deepin Desktop Environment, Hawaii, KDE, LXQt, <em>etc.</em> and several other free desktop environments for &#42;nix systems including FreeBSD and Linux.</li>
+<li><a href="https://en.wikipedia.org/wiki/UNetbootin">UNetbootin</a>, a free and open-source cross-platform program used to create live USBs.</li>
+<li><a href="https://en.wikipedia.org/wiki/ZYpp">ZYpp</a> (<code class="prettyprint">zypper</code> from the command-line)<sup id="fnref6"><a href="#fn6" rel="footnote">6</a></sup>, the default command-line package manager of openSUSE and derivatives.</li>
+</ul>
+
+<h3 id="c-sharp">C Sharp</h3>
+
+<div class="note">
+
+<div class="note-title">NOTE</div>
+<ul>
+  <li><em>The use of the name <b>C Sharp</b>, is because of technical restrictions, the correct name is C#</em></li>
+</ul>
+
+
+</div>
+
+<p><strong>C#</strong> is a proprietary programming language that is developed by the Microsoft Corporation. Some C# compilers are proprietary, others are not. It is very popular, according to <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">TIOBE</a>. Microsoft employees started its development in the late 1990s, for the purpose of it being used in their .NET framework. In its early days it was said to be very similar to Java, although since then the two have become increasingly different to one another.</p>
+
+<h3 id="d">D</h3>
+<p><strong>D</strong>, a member of the C programming language family, is a free and open-source programming language, that is essentially like a more feature-packed, modern version of C++, with support for extra programming paradigms, automatic memory management and syntactic sugar (to make the language more human-readable).</p>
+
+<h3 id="fortran">Fortran</h3>
+<p><strong>Fortran</strong> is the eldest high-level programming language and was first developed in 1957 by <a href="https://en.wikipedia.org/wiki/John_Backus">John Backus</a> (1924-2007), specifically suited for the purpose of numerical calculations and scientific computing. A program written in Fortran is used to test the performance of computers for the TOP500 list. The GCC includes a Fortran compiler.</p>
+
+<h3 id="go">Go</h3>
+<p><b>Go</b> (<span class="package">dev-lang/go</span>: <a href="https://packages.sabayon.org/quicksearch?q=dev-lang/go&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-lang/go" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/dev-lang/go" link="_blank"><abbr title="Portage Tree">PT</abbr></a>),
+ or <strong>golang</strong>, is a programming language, initially developed by <a href="https://en.wikipedia.org/wiki/Google">Google</a> employees, <a href="https://en.wikipedia.org/wiki/Robert_Griesemer">Robert Griesemer</a>, <a href="https://en.wikipedia.org/wiki/Rob_Pike">Rob Pike</a> and <a href="https://en.wikipedia.org/wiki/Ken_Thompson">Ken Thompson</a> (one of the original developers of Research Unix at Bell Labs). The GCC has a front-end for compiling Go.</p>
+
+<h3 id="groovy">Groovy</h3>
+<p><b>Groovy</b> (<span class="package">dev-java/groovy</span>: <a href="https://packages.sabayon.org/quicksearch?q=dev-java/groovy&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-java/groovy" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/dev-java/groovy" link="_blank"><abbr title="Portage Tree">PT</abbr></a>)
+ is a programming language that is specifically designed to work on the Java platform, wherein it serves predominantly as a scripting language, that interfaces with Java to modify program behaviour, extract data, <em>etc.</em></p>
+
+<h3 id="java">Java</h3>
+<p><b>Java</b> (<span class="category">dev-java</span> [category]: <a href="https://packages.sabayon.org/category/dev-java&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-java" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/categories/dev-java" link="_blank"><abbr title="Portage Tree">PT</abbr></a>)
+ is a cross-platform programming language, in its early days it was proprietary-licensed, until it was later released under the GNU GPL license. Java is one of the most popular programming languages in the world today, in fact, the TIOBE is currently ranking it number 1 for popularity, in the programming world. Java applications are usually compiled into its own instruction set called 
+<a href="https://en.wikipedia.org/wiki/Java_bytecode">Java bytecode</a>,
+ that can then be run in a 
+<a href="https://en.wikipedia.org/wiki/Java_Virtual_Machine">Java Virtual Machine</a>
+  (JVM) regardless of the computer’s architecture or operating system. This is what makes it cross-platform and this is key to its success. The GCC includes a Java compiler.</p>
+
+<p>There are quite a few programs I have used that are written, mostly, in Java, they include:</p>
+
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/jEdit">jEdit</a>
+ — a free (GPL-licensed) text editor with support for several computer languages.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Jmol">Jmol</a>
+ — a free 3D molecule viewer, that can import the molecule formats <code class="highlighter-rouge">.cif</code>, <code class="highlighter-rouge">.mol</code>, <code class="highlighter-rouge">.pdb</code>, <code class="highlighter-rouge">.sdf</code>, <em>etc.</em></li>
+  <li><a href="https://en.wikipedia.org/wiki/NetBeans">NetBeans</a>
+ — a once proprietary Java IDE, now it is free licensed under GPL-compatible licenses.</li>
+  <li><a href="https://en.wikipedia.org/wiki/RuneScape">RuneScape</a>
+ — a proprietary massively-multiplayer online role-playing game (MMORPG).</li>
+  <li><a href="https://en.wikipedia.org/wiki/SPSS">SPSS</a>
+ — a proprietary program used for statistical analysis.</li>
+  <li><a href="https://en.wikipedia.org/wiki/Vuze">Vuze</a>
+ — a BitTorrent client.</li>
+</ul>
+
+<h3 id="javascript">JavaScript</h3>
+<p><strong>JavaScript</strong> (<strong>JS</strong>) is a cross-platform web-oriented programming language that is used primarily for the purpose of controlling the behaviour of web pages. Despite this it can be used for non-web applications. For example, the text editor I am using to write this blog post, <a href="https://atom.io">Atom</a>, is written predominantly in JavaScript and its close lesser-used relative, CoffeeScript. JavaScript was also used to write extensions for the Deepin Desktop Environment. Despite being an interpreted language it is usually rated as one of the fastest high-level programming languages around.</p>
+
+<h3 id="lisp">Lisp</h3>
+<p><b>Lisp</b> (<span class="category">dev-lisp</span> [category]: <a href="https://packages.sabayon.org/category/dev-lisp&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-lisp" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/categories/dev-lisp" link="_blank"><abbr title="Portage Tree">PT</abbr></a>)
+ is a family of programming languages that are second only to Fortran for the title of being the eldest high-level programming languages. Notable members include the 
+<a href="https://en.wikipedia.org/wiki/Common_Lisp">Common Lisp</a>
+ and 
+<a href="https://en.wikipedia.org/wiki/Emacs_Lisp">Emacs Lisp</a>,
+ the latter of which is used by 
+<a href="https://en.wikipedia.org/wiki/GNU_Emacs">GNU Emacs</a>
+ and other Emacs text editors. GNU Emacs is written predominantly in Emacs Lisp, with most of the remainder of its source code being written in C. Maxima is also written mostly in Common Lisp.</p>
+
+<h3 id="lua">Lua</h3>
+<p><b>Lua</b> (<span class="package">dev-lang/lua</span> [package]: <a href="https://packages.sabayon.org/quicksearch?q=dev-lang/lua&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-lang/lua" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/dev-lang/lua" link="_blank"><abbr title="Portage Tree">PT</abbr></a>; <span class="category">dev-lua</span> [category]: <a href="https://packages.sabayon.org/category/dev-lua&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-lua" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/categories/dev-lua" link="_blank"><abbr title="Portage Tree">PT</abbr></a>)
+ is a lightweight programming language that is primarily used for scripting in web development applications. The two examples of its use that I have come across, personally (out of the hundreds out there), are its use to improve the efficiency of MediaWiki templates using the <a href="https://www.mediawiki.org/wiki/Extension:Scribunto">Scribunto extension</a> and its use by the <a href="https://en.wikipedia.org/wiki/Awesome_(window_manager)">Awesome Window Manager</a> (where it is used to extend functionality).</p>
+
+<h3 id="matlab">MATLAB</h3>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/GNU-Octave-4.0.0-Menda-Theme.png" alt="GNU Octave 4.0.0 running under Xfce on Sabayon." style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>GNU Octave 4.0.0 running under Xfce on Sabayon.</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><strong>MATLAB</strong> is a proprietary programming language that is primarily intended for numerical computations and scientific computing, with scripting-compatability. MATLAB is also the name of an
+<a href="https://en.wikipedia.org/wiki/Integrated_development_environment">integrated development environment</a> (IDE) for the MATLAB
+programming language. While MATLAB itself is proprietary, there are several free clones of MATLAB (including both a programming
+language and an IDE) available that are licensed under FOSS Licenses like the GNU GPL. These free clones include <a href="http://freemat.sourceforge.net/" link="_blank"><b>FreeMat</b></a> (<span class="package">sci-mathematics/freemat</span>: <a href="https://packages.sabayon.org/quicksearch?q=sci-mathematics/freemat&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/sci-mathematics/freemat" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/sci-mathematics/freemat" link="_blank"><abbr title="Portage Tree">PT</abbr></a><a href="https://en.wikipedia.org/wiki/FreeMat" link="_blank"><abbr title="Wikipedia">WP</abbr></a>)
+ and <a href="http://www.gnu.org/software/octave/" link="_blank"><b>GNU Octave</b></a> (<span class="package">sci-mathematics/octave</span> [package]: <a href="https://packages.sabayon.org/quicksearch?q=sci-mathematics/octave&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/sci-mathematics/octave" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/sci-mathematics/octave" link="_blank"><abbr title="Portage Tree">PT</abbr></a>; <span class="category">g-octave</span> [category]: <a href="https://packages.sabayon.org/category/g-octave&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/g-octave" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://github.com/rafaelmartins/octave-overlay/tree/master/g-octave"><span class="overlay">octave</span></a> [overlay], <a href="https://en.wikipedia.org/wiki/GNU Octave" link="_blank"><abbr title="Wikipedia">WP</abbr></a>),
+ another free programming language/IDE duo that is similar to MATLAB, but not necessarily a clone is <a href="http://www.scilab.org/" link="_blank"><b>Scilab</b></a> (<span class="package">sci-mathematics/scilab</span>: <a href="https://packages.sabayon.org/quicksearch?q=sci-mathematics/scilab&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/sci-mathematics/scilab" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://gitweb.gentoo.org/proj/sci.git/tree/sci-mathematics/scilab"><span class="overlay">science</span></a> [overlay], <a href="https://en.wikipedia.org/wiki/Scilab" link="_blank"><abbr title="Wikipedia">WP</abbr></a>),
+ which while similar to MATLAB has several key differences too. Most tests have found that MATLAB and its clones/related programming languages are fairly slow compared to lower-level and less purpose-specific programming languages like C and Python. MATLAB is the most popular numerically-oriented programming language, according to <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">TIOBE</a>, although because of GNU Octave’s similarity (so much similarity that it even uses the same file extension for its scripts — <code class="highlighter-rouge">.m</code>) to MATLAB it is possible that TIOBE could not distinguish the popularity of GNU Octave from that of MATLAB. MATLAB/GNU Octave are probably the programming languages I have the second-greatest experience with, after Bash.</p>
+
+<p>Both MATLAB and GNU Octave are themselves implemented in C, C++, Fortran and to a lesser extent other programming languages, with C making up the majority for GNU Octave (at 44.7% according to GitHub), C++ being a close second at 32.1% and Fortran making up 4.6% of the source code.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> GNU Octave provides its own graphical IDE too, for version 3.8.x up (e.g. 3.8.0). In fact, since version 4.0.0, the graphical IDE is the default user interface of GNU Octave.</p>
+
+<p>Below is an example pair of scripts I have written in it, for the purpose of plotting a Lorenz attractor. Note, in order to execute these yourself, you need to have GNU Octave (because of the use of the <code class="highlighter-rouge">lsode</code> function in the second of these two scripts, it is not compatible with MATLAB) installed and these two m files need to be stored in the SAME directory.</p>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">function</span> <span class="n">dy</span> <span class="o">=</span> <span class="n">lorenz</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">t</span><span class="p">)</span>
+<span class="n">dy</span> <span class="o">=</span> <span class="nb">zeros</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="n">r</span> <span class="o">=</span> <span class="mi">28</span><span class="p">;</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">8</span><span class="p">/</span><span class="mi">3</span><span class="p">;</span>
+<span class="n">dy</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="n">P</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">));</span>
+<span class="n">dy</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">+</span> <span class="n">r</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<span class="n">dy</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">=</span> <span class="n">y</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">b</span><span class="o">*</span><span class="n">y</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+</code></pre></div></div>
+
+<div class="language-matlab highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">clear</span> <span class="nb">all</span>
+<span class="n">t</span> <span class="o">=</span> <span class="nb">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">350</span><span class="p">,</span><span class="mi">100001</span><span class="p">);</span>
+<span class="n">lsode_options</span><span class="p">(</span><span class="err">"</span><span class="n">relative</span> <span class="n">tolerance</span><span class="err">"</span><span class="p">,</span> <span class="mf">1e-15</span><span class="p">);</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">lsode</span><span class="p">(</span><span class="err">"</span><span class="n">lorenz</span><span class="err">"</span><span class="p">,[</span> <span class="mf">1.0</span><span class="p">;</span> <span class="mf">1.0</span><span class="p">;</span> <span class="mf">1.0</span><span class="p">]</span><span class="o">'</span><span class="p">,</span><span class="n">t</span><span class="p">);</span>
+
+<span class="nb">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">221</span><span class="p">)</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">y</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="n">y</span><span class="p">(:,</span><span class="mi">2</span><span class="p">),</span><span class="s1">'-'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'x(t)'</span><span class="p">,</span><span class="s1">'FontSize'</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'y(t)'</span><span class="p">,</span><span class="s1">'FontSize'</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">222</span><span class="p">)</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">y</span><span class="p">(:,</span><span class="mi">1</span><span class="p">),</span><span class="n">y</span><span class="p">(:,</span><span class="mi">3</span><span class="p">),</span><span class="s1">'-'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'x(t)'</span><span class="p">,</span><span class="s1">'FontSize'</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'z(t)'</span><span class="p">,</span><span class="s1">'FontSize'</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+
+<span class="nb">subplot</span><span class="p">(</span><span class="mi">223</span><span class="p">)</span>
+<span class="nb">plot</span><span class="p">(</span><span class="n">y</span><span class="p">(:,</span><span class="mi">2</span><span class="p">),</span><span class="n">y</span><span class="p">(:,</span><span class="mi">3</span><span class="p">),</span><span class="s1">'-'</span><span class="p">);</span>
+<span class="nb">xlabel</span><span class="p">(</span><span class="s1">'y(t)'</span><span class="p">,</span><span class="s1">'FontSize'</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+<span class="nb">ylabel</span><span class="p">(</span><span class="s1">'z(t)'</span><span class="p">,</span><span class="s1">'FontSize'</span><span class="p">,</span><span class="mi">16</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>If you want to see some extra scripts I have written see <a href="https://github.com/fusion809/GNU_Octave">this repository</a>.</p>
+
+<h3 id="objective-c">Objective-C</h3>
+<p><a href="https://developer.apple.com/library/mac/documentation/Cocoa/Conceptual/ProgrammingWithObjectiveC/Introduction/Introduction.html" link="_blank"><b>Objective-C</b></a> (<a href="https://en.wikipedia.org/wiki/Objective-C" link="_blank"><abbr title="Wikipedia">WP</abbr></a>)
+ is a programming language that belongs to the C family of programming language and is primarily object-oriented in its paradigm. It is one of the main languages that Apple’s OS X is written in. The most popular free Objective-C compiler is probably GCC.</p>
+
+<h3 id="pascal">Pascal</h3>
+<p><strong>Pascal</strong> is a fairly old programming language, it and its derivatives (like 
+<a href="https://en.wikipedia.org/wiki/Delphi_(programming_language)">Delphi</a>
+ and 
+<a href="https://en.wikipedia.org/wiki/Object_Pascal">Object Pascal</a>)
+ are still widely used today. Programs written, predominantly, in Pascal and its simple descendants include (in brackets is the specific programming language each are written in):</p>
+<ul>
+  <li><a href="https://en.wikipedia.org/wiki/Dev-C++">Dev-C++</a>
+ (Delphi)</li>
+  <li><a href="https://en.wikipedia.org/wiki/Dev-Pascal">Dev-Pascal</a>
+ (Delphi)
+Very few are written, predominantly, in Pascal itself, the only program I recognize that I have been able to find that is written, even in part, in Pascal is 
+<a href="https://en.wikipedia.org/wiki/MiKTeX">MiKTeX</a>
+ (a Windows program for writing LaTeX documents) and C, C++ make up most of its source code.</li>
+</ul>
+
+<h3 id="perl">Perl</h3>
+<p><b>Perl</b> (<span class="package">dev-lang/perl</span> [package]: <a href="https://packages.sabayon.org/quicksearch?q=dev-lang/perl&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-lang/perl" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/dev-lang/perl" link="_blank"><abbr title="Portage Tree">PT</abbr></a>; <span class="category">dev-perl</span> [category]: <a href="https://packages.sabayon.org/category/dev-perl&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-perl" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/categories/dev-perl" link="_blank"><abbr title="Portage Tree">PT</abbr></a>)
+ is a family of interpreted scripting languages, the most notable members are Perl 5 and Perl 6. It was originally developed for the purpose of automating reporting tasks on *nix systems in 1987. It is licensed under GNU GPL. The only program I have personal experience with that is written mostly in Perl is the <a href="https://github.com/HikariKnight/rsu-client">RuneScape Unix Client</a> (RSU).</p>
+
+<h3 id="php">PHP</h3>
+<p><b>PHP</b> (<span class="package">dev-lang/php</span> [package]: <a href="https://packages.sabayon.org/quicksearch?q=dev-lang/php&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-lang/php" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/dev-lang/php" link="_blank"><abbr title="Portage Tree">PT</abbr></a>; <span class="category">dev-php</span> [category]: <a href="https://packages.sabayon.org/category/dev-php&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-php" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/categories/dev-php" link="_blank"><abbr title="Portage Tree">PT</abbr></a>)
+ is a server-side scripting language that is primarily intended for web development. Most web applications will use PHP to some extent, prominent examples of such applications include: <a href="https://www.mediawiki.org">MediaWiki</a>, a software application that powers several Wiki websites including all the Wikimedia Foundation websites (such as Wikipedia, for example) and <a href="https://wordpress.org">WordPress</a>, an application that powers many blogs and personal websites on the web. It is a copyleft licensed under the PHP License.</p>
+
+<h3 id="python">Python</h3>
+<p><b>Python</b> (<span class="package">dev-lang/python</span> [package]: <a href="https://packages.sabayon.org/quicksearch?q=dev-lang/python&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-lang/python" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/dev-lang/python" link="_blank"><abbr title="Portage Tree">PT</abbr></a>; <span class="category">dev-python</span> [category]: <a href="https://packages.sabayon.org/category/dev-python&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-python" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/categories/dev-python" link="_blank"><abbr title="Portage Tree">PT</abbr></a>, <a href="https://en.wikipedia.org/wiki/Python_(programming_language)" link="_blank"><abbr title="Wikipedia">WP</abbr></a>)
+ is a widely and extensively-used high-level general-purpose multi-paradigm programming language that is particularly invaluable as a cross-platform scripting language. It is named after the BBC TV series <a href="https://en.wikipedia.org/wiki/Monty_Python's_Flying_Circus"><em>Monty Python’s Flying Circus</em></a>. Python is licensed under its own free, permissive (BSD-like) license called the <a href="https://en.wikipedia.org/wiki/Python_Software_Foundation_License">Python Software Foundation License</a>. It is probably the most flexible programming language I have seen and it is used for numerical computations, scientific computing, writing and working with web applications, application software and package management systems. Its design philosophy emphasizes code readability and concision. It also automatically performs some tasks that users would have to perform manually if they were working with lower-level languages like C. For these reasons it, and JavaScript, are usually the programming languages that people interested in programming, are recommended to learn first, before they learn more complicated programming languages like C, C++ and Java. Its major caveat is its speed, however, it is worthwhile noting that its speed is significantly dependent on how it is implemented. The standard, official implementation of Python is <a href="https://en.wikipedia.org/wiki/CPython">CPython</a> which while it is more efficient than most implementations (like Jython), is less efficient than the <a href="https://en.wikipedia.org/wiki/PyPy">PyPy</a> implementation. Regardless of the implementation used, however, it is usually significantly slower than compiled languages like C, C++ and Java.</p>
+
+<p>There are also two main versions of Python presently in widespread use: Python 2 and Python 3. Most programs I have come across have
+greater support for Python 2 than for Python 3. Python also has its own command-line package manager called 
+<a href="https://en.wikipedia.org/wiki/pip_(software)">pip</a>
+ (<code class="highlighter-rouge">pip</code>). Some programs I am particularly familiar with that are written predominantly (if not exclusively) in Python that are compatible with Linux systems include:</p>
+
+<ul>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Anaconda_(installer)">Anaconda</a>
+ — an operating system installer used by Fedora and most of its derivatives, see the <a href="#fedora">Fedora</a> section for details.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/DNF_(software)">DNF</a>
+ — the default package manager of Fedora ≥22.</p>
+</li>
+<li>
+<p><a href="https://github.com/Sabayon/entropy"><code class="highlighter-rouge">Entropy</code></a>
+ — the default binary package manager of Sabayon Linux.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/GNU_Bazaar">GNU Bazaar</a>
+ — the distributed version control system developed by Canonical Ltd.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Portage_(software)">Portage</a>
+ — the default package manager of Gentoo Linux, and the default source code package manager of its derivatives such as Sabayon Linux.</p>
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/PyMOL">PyMOL</a>
+ — an application for viewing and performing calculations relating to molecules, especially macromolecules like proteins, DNA double helices and RNA helices. Which is managed by pip, so running <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  sudo pip install pymol</span>
+ should install it.</p>
+<div class="image-box" style="width:; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/PyMOL/PyMOL-1.7.6.0-3EIG.png" alt="" style="width:" />
+  
+</figure>
+</div>
+
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/SageMath">SageMath</a>
+ — a mathematics program that uses a Python-like syntax and integrates several free pieces of
+mathematics software in a single command-line and notebook interface, with interfaces available for several proprietary mathematics programs too.</p>
+<div class="image-box" style="width:; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/SageMath-6.10.png" alt="" style="width:" />
+  
+</figure>
+</div>
+
+</li>
+<li>
+<p><a href="https://en.wikipedia.org/wiki/Spyder_(software)">Spyder</a>
+ — a cross-platform free and open-source IDE for scientific computing in Python. It is managed by pip, so running <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  sudo pip install spyder</span>
+ should install it, provided its dependency PyQt4/PyQt5 is already installed.</p>
+<div class="image-box" style="width:; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/Spyder-2.3.8.png" alt="" style="width:" />
+  
+</figure>
+</div>
+
+</li>
+<li>
+<p><a href="https://rg3.github.io/youtube-dl/">youtube-dl</a> (<a href="/man/youtube-dl.1.html"><code class="highlighter-rouge">youtube-dl</code></a>) — a command-line program for downloading YouTube videos as media files. It is managed by pip (so running <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  sudo pip install youtube-dl</span>
+ should install it)</p>
+</li>
+<li>
+<p><a href="http://yum.baseurl.org/">yum</a> — the default command-line package manager of CentOS, Fedora &lt;22, Oracle Linux, Red Hat Enterprise Linux (RHEL), <em>etc.</em> It is written almost entirely in Python and this likely contributes to its relatively slow speed.</p>
+</li>
+</ul>
+
+<p>Bash, MATLAB/GNU Octave and Python, in order from most to least experience, are the languages I have the most experience with. Here is an example Python script I have written, with some help from the work of others, to solve and plot the solution to the Lorenz equations. If you would like to see the Python scripts I have written see <a href="https://github.com/fusion809/python-scripts">this repository</a>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Lorenz Equations SciPy solver
+</span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">axes3d</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">200</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">z0</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span>
+<span class="n">sigma</span><span class="p">,</span> <span class="n">rho</span><span class="p">,</span> <span class="n">beta</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">8</span><span class="o">/</span><span class="mi">3</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000000</span>
+<span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">tmax</span> <span class="o">-</span> <span class="n">tmin</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="p">):</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">sigma</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="o">-</span><span class="n">x</span><span class="p">),</span> <span class="n">x</span><span class="o">*</span><span class="p">(</span><span class="n">rho</span><span class="o">-</span><span class="n">z</span><span class="p">)</span><span class="o">-</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="o">*</span><span class="n">y</span><span class="o">-</span><span class="n">beta</span><span class="o">*</span><span class="n">z</span><span class="p">]</span>
+
+<span class="n">t</span>    <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">tmin</span><span class="p">,</span> <span class="n">tmax</span><span class="p">,</span> <span class="n">h</span><span class="p">)</span>
+<span class="n">sol</span>  <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="n">x0</span><span class="p">,</span> <span class="n">y0</span><span class="p">,</span> <span class="n">z0</span><span class="p">],</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">x</span>    <span class="o">=</span> <span class="n">sol</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">y</span>    <span class="o">=</span> <span class="n">sol</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">z</span>    <span class="o">=</span> <span class="n">sol</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+
+<span class="c1"># Call the plot function if you want to plot the data
+</span><span class="k">def</span> <span class="nf">plot</span><span class="p">():</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s">'3d'</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot_wireframe</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">,</span> <span class="n">rstride</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cstride</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s">'x(t)'</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s">'y(t)'</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s">'z(t)'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plot</span><span class="p">()</span>
+</code></pre></div></div>
+
+<h3 id="r">R</h3>
+<p><b>R</b> (<span class="package">dev-lang/R</span>: <a href="https://packages.sabayon.org/quicksearch?q=dev-lang/R&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-lang/R" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/dev-lang/R" link="_blank"><abbr title="Portage Tree">PT</abbr></a>)
+ is an interpreted programming language designed for statistical computing, that was first developed in 1993 by two New Zealand programmers and statisticians and is now developed as part of the GNU Project. It is licensed under the GNU GPL.</p>
+
+<h3 id="ruby">Ruby</h3>
+<p><b>Ruby</b> (<span class="package">dev-lang/ruby</span> [package]: <a href="https://packages.sabayon.org/quicksearch?q=dev-lang/ruby&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-lang/ruby" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/packages/dev-lang/ruby" link="_blank"><abbr title="Portage Tree">PT</abbr></a>; <span class="category">dev-ruby</span> [category]: <a href="https://packages.sabayon.org/category/dev-ruby&amp;x=0&amp;y=0" link="_blank"><abbr title="Entropy Store">ES</abbr></a>, <a href="http://gpo.zugaina.org/dev-ruby" link="_blank"><abbr title="Gentoo Portage Overlays">GPO</abbr></a>, <a href="https://packages.gentoo.org/categories/dev-ruby" link="_blank"><abbr title="Portage Tree">PT</abbr></a>)
+ is a general-purpose, interpreted, programming language that is not as widely-used as C, C++, Java or Python, in my experience. The programs that are written in it, that I have experience with are two in number: 
+<a href="https://en.wikipedia.org/wiki/Jekyll_(software)">Jekyll</a>
+ (the static site generator that powers this website) and 
+<a href="https://en.wikipedia.org/wiki/YaST2">YaST2</a>
+ (the graphical package manager used by openSUSE). A program that I have never used, but I have heard of, that is used as a package management system for OS X, 
+<a href="https://en.wikipedia.org/wiki/Homebrew">Homebrew</a>,
+ is written in Ruby too. Ruby like Python has its own package manager too, <a href="https://rubygems.org/">RubyGems</a> that is invoked by the command <code class="highlighter-rouge">gem</code>. For example, to install Jekyll one may run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;gem install jekyll</div>
+
+<p><a href="http://bundler.io">Bundler</a> is a Ruby package manager that has better dependency-resolution than RubyGems that is also popular. I personally use Bundler to install Jekyll, because installing it with RubyGems can be a nightmare. Ruby, Bundler and RubyGems are all licensed under the permissive MIT License.</p>
+
+<h3 id="swift">Swift</h3>
+<p><strong>Swift</strong> is a general-purpose compiled programming language that is proprietary, although plans to make it open-source in the near future are apparently underway. Swift has features that are most similar to Objective-C, although it is considered faster, hence its name. The speed estimate is based on limited comparisons with Objective-C.</p>
+
+<h3 id="visual-basic">Visual Basic</h3>
+<p><strong>Visual Basic</strong> and its descendents <a href="https://en.wikipedia.org/wiki/Visual_Basic for_Applications">Visual Basic for Applications</a> (VBA) and <a href="https://en.wikipedia.org/wiki/Visual_Basic_.NET">Visual Basic .NET</a>, are programming languages that are usually used for developing GUIs.</p>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="https://github.com/endlessm/dpkg">endlessm/dpkg</a> (7 Jan 2016) <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://github.com/videolan/vlc">videolan/vlc</a> (5 Jan 2016). <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p><a href="https://github.com/fusion809/octave-src">fusion809/octave-src</a> (6 Jan 2016) <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+<h2>Comparison</h2>
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption><p>Table 1: A Comparison of Common Programming Languages</p>
+</caption>
+  <tbody>
+    <tr class="green">
+      <td class="title1">Language</td>
+      <td class="title1" style="width:140px;">
+        <abbr title="File extension">Extension(s)</abbr>
+      </td>
+      <td class="title1">
+        <abbr title="Abstraction level">Level</abbr>
+      </td>
+      <td class="title1">Developer(s)</td>
+      <td class="title1" style="width:50px;"><abbr title="Date the programming language first appeared">Date&lt;/td&gt;&lt;/td&gt;
+      <td class="title1" style="width:50px;">
+        <abbr title="Implementation method">Implem</abbr>
+      </td>
+      <td class="title1">Paradigm(s)</td>
+      <td class="title1">Purpose</td>
+      <td class="title1">
+        <abbr title="Freely licensed?">Free?</abbr>
+      </td>
+      <td class="title1">
+        <abbr title="Scripting language?">Script?</abbr>
+      </td>
+      <td class="title1">Speed</td>
+    &lt;/tr&gt;
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Ada_(programming_language)" link="_blank"><p>Ada</p>
+</a> (<a href="#ada">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.adb</code>, <code class="highlighter-rouge">.ads</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Jean_Ichbiah">Jean Ichbiah</a>, Tucker Taft</p>
+</td>
+      <td class="green"><p>1980</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Imperative, object-oriented, structured</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>?</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Assembly" link="_blank"><p>Assembly</p>
+</a> (<a href="#assembly-language">section</a>)</td>
+      
+      <td class="green"><p>?</p>
+</td>
+      <td class="green"><p>Low</p>
+</td>
+      <td class="green"><p>?</p>
+</td>
+      <td class="green"><p>1949</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Imperative</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>10</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Bash_(Unix_shell)" link="_blank"><p>Bash</p>
+</a> (<a href="#bash">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.sh</code>, <code class="highlighter-rouge">.bash</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Brian_Fox_(computer_programmer)">Brian J. Fox</a> (original), Chet Ramey (current lead), <em>etc.</em></p>
+</td>
+      <td class="green"><p>1989</p>
+</td>
+      <td class="Interpreted"><p>Interpreted</p>
+</td>
+      <td class="green"><p>Imperative, procedural</p>
+</td>
+      <td class="green"><p>Domain</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="Yes">Yes</td>
+      <td class="green"><p>?</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/C_(programming_language)" link="_blank"><p>C</p>
+</a> (<a href="#c">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.c</code>, <code class="highlighter-rouge">.h</code></p>
+</td>
+      <td class="green"><p>Low</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Dennis_Ritchie">Dennis Ritchie</a> (original), <em>et al.</em></p>
+</td>
+      <td class="green"><p>1972</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Imperative, structured</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>10</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/C++" link="_blank"><p>C++</p>
+</a> (<a href="#c++">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.cc</code>, <code class="highlighter-rouge">.cpp</code>, <code class="highlighter-rouge">.cxx</code>, <code class="highlighter-rouge">.c++</code>, <code class="highlighter-rouge">.hh</code>, <code class="highlighter-rouge">.hpp</code>, <code class="highlighter-rouge">.hxx</code>, <code class="highlighter-rouge">.h++</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Bjarne_Stroustrup">Bjarne Stroustrup</a> (original/lead), <em>et al.</em></p>
+</td>
+      <td class="green"><p>1983</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Procedural, functional, object-oriented, generic</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>10</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/C Sharp (programming_language)" link="_blank"><p>C#</p>
+</a> (<a href="#c#">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.cs</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Microsoft_Corporation">Microsoft Corporation</a></p>
+</td>
+      <td class="green"><p>2000</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Concurrent, event-driven, functional, generic, imperative, object-oriented, reflective, structured, <em>etc.</em></p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="No">No</td>
+      <td class="No">No</td>
+      <td class="green"><p>7-9</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/D_(programming_language)" link="_blank"><p>D</p>
+</a> (<a href="#d">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.d</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p>Andrei Alexandrescu, Walter Bright, <em>et al.</em></p>
+</td>
+      <td class="green"><p>2001</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Functional, generic, object-oriented, procedural</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="Yes">Yes</td>
+      <td class="green"><p>?</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Fortran" link="_blank"><p>Fortran</p>
+</a> (<a href="#fortran">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.f</code>, <code class="highlighter-rouge">.for</code>, <code class="highlighter-rouge">.f90</code>, <code class="highlighter-rouge">.f95</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/John_Backus">John Backus</a></p>
+</td>
+      <td class="green"><p>1957</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Generic, imperative, structured</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>10</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Go_(programming_language)" link="_blank"><p>Go</p>
+</a> (<a href="#go">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.go</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Google">Google</a></p>
+</td>
+      <td class="green"><p>2007</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Compiled, concurrent, imperative, structured</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>6-9</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Groovy_(programming_language)" link="_blank"><p>Groovy</p>
+</a> (<a href="#groovy">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.groovy</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/James_Strachan_(programmer)">James Strachan</a> (original), <em>et al.</em></p>
+</td>
+      <td class="green"><p>2003</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Imperative, object-oriented</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="Yes">Yes</td>
+      <td class="green"><p>?</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Java_(programming_language)" link="_blank"><p>Java</p>
+</a> (<a href="#java">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.java</code>, <code class="highlighter-rouge">.class</code>, <code class="highlighter-rouge">.jar</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Sun_Microsystems">Sun Microsystems</a>, <a href="https://en.wikipedia.org/wiki/James_Gosling">James Gosling</a></p>
+</td>
+      <td class="green"><p>1995</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Object-oriented, structured, imperative, generic, reflective, concurrent</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>7-8</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/JavaScript" link="_blank"><p>JavaScript</p>
+</a> (<a href="#javascript">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.js</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Brendan_Eich">Brendan Eich</a></p>
+</td>
+      <td class="green"><p>1995</p>
+</td>
+      <td class="Interpreted"><p>Interpreted</p>
+</td>
+      <td class="green"><p>Functional, imperative, object-oriented</p>
+</td>
+      <td class="green"><p>Web</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="Yes">Yes</td>
+      <td class="green"><p>10</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Lisp" link="_blank"><p>Lisp</p>
+</a> (<a href="#lisp">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.cl</code>, <code class="highlighter-rouge">.fasl</code>, <code class="highlighter-rouge">.l</code>, <code class="highlighter-rouge">lisp</code>, <code class="highlighter-rouge">lsp</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="John_McCarthy_(computer_scientist)">John McCarthy</a></p>
+</td>
+      <td class="green"><p>1958</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Functional, procedural, reflective</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>?</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Lua_(programming_language)" link="_blank"><p>Lua</p>
+</a> (<a href="#lua">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.lua</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Roberto_Ierusalimschy">Roberto Ierusalimschy</a></p>
+</td>
+      <td class="green"><p>1993</p>
+</td>
+      <td class="Interpreted"><p>Interpreted</p>
+</td>
+      <td class="green"><p>Functional, imperative</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="Yes">Yes</td>
+      <td class="green"><p>8</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/MATLAB" link="_blank"><p>MATLAB</p>
+</a> (<a href="#matlab">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.m</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Cleve_Moler">Cleve Moler</a> (original), <a href="https://en.wikipedia.org/wiki/MathWorks">The MathWorks Inc.</a> (lead)</p>
+</td>
+      <td class="green"><p>1983</p>
+</td>
+      <td class="Interpreted"><p>Interpreted</p>
+</td>
+      <td class="green"><p>Functional, imperative, object-oriented, procedural</p>
+</td>
+      <td class="green"><p>Numerical</p>
+</td>
+      <td class="No">No</td>
+      <td class="Yes">Yes</td>
+      <td class="green"><p>&lt;3</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Objective-C" link="_blank"><p>Objective-C</p>
+</a> (<a href="#objective-c">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.m</code>, <code class="highlighter-rouge">.mm</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Apple,_Inc.">Apple, Inc.</a></p>
+</td>
+      <td class="green"><p>1983</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Object-oriented, reflective</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>?</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Pascal (programming_language)" link="_blank"><p>Pascal*</p>
+</a> (<a href="#pascal*">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.inc</code>, <code class="highlighter-rouge">.p</code>, <code class="highlighter-rouge">.pas</code>, <code class="highlighter-rouge">.pp</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Niklaus_Wirth">Niklaus Wirth</a> (original)</p>
+</td>
+      <td class="green"><p>1970</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Imperative, structured</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>?</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Perl" link="_blank"><p>Perl</p>
+</a> (<a href="#perl">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.pl</code>, <code class="highlighter-rouge">.pm</code>, <code class="highlighter-rouge">.pod</code>, <code class="highlighter-rouge">.t</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Larry_Wall">Larry Wall</a> (original/lead)</p>
+</td>
+      <td class="green"><p>1987</p>
+</td>
+      <td class="Interpreted"><p>Interpreted</p>
+</td>
+      <td class="green"><p>Event-driven, functional, generic, imperative, object-oriented</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="Yes">Yes</td>
+      <td class="green"><p>6-7</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/PHP" link="_blank"><p>PHP</p>
+</a> (<a href="#php">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.php</code>, <code class="highlighter-rouge">.php3</code>, <code class="highlighter-rouge">.php4</code>, <code class="highlighter-rouge">.php5</code>, <code class="highlighter-rouge">.phps</code>, <code class="highlighter-rouge">.phtml</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Rasmus_Lerdorf">Rasmus Lerdorf</a> (original), <a href="https://en.wikipedia.org/wiki/Zend_Technologies">Zend Techologies</a> (current)</p>
+</td>
+      <td class="green"><p>1995</p>
+</td>
+      <td class="Interpreted"><p>Interpreted</p>
+</td>
+      <td class="green"><p>Functional, imperative, object-oriented, reflective</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="Yes">Yes</td>
+      <td class="green"><p>6-7</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Python_(programming_language)" link="_blank"><p>Python</p>
+</a> (<a href="#python">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.py</code>, <code class="highlighter-rouge">.pyc</code>, <code class="highlighter-rouge">.pyd</code>, <code class="highlighter-rouge">.pyo</code>, <code class="highlighter-rouge">.pyw</code>, <code class="highlighter-rouge">.pyz</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Guido_van_Rossum">Guido van Rossum</a> (original/lead), <em>et al.</em></p>
+</td>
+      <td class="green"><p>1991</p>
+</td>
+      <td class="Interpreted"><p>Interpreted</p>
+</td>
+      <td class="green"><p>Functional, imperative, object-oriented, procedural.</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="Yes">Yes</td>
+      <td class="green"><p>4-6</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/R_(programming_language)" link="_blank"><p>R</p>
+</a> (<a href="#r">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.r</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Ross_Ihaka">Ross Ihaka</a>, <a href="https://en.wikipedia.org/wiki/Robert_Gentleman_(statistician)">Robert Gentleman</a> (original)</p>
+</td>
+      <td class="green"><p>1993</p>
+</td>
+      <td class="Interpreted"><p>Interpreted</p>
+</td>
+      <td class="green"><p>Functional, imperative, object-oriented, procedural</p>
+</td>
+      <td class="green"><p>Statistical</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>&lt;3</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Ruby_(programming_language)" link="_blank"><p>Ruby</p>
+</a> (<a href="#ruby">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.rb</code>, <code class="highlighter-rouge">.rbw</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Yukihiro_Matsumoto">Yukihiro Matsumoto</a> (original/lead)</p>
+</td>
+      <td class="green"><p>1995</p>
+</td>
+      <td class="Interpreted"><p>Interpreted</p>
+</td>
+      <td class="green"><p>Functional, imperative, object-oriented, reflective</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="Yes">Yes</td>
+      <td class="green"><p>3-6</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/SQL" link="_blank"><p>SQL</p>
+</a> (<a href="#sql">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.sql</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Donald_D._Chamberlin">Donald D. Chamberlin</a>, <a href="https://en.wikipedia.org/wiki/Raymond_F._Boyce">Raymond F. Boyce</a> (original)</p>
+</td>
+      <td class="green"><p>1974</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Declarative, procedural</p>
+</td>
+      <td class="green"><p>Special</p>
+</td>
+      <td class="Yes">Yes</td>
+      <td class="No">No</td>
+      <td class="green"><p>?</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Swift_(programming_language)" link="_blank"><p>Swift</p>
+</a> (<a href="#swift">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.swift</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Apple,_Inc.">Apple, Inc.</a></p>
+</td>
+      <td class="green"><p>2014</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Block structured, functional, imperative, object-oriented</p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="No">No</td>
+      <td class="No">No</td>
+      <td class="green"><p>&gt;7</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      
+      <td class="title1"><a href="https://en.wikipedia.org/wiki/Visual_Basic" link="_blank"><p>Visual Basic*</p>
+</a> (<a href="#visual-basic">section</a>)</td>
+      
+      <td class="green"><p><code class="highlighter-rouge">.vb</code></p>
+</td>
+      <td class="green"><p>High</p>
+</td>
+      <td class="green"><p><a href="https://en.wikipedia.org/wiki/Microsoft_Corporation">Microsoft Corporation</a></p>
+</td>
+      <td class="green"><p>1991</p>
+</td>
+      <td class="Compiled"><p>Compiled</p>
+</td>
+      <td class="green"><p>Event-driven, object-oriented, declarative, <em>.etc</em></p>
+</td>
+      <td class="green"><p>General</p>
+</td>
+      <td class="No">No</td>
+      <td class="No">No</td>
+      <td class="green"><p>?</p>
+</td>
+    </tr>
+    
+  &lt;/tbody&gt;
+  <tfoot>
+    <tr class="title2">
+      <td class="title2" colspan="11">Footnotes</td>
+    </tr>
+    <tr class="green">
+      <td class="blue" colspan="11">
+        <b>*</b>: Indicates the programming language and its straight-forward (usually meaning they have the original programming
+        language's name somewhere in theirs, e.g., Object Pascal is a straight-forward derivative of Pascal) derivatives.
+        <br /><br />
+        <b>Common</b>: included programming languages include those that are listed in the top 20 programming languages for popularity in
+        December 2015 according to <a href="http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html">TIOBE</a>. It also includes
+        programming languages that are notable due to their use in FOSS.
+        <br /><br />
+        <b>Speed</b>: The speed rating is assigned by myself as essentially an average of the speed tests I have found by Googling
+        "comparison of programming languages by performance". While this gives one an incling as to the speed of these programming
+        languages it is worthwhile noting that the speed of a programming language greatly depends on what it is being used to do and in
+        some cases how it is implemented can greatly impact upon its performance. 10 indicates that the language is amongst the fastest
+        available, 1 indicates that the language is essentially the slowest of languages.
+      </td>
+    </tr>
+  </tfoot>
+&lt;/table&gt;
+<br />
+
+</abbr></td></tr></tbody></table>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

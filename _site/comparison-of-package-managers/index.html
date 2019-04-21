@@ -1,0 +1,1491 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>A Comparison of Popular Linux Package Managers</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">A Comparison of Popular Linux Package Managers</h1>
+    <p class="post-meta">
+      <br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/linux/" link="_blank">linux</a></span><span class="tag"><a href="/tag/package-management/" link="_blank">package-management</a></span><br/>-->
+      <time datetime="2016-02-18T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Thursday, 18 February 2016.</time>
+      <time datetime="03:58:40 AM, Wednesday 30 May 2018 " itemprop="dateModified"><br/><b><abbr title="Note that most modifications past the publication date will be largely cosmetic, like fixing spelling, grammar and links, not necessarily updating the content itself.">Last modified</abbr></b>: &nbsp;&nbsp;&nbsp;03:58 AM Wednesday, 30 May 2018 (<abbr title="Australian Eastern Standard Time, or UTC+10">AEST</abbr>).</time>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <p>As I am sure many of you are aware I have tried over twenty different Linux distributions, many of which use different <strong>package managers</strong> to one another. Each package manager has several different characteristics, all of which influence my decision to use them and hence also my decision to use the respective Linux distribution(s) on which they are used for package management. In this comparison I will compare the following package managers (note, each package manager’s long name is hyperlinked to their respective section):</p>
+
+<ul>
+  <li><a href="#apt"><strong>Advanced Packaging Tool</strong></a> (<strong>APT</strong>), the default package manager of Debian and its various derivatives. I will also discuss the related package managers aptitude and Synaptic in this section.</li>
+  <li><a href="#dnf"><strong>Dandified Yum</strong></a> (<strong>DNF</strong>), the default package manager of Fedora ≥22 and its up-to-date derivatives (e.g. Chapeau and Korora) and the successor to yum.</li>
+  <li><a href="#entropy"><strong>Entropy</strong></a>, the default package manager of Sabayon Linux.</li>
+  <li><a href="#pacman"><strong>pacman</strong></a>, the default package manager of Arch Linux and its derivatives.</li>
+  <li><a href="#portage"><strong>Portage</strong></a>, the package manager of Gentoo Linux and its derivatives such as Calculate and Sabayon.</li>
+  <li><a href="#yum"><strong>Yellowdog Updater, Modified</strong></a> (<strong>yum</strong>), the default package manager of CentOS, Fedora ≤21 and the predecessor of DNF.</li>
+  <li><a href="#zypp"><strong>ZYpp</strong></a> (<strong>zypper</strong>), the default package manager of openSUSE and its derivatives.</li>
+</ul>
+
+<p>with respect to the following areas:</p>
+
+<ul>
+  <li><strong>Beginner-friendliness</strong>. Does it have an easy to understand and remember syntax? Does it have a high-quality of free documentation? Does it have an officially-supported graphical user interface? If so, is this GUI intuitive and easy to use?</li>
+  <li><strong>Customizability</strong>. How much customization of installed packages and the options for this package manager are allowed?</li>
+  <li><strong>Development</strong>: How easy is developing packages for this package manager?</li>
+  <li><strong>Features</strong>. Does this package manager allow users to abbreviate commands? Does it allow users to skip confirmation checks? Does it include search functions? Does it show users detailed information about the packages when asked? Does it support local installs? Can it install packages from a specified URL? Does it support installing the dependencies of a target package only? (e.g. <code class="highlighter-rouge">apt-get build-dep</code>) Does it support installation from source code and binary packages? Does it support wildcards?</li>
+  <li><strong>Speed</strong>. This is something that will be based on research, along with one test. The test is I will reinstall the vim package (reinstalling so to ensure the time measured is only the time taken to install the package and not the time to download the package, download and install its dependencies, <em>etc.</em>) on a Virtual machine. This process I will time using the <code class="highlighter-rouge">time</code> command. For example, for pacman I ran: <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  time pacman -S vim ‐‐noconfirm</span>.
+ If you can think of a more reliable test as to their speed (that ignores download times), that can be used for each of these package managers (that is, if it requires a command other than <code class="highlighter-rouge">time</code>, it is probably best to check whether I can install the program that provides said command on all the relevant distributions) and that does not take a giant chunk of time to do (that is, if you suggest I reinstall several packages on each platform, time them and average the result out, I probably will not be sold as it sounds tedious), I am more than willing to hear it and if you wish I will even add an Acknowledgements section to this post and give you due credit in it. See the <a href="/contributing/">Contributing</a> page for details on how to contact me with this information.</li>
+</ul>
+
+<h2 id="glossary">Glossary</h2>
+
+<h3 id="debian-packages">Debian Packages</h3>
+<p><strong>Debian packages</strong> are software packages with the file extension <code class="highlighter-rouge">.deb</code>. They are archives formed with the <code class="highlighter-rouge">ar</code> utility, inside them are three files:</p>
+
+<ul>
+  <li>tar archive called <code class="highlighter-rouge">data</code>, that is optionally bz2, gz, lzma or xz-compressed. It contains the installed files.</li>
+  <li>tar archive called <code class="highlighter-rouge">control</code>, that is optionally compressed with any of the aforementioned algorithms and it contains package metadata.</li>
+  <li><code class="highlighter-rouge">debian-binary</code> text file that contains the deb format number, the latest is presently 2.0.</li>
+</ul>
+
+<p>They are probably the single most popular type of Linux binary package out there, as they are used by three of the most popular Linux distributions, according to <em>DistroWatch</em> (Debian, Linux Mint and Ubuntu).</p>
+
+<h3 id="dpkg">dpkg</h3>
+<p><a href="https://wiki.debian.org/Teams/Dpkg"><strong>dpkg</strong></a> is a low-level package management tool that installs, removes, upgrades and provides information about Debian packages. dpkg was first developed by Ian Murdock in 1994 and is written in C, C++ and Perl.</p>
+
+<h3 id="rpm-packages">RPM Packages</h3>
+<p>The <strong>RPM Packages</strong> are the binary package format that the RPM package manager works with. They have the <code class="highlighter-rouge">.rpm</code> file extension. They are archive files, you can extract their contents with the <code class="highlighter-rouge">bsdtar -xf $package.rpm</code> command, where <code class="highlighter-rouge">$package</code> is the package’s name, without the <code class="highlighter-rouge">.rpm</code> file extension. There is also a source code version of the RPM Package format, with the file extension <code class="highlighter-rouge">.src.rpm</code>.</p>
+
+<h3 id="rpm-package-manager">RPM Package Manager</h3>
+<p>The <a href="http://rpm.org/"><strong>RPM Package Manager</strong></a><sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> is a low-level package management tool that installs, removes, upgrades and provides information about RPM packages. Its initial release was in 1997.</p>
+
+<h2 id="apt">APT</h2>
+<p>The <a href="https://wiki.debian.org/Apt"><strong>Advanced Packaging Tool</strong></a> (<strong>APT</strong>) is the default front-end for the dpkg package manager used by Debian-based systems. See what APT does is it performs dependency resolution, repository management, and assorted other higher-level functions while dpkg is what actually installs and removes packages. So in essence what APT does for dpkg is it gives it some intelligence; package management with dpkg by itself is not an experience I would like to have as you would have to do just about everything yourself. It is the eldest package manager mentioned in this review and was first developed in 1998. APT is written in C++ and Bash script.</p>
+
+<h3 id="beginner-friendliness">Beginner-Friendliness</h3>
+<p>APT was the first Linux package manager I ever used and I started using it on Ubuntu, so I may be biased towards saying it is beginner-friendly, although I will admit I think there are more beginner-friendly package managers out there, like <a href="#dnf">DNF</a>, <a href="#yum">yum</a> and <a href="#zypp">zypper</a>. See APT has a somewhat confusing syntax, as you do not just run <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  apt [<i>action</i>] [option(s)] [<b>target</b>(<b>s</b>)]</span>
+ rather there are five distinct commands for APT, each with their own options, actions and permissible targets: <a href="https://fusion809.github.io/man/add-apt-repository.1.html"><code class="highlighter-rouge">add-apt-repository</code></a>, <a href="https://fusion809.github.io/man/apt.8.html"><code class="highlighter-rouge">apt</code></a>, <a href="https://fusion809.github.io/man/apt-cache.8.html"><code class="highlighter-rouge">apt-cache</code></a>, <a href="https://fusion809.github.io/man/apt-config.8.html"><code class="highlighter-rouge">apt-config</code></a> and <a href="https://fusion809.github.io/man/apt-get.8.html"><code class="highlighter-rouge">apt-get</code></a>. <code class="highlighter-rouge">apt-get</code> is used to install, remove and upgrade packages and update local index files for enabled repositories. <code class="highlighter-rouge">apt-cache</code> is for searching and dealing with the cache and metadata in it. <code class="highlighter-rouge">add-apt-repository</code> is used for managing repositories, while <code class="highlighter-rouge">apt-config</code> is for editing configuration files from the command-line. <code class="highlighter-rouge">apt</code> itself, on the other hand, seems to be capable of performing select actions from <code class="highlighter-rouge">apt-cache</code>, <code class="highlighter-rouge">apt-get</code> and <code class="highlighter-rouge">apt-config</code>.</p>
+
+<p>Despite this APT has several more beginner-friendly front-ends such as the ncurses-based textual program, aptitude, that is run from within a terminal and the GTK-based graphical front-end Synaptic. Here is the <a href="https://fusion809.github.io/man/aptitude.8.html"><code class="highlighter-rouge">aptitude</code></a> man page in HTML. My experience with both front-ends is fairly limited as I was willing to just stick to APT and the Ubuntu Software Center (another graphical front-end for APT, as its name suggests it is used by Ubuntu and select derivatives thereof) during my three years using Ubuntu as my distro. Overall I would rate APT as <strong>5-7/10</strong> for <strong>beginner-friendliness</strong> as while its syntax can get confusing when you are just beginning to use it, there are two perfectly adequate, more beginner-friendly front-ends for it available.</p>
+
+<h3 id="customizability">Customizability</h3>
+<p>APT, being a binary package manager, has limited customizability when it comes to the binary packages it installs. By this I mean these binary packages have already been compiled so it is impossible for users to specify desired features for the package to have. There is one way one can customize installed packages that I know of: by downloading the corresponding source code package for each installed package one wishes to customize, editing the files used to build the package and finally building and installing the package. A <a href="https://wiki.debian.org/BuildingTutorial">guide</a> on how to do this can be found at the <em>Debian Wiki</em>. It essentially consists of running <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  apt-get source $package</span>,
+ changing into the package’s directory, modifying the required files, getting the build dependencies with <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  apt-get build-dep $package</span>,
+ then building the package with <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  debuild -b -uc -us</span>
+ and finally installing it with <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  dpkg -i ../$package-$version.deb</span>
+ The most important file for one to customize, in terms of changing the features the package is built with, is the <code class="highlighter-rouge">rules</code> file in the <code class="highlighter-rouge">debian/</code> folder.</p>
+
+<h3 id="development">Development</h3>
+<p>Debian package development (an introduction to Debian packaging can be found <a href="https://wiki.debian.org/IntroDebianPackaging">here</a> at the <em>Debian Wiki</em>) is more complicated than developing Arch and RPM packages and writing ebuilds for Gentoo packages, in my opinion. See first of all, Debian packages are not built based on the contents of a single file plus files referred to by said single file, as is the case for ebuilds and PKGBUILDs, rather Debian packages are built based on the contents of an entire directory. In the top-level of the directory there is the package’s upstream source along with a <code class="highlighter-rouge">debian/</code> subfolder, which contains several components that are specific to the Debian package being built. Its structure is as follows:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>- debian/
+-- changelog
+-- compat
+-- control
+-- copyright
+-- rules
+-- source/
+--- format
+</code></pre></div></div>
+
+<p>the contents of the <code class="highlighter-rouge">changelog</code> and <code class="highlighter-rouge">copyright</code> files I think are pretty obvious, so I will skip them and just mention what is in the <code class="highlighter-rouge">compat</code>, <code class="highlighter-rouge">control</code> and <code class="highlighter-rouge">rules</code> files. The <code class="highlighter-rouge">compat</code> file is a file that contains nothing but the number nine (9) in it, as it is supposedly a “magic number”. The <code class="highlighter-rouge">control</code> file contains most of the package’s metadata like its description, name, version, dependencies, <em>etc.</em> while the <code class="highlighter-rouge">rules</code> file contains the build instructions for the <code class="highlighter-rouge">debuild</code> command to follow, in order to build the Debian binary package. Frequently, a single upstream package will be split up into over three different Debian packages, each with different suffixes (most commonly <code class="highlighter-rouge">debug</code>, <code class="highlighter-rouge">dev</code> and <code class="highlighter-rouge">doc</code>) and/or prefixes (most commonly <code class="highlighter-rouge">lib</code>). This package splitting, to my understanding, is designed to give users greater freedom over their installed packages. If they want debugging symbols, development features, documentation or the package’s installed libraries they can install them separately, while if they just want basic functionality for the package in question they can install the base package and not install these extras, hence saving space.</p>
+
+<h3 id="features">Features</h3>
+<p>APT, by default, installs binary packages, with the file extension <code class="highlighter-rouge">.deb</code>, although a RPM rewrite for APT exists called APT-RPM that uses binary packages with the <code class="highlighter-rouge">.rpm</code> file extension. APT-RPM is only used by one Linux distribution I have personal experience with, PCLinuxOS, and I have personally noticed no syntactic, performance or other difference between it and APT, based on my limited experience with it. APT can also be used to build and install software from source code packages (which are provided by the APT src repositories). Its enabled repositories are listed in <code class="highlighter-rouge">/etc/apt/sources.list</code>, here is an example one taken from my Debian 8.3 VM:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>deb http://debian.mirror.digitalpacific.com.au/debian/ jessie main
+deb-src http://debian.mirror.digitalpacific.com.au/debian/ jessie main
+
+deb http://security.debian.org/ jessie/updates main
+deb-src http://security.debian.org/ jessie/updates main
+
+# jessie-updates, previously known as 'volatile'
+deb http://debian.mirror.digitalpacific.com.au/debian/ jessie-updates main
+deb-src http://debian.mirror.digitalpacific.com.au/debian/ jessie-updates main
+</code></pre></div></div>
+
+<p>. One disadvantage of APT, as opposed to DNF, yum or ZYpp, is that it cannot be used to download a package and install it from a specified URL. Instead, if one wishes to install a <code class="highlighter-rouge">.deb</code> package from a URL one has to run something like:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;wget $URL<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo dpkg -i $package.deb<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get -f install</div>
+
+<p>where <code class="highlighter-rouge">$URL</code> is the URL you wish to install the Debian package from, while <code class="highlighter-rouge">$package</code> is the package’s name, without its <code class="highlighter-rouge">.deb</code> file extension. The third of these lines installs any missing dependencies that are available from enabled repositories (listed in <code class="highlighter-rouge">/etc/apt/sources.list</code>) and then will install the <code class="highlighter-rouge">$package.deb</code> file, if line 2 failed to, due to missing dependencies. I have heard that later releases of APT may be able to install local packages and do dependency management without <code class="highlighter-rouge">dpkg</code> having to be explicitly called. In other words, these later releases of APT may be able to install a package from URL with just two commands, namely:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;wget $URL<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get install $package.deb</div>
+
+<p>. One feature of APT that can be handy is that it supports the use of wildcards, e.g. <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  apt-get install lua5.2*</span>
+ should install all packages with the <code class="highlighter-rouge">lua5.2</code> prefix. It supports the installation of package groups too. To list available package groups I suggest you install the <code class="highlighter-rouge">tasksel</code> if it is not presently installed (via issuing <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  apt-get install tasksel</span>)
+ and run <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  tasksel ‐‐list-tasks</span>.
+ Then to install the package group you run <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  apt-get install $group^</span>,
+ where <code class="highlighter-rouge">$group</code> is the package group in question. One-click installs are supported by APT, on Ubuntu at least.</p>
+
+<h3 id="speed">Speed</h3>
+<p>Running <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  time apt-get install -y ‐‐reinstall vim</span>
+ gives:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+0 upgraded, 0 newly installed, 1 reinstalled, 0 to remove and 0 not upgraded.
+Need to get 0 B/953 kB of archives.
+After this operation, 0 B of additional disk space will be used.
+Can't set locale; make sure $LC_* and $LANG are correct!
+perl: warning: Setting locale failed.
+perl: warning: Please check that your locale settings:
+        LANGUAGE = "en_AU:en",
+        LC_ALL = (unset),
+        LANG = "en_AU.UTF-8"
+    are supported and installed on your system.
+perl: warning: Falling back to the standard locale ("C").
+locale: Cannot set LC_CTYPE to default locale: No such file or directory
+locale: Cannot set LC_MESSAGES to default locale: No such file or directory
+locale: Cannot set LC_ALL to default locale: No such file or directory
+(Reading database ... 229043 files and directories currently installed.)
+Preparing to unpack .../vim_2%3a7.4.488-7_amd64.deb ...
+Unpacking vim (2:7.4.488-7) over (2:7.4.488-7) ...
+Setting up vim (2:7.4.488-7) ...
+
+real    0m2.783s
+user    0m1.076s
+sys     0m0.392s
+</code></pre></div></div>
+
+<p>so it took <strong>2.783s</strong> to reinstall Vim. I think this figure is fair enough, as it is the third fastest package manager reviewed in this comparison.</p>
+
+<h3>Basic Usage</h3>
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption>Table 1: Basic Usage of APT</caption>
+  <tbody>
+    <tr class="green">
+      <td class="title1">Action</td>
+      <td class="title1">Command<sup>1</sup></td>
+      <td class="title1">Description</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Add a repository</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;add-apt-repository $repository</div>
+</td>
+      <td class="green">Add APT repository, <code>$repository</code>.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Build package from source</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-get source --compile $package</div>
+</td>
+      <td class="green">Building <code>$package</code> from source code.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install build dependencies</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-get build-dep $package</div>
+</td>
+      <td class="green">Install required build dependencies for the target package (<code>$package</code>).</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-get install $package</div>
+</td>
+      <td class="green">Install the target package (<code>$package</code>) and all runtime dependencies.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Remove package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-get remove $package</div>
+</td>
+      <td class="green">Remove the target package (<code>$package</code>) and all runtime dependencies not required by other installed packages.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Search for keyword</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-cache search $package</div>
+</td>
+      <td class="green">Search package name and description for provided regex. Pass option <code>--names-only</code> to search only package names for regex.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Upgrade all packages</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-get update &amp;&amp; apt-get upgrade</div>
+</td>
+      <td class="green">Update index lists and upgrade all installed packages.</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="green">
+      <td colspan="3" style="padding:5px;"><sup>1</sup>: <u>Note:</u> in this table I use the short-hand notations <code>$package</code> and <code>$repository</code> to refer to the target package(s) or repository, respectively, that the user wishes to perform the mentioned action on.</td>
+    </tr>
+  </tfoot>
+</table>
+<p><br /></p>
+
+<h2 id="dnf">DNF</h2>
+<p><a href="http://dnf.baseurl.org/"><strong>Dandified Yum</strong></a> (<strong>DNF</strong>) is a rewrite of yum that’s major distinguishing feature, from its predecessor, is the fact it uses ZYpp’s libsolv library for dependency resolution and hence has performance advantages over yum. Despite this DNF is very similar to its parent, as it has an almost identical syntax, is written in Python and it serves as a front-end (for dependency resolution, repository management, <em>etc.</em>) for the RPM package manager. DNF has replaced yum as the default package manager of Fedora since the release of Fedora 22 in May 2015. CentOS is likely to follow suit sometime in the future.</p>
+
+<h3 id="beginner-friendliness-1">Beginner-Friendliness</h3>
+<p>DNF is more intuitive than APT as there is just a single command that calls it, <a href="https://fusion809.github.io/man/dnf.8.html"><code class="highlighter-rouge">dnf</code></a>. Its syntax is simple, for example <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  dnf install octave</span>
+ should install GNU Octave, while <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  dnf remove octave</span>
+ should uninstall it. Fedora and most of its derivatives use PackageKit front-ends such as Apper (for Qt-based desktop environments such as KDE) and GNOME Software, for graphical package management, both of which run DNF in the background. Overall I would rate DNF as <strong>8/10</strong> for beginner-friendliness. Its basic syntax is:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf [<i>action</i>] [option(s)] [<b>target</b>(<b>s</b>)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="background-color: #c4c4ff; color: red; font-style: italic;">(1)</span></div>
+
+<p>for more details see its <a href="https://fusion809.github.io/man/dnf.8.html">man page</a>.</p>
+
+<h3 id="customizability-1">Customizability</h3>
+<p>As with APT, DNF is primarily a binary package manager, so by default there are not many customizations that can be done to existing packages. Like with Debian packages for APT, however, a single upstream software package is often split into multiple smaller RPM packages, with each RPM package providing different functionalities of the upstream package. So this allows for some customization of installed packages, as users that just want basic core functionalities of the upstream package can just install the base package, while those that want to do development or debugging with the package can install the respective package providing said features.</p>
+
+<p>DNF, however, is capable of downloading <code class="highlighter-rouge">.src.rpm</code> packages, which can be extracted (several ways this can be done, my personal preference as it works on any Linux platform is <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  bsdtar -xf $package.src.rpm</span>),
+ modified and rebuilt if the user really wants to customize the package, like adjust its configure options. I would personally recommend that if you wish to do this and you are not familiar with the process of building RPM packages that you read <a href="http://fedoraproject.org/wiki/How_to_create_an_RPM_package">this</a> <em>Fedora Wiki</em> article on it.</p>
+
+<h3 id="development-1">Development</h3>
+<p>As DNF is just a command-line front-end for the RPM package manager, package development is the same as it is on other Linux distributions that use RPM packages. Follow <a href="http://fedoraproject.org/wiki/How_to_create_an_RPM_package">this</a> <em>Fedora Wiki</em> guide on building RPM packages. Alternatively for most packages, you can also use the <strong>Open Build Service</strong> (<strong>OBS</strong>) to build the package, which affords one the ability to more easily distribute the packages to others should you wish to. <a href="https://en.opensuse.org/openSUSE:Build_Service_Tutorial">Here</a> is an OBS tutorial, further details on the OBS and its limitations can be found in the <a href="#toc51">ZYpp Development section</a>. It is also possible to do package development using the <a href="https://copr.fedorainfracloud.org/">Copr</a>, which I had never used until I wrote this post. I used it once, to get some info for you, my readers, on it and I must say it is like the OBS but it seems more flexible in some areas but less flexible in others.</p>
+
+<p>Copr is an online tool that is specific to Red Hat Enterprise Linux and Fedora as it can only be used to build packages for these two distributions. It can take a spec file as its input, along with the required sources (which are taken from a git repository, like a GitHub repository, that you specify to it), or it can take a <code class="highlighter-rouge">.src.rpm</code>, but regardless of its sources it will build an RPM package for the platforms specified to it. These packages are then available from an online repository created and hosted by the Copr. Unlike the OBS, however, and this is where the Copr really shines in my books, it can provide packages Internet access during the build, hence making Atom package development for Fedora far easier. The OBS does have the advantage of being able to download the upstream source of the package for you (using download services), unlike Copr which requires you to upload the upstream source to it manually (which, of course, chews up your bandwidth).</p>
+
+<h3 id="features-1">Features</h3>
+<p>DNF can be used to download and then install RPM packages from a specified URL too, which is a feature it has inherited from yum. For example, to install Atom 1.5.3 on a 64-bit Fedora system from the official RPM binary one would run (this command will <strong>not</strong> prompt the user before downloading and installing this package):</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf install -y https://github.com/atom/atom/releases/download/v1.5.3/atom.x86_64.rpm</div>
+
+<p>. I ran this command on a Fedora 23 VirtualBox VM to test it out and here was its output:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Last metadata expiration check performed 0:05:36 ago on Mon Feb 15 16:25:44 2016.
+Dependencies resolved.
+================================================================================
+ Package      Arch           Version                 Repository            Size
+================================================================================
+Upgrading:
+ atom         x86_64         1.5.3-0.1.fc21          @commandline          55 M
+
+Transaction Summary
+================================================================================
+Upgrade  1 Package
+
+Total size: 55 M
+Downloading Packages:
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Upgrading   : atom-1.5.3-0.1.fc21.x86_64                                  1/2
+  Cleanup     : atom-1.2.4-0.1.fc21.x86_64                                  2/2
+  Verifying   : atom-1.5.3-0.1.fc21.x86_64                                  1/2
+  Verifying   : atom-1.2.4-0.1.fc21.x86_64                                  2/2
+
+Upgraded:
+  atom.x86_64 1.5.3-0.1.fc21                                                    
+
+Complete!
+</code></pre></div></div>
+
+<p>I find it gives better, more detailed, output than APT, pacman or ZYpp. Additionally it supports group installs, which can save one a lot of time installing several different pieces of software that belong to the one group. For example, to install the KDE desktop one would run <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  dnf install @kde-desktop</span>.
+ It also includes some actions (and yes these that are not included by basic or “simple” package managers like pacman). These include:</p>
+
+<ul>
+  <li>autoremove — remove no longer needed packages. For example, packages that were once required for a package to run but are no longer.</li>
+  <li>builddep — install the required build-dependencies of a package.</li>
+  <li>URL installs.</li>
+</ul>
+
+<p>it also has support for use of wildcard operators. For example:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf install kernel&#8727;</div>
+
+<p>will attempt (not necessarily succeeding though, in the case of package conflicts) all packages that’s name begins with the word “kernel”. This can be helpful and time-saving when one wishes to install all subpackages of a package (e.g. the <code class="highlighter-rouge">-devel</code>, <code class="highlighter-rouge">-doc</code>, <em>etc.</em> subpackages).</p>
+
+<h3 id="speed-1">Speed</h3>
+<p>Running <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  time dnf install -y vim-common</span>
+ returns:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Last metadata expiration check performed 0:17:31 ago on Sat Feb 13 22:08:01 2016.
+Dependencies resolved.
+================================================================================
+ Package           Arch          Version                    Repository     Size
+================================================================================
+Reinstalling:
+ vim-common        x86_64        2:7.4.827-1.fc23           fedora        6.0 M
+
+Transaction Summary
+================================================================================
+
+Total download size: 6.0 M
+Downloading Packages:
+vim-common-7.4.827-1.fc23.x86_64.rpm            1.0 MB/s | 6.0 MB     00:05    
+--------------------------------------------------------------------------------
+Total                                           357 kB/s | 6.0 MB     00:17     
+Running transaction check
+Transaction check succeeded.
+Running transaction test
+Transaction test succeeded.
+Running transaction
+  Reinstalling: vim-common-2:7.4.827-1.fc23.x86_64                          1/2
+  Erasing     : vim-common-2:7.4.827-1.fc23.x86_64                          2/2
+  Verifying   : vim-common-2:7.4.827-1.fc23.x86_64                          1/2
+  Verifying   : vim-common-2:7.4.827-1.fc23.x86_64                          2/2
+
+Reinstalled:
+  vim-common.x86_64 2:7.4.827-1.fc23                                            
+
+Complete!
+
+real	0m33.853s
+user	0m2.064s
+sys	0m3.964s
+</code></pre></div></div>
+
+<p>as you can see, when I reinstalled <code class="highlighter-rouge">vim-common</code> the package was re-downloaded (even though I had just installed the package when I ran this command, so I thought, but was clearly mistaken, that it was in the DNF cache), which adds some time to the <code class="highlighter-rouge">real</code> time. To get a better estimate as to the actual installation time, let us take 17 seconds (the time recorded in this message as the total time taken to download the package) from the real time, getting <strong>16.853s</strong>. This figure I think may be an inaccurate representation of its speed as DNF is supposed to be faster than yum.</p>
+
+<p>On 7 March 2017 I decided to re-perform this test with DNF 2.1.0 on Mageia 6 sta2 (on advice of Neal Gompa, or Pharaoh_Atem in the #mageia IRC channel, as he suggested DNF 2.x would be faster) and I got the output:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Last metadata expiration check: 0:14:22 ago on Tue Mar 07 15:56:10 2017 AEST.
+Dependencies resolved.
+<span class="o">=============================================================================</span>
+ Package         Arch        Version              Repository            Size
+<span class="o">=============================================================================</span>
+Reinstalling:
+ vim-common      x86_64      8.0.388-1.mga6       cauldron-x86_64      4.6 M
+
+Transaction Summary
+<span class="o">=============================================================================</span>
+
+Total size: 4.6 M
+Downloading Packages:
+<span class="o">[</span>SKIPPED] vim-common-8.0.388-1.mga6.x86_64.rpm: Already downloaded          
+Running transaction check
+Transaction check succeeded.
+Running transaction <span class="nb">test
+</span>Transaction <span class="nb">test </span>succeeded.
+Running transaction
+  Reinstalling: vim-common-8.0.388-1.mga6.x86_64                         1/2
+  Erasing     : vim-common-8.0.388-1.mga6.x86_64                         2/2
+  Verifying   : vim-common-8.0.388-1.mga6.x86_64                         1/2
+  Verifying   : vim-common-8.0.388-1.mga6.x86_64                         2/2
+
+Reinstalled:
+  vim-common.x86_64 8.0.388-1.mga6                                           
+
+Complete!
+
+real    0m11.977s
+user    0m3.001s
+sys     0m3.114s
+</code></pre></div></div>
+
+<p>as you can see the time was reduced, but not enough to make it faster than the other package managers compared in this article.</p>
+
+<h3>Basic Usage</h3>
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption>Table 2: Basic Usage of DNF</caption>
+  <tbody>
+    <tr class="green">
+      <td class="title1">Action</td>
+      <td class="title1">Command<sup>1</sup></td>
+      <td class="title1">Description</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Add a repository</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf config-manager --add-repo $URL</div>
+</td>
+      <td class="green">Add a DNF repository, the $URL must be to the repository's <code>.repo</code> file.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Build package from source</td>
+      <td class="green">N/A</td>
+      <td class="green">Building a package from source has to be done over several lines and involves using tools not provided by DNF.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install build dependencies</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf builddep $package</div>
+</td>
+      <td class="green">Install the required build dependencies for <code>$package</code>.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf install $package</div>
+</td>
+      <td class="green">Install the target package (<code>$package</code>) and all runtime dependencies.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Remove package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf remove $package</div>
+</td>
+      <td class="green">Remove the target package (<code>$package</code>) and all runtime dependencies not required by other installed packages.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Search for keyword</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf search $package</div>
+</td>
+      <td class="green">Search package metadata (including name, description, URL, <i>etc.</i>) for provided regex.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Upgrade all packages</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf update</div>
+</td>
+      <td class="green">Upgrade all installed packages.</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="green">
+      <td colspan="3" style="padding:5px;"><sup>1</sup>: <u>Note:</u> in this table I use the short-hand notations <code>$package</code> and <code>$URL</code> to refer to the target package(s) or repository URL, respectively, that the user wishes to perform the mentioned action on.</td>
+    </tr>
+  </tfoot>
+</table>
+<p><br /></p>
+
+<h2 id="entropy">Entropy</h2>
+<p><strong>Entropy</strong> is the default package manager of Sabayon, although Sabayon also comes with the <a href="#portage">Portage</a> package manager pre-installed, but only the use of Entropy is supported by the Sabayon community. Entropy has similarities to Portage, along with several key differences. It is written in Python and shell script, like Portage, but unlike Portage, which, by default, installs software from source code following instructions found in ebuilds, Entropy installs software from binary packages. These binary packages were originally built using Portage, however, then they are converted to binary packages suitable for Entropy using Entropy itself (via <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  equo pkg inflate $package.tbz2</span>).</p>
+
+<p>Entropy has both an official command-line and graphical user interface; from the command-line it is called by the <a href="https://fusion809.github.io/man/equo.1.html"><code class="highlighter-rouge">equo</code></a> command, while Rigo is its GUI. Entropy is the second-youngest package manager mentioned in this post, after DNF, with its first public release being in 2007 and its first stable release being in 2012.</p>
+
+<p>Entropy is not a front-end for any lower-level package managers, unlike APT which is a front-end for dpkg and DNF which is a front-end for RPM.</p>
+
+<h3 id="beginner-friendliness-2">Beginner-Friendliness</h3>
+<p>It is a fairly beginner-friendly package manager, its command-line syntax is intuitive, for example, <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  equo install octave</span>
+ should install GNU Octave, without prompting, while <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  equo remove octave</span>
+ should uninstall it without prompting. The only prompting that Entropy does, unless you, the user, specify that it should by passing it the <code class="highlighter-rouge">--ask</code> or <code class="highlighter-rouge">-a</code> options to it, is asking if you accept any relevant package licenses that are not accepted by default. Its basic syntax is:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo [<i>action</i>] [option(s)] [<b>target</b>(<b>s</b>)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="background-color: #c4c4ff; color: red; font-style: italic;">(2)</span></div>
+
+<p>Several abbreviated actions exist, for example, <code class="highlighter-rouge">i</code> for <code class="highlighter-rouge">install</code>, <code class="highlighter-rouge">rm</code> for <code class="highlighter-rouge">remove</code>, <code class="highlighter-rouge">up</code> for <code class="highlighter-rouge">update</code> and <code class="highlighter-rouge">u</code> for <code class="highlighter-rouge">upgrade</code>. It has a graphical user interface which is always a nice beginner-friendly touch. Overall I would rate its beginner-friendliness at <strong>8/10</strong>.</p>
+
+<h3 id="customizability-2">Customizability</h3>
+<p>As Entropy installs software from binary packages, there is no real freedom to customize the packages to your liking. Except by, of course, writing your own ebuild, or modifying existing ebuilds, to your liking and building and installing them. Or building/installing existing ebuilds in the Portage Tree or unofficial overlays with custom USE flags enabled. As far as customizing Entropy itself, there are several files in the <code class="highlighter-rouge">/etc/entropy</code> directory that can be used to customize Entropy’s options.</p>
+
+<h3 id="development-2">Development</h3>
+<p>Entropy package development is done in three major steps:</p>
+
+<ul>
+  <li>The creation or selection of a suitable ebuild.</li>
+  <li>The building of a Portage binary package from the ebuild by issuing the command <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  ebuild $package.ebuild package</span>.
+ Or, if the ebuild is in a presently-enabled Portage overlay, run <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  emerge -b $package</span>.
+ Where <code class="highlighter-rouge">$package.ebuild</code> is the name of the ebuild, including its file extensions, relative to the present working directory.</li>
+  <li><span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  equo pkg inflate $package.tbz2</span>.
+ Where <code class="highlighter-rouge">$package.tbz2</code> is the binary package built by Portage, including its relative path to the present working directory. It is likely in the <code class="highlighter-rouge">/usr/portage/packages</code> directory.</li>
+</ul>
+
+<p>If you wish to distribute your package (like in a repository), I am afraid you are left to your own devices. That is, the Open Build Service (OBS) does not store Entropy packages and there are no other free alternatives for hosting your package repositories that I am aware of, at least.</p>
+
+<h3 id="features-2">Features</h3>
+<p>Syntactically it is similar to both APT and Portage. See its options (e.g. <code class="highlighter-rouge">--ask</code> for ask for confirmation before performing changes) are similar to Portage, but its actions are largely borrowed from APT. It cannot install packages from a URL, although it can install software from local packages. If you install a local package, that is also present (even if the version present there is different) in the Entropy repositories, then perform an upgrade odds are the package version in the Entropy repositories will be installed over it. I found its output more detailed and descriptive than APT, however, and similar in quality to that of DNF/yum. It does not support wildcards and its packages are usually not split up the way Debian and RPM packages often are. It, like Portage, can install meta-packages that serve no other purpose than to draw in several pieces of related software. For example, running <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  equo i gnome-base/gnome</span>
+ should install the core GNOME desktop components. It also has abbreviated commands (e.g. <code class="highlighter-rouge">equo i</code> is the equivalent to running <code class="highlighter-rouge">equo install</code>), which can come in handy.</p>
+
+<h3 id="speed-2">Speed</h3>
+<p>Running <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  time equo i vim</span>
+ returned:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>╠  @@ Calculating dependencies...
+╠ ::  (100.0%) Sorting dependencies ::
+╠  ## [R] [sabayonlinux.org] app-editors/vim-7.4.827|3   [7.4.827|3]
+╠  @@ Packages needing to be installed/updated/downgraded: 1
+╠  @@ Packages needing to be removed: 0
+╠  @@ Download size: 0b
+╠  @@ Freed disk space: 0.0b
+╠  @@ You need at least: 2.5MB of free space
+╠  ::: &gt;&gt;&gt;  (1/1) 1 package
+╠    ## Downloading: 1 package
+╠    ## ( mirror #1 ) [app-editors:vim-7.4.827.291a631e2a270baad1f13a4392ceb7af9191b601~3.tbz2] @ http://debian.mirror.dkm.cz
+╠   ## Aggregated download: 1 item
+╠    # [1] debian.mirror.dkm.cz =&gt; app-editors:vim-7.4.827.291a631e2a270baad1f13a4392ceb7af9191b601~3.tbz2
+╠    ## Checking package checksum...
+╠    ## ( mirror #1 ) [app-editors:vim-7.4.827.291a631e2a270baad1f13a4392ceb7af9191b601~3.tbz2] success @ http://debian.mirror.dkm.cz
+╠  +++ &gt;&gt;&gt;  (1/1) app-editors/vim-7.4.827
+╠    ## Unpacking: app-editors:vim-7.4.827.291a631e2a270baad1f13a4392ceb7af9191b601~3.tbz2
+╠    ## Package phase: setup
+╠    ## Installing package: app-editors/vim-7.4.827
+╠    ## [Vim, an improved vi-style text editor]
+╠    ## Updating installed packages repository: app-editors/vim-7.4.827
+╠    ## Cleaning previously installed application data.
+╠    ## Package phase: postremove
+ * Updating documentation tags in /usr/share/vim/vim74
+ * Calling eselect vi update...
+╠    ## Package phase: postinstall
+ * Updating documentation tags in /usr/share/vim/vim74
+ * Calling eselect vi update...
+╠    ## Cleaning: app-editors/vim-7.4.827
+╠  @@ Installation complete.
+╠  @@ Scanning configuration files to update
+╠  @@ No configuration files to update.
+
+real	0m7.621s
+user	0m5.287s
+sys	0m1.467s
+</code></pre></div></div>
+
+<p>So it took <strong>7.621s</strong> total to reinstall this package. I personally think that this figure is not representative of its speed in practice, I think it is slower than all package managers except Portage and perhaps DNF and/or yum.</p>
+
+<h3>Basic Usage</h3>
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption>Table 3: Basic Usage of Entropy</caption>
+  <tbody>
+    <tr class="green">
+      <td class="title1">Action</td>
+      <td class="title1">Command<sup>1</sup></td>
+      <td class="title1">Description</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Build package from source</td>
+      <td class="green">N/A</td>
+      <td class="green">Building a package from source has to be done over several lines and involves using tools not provided by Entropy.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install build dependencies</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo install -o $package</div>
+</td>
+      <td class="green">Install the required build dependencies for <code>$package</code>.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo install $package</div>
+</td>
+      <td class="green">Install the target package (<code>$package</code>) and all runtime dependencies.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Remove package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo remove $package</div>
+</td>
+      <td class="green">Remove the target package (<code>$package</code>) and all runtime dependencies not required by other installed packages.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Search for keyword</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo search $package</div>
+</td>
+      <td class="green">Search package names and descriptions for provided regex.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Upgrade all packages</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo update &amp;&amp; equo upgrade</div>
+</td>
+      <td class="green">Upgrade all installed packages.</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="green">
+      <td colspan="3" style="padding:5px;"><sup>1</sup>: <u>Note:</u> in this table I use the short-hand notation <code>$package</code> to refer to the target package(s) that the user wishes to perform the mentioned action on.</td>
+    </tr>
+  </tfoot>
+</table>
+<p><br /></p>
+
+<h2 id="pacman">pacman</h2>
+<p><a href="https://www.archlinux.org/pacman/"><strong>pacman</strong></a> is the default package manager of Arch Linux and its various derivatives as well as at least two supposedly “independent” distributions, Frugalware Linux and KaOS. It adheres quite strictly to the Arch philosophy of keeping it simple, at least to those that understand it well enough. See, its syntax is far from intuitive or straight-forward to a beginner, in fact, it can quite easily become confusing, but once one understands pacman and how it works well enough, it becomes clearer. It is written almost entirely in C and this likely contributes to the fact that it is probably the fastest Linux package manager available today. pacman’s first stable release was in February 2002.<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> It is not a front-end for any other lower-level package managers.</p>
+
+<p>Its packages have the <code class="highlighter-rouge">.pkg.tar.xz</code> file extension and are generated by running the <a href="https://fusion809.github.io/man/makepkg.8.html"><code class="highlighter-rouge">makepkg</code></a> command (which is provided by the <code class="highlighter-rouge">pacman</code> package) in a directory in which a specialized Bash script called a PKGBUILD is located. The PKGBUILD, analogous to a RPM file’s specfile, contains instructions read by <code class="highlighter-rouge">makepkg</code> to build the package.</p>
+
+<p>Arch Linux has two main types of repository: the pacman repositories which pacman accesses and uses to install software and the <a href="https://aur.archlinux.org/">Arch User Repository</a> (AUR). The AUR is managed by git and presently contains over 30,000 different PKGBUILDs for packages that are not in the pacman repositories and as pacman itself does not have access to this repository this leaves one with far fewer packages to choose from. Fortunately, however, several <a href="https://wiki.archlinux.org/index.php/AUR_helpers">“AUR helpers”</a> exist that have access to both the AUR and the pacman repositories. When it comes to installing packages in the AUR what many of these helpers will do is they will download the PKGBUILD (either by git cloning the AUR repository in which it lies or downloading a tarball snapshot of this repository), install any missing dependencies with either pacman or from the AUR, then build the package with <code class="highlighter-rouge">makepkg</code> and install it with pacman.</p>
+
+<p>The most popular AUR helper, which is also the one I have the greatest experience with, is Yaourt, which is written in Bash script and has a pacman-like syntax. So running <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  yaourt -S atom-editor</span>
+ should build and install <code class="highlighter-rouge">atom-editor</code> from the AUR. Trizen is another AUR helper I have used, it has a pacman-like syntax, but unlike Yaourt it is written in Perl.</p>
+
+<h3 id="beginner-friendliness-3">Beginner-Friendliness</h3>
+<p>As previously mentioned pacman has a syntax that is non-intuitive to newcomers, for example, to install a package one runs <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  pacman -S $package</span>
+ while to remove it one runs <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  pacman -Rs $package</span>.
+ If you are interested in making the transition from another package manager to pacman, I suggest you read the <a href="https://wiki.archlinux.org/index.php/Pacman/Rosetta">Pacman/Rosetta</a> article at <em>The ArchWiki</em>, along with the <a href="https://fusion809.github.io/man/pacman.8.html"><code class="highlighter-rouge">pacman</code></a> man page. pacman has no officially-supported graphical front-end, although unofficial front-ends (such as Octopi and Pamac) exist and are included, by default, in the Arch derivative, Manjaro Linux.</p>
+
+<p>Its basic syntax is:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman [<em>options</em>] [action] [<b>target</b>(<b>s</b>)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="background-color: #c4c4ff; color: red; font-style: italic;">(3)</span></div>
+
+<h3 id="customizability-3">Customizability</h3>
+<p>pacman’s settings (like a list of enabled repositories) are stored in <code class="highlighter-rouge">/etc/pacman.conf</code>, but as pacman is a binary package manager some freedom is taken away from the user, in terms of customizing their system. Despite this, Arch Linux has the <a href="https://wiki.archlinux.org/index.php/Arch_Build_System">Arch Build System</a> (ABS), a Portage Tree-like set of subdirectories found in <code class="highlighter-rouge">/var/abs/</code> that contain the PKGBUILDs and associated other files used to build the software in the pacman repositories. The ABS is not included, by default, on Arch Linux, however, it has to be installed by the user and setup. Once installed, it is possible that the user can use it to customize all packages installed on their system to their liking and any extra packages they would like to install.</p>
+
+<h3 id="development-3">Development</h3>
+<p>Developing pacman packages is far simpler than developing any other packages mentioned in this post. See it involves just writing PKGBUILDs, which are easier to write, in my opinion, than ebuilds, rules files and spec files. Once one is written or desired adjustments are made to one, the user can test it by running <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  makepkg -s</span>
+ from within the PKGBUILD’s directory. This will download the upstream source code packages required, if they are not already in the PKGBUILD’s directory, install any required build dependencies for the package and build it, by following the instructions within the PKGBUILD.</p>
+
+<h3 id="features-3">Features</h3>
+<p>pacman’s feature set is fairly limited compared to other package managers mentioned in this post, with respect to previously mentioned features, at least. It does not have an <code class="highlighter-rouge">autoremove</code> (it is possible to do an autoremove though, by piping the output of one pacman command through another, namely by running <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  pacman -Qdtq | pacman -Rs</span>)
+ or <code class="highlighter-rouge">builddep</code> action (although the <code class="highlighter-rouge">makepkg</code> command can be passed the <code class="highlighter-rouge">-s</code> option to get it to install all required build dependencies, prior to making a package), nor does it support the use of wildcards. It also provides fewer details in its output than DNF or Entropy. It does support the use of meta-packages or package groups to automate the installation of a large group of related packages. For example, <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  pacman -S gnome</span>
+ should install all the basic components of the GNOME desktop. While <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  pacman -S gnome-extra</span>
+ installs assorted extra packages related to GNOME like its core application suite.</p>
+
+<p>pacman does have several actions that can be built into a single pacman command, though, giving it more power and compactness in its syntax than more beginner-friendly package managers like APT or DNF. For example, <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  pacman -Syyu $package</span>
+ can be used to synchronize local repositories, upgrade all installed packages on the system (note this will not upgrade packages installed via the AUR or custom PKGBUILDs) and install the package(s) specified in <code class="highlighter-rouge">$package</code>. This is as opposed to <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  apt-get update &amp;&amp; apt-get upgrade &amp;&amp; apt-get install $package</span>
+ for APT and <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  dnf update &amp;&amp; dnf install $package</span>
+ for DNF.</p>
+
+<p>pacman can download and install packages from a specified URL too, using the <code class="highlighter-rouge">-U</code> option.</p>
+
+<h3 id="speed-3">Speed</h3>
+<p>From <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  time pacman -S vim ‐‐noconfirm</span>
+ I received the output:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>warning: vim-7.4.1294-1 is up to date -- reinstalling
+resolving dependencies...
+looking for conflicting packages...
+
+Packages (1) vim-7.4.1294-1
+
+Total Installed Size:  2.70 MiB
+Net Upgrade Size:      0.00 MiB
+
+:: Proceed with installation? [Y/n]
+(1/1) checking keys in keyring                     [######################] 100%
+(1/1) checking package integrity                   [######################] 100%
+(1/1) loading package files                        [######################] 100%
+(1/1) checking for file conflicts                  [######################] 100%
+(1/1) checking available disk space                [######################] 100%
+:: Processing package changes...
+(1/1) reinstalling vim                             [######################] 100%
+
+real	0m0.464s
+user	0m0.227s
+sys	0m0.067s
+</code></pre></div></div>
+
+<p>so it took <strong>0.464s</strong> total to reinstall this package. I think this time is very fair, as in my experience pacman is the fastest Linux package manager I have ever used.</p>
+
+<h3>Basic Usage</h3>
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption>Table 4: Basic Usage of pacman</caption>
+  <tbody>
+    <tr class="green">
+      <td class="title1">Action</td>
+      <td class="title1">Command<sup>1</sup></td>
+      <td class="title1">Description</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Build package from source</td>
+      <td class="green"><div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;makepkg</div>
+</td>
+      <td class="green">Build package from source, using instructions in the PKGBUILD in the present working directory (PWD).</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install build dependencies</td>
+      <td class="green"><div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;makepkg -s</div>
+</td>
+      <td class="green">Install the required build dependencies for package's whose PKGBUILD is in the PWD.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -S $package</div>
+</td>
+      <td class="green">Install the target package (<code>$package</code>) and all runtime dependencies.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Remove package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -Rs $package</div>
+</td>
+      <td class="green">Remove the target package (<code>$package</code>) and all runtime dependencies not required by other installed packages.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Search for keyword</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -Ss $package</div>
+</td>
+      <td class="green">Search package names and descriptions for provided regex.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Upgrade all packages</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;pacman -Syu</div>
+</td>
+      <td class="green">Upgrade all installed packages present in the pacman repositories.</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="green">
+      <td colspan="3" style="padding:5px;"><sup>1</sup>: <u>Note:</u> in this table I use the short-hand notation <code>$package</code> to refer to the target package(s) that the user wishes to perform the mentioned action on.</td>
+    </tr>
+  </tfoot>
+</table>
+<p><br /></p>
+
+<h2 id="portage">Portage</h2>
+<p><a href="https://wiki.gentoo.org/wiki/Portage"><strong>Portage</strong></a> is the default package manager of Gentoo Linux and many of its derivatives, including Calculate and Funtoo Linux. The main command that invokes Portage from the command-line, is <a href="https://fusion809.github.io/man/emerge.1.html"><code class="highlighter-rouge">emerge</code></a>. It is written in Python and Bash script and unlike all other package managers mentioned in this post it works with source code packages, by default. As such there are several differences between it and other package managers, in term of how it operates.</p>
+
+<p>Its chief repository is found in the <code class="highlighter-rouge">/usr/portage</code> directory (the so called “Portage Tree”, it can be searched from <a href="https://packages.gentoo.org">this website</a>), which is structured similarly to the FreeBSD ports system and contains ebuilds, a specialized type of Bash script, along with patch files and Manifests (a file that contains checksums and file size information about ebuilds and other files). This structure is such that the top-level subdirectory of <code class="highlighter-rouge">/usr/portage</code> is for package categories like <code class="highlighter-rouge">app-editors</code> for text editors, <code class="highlighter-rouge">x11-wm</code> for window managers, <em>etc.</em>, the next lower level is for specific packages (e.g. <code class="highlighter-rouge">/usr/portage/app-editors/gvim</code> is where gVim ebuilds and related files can be found). ebuilds contain instructions that Portage can use to build a binary software package (in the <code class="highlighter-rouge">.tbz2</code> format) and/or install the software package from source code or a binary package from another distribution (e.g. Debian packages and RPM packages).</p>
+
+<p>Additional Portage repositories (which are more commonly referred to as <em>overlays</em>), have the same internal file structure to the Portage Tree, that is, their top-level subdirectories are package categories and their subdirectories are for specific packages. They are managed by a tool also developed by the Gentoo Foundation called Layman which stores its repositories in the <code class="highlighter-rouge">/var/lib/layman</code> directory. For example, <code class="highlighter-rouge">/var/lib/layman/sabayon-tools</code>, if it exists on one’s system, would contain my Portage overlay, <a href="https://github.com/fusion809/sabayon-tools"><code class="highlighter-rouge">sabayon-tools</code></a>. Layman is written in Python too and is not included with Gentoo Linux by default (although it is included with Sabayon Linux, by default) and instead has to be installed with Portage before it can be used.</p>
+
+<h3 id="beginner-friendliness-4">Beginner-Friendliness</h3>
+<p>Portage is probably the least beginner-friendly package management system mentioned in this post, its syntax is less than intuitive and quite frequently installing, removing and upgrading software is not as simple as running a single command. This is due to USE flag constraints, package conflicts, <em>etc.</em>, that the user sometimes has to deal with. It has no official graphical front-ends, although an unofficial GTK-based one called Porthole (<a href="https://packages.gentoo.org/packages/app-portage/porthole"><code class="highlighter-rouge">app-portage/porthole</code></a>) is available from the Portage Tree. Despite this it does have pretty high-quality documentation for a Linux package manager, so the really motivated and persistent beginners could probably learn how to use it without needing help from others. Overall I would rank it at <strong>2-3/10</strong> for beginner-friendliness.</p>
+
+<p>Its basic syntax is:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge [<em>options</em>] [<em>action</em>] [<em>ebuild</em> | <em>tbz2file</em> | <em>file</em> | <em>@set</em> | <em>atom</em>]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="background-color: #c4c4ff; color: red; font-style: italic;">(4)</span></div>
+
+<p>For further details on its syntax go <a href="https://fusion809.github.io/2015/12/24/package-management-on-sabayon#emerge-syntax">here</a>.</p>
+
+<h3 id="customizability-4">Customizability</h3>
+<p>Being a source code package manager, Portage affords users almost infinite control over the packages on their system. It does this via the specification of so called “USE flags”. They are usually options that ebuilds pass to the respective configure script of the package they build. The Portage Tree (PT) and unofficial Portage overlays usually contain several different versions of the same package too (each with different ebuilds), hence affording users a choice of multiple different versions of the same package. For example, the <a href="https://packages.gentoo.org/packages/x11-wm/enlightenment"><code class="highlighter-rouge">x11-wm/enlightenment</code></a> package (which is for the Enlightenment window manager) at the time of writing has the following different versions available in the PT:</p>
+
+<ul>
+  <li>0.16.9999</li>
+  <li>0.17.9999</li>
+  <li>0.18.8</li>
+  <li>0.19.10</li>
+  <li>0.19.12</li>
+  <li>0.20.1</li>
+  <li>0.20.2</li>
+  <li>1.0.11</li>
+  <li>1.0.17</li>
+</ul>
+
+<p>These packages also differ in their allowed USE flags, the 0.20.2 package has the <code class="highlighter-rouge">wayland</code> USE flag, for example, which if enabled will build the package with Wayland support. Additionally one is free to set up one’s own overlay, like I have, and install one’s own custom packages using it.</p>
+
+<h3 id="development-4">Development</h3>
+<p>Package development with Portage is easier than developing Debian packages, about as difficult as developing RPM packages and more difficult than writing PKGBUILDs and developing pacman packages, in my opinion. By package development I mean both writing working ebuilds and building binary packages from them. Writing ebuilds is a skill that comes slowly and only by doing several examples, and having a good knowledge of Bash syntax is a prerequisite for doing it well. Those interested in writing ebuilds may wish to read the <a href="https://fusion809.github.io/man/ebuild.1.html"><code class="highlighter-rouge">ebuild</code></a> command man page and the <a href="https://fusion809.github.io/man/ebuild.5.html"><code class="highlighter-rouge">ebuild</code></a> file format man page, both of which are hosted on this site.</p>
+
+<h3 id="features-4">Features</h3>
+<p>Portage is one of the most feature-packed package managers out there. Its output can be made more detailed (or verbose) by passing the <code class="highlighter-rouge">--verbose/-v</code> flag to it. The <code class="highlighter-rouge">--buildpkgonly/-B</code> option can be passed to get it to only build a binary package and not install the program into the live file system. It does not do installs from a specified URL, although it can be used to install local binary packages, although they have to be in a specific location in the root file system. The way it downloads the source files, that are used to build the package, is via wget and, if possible, rsync.</p>
+
+<h3 id="speed-4">Speed</h3>
+<p>Portage is, by far, the slowest package manager compared in this comparison, as it builds software packages from source code, by default. To test its speed I ran <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  time emerge app-editors/vim::sabayon-tools</span>
+ when the latest version of Vim (and the version in my <code class="highlighter-rouge">sabayon-tools</code> overlay) was 7.4.1342, the full output it gave was very long so I have placed it <a href="https://gist.github.com/c32ec431120dd5b90947">here</a> and rather I will just give the time it took to reinstall <code class="highlighter-rouge">app-editors/vim</code> (none of the related packages like <code class="highlighter-rouge">vim-core</code> or <code class="highlighter-rouge">gvim</code>):</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>real	3m18.828s
+user	2m6.109s
+sys	0m20.541s
+</code></pre></div></div>
+
+<h3>Basic Usage</h3>
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption>Table 5: Basic Usage of Portage</caption>
+  <tbody>
+    <tr class="green">
+      <td class="title1">Action</td>
+      <td class="title1">Command<sup>1</sup></td>
+      <td class="title1">Description</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Build package from source</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -B $package</div>
+</td>
+      <td class="green">Building packages from source code is as simple as passing the necessary flag to <code>emerge</code>.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install build dependencies</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -o $package</div>
+</td>
+      <td class="green">Install the required build dependencies for <code>$package</code>.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge $package</div>
+</td>
+      <td class="green">Install the target package (<code>$package</code>) and all runtime dependencies.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Remove package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -C $package</div>
+</td>
+      <td class="green">Remove the target package (<code>$package</code>) and all runtime dependencies not required by other installed packages.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Search for keyword</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge --search $package</div>
+</td>
+      <td class="green">Search package names and descriptions for provided regex.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Upgrade all packages</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge --sync<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;layman -S<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;emerge -uDU --with-bdeps=y @world</div>
+</td>
+      <td class="green">Upgrade all installed packages, after synchronizing (with their respective version control system) the Portage Tree and all locally-installed overlays.</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="green">
+      <td colspan="3" style="padding:5px;"><sup>1</sup>: <u>Note:</u> in this table I use the short-hand notation <code>$package</code> to refer to the target package(s) that the user wishes to perform the mentioned action on.</td>
+    </tr>
+  </tfoot>
+</table>
+<p><br /></p>
+
+<h2 id="yum">yum</h2>
+<p><a href="http://yum.baseurl.org/"><strong>Yellowdog Updater, Modified</strong></a> (<strong>yum</strong>) is a front-end for the RPM package manager that is written in Python. Prior to the release of Fedora 22 in May 2015 it was the default package manager of Fedora, and it is still the default package manager of CentOS, Oracle Linux, Red Hat Enterprise Linux (RHEL) and Scientific Linux. yum, as its name suggests, started off as a modified version of the Yellowdog Updater (YUP) used by the Yellow Dog Linux distribution, that was developed for use by the Red Hat Linux systems at Duke University in the early 2000s. RHL at the time used the up2date package manager. Later yum was adopted by CentOS, Fedora and their descendants, along with Yellow Dog Linux itself. Its development has since been ceased in favour of its supposedly faster successor, <a href="#dnf">DNF</a>.</p>
+
+<h3 id="beginner-friendliness-5">Beginner-Friendliness</h3>
+<p>Like DNF <a href="https://fusion809.github.io/man/yum.8.html"><code class="highlighter-rouge">yum</code></a>’s syntax is fairly intuitive with <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  yum install $package</span>
+ to install a package and <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  yum remove $package</span>
+ to uninstall it. It also has the Qt-based Apper and GTK+ based GNOME Software graphical front-ends available. I would personally rate it at <strong>7-8/10</strong> for beginner-friendliness.</p>
+
+<p>Its basic syntax is:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum [<i>action</i>] [option(s)] [<b>target</b>(<b>s</b>)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="background-color: #c4c4ff; color: red; font-style: italic;">(5)</span></div>
+
+<h3 id="customizability-5">Customizability</h3>
+<p>As yum is a binary package manager its packages cannot be as easily customized as source code packages would be. Source code packages can be downloaded though (with the command <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  yumdownloader ‐‐source $package</span>),
+ modified, rebuilt and installed as described in the DNF section of this post.</p>
+
+<h3 id="development-5">Development</h3>
+<p>Developing packages for yum is the same as developing DNF packages as they are both RPM packages. You can use the <a href="http://fedoraproject.org/wiki/How_to_create_an_RPM_package">method</a> outlined at the <em>Fedora Wiki</em> or using the Open Build Service.</p>
+
+<h3 id="features-5">Features</h3>
+<p>Like its descendant, DNF, yum has in-built support for downloading and then installing software packages from a specified URL, via running:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum install $URL</div>
+
+<p>all features mentioned for DNF also exist for yum, including group installs.</p>
+
+<h3 id="speed-5">Speed</h3>
+<p>The output of <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  time yum reinstall -y vim-common</span>
+ was:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Loaded plugins: fastestmirror, langpacks
+Loading mirror speeds from cached hostfile
+ * base: mirror.overthewire.com.au
+ * extras: mirror.overthewire.com.au
+ * updates: mirror.overthewire.com.au
+Resolving Dependencies
+--&gt; Running transaction check
+---&gt; Package vim-common.x86_64 2:7.4.160-1.el7 will be reinstalled
+--&gt; Finished Dependency Resolution
+
+Dependencies Resolved
+
+================================================================================
+ Package            Arch           Version                   Repository    Size
+================================================================================
+Reinstalling:
+ vim-common         x86_64         2:7.4.160-1.el7           base         5.9 M
+
+Transaction Summary
+================================================================================
+Reinstall  1 Package
+
+Total download size: 5.9 M
+Installed size: 21 M
+Downloading packages:
+vim-common-7.4.160-1.el7.x86_64.rpm                        | 5.9 MB   00:06     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : 2:vim-common-7.4.160-1.el7.x86_64                            1/1
+  Verifying  : 2:vim-common-7.4.160-1.el7.x86_64                            1/1
+
+Installed:
+  vim-common.x86_64 2:7.4.160-1.el7                                             
+
+Complete!
+
+real    0m14.461s
+user    0m3.574s
+sys     0m1.619s
+</code></pre></div></div>
+
+<p>discounting the time taken to perform the download (6 seconds) this give a real time to reinstall <code class="highlighter-rouge">vim-common</code> of <strong>8.461s</strong>. Must admit this seems wrong as it is less time than DNF took to install the same package. I think the time measured is unfair and not really representative of its speed, I believe it is slower than all package managers I have used except Entropy and Portage.</p>
+
+<h3>Basic Usage</h3>
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption>Table 6: Basic Usage of yum</caption>
+  <tbody>
+    <tr class="green">
+      <td class="title1">Action</td>
+      <td class="title1">Command<sup>1</sup></td>
+      <td class="title1">Description</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Add a repository</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum config-manager --add-repo $URL</div>
+</td>
+      <td class="green">Add a yum repository, the $URL must be to the repository's <code>.repo</code> file.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Build package from source</td>
+      <td class="green">N/A</td>
+      <td class="green">Building a package from source has to be done over several lines and involves using tools not provided by yum.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install build dependencies</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum-builddep $package</div>
+</td>
+      <td class="green">Install the required build dependencies for <code>$package</code>.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum install $package</div>
+</td>
+      <td class="green">Install the target package (<code>$package</code>) and all runtime dependencies.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Remove package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum remove $package</div>
+</td>
+      <td class="green">Remove the target package (<code>$package</code>) and all runtime dependencies not required by other installed packages.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Search for keyword</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum search $package</div>
+</td>
+      <td class="green">Search package metadata (including name, description, URL, <i>etc.</i>) for provided regex.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Upgrade all packages</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum update</div>
+</td>
+      <td class="green">Upgrade all installed packages.</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="green">
+      <td colspan="3" style="padding:5px;"><sup>1</sup>: <u>Note:</u> in this table I use the short-hand notations <code>$package</code> and <code>$URL</code> to refer to the target package(s) or repository URL, respectively, that the user wishes to perform the mentioned action on.</td>
+    </tr>
+  </tfoot>
+</table>
+<p><br /></p>
+
+<h2 id="zypp">ZYpp</h2>
+<p><a href="https://en.opensuse.org/Portal:Zypper"><strong>ZYpp</strong></a> (also known as <strong>libzypp</strong>) is the default package manager of openSUSE, SUSE Linux Enterprise (SLE) and their derivatives. ZYpp provides the libraries for openSUSE’s command-line package manager, <a href="https://fusion809.github.io/man/zypper.8.html"><code class="highlighter-rouge">zypper</code></a> and its graphical package manager, YaST2. ZYpp serves as a front-end for the RPM package manager, providing advanced features like repository management, dependency resolution, <em>etc.</em>, making it similar to DNF and yum in that regard. ZYpp, unlike most other RPM package manager front-ends I am aware of (the only exception is, of course, APT-RPM), is written predominantly in the compiled language, C++, as opposed to DNF and yum which are written mostly in the interpreted language, Python, and urpmi (from Mageia/Mandriva/OpenMandriva) which is written in the interpreted language, Perl. The significance of this, from the point of view of users, is that it may give ZYpp a speed advantage over these package managers. Zypper is written in C++ too while YaST is written in Ruby (another interpreted language, equally, if not more, slow than Perl or Python).</p>
+
+<h3 id="beginner-friendliness-6">Beginner-Friendliness</h3>
+<div class="image-box" style="width:600px; float: right;">
+<figure>
+  <img src="https://fusion809.github.io/images/Package-Managers/YaST2-control-centre.png" alt="The YaST2 Control Center" style="width:600px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(600px-5px); float: right;"><p>The YaST2 Control Center</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p>ZYpp is a fairly beginner-friendly package manager. Zypper has an intuitive syntax, which includes abbreviated commands such as <code class="highlighter-rouge">zypper in</code> for <code class="highlighter-rouge">zypper install</code>, <code class="highlighter-rouge">zypper rm</code> for <code class="highlighter-rouge">zypper remove</code> and <code class="highlighter-rouge">zypper up</code> for <code class="highlighter-rouge">zypper update</code>. YaST2 is probably the most powerful graphical package management system I have ever used, in that it gives users the greatest number of options, with which to configure their system. YaST2 is also the default installer of openSUSE, that is, it is used to install the openSUSE operating system. Overall I would rate it as <strong>9/10</strong> for beginner-friendliness.</p>
+
+<div style="clear:both;"></div>
+
+<p>Its basic syntax is:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper [<i>action</i>] [option(s)] [<b>target</b>(<b>s</b>)]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <span style="background-color: #c4c4ff; color: red; font-style: italic;">(6)</span></div>
+
+<div style="clear:both;"></div>
+
+<h3 id="customizability-6">Customizability</h3>
+<p>ZYpp, being a binary package manager, does not afford users much control over installed packages, although, it is possible to download the source packages (that is, the packages with the file extension <code class="highlighter-rouge">.src.rpm</code>) of installed packages, customize them and install the customized package.</p>
+
+<h3 id="development-6">Development</h3>
+<p>As ZYpp works with RPM packages, following the <a href="http://fedoraproject.org/wiki/How_to_create_an_RPM_package"><em>Fedora Wiki</em></a> instructions should suffice. It essentially involves creating a mock user called <code class="highlighter-rouge">makerpm</code>, with the required file system structure, getting the required spec file, source code files, <em>etc.</em> into their respective locations in your <code class="highlighter-rouge">/home/makerpm/rpmbuild</code> directory and finally running <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  rpmbuild -ba $specfile.spec</span>
+ (from the <code class="highlighter-rouge">rpmdevtools</code> package, which is not in the default repositories of any presently-supported openSUSE version, so to add it I recommend you use the <code class="highlighter-rouge">devel:tools</code> repository. <a href="https://software.opensuse.org/download.html?project=devel%3Atools&amp;package=rpmdevtools">Here</a> is where you can find one-click install files and installation instructions for the <code class="highlighter-rouge">rpmdevtools</code> package from this repository).</p>
+
+<p>Here is an example <code class="highlighter-rouge">/home/makerpm/rpmbuild</code> directory structure, to serve as a guide for the discussion that follows:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>.
+├── BUILD
+│   ├── atom-1.5.3.tar.gz
+│   └── atom-1.6.0-beta3
+├── BUILDROOT
+│   ├── atom-0.194.0-1.x86_64
+│   ├── atom-1.4.3-1.x86_64
+│   ├── atom-1.5.2-0.x86_64
+│   └── atom-beta-1.6.0-3.x86_64
+├── OTHER
+│   ├── atom.cpio.rsasign
+│   ├── pesign-repackage.spec
+│   ├── vim-7.4-rpmlintrc
+│   └── vim.cpio.rsasign
+├── RPMS
+│   ├── noarch
+│   └── x86_64
+├── SOURCES
+│   ├── apparmor.vim
+│   ├── atom-beta.desktop
+│   ├── atom.desktop
+│   ├── gvim.desktop
+│   ├── gvim.png
+│   ├── gvim.svg
+│   ├── missing-vim-client
+│   ├── README.Japanese-XIM
+│   ├── spec.skeleton
+│   ├── suse.gvimrc
+│   ├── suse.vimrc
+│   ├── v1.5.3.tar.gz
+│   ├── v1.6.0-beta3.tar.gz
+│   ├── v7.4.1344.tar.gz
+│   ├── vim132
+│   ├── vim-7.1.314-CVE-2009-0316-debian.patch
+│   ├── vim-7.3-filetype_changes.patch
+│   ├── vim-7.3-filetype_ftl.patch
+│   ├── vim-7.3-filetype_spec.patch
+│   ├── vim-7.3-gvimrc_fontset.patch
+│   ├── vim-7.3-help_tags.patch
+│   ├── vim-7.3-mktemp_tutor.patch
+│   ├── vim-7.3-name_vimrc.patch
+│   ├── vim73-no-static-libpython.patch
+│   ├── vim-7.3-sh_is_bash.patch
+│   ├── vim-7.3-use_awk.patch
+│   ├── vim-7.4-disable_lang_no.patch
+│   ├── vim-7.4-filetype_apparmor.patch
+│   ├── vim-7.4-filetype_mine.patch
+│   ├── vim-7.4-highlight_fstab.patch
+│   ├── vim-7.4-rpmlintrc
+│   ├── vim.changes
+│   ├── vimrc_example1
+│   ├── vimrc_example2
+│   ├── vitmp.1
+│   └── vitmp.c
+├── SPECS
+│   ├── atom-beta.spec
+│   ├── atom.spec
+│   ├── build-rpm
+│   └── vim.spec
+├── SRPMS
+│   ├── atom-1.5.3-0.src.rpm
+│   └── vim-7.4.1344-0.src.rpm
+</code></pre></div></div>
+
+<p>The contents of the <code class="highlighter-rouge">BUILD</code>, <code class="highlighter-rouge">BUILDROOT</code>, <code class="highlighter-rouge">RPMS</code>, <code class="highlighter-rouge">SRPMS</code> and <code class="highlighter-rouge">OTHER</code> folders are generated automatically when <code class="highlighter-rouge">rpmbuild</code> is run, so you need not worry yourself about their content. It is the content of the <code class="highlighter-rouge">SOURCES</code> and <code class="highlighter-rouge">SPECS</code> directories that package developers have to concern themselves with. <code class="highlighter-rouge">SOURCES</code> contains the package’s upstream source, along with any patches or other files that are specified as sources in the package’s spec file. <code class="highlighter-rouge">SPECS</code> contains the most important file of all to RPM development, the one that package developers likely spend the greatest amount of time writing and fixing, the spec file (which has the <code class="highlighter-rouge">.spec</code> file extension). The <code class="highlighter-rouge">build-rpm</code> subdirectory in this directory can be ignored as it too is built automatically when <code class="highlighter-rouge">rpmbuild</code> is run. One thing about the <code class="highlighter-rouge">rpmbuild</code> command that I really dislike is that it cannot download the upstream source code file for you, and place it in the <code class="highlighter-rouge">SOURCES</code> directory if it is not already there. pacman’s <code class="highlighter-rouge">makepkg</code> command and Portage’s <code class="highlighter-rouge">ebuild</code> command do this automatically for users.</p>
+
+<p>Alternatively, for most packages you can use the <a href="https://en.opensuse.org/openSUSE:Build_Service_Tutorial"><strong>Open Build Service</strong></a>, which can also be run locally without ever submitting the package to one’s OBS repository. Some packages cannot be built using the OBS though, which is something I found out when I was trying to build my first RPM package, ironically, which was the <a href="https://atom.io">Atom text editor</a>.<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup> It was an exception as the OBS does <strong>not</strong> give packages Internet access during compilation. The Atom text editor is built or compiled by running the <code class="highlighter-rouge">script/build</code> command in its source’s top-level directory, which requires Internet access as it downloads several Node.js modules and <a href="https://electron.atom.io">Electron</a> using git and compiles them. A solution I came up with that ended up crashing and burning (refer to the forum thread mentioned in <sup id="fnref:3:1"><a href="#fn:3" class="footnote">3</a></sup>) was to compress a source code directory in which <code class="highlighter-rouge">script/build</code> had been run already (and as this command compiles everything in the source directory, this should have meant that I would not have to run <code class="highlighter-rouge">script/build</code> again in my atom spec file) and use that as the spec file’s source.</p>
+
+<h3 id="features-6">Features</h3>
+<p>ZYpp is very feature-packed, it possesses all the features previously mentioned of DNF, with one exception: group installs. Instead if you wish to install a group of packages you have to use patterns, similarly to APT’s tasks. For example, to install all members of the pattern <code class="highlighter-rouge">books</code> one would run: <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  zypper in -t pattern books</span>.
+ To list all available patterns run <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  zypper pt</span>.
+ YaST2 can also do so called “one-click installs”, wherein you click a button on a webpage, that is hyperlinked to a file with the <code class="highlighter-rouge">.ymp</code> file extension, which if your web browser preferences are set properly, should automatically download. If you click on the file either in your browser or in your file manager, it will open YaST2 which will, with your permission, attempt to install the package (or even group of packages specified by some pattern) specified in the <code class="highlighter-rouge">.ymp</code> file. This system can be handy (and a time-saver) when one wishes to install a package from a repository not presently added, although if I already have the repository in question added, I usually prefer to use <code class="highlighter-rouge">zypper</code> to install the package.</p>
+
+<h3 id="speed-6">Speed</h3>
+<p>On openSUSE Tumbleweed running <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  time zypper ‐‐no-refresh in -y ‐‐force vim</span>
+ returned:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Loading repository data...
+Reading installed packages...
+Forcing installation of 'vim-8.0.130-1.1.x86_64' from repository 'Main Repository (OSS)'.
+Resolving package dependencies...
+
+The following package is going to be reinstalled:
+  vim
+
+1 package to reinstall.
+Overall download size: 0 B. Already cached: 1.4 MiB. No additional space will be used or
+freed after the operation.
+Continue? [y/n/? shows all options] (y): y
+In cache vim-8.0.130-1.1.x86_64.rpm                (1/1),   1.4 MiB (  2.9 MiB unpacked)
+Checking for file conflicts: .....................................................[done]
+(1/1) Installing: vim-8.0.130-1.1.x86_64 .........................................[done]
+zypper --no-refresh install -y --force vim  1.02s user 0.22s system 14% cpu 8.338 total
+</code></pre></div></div>
+
+<p>giving time of <code class="highlighter-rouge">1.02s</code>. Making it the second-fastest package manager in this comparison.</p>
+
+<h3>Basic Usage</h3>
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption>Table 7: Basic Usage of zypper</caption>
+  <tbody>
+    <tr class="green">
+      <td class="title1">Action</td>
+      <td class="title1">Command<sup>1</sup></td>
+      <td class="title1">Description</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Add a repository</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper ar -f $URL</div>
+</td>
+      <td class="green">Add a zypper repository, the <code>$URL</code> must be to the repository's <code>.repo</code> file.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install build dependencies</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper source-install -d $package</div>
+</td>
+      <td class="green">Install the required build dependencies for <code>$package</code>.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper install $package</div>
+</td>
+      <td class="green">Install the target package (<code>$package</code>) and all runtime dependencies.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Install package from source</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper source-install $package</div>
+</td>
+      <td class="green">Install package from <code>.src.rpm</code>.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Remove package</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper remove $package</div>
+</td>
+      <td class="green">Remove the target package (<code>$package</code>) and all runtime dependencies not required by other installed packages.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Search for keyword</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper search $package</div>
+</td>
+      <td class="green">Search package metadata (including name, description, URL, <i>etc.</i>) for provided regex.</td>
+    </tr>
+    <tr class="green">
+      <td class="title1">Upgrade all packages</td>
+      <td class="green"><div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper update</div>
+</td>
+      <td class="green">Upgrade all installed packages.</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr class="green">
+      <td colspan="3" style="padding:5px;"><sup>1</sup>: <u>Note:</u> in this table I use the short-hand notations <code>$package</code> and <code>$URL</code> to refer to the target package(s) or repository URL, respectively, that the user wishes to perform the mentioned action on.</td>
+    </tr>
+  </tfoot>
+</table>
+<p><br /></p>
+
+<h2>Summary</h2>
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption>Table 8: A Summary of Package Managers</caption>
+    <tbody>
+      <tr class="green">
+        <td class="title1" style="width:120px;">Package Manager</td>
+        <td class="title1" style="width:45px;"><abbr title="Beginner-Friendliness">BF</abbr></td>
+        <td class="title1" style="width:45px;"><abbr title="Are both Binary and Source package installs possible with a single command?">BS</abbr></td>
+        <td class="title1" style="width:45px;"><abbr title="Customizability">CMB</abbr></td>
+        <td class="title1" style="width:45px;"><abbr title="Download and Install Package from URL">DIP</abbr></td>
+        <td class="title1" style="width:45px;"><abbr title="Ease of Package Development">EOD</abbr></td>
+        <td class="title1" style="width:45px;"><abbr title="Does this Package Manager have an official Graphical User Interface?">GUI</abbr></td>
+        <td class="title1" style="width:45px;"><abbr title="One-Click Install supported?">OCI</abbr></td>
+        <td class="title1" style="width:140px;"><abbr title="Package File Extension/Name">PFE</abbr></td>
+        <td class="title1" style="width:45px;"><abbr title="Shortened Commands">SC</abbr></td>
+        <td class="title1" style="width:60px;"><abbr title="Time taken to reinstall Vim package">TR</abbr></td>
+        <td class="title1" style="width:45px;"><abbr title="Wildcard Support?">WC</abbr></td>
+      </tr>
+      <tr title="green">
+        <td class="title6"><a href="#apt">APT</a></td>
+        <td class="green">5-7</td>
+        <td class="no">No</td>
+
+        <td class="green">1-4</td>
+        <td class="no">No</td>
+
+        <td class="green">1-4</td>
+        <td class="yes">Yes</td>
+
+        <td class="yes">Yes</td>
+
+        <td class="green"><code>.deb</code>, <code>.rpm</code> (APT-RPM)</td>
+        <td class="no">No</td>
+
+        <td class="green">2.783s</td>
+        <td class="yes">Yes</td>
+
+      </tr>
+      <tr title="green">
+        <td class="title6"><a href="#dnf">DNF</a></td>
+        <td class="green">8</td>
+        <td class="no">No</td>
+
+        <td class="green">5</td>
+        <td class="yes">Yes</td>
+
+        <td class="green">5-6</td>
+        <td class="yes">Yes</td>
+
+        <td class="no">No</td>
+
+        <td class="green"><code>.rpm</code>, <code>.src.rpm</code></td>
+        <td class="no">No</td>
+
+        <td class="green">16.853s, <br />11.977s (DNF 2.1.0)</td>
+        <td class="yes">Yes</td>
+
+      </tr>
+      <tr title="green">
+        <td class="title6"><a href="#entropy">Entropy</a></td>
+        <td class="green">8</td>
+        <td class="no">No</td>
+
+        <td class="green">7</td>
+        <td class="yes">Yes</td>
+
+        <td class="green">5-7</td>
+        <td class="yes">Yes</td>
+
+        <td class="no">No</td>
+
+        <td class="green"><code>.tbz2</code></td>
+        <td class="yes">Yes</td>
+
+        <td class="green">7.621s</td>
+        <td class="no">No</td>
+
+      </tr>
+      <tr title="green">
+        <td class="title6"><a href="#pacman">pacman</a></td>
+        <td class="green">6</td>
+        <td class="yes">Yes</td>
+
+        <td class="green">8-9</td>
+        <td class="no">No</td>
+
+        <td class="green">9</td>
+        <td class="no">No</td>
+
+        <td class="no">No</td>
+
+        <td class="green"><code>.pkg.tar.xz</code>, <code>PKGBUILD</code></td>
+        <td class="no">No</td>
+
+        <td class="green">0.464s</td>
+        <td class="no">No</td>
+
+      </tr>
+      <tr title="green">
+        <td class="title6"><a href="#portage">Portage</a></td>
+        <td class="green">2-3</td>
+        <td class="yes">Yes</td>
+
+        <td class="green">9</td>
+        <td class="no">No</td>
+
+        <td class="green">7-8</td>
+        <td class="no">No</td>
+
+        <td class="no">No</td>
+
+        <td class="green"><code>.ebuild</code>, <code>.tbz2</code></td>
+        <td class="yes">Yes</td>
+
+        <td class="green">198.83s</td>
+        <td class="no">No</td>
+
+      </tr>
+      <tr title="green">
+        <td class="title6"><a href="#yum">yum</a></td>
+        <td class="green">7-8</td>
+        <td class="no">No</td>
+
+        <td class="green">5</td>
+        <td class="yes">Yes</td>
+
+        <td class="green">5-6</td>
+        <td class="yes">Yes</td>
+
+        <td class="no">No</td>
+
+        <td class="green"><code>.rpm</code>, <code>.src.rpm</code></td>
+        <td class="no">No</td>
+
+        <td class="green">8.461s</td>
+        <td class="yes">Yes</td>
+
+      </tr>
+      <tr title="green">
+        <td class="title6"><a href="#zypp">ZYpp</a></td>
+        <td class="green">9</td>
+        <td class="yes">Yes</td>
+
+        <td class="green">6</td>
+        <td class="yes">Yes</td>
+
+        <td class="green">5-6</td>
+        <td class="yes">Yes</td>
+
+        <td class="yes">Yes</td>
+
+        <td class="green"><code>.rpm</code>, <code>.src.rpm</code></td>
+        <td class="yes">Yes</td>
+
+        <td class="green">1.02s</td>
+        <td class="yes">Yes</td>
+
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr title="green">
+        <td class="green" colspan="12" style="padding:5px;">
+          
+<p>The headers of each section are abbreviated to save space. Scroll your mouse pointer over them to show what they mean in full. The <code class="highlighter-rouge">&lt;abbr&gt;</code> tag is used in the markup of this web page to show this extra information, which according to <a href="http://www.w3schools.com/tags/tag_abbr.asp">w3schools</a> should work in the following web browsers:</p>
+
+<ul>
+  <li>Chromium / Google Chrome</li>
+  <li>Edge / Internet Explorer</li>
+  <li>Mozilla Firefox</li>
+  <li>Opera</li>
+  <li>Safari</li>
+</ul>
+
+
+        </td>
+      </tr>
+    </tfoot>
+</table>
+<p><br /></p>
+
+<h2 id="footnotes">Footnotes</h2>
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>RPM was originally abbreviated from <strong>Red Hat Package Manager</strong>, but now it is a recursive acronym for RPM Package Manager. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="https://www.archlinux.org/pacman/">pacman Home Page</a> (2 March 2015). Retrieved 15 February 2016. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>If you wish to offer me a solution to this issue, that does not involve me creating new OBS packages for all of Atom’s many node module dependencies and Electron, feel free to leave me a reply <a href="https://forums.opensuse.org/showthread.php/513540-How-to-create-a-spec-file-for-Atom-that-is-suitable-for-the-OBS">here</a> at the thread in which I asked how to build Atom using the OBS at the openSUSE Forums <a href="#fnref:3" class="reversefootnote">&#8617;</a> <a href="#fnref:3:1" class="reversefootnote">&#8617;<sup>2</sup></a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

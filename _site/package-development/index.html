@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>An Introduction to Building Packages for Linux</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">An Introduction to Building Packages for Linux</h1>
+    <p class="post-meta">
+      <br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/package-development/" link="_blank">package-development</a></span><span class="tag"><a href="/tag/linux/" link="_blank">linux</a></span><br/>-->
+      <time datetime="2016-03-12T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Saturday, 12 March 2016.</time>
+      <time datetime="06:37:10 PM, Monday 14 March 2016 " itemprop="dateModified"><br/><b><abbr title="Note that most modifications past the publication date will be largely cosmetic, like fixing spelling, grammar and links, not necessarily updating the content itself.">Last modified</abbr></b>: &nbsp;&nbsp;&nbsp;06:37 PM Monday, 14 March 2016 (<abbr title="Australian Eastern Standard Time, or UTC+10">AEST</abbr>).</time>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <p>Something I frequently do on whichever Linux distribution I find myself on (including Arch Linux, Fedora, Manjaro Linux, openSUSE and Sabayon Linux), is I build packages. It is infinitely rare, in fact so rare that I have not ever come across such a case, for a distribution to have every exact package (including package version) I want. Package development, for me, is done via one of four major methods:</p>
+
+<ul>
+  <li>Building the package using the <strong>standard tools</strong> on my own instance of the respective Linux distribution. For example, on Arch Linux this involves writing a PKGBUILD and running <code class="highlighter-rouge">makepkg -s</code> in the directory of said PKGBUILD. This method is the most risky of methods, as if there is something wrong with the build file (e.g., with the <code class="highlighter-rouge">.ebuild</code> or <code class="highlighter-rouge">.spec</code> file extension or <code class="highlighter-rouge">PKGBUILD</code>/<code class="highlighter-rouge">rules</code> file name), it is possible for this method to lead to system breakage. It is also the easiest and fastest method for building packages for the present OS.</li>
+  <li>Building the package in a <strong>chroot</strong>, using the standard tools. chroots should (but there are no guarantees) protect one’s system from any errors in the build file.</li>
+  <li>Building the package using <a href="https://www.docker.com/"><strong>Docker</strong></a>, using the standard tools. It is at least as safe as building in a chroot and it is more platform-independent as you can build packages for any of a variety of different distributions, on the one system.</li>
+  <li>Building the package using the <a href="https://build.opensuse.org/"><strong>Open Build Service</strong></a> (<strong>OBS</strong>). The OBS can be accessed from the command-line using the <code class="highlighter-rouge">osc</code> (<a href="/man/osc.1.html">OSC(1)</a> man page) command and from a web-based interface. The package to which the <code class="highlighter-rouge">osc</code> command belongs, along with its various subcommands, can be challenging to install on non-openSUSE platforms. On Arch Linux this package is available from the Arch User Repository (AUR), so to install it with Yaourt run: <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  yaourt -S osc</span>.
+ Using the OBS to build packages also allows one to more easily distribute the packages one builds, as one can set up an OBS repository using this method. This repository can have packages for a variety of different distributions including Arch Linux, Debian, Fedora, Mageia, openSUSE and Ubuntu. There is <strong>one major caveat</strong>, however, which is that one <strong>cannot build packages</strong> that require an <strong>Internet connection</strong> during their build, using this method. This precludes me from creating a package for the Atom text editor using this method, except via using pre-built binaries which are only available for 64-bit platforms.</li>
+</ul>
+
+<p>Fedora users also have another method available to them for building packages, <a href="https://copr.fedorainfracloud.org/"><strong>Copr</strong></a>. <strong>Copr</strong> is similar to the OBS in that it builds packages and creates package repositories in which to store them, but unlike the OBS Copr can optionally provide packages with Internet access during the build and can only be used to build Fedora packages.</p>
+
+<h2 id="terminology">Terminology</h2>
+<p>In this post I will use several terms that are not explained in <a href="/glossary/">the glossary</a>, this section will (hopefully) explain them so that everyone knows what I mean when I use each of them. If this section, or any other section of this post, is confusing please <a href="/contributing/">contact me</a> and tell me. I am afraid I am not perfect, or a mind-reader, so I need you to tell me if something is wrong or if I omitted some important information.</p>
+
+<h3 id="package-building">Package Building</h3>
+<p><strong>Building a package</strong> will be used to refer to the process of compiling, or otherwise making a package’s source code executable, usually so that some file inside (usually a shell script or file written in object code) can be executed in order to start the program the package is for.</p>
+
+<h3 id="package-installation">Package Installation</h3>
+<p>The act of <strong>installing a software package</strong> involves moving the installed files of a package into a file system. Most of the time, when someone says that they are installing a package, what they are doing is they are installing the package’s file to the live file system (that is, the file system of the PC that is being used).</p>
+
+<h3 id="package-preparation">Package Preparation</h3>
+<p>An important step in package development is the <strong>preparation</strong> of the sources being used to build the package.</p>
+
+<h3 id="source-compilation">Source Compilation</h3>
+<p>When one is creating a software package, quite frequently one will need to <strong>compile the package’s source code</strong>, which means convert the source code written in some programming language into something that is machine readable and executable. This conversion is performed, using so called “compilers” like the GNU Compiler Collection (GCC) which creates object code from the source code.</p>
+
+<h2 id="package-formats">Package Formats</h2>
+<p>In order to effectively build packages one must understand the basics of the <strong>package format</strong> one intends to build. There are four major types of Linux package format that I worked with:</p>
+
+<ul>
+  <li><strong>Arch Linux packages</strong> (<strong>ALPs</strong>, file extension: <code class="highlighter-rouge">.pkg.tar.xz</code>), the package format used by Arch Linux, its derivatives and select “independent” distributions such as Frugalware Linux and KaOS. They are built based on the contents of PKGBUILDs, which are Bash scripts with build instructions for the package along with its associated metadata.</li>
+  <li><strong>Debian packages</strong> (or <strong>Deb packages</strong>, file extension: <code class="highlighter-rouge">.deb</code>), the package format used by Debian and its derivatives such as Ubuntu and its derivative, Linux Mint. They are built based on the contents of a whole directory and its subdirectories. The build instructions are found within the <code class="highlighter-rouge">rules</code> file.</li>
+  <li><strong>Gentoo packages</strong> (file extension: <code class="highlighter-rouge">.tbz2</code>), the package format used by Gentoo Linux and its derivatives like Sabayon Linux. tbz2 files are built based on the contents of a specialized Bash script called an ebuild (with the <code class="highlighter-rouge">.ebuild</code> file extension). ebuilds are stored within a set of directories and subdirectories (called <strong>overlays</strong>), usually managed by Git (<code class="highlighter-rouge">git</code>) or some other version control system (VCS) like Mercurial (<code class="highlighter-rouge">hg</code>) or Subversion (<code class="highlighter-rouge">svn</code>). They are essentially like more complicated (and hence more difficult to write) equivalents to PKGBUILDs and like PKGBUILDs they include package metadata and build instructions.</li>
+  <li><strong>RPM packages</strong> (file extensions: <code class="highlighter-rouge">.rpm</code>, <code class="highlighter-rouge">.src.rpm</code>), a package format used by select distributions such as CentOS, Fedora, Mageia and openSUSE. They are built based on the contents of a whole directory, entitled <code class="highlighter-rouge">rpmbuild</code>, and its subdirectories. The most important file in the <code class="highlighter-rouge">rpmbuild</code> directory and its subdirectories is called a spec file, which has the <code class="highlighter-rouge">.spec</code> file extension. This spec file contains package metadata and build instructions, similarly to ebuilds and PKGBUILDs.</li>
+</ul>
+
+<h3 id="arch-linux-packages">Arch Linux Packages</h3>
+<p><strong>Arch Linux packages</strong> are xz-compressed tar archives that are built and installed using commands provided by the <code class="highlighter-rouge">pacman</code> package on Arch Linux. ALPs are the package format used by Arch Linux derivatives (like Manjaro Linux) along with the “independent” distributions, Frugalware Linux and KaOS, which also use the pacman package manager, so this information should be applicable to packaging on these distributions too.</p>
+
+<h4 id="alp-contents">ALP Contents</h4>
+<p>ALPs have the following contents:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$INSTALLED_FILES</span>
+.BUILDINFO
+.INSTALL
+.MTREE
+.PKGINFO
+</code></pre></div></div>
+
+<p>where <code class="highlighter-rouge">$INSTALLED_FILES</code> are, of course, the installed files of the package with its respective file structure. For example, for the <code class="highlighter-rouge">broadcom-wl</code> package the <code class="highlighter-rouge">$INSTALLED_FILES</code> have the directory structure:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>usr/
+ - lib/
+   - modprobe.d/
+     - broadcom-wl.conf
+   - modules/
+     - extramodules-4.4-ARCH/
+       - wl.ko.gz
+ - share/
+   - licenses/
+     - broadcom-wl/
+       - LICENSE
+</code></pre></div></div>
+
+<p>The package metadata (which is used by pacman when it installs new packages to check for file conflicts and such) is stored in the four hidden files (that is, those with <code class="highlighter-rouge">.</code> in their filename) in the package’s top-level directory.</p>
+
+<h4 id="pkgbuild-structure">PKGBUILD Structure</h4>
+<p>ALPs are built from PKGBUILDs using the <a href="https://fusion809.github.io/man/makepkg.8.html"><code class="highlighter-rouge">makepkg</code></a> command that comes bundled with the pacman package manager. They are the easiest packages to build, in my opinion. PKGBUILDs have the following general format (for more details see the <a href="https://fusion809.github.io/man/PKGBUILD.5.html">PKGBUILD(5)</a> man page):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># ~ Maintainer/Contributor name and email ~</span>
+<span class="nv">pkgname</span><span class="o">=</span>      <span class="c"># The package's name.</span>
+<span class="nv">pkgver</span><span class="o">=</span>       <span class="c"># The upstream package version, e.g., 1.5.0 for Atom 1.5.0.</span>
+<span class="nv">pkgrel</span><span class="o">=</span>       <span class="c"># The PKGBUILD revision number.</span>
+<span class="nv">pkgdesc</span><span class="o">=</span>      <span class="c"># The PKGBUILD's description.</span>
+<span class="nb">arch</span><span class="o">=</span>         <span class="c"># The architecture(s) on which the package is to be built.</span>
+<span class="nv">url</span><span class="o">=</span>          <span class="c"># The website of the package.</span>
+<span class="nv">license</span><span class="o">=</span>      <span class="c"># The legal license of the package.</span>
+<span class="nv">depends</span><span class="o">=</span>      <span class="c"># Runtime dependencies.</span>
+<span class="nv">makedepends</span><span class="o">=</span>  <span class="c"># Build dependencies.</span>
+<span class="nv">optdepends</span><span class="o">=</span>   <span class="c"># Optional dependencies.</span>
+<span class="nv">provides</span><span class="o">=</span>     <span class="c"># What the package provides.</span>
+<span class="nv">conflicts</span><span class="o">=</span>    <span class="c"># The package conflicts.</span>
+<span class="nb">source</span><span class="o">=</span>       <span class="c"># The source files required; also includes patches.</span>
+<span class="nv">sha256sums</span><span class="o">=</span>   <span class="c"># SHA256 sums of the source files.</span>
+<span class="nv">md5sums</span><span class="o">=</span>      <span class="c"># MD5 sums of the source files. Usually used INSTEAD of sha256sums.</span>
+<span class="nb">install</span><span class="o">=</span>      <span class="c"># Install files.</span>
+
+prepare<span class="o">()</span> <span class="o">{</span>   <span class="c"># Prepare the sources. Most commonly you will find sed functions</span>
+<span class="o">}</span>             <span class="c"># and patches being applied here.</span>
+
+build<span class="o">()</span> <span class="o">{</span>     <span class="c"># Perform any compiling of the source code that may be necessary.</span>
+<span class="o">}</span>             <span class="c"># You may also see configure scripts being run here.</span>
+
+package<span class="o">()</span> <span class="o">{</span>   <span class="c"># This will actually build the package. If more than one package is</span>
+<span class="o">}</span>             <span class="c"># built from the one PKGBUILD then more than one package() function is provided.</span>
+</code></pre></div></div>
+
+<p>the <code class="highlighter-rouge">sha256sums</code> can be replaced with <code class="highlighter-rouge">sha512sums</code> and sometimes GPG signatures are used also. For example, the Linux kernel PKGBUILD, in the core pacman repository, uses GPG and sha256sums to check package integrity and validity. The variable definition lines (that is, the <code class="highlighter-rouge">pkgname</code> line through to <code class="highlighter-rouge">install</code> line) provide mostly the package’s metadata and security checks (as well as variables that can be used in the following functions), while the <code class="highlighter-rouge">prepare()</code>, <code class="highlighter-rouge">build()</code> and <code class="highlighter-rouge">package()</code> functions are responsible for the actual building of the package. The <code class="highlighter-rouge">install</code> line defines the <code class="highlighter-rouge">.install</code> file that contains pre-, peri- and post-install checks and functions that need to be executed for the package. Here is an example PKGBUILD I have used to build gVim 7.4.1525:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Maintainer: Brenton Horne &lt;brentonhorne77 at gmail dot com&gt;</span>
+<span class="c"># Contributor: Peter Mattern &lt;pmattern at arcor dot de&gt;</span>
+
+<span class="nv">_pkgname</span><span class="o">=</span>vim
+<span class="nv">pkgname</span><span class="o">=</span><span class="s2">"gvim"</span>
+<span class="nv">pkgver</span><span class="o">=</span>7.4.1525
+<span class="nv">pkgrel</span><span class="o">=</span>1
+<span class="nv">pkgdesc</span><span class="o">=</span><span class="s2">"Vim the editor. CLI version and GTK2 GUI providing majority of features."</span>
+<span class="nb">arch</span><span class="o">=(</span><span class="s2">"i686"</span> <span class="s2">"x86_64"</span><span class="o">)</span>
+<span class="nv">url</span><span class="o">=</span><span class="s2">"http://www.vim.org"</span>
+<span class="nv">license</span><span class="o">=(</span><span class="s2">"custom:vim"</span><span class="o">)</span>
+<span class="nv">depends</span><span class="o">=(</span><span class="s2">"gtk2"</span> <span class="s2">"hicolor-icon-theme"</span> <span class="s2">"gtk-update-icon-cache"</span> <span class="s2">"desktop-file-utils"</span><span class="o">)</span>
+<span class="nv">optdepends</span><span class="o">=(</span><span class="s2">"lua: Lua interpreter"</span> <span class="s2">"perl: Perl interpreter"</span> <span class="s2">"python: Python 3 interpreter"</span>
+            <span class="s2">"python2: Python 2 interpreter"</span> <span class="s2">"ruby: Ruby interpreter"</span><span class="o">)</span>
+<span class="nv">makedepends</span><span class="o">=(</span><span class="s2">"lua"</span> <span class="s2">"python"</span> <span class="s2">"python2"</span> <span class="s2">"ruby"</span><span class="o">)</span>
+<span class="nv">provides</span><span class="o">=(</span><span class="s2">"gvim"</span> <span class="s2">"xxd"</span> <span class="s2">"vim-runtime"</span><span class="o">)</span>
+<span class="nv">conflicts</span><span class="o">=(</span><span class="s2">"vim-minimal-git"</span> <span class="s2">"vim-git"</span>
+           <span class="s2">"vim-minimal"</span> <span class="s2">"vim"</span> <span class="s2">"vim-python3"</span> <span class="s2">"gvim"</span> <span class="s2">"gvim-python3"</span><span class="o">)</span>
+<span class="nb">source</span><span class="o">=(</span><span class="s2">"https://github.com/vim/vim/archive/v</span><span class="nv">$pkgver</span><span class="s2">.tar.gz"</span>
+        <span class="s2">"gvim.desktop"</span><span class="o">)</span>
+<span class="nv">sha256sums</span><span class="o">=(</span><span class="s1">'SKIP'</span>
+            <span class="s1">'c346da4725b2db6f7b58c5b72bdf9e7efbba2a3275e97c17db48689e4de674ca'</span><span class="o">)</span>
+<span class="nb">install</span><span class="o">=</span>gvim.install
+
+prepare<span class="o">()</span> <span class="o">{</span>
+
+    <span class="c"># set global configuration files to /etc/[g]vimrc</span>
+    <span class="nb">sed</span> <span class="nt">-i</span> <span class="s1">'s|^.*\(#define SYS_.*VIMRC_FILE.*"\) .*$|\1|'</span> <span class="k">${</span><span class="nv">srcdir</span><span class="k">}</span>/<span class="k">${</span><span class="nv">_pkgname</span><span class="k">}</span>-<span class="k">${</span><span class="nv">pkgver</span><span class="k">}</span>/src/feature.h
+
+<span class="o">}</span>
+
+build<span class="o">()</span> <span class="o">{</span>
+
+    <span class="nb">cd</span> <span class="s2">"</span><span class="k">${</span><span class="nv">srcdir</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">_pkgname</span><span class="k">}</span><span class="s2">-</span><span class="k">${</span><span class="nv">pkgver</span><span class="k">}</span><span class="s2">"</span>
+    ./configure <span class="se">\</span>
+      <span class="nt">--enable-fail-if-missing</span> <span class="se">\</span>
+      <span class="nt">--with-compiledby</span><span class="o">=</span><span class="s1">'Arch Linux AUR'</span> <span class="se">\</span>
+      <span class="nt">--prefix</span><span class="o">=</span>/usr <span class="se">\</span>
+      <span class="nt">--enable-gui</span><span class="o">=</span>gtk2 <span class="se">\</span>
+      <span class="nt">--with-features</span><span class="o">=</span>huge <span class="se">\</span>
+      <span class="nt">--enable-cscope</span> <span class="se">\</span>
+      <span class="nt">--enable-multibyte</span> <span class="se">\</span>
+      <span class="nt">--enable-perlinterp</span><span class="o">=</span>dynamic <span class="se">\</span>
+      <span class="nt">--enable-pythoninterp</span><span class="o">=</span>dynamic <span class="se">\</span>
+      <span class="nt">--enable-python3interp</span><span class="o">=</span>dynamic <span class="se">\</span>
+      <span class="nt">--enable-rubyinterp</span><span class="o">=</span>dynamic <span class="se">\</span>
+      <span class="nt">--enable-luainterp</span><span class="o">=</span>dynamic
+    make
+
+<span class="o">}</span>
+
+package<span class="o">()</span> <span class="o">{</span>
+
+    <span class="c"># actual installation</span>
+    <span class="nb">cd</span> <span class="s2">"</span><span class="k">${</span><span class="nv">srcdir</span><span class="k">}</span><span class="s2">/</span><span class="k">${</span><span class="nv">_pkgname</span><span class="k">}</span><span class="s2">-</span><span class="k">${</span><span class="nv">pkgver</span><span class="k">}</span><span class="s2">"</span>
+    make <span class="nv">DESTDIR</span><span class="o">=</span><span class="nv">$pkgdir</span> <span class="nb">install</span>
+
+    <span class="c"># desktop entry file and corresponding icon</span>
+    <span class="nb">install</span> <span class="nt">-D</span> <span class="nt">-m644</span> ../gvim.desktop      <span class="nv">$pkgdir</span>/usr/share/applications/gvim.desktop
+    <span class="nb">install</span> <span class="nt">-D</span> <span class="nt">-m644</span> runtime/vim48x48.png <span class="nv">$pkgdir</span>/usr/share/icons/hicolor/48x48/apps/gvim.png
+
+    <span class="c"># remove ex/view and man pages (normally provided by package 'vi' on Arch Linux)</span>
+    <span class="nb">cd</span> <span class="nv">$pkgdir</span>/usr/bin <span class="p">;</span> <span class="nb">rm </span>ex view
+    find <span class="nv">$pkgdir</span>/usr/share/man <span class="nt">-type</span> d <span class="nt">-name</span> <span class="s1">'man1'</span> 2&gt;/dev/null | <span class="se">\</span>
+      <span class="k">while </span><span class="nb">read </span>_mandir<span class="p">;</span> <span class="k">do
+        </span><span class="nb">cd</span> <span class="k">${</span><span class="nv">_mandir</span><span class="k">}</span>
+        <span class="nb">rm</span> <span class="nt">-f</span> ex.1 view.1
+      <span class="k">done</span>
+
+    <span class="c"># add license</span>
+    <span class="nb">install</span> <span class="nt">-D</span> <span class="nt">-m644</span> <span class="k">${</span><span class="nv">srcdir</span><span class="k">}</span>/<span class="k">${</span><span class="nv">_pkgname</span><span class="k">}</span>-<span class="k">${</span><span class="nv">pkgver</span><span class="k">}</span>/runtime/doc/uganda.txt <span class="se">\</span>
+      <span class="nv">$pkgdir</span>/usr/share/licenses/<span class="nv">$pkgname</span>/LICENSE
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p><code class="highlighter-rouge">prepare()</code> is used to <em>prepare</em> the source, which means if the source is compressed (like a gz-compressed tar archive) the <code class="highlighter-rouge">prepare()</code> function will exact its contents so that they are available for the <code class="highlighter-rouge">build()</code> and <code class="highlighter-rouge">package()</code> functions. <code class="highlighter-rouge">build()</code> is used to build, or compile, the source, that is if this needs to be done (for example, some PKGBUILDs actually build ALPs from Debian or RPM packages, so no source code compiling is required). <code class="highlighter-rouge">package()</code> is what builds a package from either the compiled source (that is, the source after the <code class="highlighter-rouge">build()</code> function is run) or the prepared pre-compiled sources (that is, the contents of Debian/RPM binaries).</p>
+
+<p>The <code class="highlighter-rouge">package()</code> function is essentially where the objective of the game is to move all the files you wish to be in the end package from the products (whether it be compiled source code, or unpacked Debian package contents) of the <code class="highlighter-rouge">build()</code> function into the <code class="highlighter-rouge">$pkgdir</code> directory. The <code class="highlighter-rouge">$pkgdir</code> directory is meant to have the same internal file system structure as where the package will place its installed files, if installed on one’s file system. For example, GTK themes are usually installed to <code class="highlighter-rouge">/usr/share/themes</code> so this is an example <code class="highlighter-rouge">package()</code> function for such cases (this one is specifically taken from the <a href="https://build.opensuse.org/package/view_file/home:fusion809:arch_extra/osx-el-capitan-theme/PKGBUILD?expand=1"><code class="highlighter-rouge">osx-el-capitan-theme</code></a> PKGBUILD):</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>package<span class="o">()</span> <span class="o">{</span>
+  <span class="nb">mkdir</span> <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$pkgdir</span><span class="s2">/usr/share/themes/"</span>
+  <span class="nb">cp</span> <span class="nt">-a</span> <span class="s2">"</span><span class="nv">$srcdir</span><span class="s2">/</span><span class="k">${</span><span class="nv">_pkgname</span><span class="k">}</span><span class="s2">-</span><span class="k">${</span><span class="nv">pkgver</span><span class="k">}</span><span class="s2">/OS X El Capitan"</span> <span class="s2">"</span><span class="nv">$pkgdir</span><span class="s2">/usr/share/themes/"</span>
+<span class="o">}</span>
+</code></pre></div></div>
+
+<p>see the package’s contents are moved to <code class="highlighter-rouge">${pkgdir}/usr/share/themes/OS X El Capitan</code>.</p>
+
+<h4 id="building-alps">Building ALPs</h4>
+<p>To build an ALP you run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;makepkg</div>
+
+<p>from within the same directory, as the PKGBUILD you intend to build is located. You may not have the package’s build dependencies pre-installed so this command may return an error stating that you have missing build dependencies. To fix this (assuming all the dependencies are in the presently-enabled pacman repositories) by installing all required build dependencies prior to the build, run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;makepkg -s</div>
+
+<h3 id="debian-packages">Debian Packages</h3>
+<p>The <strong>Debian package format</strong> (file extension: <code class="highlighter-rouge">.deb</code>) was one of the first Linux package formats developed. It was first developed by Ian Murdock and other members of the Debian development team. The package manager that was originally developed to work with Debian packages (installing, uninstalling, upgrading, <em>etc.</em> these packages) was called dpkg (invoked by the <a href="https://fusion809.github.io/man/dpkg.1.html"><code class="highlighter-rouge">dpkg</code></a> command), while APT, aptitude and Synaptic are front-ends that perform repository management, dependency resolution, <em>etc.</em> and then use dpkg to perform the actual installation of Debian packages. Debian packages are built based on the contents of several different files in a directory (with its own set file structure, including subdirectories and alike) entitled <code class="highlighter-rouge">debian</code>. Debian packages are <code class="highlighter-rouge">ar</code> archives, that is archives generated with the <code class="highlighter-rouge">ar</code> Unix utility. They are built using the <code class="highlighter-rouge">debuild</code> or <code class="highlighter-rouge">dpkg-buildpackage</code> commands that are provided by the <code class="highlighter-rouge">devscripts</code> package, which is separate from the package that provides the <code class="highlighter-rouge">dpkg</code> command.</p>
+
+<h4 id="package-contents">Package Contents</h4>
+<p>As previously mentioned, Debian packages are <code class="highlighter-rouge">ar</code> archives and they have the following three files inside them:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>debian-binary
+control.tar.xx
+data.tar.xx
+</code></pre></div></div>
+
+<p>where <code class="highlighter-rouge">.xx</code> denotes the compression file extension of the containing files. Most Debian packages use gz-compression for its control and data tar archives, so in this case <code class="highlighter-rouge">.xx</code> is replaced with <code class="highlighter-rouge">.gz</code>. Some Debian packages have xz-compressed control and data tar archives inside them. The <code class="highlighter-rouge">debian-binary</code> file is a plain text file containing the standard number of the Debian package (e.g., the latest is 3.0). The <code class="highlighter-rouge">control.tar.xx</code> archive contains the package’s metadata, while the <code class="highlighter-rouge">data.tar.xx</code> archive contains the package’s installed files.</p>
+
+<h4 id="build-directory-structure">Build Directory Structure</h4>
+<p>The <code class="highlighter-rouge">debian</code> directory used to build Debian packages, has the structure:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>debian/
+  - changelog
+  - compat
+  - control
+  - copyright
+  - rules
+  - source/
+    - format
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">changelog</code> and <code class="highlighter-rouge">copyright</code> files have pretty self-explanatory contents, so I will not bother describing their contents. The <code class="highlighter-rouge">compat</code> file has the number nine (9) in it, because allegedly it is a “magic number”. The <code class="highlighter-rouge">control</code>
+file contains the package metadata, like its description, name, version, dependencies, <em>etc.</em> The <code class="highlighter-rouge">rules</code> file contains the package build instructions. The <code class="highlighter-rouge">format</code> file contains the standard of the Debian package being described, for example, most packages at the moment will be using the 3.0 (quilt) standard.</p>
+
+<h3 id="gentoosabayon-packages">Gentoo/Sabayon Packages</h3>
+<p><strong>Gentoo packages</strong> (file extension: <code class="highlighter-rouge">.tbz2</code>) are bz2-compressed binary packages used by Gentoo Linux and its derivatives. They are produced and installed using the Portage package manager. <strong>Sabayon Linux</strong>’s Entropy package manager uses a slightly different package format (same file extension though, <code class="highlighter-rouge">.tbz2</code>), generated from the corresponding Gentoo packages using Entropy. Most Gentoo users will not install their software from tbz2 files, as Portage is a source code package manager (which is usually the reason why people use Gentoo in the first place, because they want to install packages from source code using Portage) and as a result most packages are built from source code and not installed from binary packages. The way that Portage installs software from source code is by following the instructions found in a specialized Bash script called an ebuild. Portage can be used to install tbz2 binary packages, however, and it can be configured to work with (that is, install, remove, upgrade, <em>etc.</em> packages in said repositories) binary package repositories. This is just an uncommon Portage configuration.</p>
+
+<h4 id="package-contents-1">Package Contents</h4>
+<p>Running:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;qtbz2 $package.tbz2</div>
+
+<p>where <code class="highlighter-rouge">$package.tbz2</code> is a tbz2 binary, extracts an xpak file (file extension: <code class="highlighter-rouge">.xpak</code>; which contains the package metadata) and <code class="highlighter-rouge">.tar.bz2</code> archive containing the installed files of the package.</p>
+
+<h4 id="ebuild-structure">ebuild Structure</h4>
+<p>Syntactically, I would say that ebuilds are most similar to PKGBUILDs, but there are several key differences. For one, they include eclasses, specialized Bash functions designed specifically for ebuilds, many of which are poorly documented, in my opinion. Secondly, PKGBUILDs are all named <code class="highlighter-rouge">PKGBUILD</code>, while ebuilds only share the same file extension <code class="highlighter-rouge">.ebuild</code>. Their name consists of the package’s name and its version, e.g., gVim 7.4.1342 would have an ebuild named <code class="highlighter-rouge">gvim-7.4.1342.ebuild</code>. ebuilds also come with manifests (files entitled <code class="highlighter-rouge">Manifest</code>) that include checksums for all the source files and the ebuilds themselves. <a href="https://github.com/fusion809/sabayon-tools/blob/master/app-editors/gvim/gvim-7.4.1342.ebuild">Here</a> is an ebuild for gVim that you can compare to the previously-provided PKGBUILD and spec file for gVim, it is over 400 lines long so I am not going to include it in this post. To build a Gentoo binary package from an ebuild run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;ebuild $package.ebuild package</div>
+
+<p>while to build a Sabayon binary package, one has to run one additional command:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;equo pkg inflate $package.tbz2</div>
+
+<h3 id="rpm-packages">RPM Packages</h3>
+<p><strong>RPM Packages</strong> (file extension: <code class="highlighter-rouge">.rpm</code>, source RPMs have the <code class="highlighter-rouge">.src.rpm</code> file extension) are the package format used by Red Hat Linux (RHL), its derivatives (such as CentOS, Fedora, Korora, Oracle Linux, Red Hat Enterprise Linux, Scientific Linux), openSUSE, SUSE Linux Enterprise, <em>etc.</em> They are built using the <code class="highlighter-rouge">rpmbuild</code> command provided by the <code class="highlighter-rouge">rpmdevtools</code> package on most distributions. From what I understand RPMs are a type of file archive (which can be extracted using the <code class="highlighter-rouge">bsdtar</code> or <code class="highlighter-rouge">rpm2cpio</code> commands). They are not <code class="highlighter-rouge">ar</code> archives, however. RPM is a binary package format, although a source code version also exists, which is called a SRPM. SRPMs can also be extracted using <code class="highlighter-rouge">bsdtar</code>.</p>
+
+<h4 id="rpm-contents">RPM Contents</h4>
+<p>Decompressing RPM packages using <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  bsdtar -xf $package.rpm</span>
+ extracts just the package’s installed files. This might make it seem like RPM packages have no metadata, but they do, it is just not readily apparent by decompressing them using <code class="highlighter-rouge">bsdtar</code>. To show a summary of the metadata inside these packages you need to run <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  rpm -qip $package.rpm</span>.</p>
+
+<h4 id="rpmbuild">rpmbuild</h4>
+<p><code class="highlighter-rouge">rpmbuild</code> needs to be run within a directory called <code class="highlighter-rouge">rpmbuild</code> within the current user’s home directory, with its own set of subdirectories, this is its general structure:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>rpmbuild/
+  - BUILD
+  - BUILDROOT
+  - RPMS
+  - SOURCES
+  - SPECS
+  - SRPMS
+</code></pre></div></div>
+
+<p>The <code class="highlighter-rouge">BUILD</code> and <code class="highlighter-rouge">BUILDROOT</code> subdirectories are used for compiling the source code and collecting the necessary installed files for packaging, respectively. The <code class="highlighter-rouge">SOURCES</code> subdirectory contains the source files, including any patches, and <code class="highlighter-rouge">SPECS</code> contains the all-important spec files, which instruct the <code class="highlighter-rouge">rpmbuild</code> utility how to build the package and what metadata the RPM should contain. The RPM is stored in the <code class="highlighter-rouge">RPMS</code> subdirectory and the SRPM is stored in the <code class="highlighter-rouge">SRPMS</code> subdirectory.</p>
+
+<p>spec files look sort of like PKGBUILDs, except they use macros instead of many of the variables and functions found in PKGBUILDs. I would provide an example here in this post of Vim’s spec file (the one I use to build Vim in the Open Build Service) but it is over 520 lines long (as opposed to 72 lines for the gVim PKGBUILD shown earlier). So to view it see <a href="https://build.opensuse.org/package/view_file/home:fusion809/vim/vim.spec?expand=1">here</a>. I personally find writing spec files significantly more complicated than writing PKGBUILDs, as PKGBUILDs are written more like as if you were writing a shell script to install the software package locally on your machine. The use of macros can make things more complicated to follow for package development newcomers.</p>
+
+<h2 id="build-methods">Build Methods</h2>
+
+<h3 id="chroot">Chroot</h3>
+<p><strong>Chroot</strong> (invoked by the <a href="https://fusion809.github.io/man/chroot.1.html"><code class="highlighter-rouge">chroot</code></a> command) is a Unix command that is used to change the apparent root for a given process and its children (that is, processes started by this “given process”). This means, or so is the hope, that the file system outside this <strong>new root</strong> should be unaffected by any commands run in this new root. This “new root” is also known as the <strong>new apparent root</strong>, or <strong>guest file system</strong>; the file system outside this new root will be referred to as the <strong>host file system</strong>. This means that if one is building a package and the build commands being used<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> are flawed and potentially system-damaging, they will not have access to the host file system and rather will only be able to cause damage to the guest file system.</p>
+
+<p>The new root, used by the chroot command, is also frequently referred to by the term <em>chroot</em>, which can lead to some confusion. When one uses the chroot command to build packages one usually sets up a directory (which is used as the <em>apparent root</em> for the chroot command), with in it, the file system structure of the operating system one is intending to build packages for. Chroot is a basic form of virtualization, which is something I will leave you to read up about in this site’s <a href="https://fusion809.github.io/glossary/#virtualization">glossary</a>. I have fairly limited experience building packages in chroots and this is mostly limited to building in Gentoo / Sabayon chroots, so this section will mostly relate to building packages in Gentoo / Sabayon chroots.</p>
+
+<p>For Gentoo / Sabayon chroots, I usually created a new directory <code class="highlighter-rouge">/root2</code> wherein I would create a file system that resembles a minimal (with only the bare essential programs pre-installed) installation of Gentoo / Sabayon. I did this by extracting a stage3 tarball for the respective OS, into the <code class="highlighter-rouge">/root2</code> directory. Then I bound up the necessary parts of my host system (like <code class="highlighter-rouge">/dev</code>, <code class="highlighter-rouge">/proc</code>, <code class="highlighter-rouge">/sys</code> and <code class="highlighter-rouge">/tmp</code>), copied my <code class="highlighter-rouge">/etc/resolv.conf</code> file, to their respective parts in the <code class="highlighter-rouge">/root2</code> directory. This I did, by running:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mount -t proc none /root2/proc<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mount -o bind /dev /root2/dev<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mkdir /root2/usr/portage<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mount -o bind /usr/portage /root2/usr/portage<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mkdir /root2/usr/src/linux<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mount -o bind /usr/src/linux /root2/usr/src/linux<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mkdir /root2/lib/modules<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mount -o bind /lib/modules /root2/lib/modules<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mount -o bind /sys /root2/sys<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;cp /etc/resolv.conf /root2/etc/resolv.conf<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mount -o bind /tmp /root2/tmp<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mount --rbind /dev /root2/dev<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;mount --rbind /sys /root2/sys</div>
+
+<p>In order to use chroot to build packages one must have at least a basic understanding of the chroot command’s syntax. GNU’s chroot command has the following basic syntax (taken from the <a href="https://fusion809.github.io/man/chroot.1.html">CHROOT(1)</a> man page):</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;chroot [OPTION] NEWROOT [COMMAND [ARG]...]</div>
+
+<p>Now, the way you should interpret this basic syntax, is that what appears in square-brackets (<code class="highlighter-rouge">[...]</code>), are <em>optional</em> arguments or inputs. What is not in square brackets is a mandatory input (in this case only <code class="highlighter-rouge">NEWROOT</code> is a mandatory argument). For me, I have never had to concern myself with the <code class="highlighter-rouge">[OPTION]</code> part of this basic syntax, so I will ignore it in this post. <code class="highlighter-rouge">NEWROOT</code>, as you can probably guess, is the new apparent root being used by the process started by the chroot command, which in the aforementioned examples for Gentoo / Sabayon chroots would be <code class="highlighter-rouge">/root2</code>. <code class="highlighter-rouge">[COMMAND]</code> is the “given process” mentioned earlier in this section and is the first command that is to be run in the new root (any additional commands that are run in the new root have to be started by this command, as a <em>child process</em>) and <code class="highlighter-rouge">[ARG]...</code> refers to any arguments (like options) for this first command that the user wishes to specify. The most common choice of <code class="highlighter-rouge">[COMMAND]</code> is the default Unix shell of the host operating system, which for most Linux distributions is <code class="highlighter-rouge">/bin/bash</code>. So in the case of a Gentoo / Sabayon chroot I would normally use the command:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;chroot /root2 /bin/bash</div>
+
+<p>to enter the chroot. Note no <code class="highlighter-rouge">[ARG]...</code> is specified in this line, I seldom ever specify an <code class="highlighter-rouge">[ARG]...</code> for <code class="highlighter-rouge">[COMMAND]</code>.</p>
+
+<p>Once you have entered the chroot, you can build packages the same way you would normally. For example, in a Gentoo / Sabayon chroot one would likely build tbz2 binaries by running <code class="highlighter-rouge">ebuild $package.ebuild package</code>.</p>
+
+<h3 id="docker">Docker</h3>
+<p><a href="https://www.docker.com/"><strong>Docker</strong></a> is an open-source virtualization program, that is written in Google’s <a href="https://en.wikipedia.org/wiki/Go_(programming_language)">Go programming language</a> and that enables the automated deployment of software containers (which usually contain miniature operating systems) that can be used for a variety of different purposes. One such purpose is the building of software packages. Building packages using Docker is similar to building packages in a chroot, as it involves using the standard tools for building the package in question (e.g., <code class="highlighter-rouge">makepkg</code> for ALPs and <code class="highlighter-rouge">ebuild</code> for Gentoo / Sabayon packages), but it is done in a safer environment (in this case, a software container). This environment (which is called a <strong>container</strong> in the case of Docker) is designed so that any programs running inside it (including package-building commands) cannot access or modify anything outside the environment, including components of the host’s file system.</p>
+
+<p>Alternatively, a more tedious and hard drive space-exhausting method, is using VirtualBox VMs for the distribution being packed for, instead of Docker containers. It is not covered in this post because it is not a method I would recommend using.</p>
+
+<h4 id="setup">Setup</h4>
+<p>Docker can only be run on 64-bit Linux systems and is available from the official software repositories of many Linux distributions, including:</p>
+
+<ul>
+  <li>Arch Linux</li>
+  <li>Fedora</li>
+  <li>Gentoo Linux</li>
+  <li>Manjaro Linux</li>
+  <li>openSUSE / SUSE Linux Enterprise</li>
+  <li>Sabayon Linux</li>
+</ul>
+
+<p>Docker can be installed on <a href="https://docs.docker.com/engine/installation/linux/centos/">CentOS</a>, <a href="https://docs.docker.com/engine/installation/linux/debian/">Debian</a>, <a href="https://docs.docker.com/engine/installation/linux/rhel/">Red Hat Enterprise Linux</a> and <a href="https://docs.docker.com/engine/installation/linux/ubuntulinux/">Ubuntu</a>, from unofficial repositories via methods outlined at the links provided. On most distributions after installing Docker you will need to add your user to the <code class="highlighter-rouge">docker</code> group, log out and log back in to this user account and start the Docker daemon using systemd. To add your user to the <code class="highlighter-rouge">docker</code> group run:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;gpasswd -a $USER docker</div>
+
+<p>where <code class="highlighter-rouge">$USER</code> is the name of your user. And to start the Docker daemon with systemd one would run:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;systemctl start docker</div>
+
+<p>While to get the Docker daemon to automatically start on startup one would run:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;systemctl enable docker</div>
+
+<h4 id="pulling">Pulling</h4>
+<p>To find pre-existing containers that you can use, search the <a href="https://hub.docker.com/">Docker Hub</a>.</p>
+
+<p>To build Arch Linux packages you are probably better off pulling the <a href="https://hub.docker.com/r/base/archlinux/"><code class="highlighter-rouge">base/archlinux</code></a> container, with:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;docker pull base/archlinux</div>
+
+<p>To build Debian packages you will probably be better off using the Debian container. To pull it (which makes it available for use on your current PC) run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;docker pull debian:latest</div>
+
+<p>To build Gentoo packages you can use either a Gentoo or Sabayon container, out of these I would personally recommend the <a href="https://hub.docker.com/r/sabayon/base-amd64/"><code class="highlighter-rouge">sabayon/base-amd64</code></a> container. This is because Sabayon containers have the Entropy package manager available, which can be helpful in helping one more quickly install required build dependencies for any ebuilds you wish to build. This makes installing the build dependencies faster than if one was using a Gentoo container, as Gentoo containers have only the Portage package manager available for installing the required build dependencies which is quite often a tedious process. To pull the <code class="highlighter-rouge">sabayon/base-amd64</code> container run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;docker pull sabayon/base-amd64:latest</div>
+
+<p>To build a RPM package one would probably be best using the latest official <a href="https://hub.docker.com/r/fedora">Fedora</a> container, to pull it run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;docker pull fedora:latest</div>
+
+<p>alternatively, you can use the <a href="https://hub.docker.com/r/opensuse"><code class="highlighter-rouge">opensuse</code></a> container. If you cannot find a suitable container for the distribution you wish to package for, you can write your own Dockerfile and build a container based on it. I have never written one so I am afraid I cannot give you any pointers on how to do this, besides directing you to the <a href="https://docs.docker.com/engine/reference/builder/">official documentation on writing Dockerfiles</a>.</p>
+
+<h4 id="running">Running</h4>
+<p>Once you have chosen a Docker container to build your packages in and have pulled it to make it available for local use, then the next command you will need to run is <code class="highlighter-rouge">docker run</code>. It has the following general syntax (for further details see its <a href="https://docs.docker.com/engine/reference/commandline/run/">official documentation</a>):</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;docker run [OPTION] IMAGE[:TAG|@DIGEST] [COMMAND] [ARG...]</div>
+
+<p>as with the chroot command, square brackets (<code class="highlighter-rouge">[...]</code>) are used to denote optional arguments, with all remaining arguments being mandatory. The <code class="highlighter-rouge">IMAGE</code> argument as you can see is mandatory and refers to the Docker container’s image ID. The <code class="highlighter-rouge">[COMMAND]</code> argument, as with the <code class="highlighter-rouge">chroot</code> command, refers to an optional command you wish to start your container off with. Any extra commands or programs you wish to run in this container, will have to be started by this first command. This is why most people will choose the <code class="highlighter-rouge">/bin/bash</code> (or some other Unix shell) command as this argument, as additional commands can be easily started off it.</p>
+
+<p>For example, to start the <code class="highlighter-rouge">sabayon/base-amd64</code> container I have on my local machine, to build packages in it, I usually run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;docker run -i -t 8bdbc44b6570 /bin/bash</div>
+
+<h4 id="copying-files-to-host">Copying Files to Host</h4>
+<p>Once you have built a package with Docker you will likely want to copy it across to your host machine, using the <code class="highlighter-rouge">docker cp</code> command. Here is its basic syntax (for further details see its <a href="https://docs.docker.com/engine/reference/commandline/cp/">official documentation</a>)</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH</div>
+
+<p><code class="highlighter-rouge">CONTAINER</code> is the container’s ID (which is distinct from its image ID, by the way!), <code class="highlighter-rouge">SRC_PATH</code> is the file’s path on the Docker container, while <code class="highlighter-rouge">DEST_PATH</code> is where on the host machine one wishes to copy the file to. To determine the container ID, I suggest you run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;docker ps</div>
+
+<p>which will show you all Docker containers presently running. To show every container, including those that are not running, run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;docker ps -a</div>
+
+<h4 id="committing-changes">Committing Changes</h4>
+<p>If you have made some changes to a Docker container, like upgraded its software, installed some packages you need to build new packages, <em>etc.</em> you will probably not want to loose them. You will loose them, however, if you exit the machine normally (which you do by running <code class="highlighter-rouge">exit</code> inside the container, potentially repeatedly, until you are no longer in it). To save your changes you need to commit them (its official documentation is <a href="https://docs.docker.com/engine/reference/commandline/commit/">here</a>), by running:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</div>
+
+<p>I usually never have to concern myself with <code class="highlighter-rouge">[OPTIONS]</code> myself. <code class="highlighter-rouge">CONTAINER</code> is the container ID.</p>
+
+<h3 id="open-build-service">Open Build Service</h3>
+<p>The <a href="http://openbuildservice.org/"><strong>Open Build Service</strong></a> (<strong>OBS</strong>) is the only method outlined here that not only builds packages, but also sets up a repository with which you can distribute your packages. It has a command-line client invoked by the <a href="https://fusion809.github.io/man/osc.1.html"><code class="highlighter-rouge">osc</code></a> command, which is written in Python, and can be run locally to build packages. The problem with this command is that it is not available from the official repositories of most distributions that the OBS can build packages for. <code class="highlighter-rouge">osc</code> has several additional dependencies (like <code class="highlighter-rouge">obs-build</code>) that are not necessarily available from the official repositories of most distributions, too, which adds to the difficulty of obtaining it on these distributions. For details on installing the OBS on non-openSUSE platforms see the <a href="#toc29">Installing</a> section of this post. It can only be used to build packages for the following distributions:<sup id="fnref:3"><a href="#fn:3" class="footnote">2</a></sup></p>
+
+<ul>
+  <li>Arch Linux</li>
+  <li>CentOS / Red Hat Enterprise Linux / Scientific Linux</li>
+  <li>Debian</li>
+  <li>Fedora</li>
+  <li>Mandriva Linux</li>
+  <li>openSUSE / SUSE Linux Enterprise</li>
+  <li>Ubuntu</li>
+</ul>
+
+<h4 id="installing">Installing</h4>
+<p>On <strong>openSUSE</strong>, installing <code class="highlighter-rouge">osc</code> and its dependencies is simple, merely run:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper in osc</div>
+
+<p>and it is installed! One way, that one can install <code class="highlighter-rouge">osc</code> and all its dependencies on non-openSUSE distributions is by manually compiling them all from source code. Now I am no expert, in fact, I have not tried installing these packages, manually from source code, on any distribution other than Arch Linux, so if there are gaps or flat out errors in this brief tutorial, please <a href="https://fusion809.github.io/contributing/">contact me</a> or fork the <a href="https://github.com/fusion809/fusion809.github.io">fusion809.github.io</a> GitHub repo, modify the <code class="highlighter-rouge">_posts/2016/03/PKG/04-build-methods/04-obs.md</code> file in your fork and start a pull request. Firstly, ensure you have the following packages installed on your system:<sup id="fnref:2"><a href="#fn:2" class="footnote">3</a></sup></p>
+
+<ul>
+  <li><code class="highlighter-rouge">bash</code></li>
+  <li><code class="highlighter-rouge">diffutils</code></li>
+  <li><code class="highlighter-rouge">libxml2</code></li>
+  <li><code class="highlighter-rouge">make</code></li>
+  <li><code class="highlighter-rouge">perl</code></li>
+  <li><code class="highlighter-rouge">perl-uri</code></li>
+  <li><code class="highlighter-rouge">python-keyring</code></li>
+  <li><code class="highlighter-rouge">python2</code></li>
+  <li><code class="highlighter-rouge">python2-m2crypto</code></li>
+  <li><code class="highlighter-rouge">rpm</code> (if you are using a RPM-based distribution like CentOS, Fedora, Mageia, Red Hat Enterprise Linux, Scientific Linux, <em>etc.</em> this program should be pre-installed)</li>
+  <li><code class="highlighter-rouge">urlgrabber</code></li>
+  <li><code class="highlighter-rouge">wget</code></li>
+  <li><code class="highlighter-rouge">xz</code></li>
+</ul>
+
+<p>The following is the procedure I recommend you follow to install each OBS-specific package:</p>
+
+<ul>
+<li>Install <code>obs-service-source_validator</code>. To do this run:
+<div class="code">
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git clone https://github.com/openSUSE/obs-service-source_validator<br />
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd obs-service-source_validator<br />
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo make install
+</div>
+</li>
+
+<li>Install <code>obs-service-format_spec_file</code>. To do this run:
+<div class="code">
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git clone https://github.com/openSUSE/obs-service-format_spec_file<br />
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd obs-service-format_spec_file<br />
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo make install
+</div>
+</li>
+
+<li>Install <code>obs-build</code>. To do this run:
+<div class="code">
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git clone https://github.com/openSUSE/obs-build<br />
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd obs-build<br />
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo make install
+</div>
+</li>
+
+<li>Install <code>obs-service-download_files</code>. To do this run:
+<div class="code">
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git clone https://github.com/openSUSE/obs-service-download_files<br />
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd obs-service-download_files<br />
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo make install
+</div>
+</li>
+
+<li>Install <code>osc</code>. To do this run:
+<div class="code">
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git clone https://github.com/openSUSE/osc<br />
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd osc<br />
+  <span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo make install
+</div>
+</li>
+
+</ul>
+
+<p>These are the bare minimum you need in order to run the <code class="highlighter-rouge">osc</code> command, but you may wish to install a few extra packages, in order for <code class="highlighter-rouge">osc</code> to have its full capabilities. To see all available officially-supported OBS-related packages see <a href="https://github.com/openSUSE?utf8=%E2%9C%93&amp;query=obs-">this GitHub search</a>. Now, I have not installed each of these packages of myself, so all I can say is that based on the contents of their respective GitHub repositories (most importantly, that they contain a <code class="highlighter-rouge">Makefile</code>) I think, you should be able to install them via following the same procedure used to install the packages above. That is, <code class="highlighter-rouge">git clone</code> their GitHub repository, <code class="highlighter-rouge">cd</code> into your local copy of their repository, and run <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  sudo make install</span>.</p>
+
+<h4 id="creating-packages">Creating Packages</h4>
+
+<div class="note">
+
+<div class="note-title">NOTE</div>
+<ul>
+  <li>An excellent Open Build Service tutorial can be found <a href="https://en.opensuse.org/openSUSE:Build_Service_Tutorial">here</a> at the <em>openSUSE Wiki</em>. While this tutorial is hosted by the <em>openSUSE Wiki</em>, it should work regardless of your platform. I recommend you read it as this post section <strong>is not</strong> designed to replace it! It merely contains a few, hopefully helpful, observations I have made about using the OBS.</li>
+</ul>
+
+
+</div>
+
+<p>Creating packages in the OBS, modifying their characteristics, <em>etc.</em> can be the done from either the command-line or from within a web browser (URL: <a href="https://build.opensuse.org">https://build.opensuse.org</a>). I would recommend you have access to both methods, as they both compliment each other, although you can use just one method by itself. Both require an Internet connection; the command-line means of accessing the OBS also requires you have <code class="highlighter-rouge">osc</code> installed, while the browser method merely requires that you have a functioning web browser available to you. I personally use both methods of accessing the OBS, with my preference for doing most OBS things being using <code class="highlighter-rouge">osc</code>. The OBS uses its own <strong>version control system</strong> (<strong>VCS</strong>), that is most similar to Subversion.</p>
+
+<p>An OBS source repository (from which the OBS attempts to build your packages) should contain the following files:</p>
+
+<ul>
+<li><p>Any necessary <strong>patch files</strong>. Many packages, especially smaller packages, will have no patches though, so this component is not always needed.</p>
+</li>
+<li><p>Any <strong>package format-specific files</strong> (<strong>PFSFs</strong>) required to build the package (e.g., for an RPM package this would be a spec file, while for a Arch Linux package this would be a PKGBUILD).</p>
+</li>
+<li><p>The package’s <strong>upstream source</strong> (or whatever you intend to build the package in question from, like a Debian or RPM binary will also do). The user can add the upstream source manually, the same way one adds patch files and other files to the OBS repository. This can be repetitive and annoying when upstream package updates come out frequently, so my preference is to add a <code class="highlighter-rouge">_service</code> file to the OBS repository. Most commonly, <a href="https://build.opensuse.org/package/view_file/home:fusion809/vim/_service?expand=1">this</a> is all you need in your <code class="highlighter-rouge">_service</code> file. This will then automatically download the upstream source(s) listed in the PFSFs mentioned earlier, when required. Like PKGBUILDs and spec files often include the upstream source’s download URL and this is where the <code class="highlighter-rouge">_service</code> file will attempt to download the source from. You need to be careful with this <code class="highlighter-rouge">_service</code> method, as sometimes the download URL will not be in an acceptable format for the <code class="highlighter-rouge">_service</code> file to download the upstream source from it. For example, for a PKGBUILD this <code class="highlighter-rouge">source</code> variable will <strong>not</strong> work:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span><span class="o">=(</span><span class="nv">$pkgname</span>-<span class="nv">$pkgver</span>.tar.gz::https://github.com/xylosper/bomi/archive/v<span class="nv">$pkgver</span>.tar.gz<span class="o">)</span>
+</code></pre></div></div>
+
+<p>while, this:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">source</span><span class="o">=(</span>https://github.com/xylosper/bomi/archive/v<span class="nv">$pkgver</span>.tar.gz<span class="o">)</span>
+</code></pre></div></div>
+
+<p>will work.</p>
+</li>
+</ul>
+
+<p>Something that is important to note, however, is that a single OBS source repository can be used to build packages for several different Linux distributions, even distributions that have their own very different PFSFs. For example, my <a href="https://build.opensuse.org/package/show/home:fusion809/vim">Vim OBS repository</a> builds packages for Arch Linux, Fedora and openSUSE. Even though Arch Linux uses PKGBUILDs for its PFSFs and Fedora / openSUSE use spec files.</p>
+
+<p>Something that is particularly important to note for users that want to build Arch Linux packages, is that any dependencies your packages have that are in the Arch Linux community repository, or AUR, will need to be added to your OBS Project too. See the OBS does not have the packages in the Arch <code class="highlighter-rouge">[community]</code>/<code class="highlighter-rouge">[multilib]</code> repositories, or AUR, available to it (for use satisfying build dependencies) only packages in the Arch <code class="highlighter-rouge">[core]</code> and <code class="highlighter-rouge">[extra]</code> repositories. I have requested that the <code class="highlighter-rouge">[community]</code> repository be added to the OBS, <a href="https://features.opensuse.org/320680">here</a> at openFATE.</p>
+
+<p>If the Build Service Tutorial linked previously is not sufficient to help you start building OBS packages then I recommend reading the <em>openSUSE Wiki</em> articles linked to at the aforementioned Build Service Tutorial article. It has most of the more helpful information for packagers, although there is also a free OBS manual available and <a href="http://openbuildservice.org/files/manuals/obs-reference-guide.pdf">here</a> is a PDF copy. If you have specific queries related to the OBS, you may wish to ask a question on <a href="https://forums.opensuse.org/forumdisplay.php/692-Open-Build-Service-(OBS)">this board</a> at the <em>openSUSE Forums</em>.</p>
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>Usually contained in an ebuild, PKGBUILD, rules or spec file, depending on the package being built. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Keep in mind, however, that packages built for one distribution, should be compatible and able to be installed on most, if not all, distributions derived from said distribution. For example, Arch Linux packages should be compatible with the Arch Linux derivative, Manjaro Linux. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>If you are wondering about which components of each package you need, I suggest you look up the corresponding Arch Linux package and find equivalent packages for your distribution. See I am using the dependencies for the <code class="highlighter-rouge">osc</code> package in the AUR and its OBS-specific dependencies (like <code class="highlighter-rouge">obs-build</code>) to base this list on. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

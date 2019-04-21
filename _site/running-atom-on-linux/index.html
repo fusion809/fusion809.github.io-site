@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>Running Atom on Linux</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">Running Atom on Linux</h1>
+    <p class="post-meta">
+      <b>Revision</b>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5 (Tuesday, 23 August 2016).<br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/atom/" link="_blank">atom</a></span><span class="tag"><a href="/tag/linux/" link="_blank">linux</a></span><span class="tag"><a href="/tag/software-installation/" link="_blank">software-installation</a></span><br/>-->
+      <time datetime="2016-03-26T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Saturday, 26 March 2016.</time>
+      <time datetime="04:49:22 PM, Tuesday 23 August 2016 " itemprop="dateModified"><br/><b><abbr title="Note that most modifications past the publication date will be largely cosmetic, like fixing spelling, grammar and links, not necessarily updating the content itself.">Last modified</abbr></b>: &nbsp;&nbsp;&nbsp;04:49 PM Tuesday, 23 August 2016 (<abbr title="Australian Eastern Standard Time, or UTC+10">AEST</abbr>).</time>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Atom/Atom-1.6.0-%5BATOM%5D-Post-25-Mar-2016-16:30.png" alt="Atom 1.6.0 opened to the source of this very post on *The Hornery*." style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Atom 1.6.0 opened to the source of this very post on <em>The Hornery</em>.</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><a href="https://atom.io"><strong>Atom</strong></a> is a free and open-source<sup id="fnref:1"><a href="#fn:1">1</a></sup> text editor built on web technologies and developed by GitHub.<sup id="fnref:2"><a href="#fn:2">2</a></sup> Its development was started by GitHub founder, Chris Wanstrath (<a href="http://github.com/defunkt">@defunkt</a>), in mid 2008, as a side-project. He envisioned a text editor that was extensively hackable, similarly to the existing text editors <a href="http://www.gnu.org/software/emacs/">GNU Emacs</a> and <a href="http://www.vim.org/">Vim</a>, yet beginner-friendly enough for a primary school<sup id="fnref:3"><a href="#fn:3">3</a></sup> student to pick it up without a problem.<sup id="fnref:4"><a href="#fn:4">4</a></sup> Sort of like the love-child of GNU Emacs and Notepad. Its development was put on hold by Wanstrath in favour of focusing on his main project, GitHub, which had only been founded mere months earlier. Later Atom’s development was picked back up, with its first public release being in 2014. Later in June 2015 its first stable release (Atom 1.0) was made.<sup id="fnref:5"><a href="#fn:5">5</a></sup></p>
+
+<p>Atom is built using <a href="https://electron.atom.io"><strong>Electron</strong></a>,<sup id="fnref:6"><a href="#fn:6">6</a></sup> a framework formerly known as <strong>Atom Shell</strong>, that is used to build cross-platform stand-alone applications based on web technologies. Electron’s source code is partly borrowed from <a href="http://www.chromium.org/">Chromium</a>, the open-source web browser, who’s source code is used as a basis for the closed-source Google Chrome web browser. Atom is essentially like a web browser that has been modified to be used as a text editor. You can plainly see the similarities by pressing the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>I</kbd>, which will open the developer tools in both Atom and Google Chrome. Atom also uses the <a href="https://nodejs.org">Node.js</a> JavaScript runtime engine, this fact is especially important when one tries to build Atom from source code.</p>
+
+<p>Despite being user-friendly, Atom does share quite a few similarities to GNU Emacs, namely that it is extended using packages and themes that are written in at least one of the same computer languages it itself is written in. For GNU Emacs this computer language is Emacs Lisp (or ELisp), while with Atom these languages are web languages including CoffeeScript, CSS, JavaScript and Less. Atom and GNU Emacs also share the common characteristic of being free and open-source, cross-platform and being rather heavy, in terms of their download/installed size, and having a fairly long start-up time, compared with other text editors like gedit or Vim.</p>
+
+<h2 id="overview">Overview</h2>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Atom/Labelled-Atom-1.6.2-11-04-2016.png" alt="A labelled screenshot of Atom, showing the basic components to it." style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>A labelled screenshot of Atom, showing the basic components to it.</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p>This section is just a <strong>brief overview of Atom</strong>, its <strong>in-built capabilities</strong>, <strong>keyboard shortcuts</strong> and alike. Much of this information can be found by experimenting with the options in the toolbar. This section is split up by where each of these options can be found in the toolbar. It truly is brief, however, I do not mention all things you can do with these toolbar menus or keyboard shortcuts, rather just some of those that are more useful for programmers and blog writers.</p>
+
+<p>The toolbar has the following <strong>top-level menus</strong>:</p>
+
+<ul>
+  <li><strong>File</strong> — which contains the basic, usually file-related, functions.</li>
+  <li><strong>Edit</strong> — which contains functions related to editing files (e.g., copy is in there) and one’s preferences.</li>
+  <li><strong>View</strong> — mostly relates to one’s view of the edit (obviously). You can use it to open up panes, toggle full screen, toggle soft wrap, open up the command pallette, <em>etc.</em></li>
+  <li><strong>Selection</strong> — obviously relates to selections. This menu is not of particular interest to me.</li>
+  <li><strong>Find</strong> — tools for finding and replacing characters in a buffer or project.</li>
+  <li><strong>Packages</strong> — tools that are from installed packages, including some bundled packages.</li>
+  <li><strong>Help</strong> — mostly relates to opening up Atom’s documentation, license, terms of use, issues, <em>etc.</em></li>
+</ul>
+
+<h3 id="file">File</h3>
+<p>To <strong>save a file</strong> press <kbd>Ctrl</kbd>+<kbd>S</kbd>, while to <strong>save a file under a different file name</strong> (that is, “Save As…”) press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>S</kbd>.</p>
+
+<h3 id="edit">Edit</h3>
+<p>To <strong>undo</strong> and <strong>redo</strong> actions press <kbd>Ctrl</kbd>+<kbd>Z</kbd> and <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>Z</kbd>, respectively. To open the <code class="highlighter-rouge">Settings</code> buffer go to <code>Edit&rarr;Preferences</code> in the toolbar. <kbd>Ctrl</kbd>+<kbd>C</kbd> <strong>copies selected text</strong> to one’s clipboard while to <strong>copy files in the tree view</strong> press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>.</p>
+
+<h3 id="view">View</h3>
+<p>To <strong>Toggle Full Screen</strong> press <kbd>F11</kbd>. To <strong>reload your current Atom window</strong> press <kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>R</kbd>, this will cause all changes that should happen when you close and reopen Atom. To <strong>Toggle Tree View</strong> press <kbd>Ctrl</kbd>+<kbd>/</kbd> (that is, the file tree shown in the diagram above). To <strong>toggle the command palette</strong> press <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>. To <strong>split your current pane upwards</strong> press <kbd>Ctrl</kbd>+<kbd>k</kbd>+<kbd>&uarr;</kbd>. To <strong>split your current pane downwards</strong> press <kbd>Ctrl</kbd>+<kbd>k</kbd>+<kbd>&darr;</kbd>. To <strong>split your current pane left-wards</strong> press <kbd>Ctrl</kbd>+<kbd>k</kbd>+<kbd>&larr;</kbd>. To <strong>split your current pane right-wards</strong> press <kbd>Ctrl</kbd>+<kbd>k</kbd>+<kbd>&rarr;</kbd>.</p>
+
+<h3 id="find">Find</h3>
+<p>To toggle the <strong>find and replace buffer</strong> press <kbd>Ctrl</kbd>+<kbd>F</kbd>. To <strong>hide this buffer</strong>, to my knowledge there is no keyboard shortcut rather you have to go to <code>Find&rarr;Toggle Find in Buffer</code>.</p>
+
+<h2 id="atom-plugins">Atom Plugins</h2>
+<p>As previously mentioned Atom’s capabilities and appearance are usually modified or extended by use of <strong>packages</strong> and <strong>themes</strong>, respectively. Henceforth, to save some space, I will refer to packages and themes, collectively, as <strong>plugins</strong>. Some of Atom’s plugins even come bundled, or pre-installed, with Atom, while the rest are installed using Atom’s own package manager, <code class="highlighter-rouge">apm</code>, which is sort of like a modified version of Node’s <code class="highlighter-rouge">npm</code> package manager. At the time of updating this post (11 April 2016 18:37:00 UTC+10) there were 3,988 packages and 1,193 themes for Atom available from <a href="https://atom.io/packages/">https://atom.io/packages</a> and <a href="https://atom.io/themes">https://atom.io/themes</a>, respectively. These plugins are those that have already been built by the community, or by the Atom developers themselves, but everyone is completely free to develop their own plugins for Atom. Unfortunately, some of these plugins available from the aforementioned websites will be for older versions of Atom and may not be compatible with the latest releases.</p>
+
+<div class="image-box" style="width:full; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Atom/pigments-versions-tab.png" alt="This is how one checks out the available versions of a package at https://atom.io/packages. Click the &ldquo;Versions&rdquo; tab in the red rectangle." style="width:full" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(full-5px); float: none;"><p>This is how one checks out the available versions of a package at https://atom.io/packages. Click the “Versions” tab in the red rectangle.</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="checking-plugin-compatibility">Checking Plugin Compatibility</h3>
+<p>What I do to check whether a package or theme is likely to work with the current version of Atom is I check out when the latest release of the package or theme was published. If it was within the last month it is a fair bet it will be compatible with the current version of Atom, if not, but it was updated within the past six months, then there’s a chance it might work with the latest release of Atom, but I would not hold out too much hope that it will work exactly as it should. If it was last updated prior to the release of Atom 1.0 (25 June 2015) I would not even bother trying it unless I have a burning desire to use its functionalities. Unfortunately, Atom’s <a href="https://atom.io/packages">packages</a> and <a href="https://atom.io/themes">themes</a> repositories’ search engine (that is, how you search for the package/theme you want in a web browser of your choosing) is very basic (and yes I have complained about this at the <a href="https://discuss.atom.io/t/advanced-packages-themes-search/24697">Atom Forums</a>, with no clear intention on the behalf of developers to rectify this), so I cannot exclude plugins that have not been updated within the past six months. Rather I have to look for plugins and then when I find one I think I will like, I have to go to its description page and press on the “Versions” tab to see when the latest release of this plugin was. It is very disappointing to find that a package I would really like has not been updated since the release of Atom 1.0 in June 2015.</p>
+
+<h3 id="plugins-i-know-and-love">Plugins I Know and Love</h3>
+
+<div class="note">
+  <b>LEGEND:</b>
+  <ul>
+    <li>
+      A green tick (<sup><span style="color:#49E20E;">&#10004;</span></sup>) is used to denote plugins that are bundled, by default, with the latest release of Atom.
+    </li>
+    <li>
+      A red cross (<sup><span style="color:#DB2929;">&#10006;</span></sup>) is used to denote plugins that need to be installed by running <code>apm install &lt;PACKAGE&gt;</code>, where <code>&lt;PACKAGE&gt;</code> is the package's name
+    </li>
+  </ul>
+</div>
+
+<p>My favourite packages are (in alphabetical order; I also mention how much time it adds to the start time of Atom):</p>
+
+<ul>
+  <li><a href="https://atom.io/package/atomic-chrome"><code class="highlighter-rouge">atomic-chrome</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — which allows one to select a text box in the Google Chrome web browser and, with the appropriate Google Chrome extension, press an icon in the browser that will create an Atom buffer that will automatically copy any text typed into it into the text box. <code class="highlighter-rouge">atomic-chrome-0.3.0</code> adds 25ms to the start up time of Atom.</li>
+  <li><a href="https://atom.io/package/file-icons"><code class="highlighter-rouge">file-icons</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — which assigns files icons based on their file extension / name in the file tree. <code class="highlighter-rouge">file-icons-1.7.1</code> added 19ms to the start time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/git-plus"><code class="highlighter-rouge">git-plus</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — which allows you to run git commands in Atom without a terminal. This is analogous to the in-built ability of GNU Emacs to perform git commands without a terminal. <code class="highlighter-rouge">git-plus-5.13.4</code> added 5ms to the start time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/git-time-machine"><code class="highlighter-rouge">git-time-machine</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — which allows you to look at past revisions of a git-controlled file. <code class="highlighter-rouge">git-time-machine-1.4.1</code> added 2ms to the start time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/markdown-preview"><code class="highlighter-rouge">markdown-preview</code></a><sup><span style="color:#49E20E;">✔</span></sup>
+ — allows you to preview markdown files in Atom. <code class="highlighter-rouge">markdown-preview-0.157.2</code> added 5ms to the start time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/markdown-writer"><code class="highlighter-rouge">markdown-writer</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — which allows you to more efficiently write markdown files, including in a static site’s source folder. <code class="highlighter-rouge">markdown-writer-2.3.2</code> added 5ms to the start time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/package-sync"><code class="highlighter-rouge">package-sync</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — which makes it easier for one to synchronize one’s installed Atom plugins across multiple devices and operating systems. <code class="highlighter-rouge">package-sync-1.0.0</code> added 1ms to the start time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/pigments"><code class="highlighter-rouge">pigments</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — which allows you to preview colours described by hexadecimals, RGB combinations and alike in Less or CSS style sheets. <code class="highlighter-rouge">pigments-0.26.0</code> added 127ms to the start time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/project-manager"><code class="highlighter-rouge">project-manager</code></a><sup><span style="color:#49E20E;">✔</span></sup>
+ — which makes it easier to access and switch between project folders. <code class="highlighter-rouge">project-manager-2.9.7</code> added 10ms to the start time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/script"><code class="highlighter-rouge">script</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — which allows one to execute scripts, including those written in Python. <code class="highlighter-rouge">script-3.6.3</code> added 2ms to the start time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/terminal-plus"><code class="highlighter-rouge">terminal-plus</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — which inserts an embedded terminal into Atom. I use this plugin on a daily basis. <code class="highlighter-rouge">terminal-plus-0.14.5</code> added 25ms to the start time of Atom 1.6.2.</li>
+</ul>
+
+<p>Those I have limited experience with, but on paper seem interesting and potentially useful to me at least, depending on the specifics of the programming you do, include:</p>
+
+<ul>
+  <li><a href="https://atom.io/package/build"><code class="highlighter-rouge">build</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — which allows one to compile source code in the editor. <code class="highlighter-rouge">build-0.59.0</code> added 59ms to the start time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/nuclide"><code class="highlighter-rouge">nuclide</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — a plugin created by Facebook to turn Atom into an IDE for Hack/PHP. <code class="highlighter-rouge">nuclide-0.129.0</code> added 7,950ms to the start-up time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/platformio-ide"><code class="highlighter-rouge">platformio-ide</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — a plugin created by <a href="http://platformio.org/">PlatformIO</a> that also turns Atom into an IDE, specifically for C/C++. <code class="highlighter-rouge">platformio-ide-1.1.1</code> added 126ms to the start-up time of Atom 1.6.2.</li>
+  <li><a href="https://atom.io/package/platformio-ide-terminal"><code class="highlighter-rouge">platformio-ide-terminal</code></a><sup><span style="color:#DB2929;">✖</span></sup>
+ — a plugin created by <a href="http://platformio.org/">PlatformIO</a> that adds an embedded terminal to Atom. <code class="highlighter-rouge">platformio-terminal-2.0.3</code> added 17ms to the start-up time of Atom 1.6.2.</li>
+</ul>
+
+<h2 id="customization">Customization</h2>
+<p>Atom can be further customized by editing files in one’s <code class="highlighter-rouge">~/.atom</code> directory. This is the example top-level structure of this directory:</p>
+
+<div class="tree">
+<b class="TOP">~/.atom</b><br />
+├── <b class="DIR">blob-store</b><br />
+├── <b class="DIR">compile-cache</b><br />
+├── <b class="NORM">config.cson</b><br />
+├── <b class="DIR">electron</b><br />
+├── <b class="NORM">keymap.cson</b><br />
+├── <b class="NORM">LICENSE.md</b><br />
+├── <b class="NORM">nohup.out</b><br />
+├── <b class="DIR">packages</b><br />
+├── <b class="NORM">packages.cson</b><br />
+├── <b class="NORM">projects.cson</b><br />
+├── <b class="DIR">storage</b><br />
+└── <b class="NORM">style.less</b><br />
+</div>
+
+<p><code class="highlighter-rouge">config.cson</code> contains your personal modification to Atom’s behaviour. For example, my <code class="highlighter-rouge">config.cson</code> presently looks like this:</p>
+
+<script src="https://gist.github.com/fusion809/3fbf01e2e3b2c500b3ec.js"></script>
+
+<p>most of these lines pertain to my customization of the behaviour of my installed packages. I am not really well-versed to the formatting of CSON files, so I am afraid
+I probably will not be too helpful in explaining how to write your own custom <code class="highlighter-rouge">config.cson</code>. <code class="highlighter-rouge">keymap.cson</code>, as you can probably guess, contains your own custom keyboard shortcuts, while <code class="highlighter-rouge">style.less</code> is your personal stylesheet (I know even less about its format than the CSON format, case in my point, my <code class="highlighter-rouge">style.less</code> file does not even exist). The <code class="highlighter-rouge">packages.cson</code> is a file that pertains to the <code class="highlighter-rouge">package-sync</code> package. It is a list of packages that the <code class="highlighter-rouge">package-sync</code> package can read and install, if missing. I personally keep all these files (so that I can more easily sync them across my PCs and operating systems) in my own GitHub repository — <a href="https://github.com/fusion809/atom">https://github.com/fusion809/atom</a>.</p>
+
+<h2 id="installing-atom">Installing Atom</h2>
+<p>Atom is nowhere near as straight-forward to install as GNU Emacs, Vim or any other major free and open-source text editors. The reasons are several fold. Firstly, the vast majority of Linux distributions so far do not have an Atom package in their official software repositories. This leaves users to either have to build an Atom package themselves or <a href="#building-from-source">compile Atom from source code</a>, that is, if unofficial software repositories or other sources cannot provide a binary package for Atom. Secondly, building Atom from source code is an error-prone process that requires Internet access (and I do not mean to just retrieve Atom’s source code, rather the build itself, requires Internet access). Thirdly, building Atom requires a recent version of Node.js and npm to be installed on one’s system. The Atom GitHub repository has a mechanism for automatically building 64-bit Deb and RPM packages for each new Atom release, which allows Atom to be easily installed on platforms capable of installing these packages. The main problems with this method are that:</p>
+
+<ul>
+  <li>Firstly, not all distributions can work with Deb/RPM packages.</li>
+  <li>Secondly, these binaries are available for only 64-bit systems.</li>
+  <li>Third, even 64-bit systems that are capable of installing these packages do not get automatic updates when new releases of Atom become available. Rather the user will have to manually download the new Atom package for their respective distribution and upgrade Atom using said package.</li>
+</ul>
+
+<p>On some distributions Atom can be installed from official or unofficial package repositories, if your distribution supports this I would strongly recommend you install Atom via this method. This way, when new releases of Atom come out, your Atom installation should be automatically updated when you run your package manager.</p>
+
+<p>On a side note, anyone interested in making Atom easier to install on Linux I would recommend check out my new <a href="https://github.com/fusion809/atom-installer"><code class="highlighter-rouge">atom-installer</code></a> GitHub repository. It is my aim to get this repository capable of automating the installation process of Atom on at least the following distributions:</p>
+
+<div class="div-col columns column-count column-count-" style="-moz-column-count: ; -webkit-column-count: ; column-count: ;">
+<ul>
+  <li>Arch Linux</li>
+  <li>CentOS</li>
+  <li>Debian</li>
+  <li>Fedora</li>
+  <li>Gentoo Linux</li>
+  <li>Linux Mint</li>
+  <li>Mageia</li>
+  <li>openSUSE</li>
+  <li>Sabayon Linux</li>
+  <li>Ubuntu</li>
+</ul>
+</div>
+
+<p>pull request, bug reports, improvement suggestions, <em>etc.</em> will be welcome.</p>
+
+<h3 id="official-binaries">Official Binaries</h3>
+<p>Quite often installing Atom from official binary releases (that is, the Deb/RPM releases previously mentioned) is the simplest method for those on distributions that use said package formats. So this section will guide one through this process.</p>
+
+<h4 id="deb">Deb</h4>
+<p>If your specific distribution is capable of working with 64-bit Deb packages (e.g., 64-bit Debian, Linux Mint and Ubuntu should be able to work with these packages), presumably using the <code class="highlighter-rouge">dpkg</code> package manager, then the following should download the latest Atom release and install it, provided the presently-enabled repositories are capable of satisfying its dependencies:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;curl https://atom.io/download/deb &gt; atom-amd64.deb<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dpkg -i atom-amd64.deb<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-get -f install</div>
+
+<h4 id="rpm">RPM</h4>
+<p>On 64-bit RPM distributions several different commands maybe better suited to install Atom, depending on the specific distribution being used. For CentOS / Fedora ≤21 / Oracle Linux / Red Hat Enterprise Linux / Scientific Linux and other distributions still using the <strong>yum package manager</strong>, running the following should install Atom from the latest official RPM binary:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;curl https://atom.io/download/rpm &gt; atom.x86_64.rpm<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum install -y atom.x86_64.rpm</div>
+
+<p>while Fedora ≥22, Korora ≥22 and other distributions that are now using the <strong>DNF package manager</strong> run:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;curl https://atom.io/download/rpm &gt; atom.x86_64.rpm<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf install -y atom.x86_64.rpm</div>
+
+<p>While on Mageia and other distributions using the <strong>urpmi package manager</strong> one would run:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;urpme apm # Mageia has a package called apm that is non-essential but conflicts with Atom<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;curl https://atom.io/download/rpm &gt; atom.x86_64.rpm<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;urpmi atom.x86_64.rpm</div>
+
+<p>On openSUSE and other distributions using the <strong>ZYpp package manager</strong>, to install Atom, one would run:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;curl https://atom.io/download/rpm &gt; atom.x86_64.rpm<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper in -y atom.x86_64.rpm</div>
+
+<h3 id="package-managers">Package Managers</h3>
+<p>The following distribution(s) have Atom in their official software repositories:</p>
+
+<ul>
+  <li><a href="https://www.gentoo.org" link="_blank"><img src="/images/Logos/GentooLinux.svg" style="width:25px" alt="Gentoo Linux Logo" /> <b>Gentoo Linux</b></a>.
+ Atom (<code class="highlighter-rouge">app-editors/atom-1.6.2</code> to be precise) was added to Gentoo’s official repository, that is, the Portage Tree, on the 6th of April 2016. Hence it can now be installed by running: <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  emerge app-editors/atom</span>
+, assuming one’s local copy of the Portage Tree is up-to-date. A package conflict that will occur with a newly-installed Gentoo system is that <code class="highlighter-rouge">app-editors/atom</code> depends on <code class="highlighter-rouge">net-libs/nodejs</code>, which in turn depends on <code class="highlighter-rouge">dev-libs/openssl[-bindist]</code> (that is, this package without the <code class="highlighter-rouge">bindist</code> USE flag enabled), while <code class="highlighter-rouge">net-misc/openssh</code> requires this USE flag be enabled. The best solution is to re-emerge <code class="highlighter-rouge">net-misc/openssh</code> with the <code class="highlighter-rouge">bindest</code> flag disabled.</li>
+  <li><a href="https://www.sabayon.org" link="_blank"><img src="/images/Logos/Sabayon.svg" style="width:25px" alt="Sabayon Logo" /> <b>Sabayon</b></a>.
+ To install Atom on Sabayon, run: <span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  equo i app-editors/atom</span>.</li>
+</ul>
+
+<p>the following distributions have an Atom package available from unofficial repositories:</p>
+
+<!-- item1 -->
+
+<!-- item2 -->
+
+<!-- item3 -->
+
+<!-- item4 -->
+
+<ul>
+  <li>
+<p><a href="https://www.archlinux.org" link="_blank"><img src="/images/Logos/ArchLinux.svg" style="width:25px" alt="Arch Linux Logo" /> <b>Arch Linux</b></a>.
+ Atom (package name is <a href="https://aur.archlinux.org/packages/atom-editor"><code class="highlighter-rouge">atom-editor</code></a>) is available from the Arch User Repository (AUR). The AUR provides PKGBUILDs with which users can build Atom from source code. To install Atom from the AUR one must run <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  yaourt -S atom-editor –noconfirm</span>
+ (provided Yaourt is installed) or:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git clone https://aur.archlinux.org/atom-editor.git<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd atom-editor<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;makepkg -si --noconfirm</div>
+
+<p>this takes at least 20 minutes to build Atom, for me, at least. Alternatively you can install Atom from my <code class="highlighter-rouge">PKGBUILDs</code> GitHub Repository:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git clone https://github.com/fusion809/PKGBUILDs<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd PKGBUILDs/atom-editor<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;makepkg -si --noconfirm</div>
+
+<p>this will take the same amount of time, though, but it is less likely to fail on you due to momentary Internet glitches. Alternatively, if these PKGBUILDs are not fast enough to install Atom for you, then provided you are using 64-bit Arch Linux you can install Atom from the <a href="https://aur.archlinux.org/packages/atom-editor-bin"><code class="highlighter-rouge">atom-editor-bin</code></a> PKGBUILD in the AUR. It creates an Atom Arch Linux package by taking its installed files from the Atom Debian package provided by the Atom GitHub repository. Cuts the install time to less than five minutes, usually. To install <code class="highlighter-rouge">atom-editor-bin</code> using Yaourt run <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  yaourt -S atom-editor-bin –noconfirm</span>
+. While to install the <code class="highlighter-rouge">atom-editor-bin</code> package manually run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;git clone https://aur.archlinux.org/atom-editor-bin.git<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd atom-editor-bin<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;makepkg -si --noconfirm</div>
+
+</li>
+  <li>
+<p><a href="https://www.centos.org/" link="_blank"><img src="/images/Logos/CentOS.svg" style="width:25px" alt="CentOS Logo" /> <b>CentOS 7</b></a>.
+ Atom is available from the <a href="https://copr.fedorainfracloud.org/coprs/mosquito/atom/">Mosquito Copr</a> and can be installed via running:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum copr enable mosquito/atom<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum install -y atom</div>
+
+</li>
+  <li>
+<p><a href="https://getfedora.org" link="_blank"><img src="/images/Logos/Fedora.svg" style="width:25px" alt="Fedora Logo" /> <b>Fedora</b></a>.
+ Atom is available from the <a href="https://copr.fedorainfracloud.org/coprs/mosquito/atom/">Mosquito Copr</a> and can be installed via running:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf copr enable mosquito/atom<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf install -y atom</div>
+
+</li>
+  <li>
+<p><a href="http://www.ubuntu.com" link="_blank"><img src="/images/Logos/Ubuntu.svg" style="width:25px" alt="Ubuntu Logo" /> <b>Ubuntu</b></a>.
+ Atom (package name: <a href="https://launchpad.net/~webupd8team/+archive/ubuntu/atom"><code class="highlighter-rouge">atom</code></a>) is available from the Webupd8team Personal Package Archive (PPA). To install Atom from it run:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;add-apt-repository ppa:webupd8team/atom<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-get update<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-get install -y atom</div>
+
+</li>
+</ul>
+
+<h2 id="building-from-source">Building from Source</h2>
+
+<h3 id="dependencies">Dependencies</h3>
+<p>The minimum requirements for building Atom on Linux, according to the <a href="https://github.com/atom/atom/blob/master/docs/build-instructions/linux.md">official Atom build instructions for Linux platforms</a>, include:</p>
+
+<ul>
+  <li>32-bit / 64-bit computer architecture. 64-bit is preferable.</li>
+  <li>C/C++ build tools — the GNU Compiler Collection (GCC; must also have C++ support, C++ support is usually provided by a separate package called <code class="highlighter-rouge">g++</code> or <code class="highlighter-rouge">gcc-c++</code>, depending on one’s distribution), the GNU C Library (<code class="highlighter-rouge">glibc</code>), including its development headers (sometimes provided by a separate package called <code class="highlighter-rouge">glibc-devel</code>) and GNU Make (usually called <code class="highlighter-rouge">make</code>) are usually used to satisfy this requirement on Linux platforms.</li>
+  <li>Git. Usually this package is called <code class="highlighter-rouge">git</code> on the distribution, in question.</li>
+  <li>Node.js (officially 0.10.x or above is supported, but Fedora has 0.10.x in their repositories and I have never managed to build Atom using their version of Node.js, so I would recommend using the 0.12.x or later series Node.js). The development headers are required, for some distributions this is provided by a package called <code class="highlighter-rouge">nodejs-devel</code>.</li>
+  <li>npm (officially v1.4.x or above is supported). On most distributions this is provided by a package called <code class="highlighter-rouge">npm</code>. This requires Python 2.6 / 2.7, usually provided by a <code class="highlighter-rouge">python2</code> or <code class="highlighter-rouge">python</code> package.</li>
+  <li>Development headers for the GNOME keyring. This package is usually called <code class="highlighter-rouge">libgnome-keyring</code> / <code class="highlighter-rouge">libgnome-keyring-dev</code> / <code class="highlighter-rouge">libgnome-keyring-devel</code>.</li>
+</ul>
+
+<p>All these requirements can, for most distributions (in fact all of them that I have experience with), be satisfied quite easily by installing packages from official repositories, except for the Node.js / npm requirement.</p>
+
+<h4 id="nodejs--npm">Node.js / npm</h4>
+<p>The vast majority of Linux distributions have Node.js and npm in their software repositories, the problem is that the version in their software repositories is seldom ever sufficiently recent for it to be suitable for building Atom with. Popular distributions without a sufficiently recent version of Node.js / npm to build Atom with in their official software repositories, include:</p>
+<div class="div-col columns column-count column-count-6" style="-moz-column-count: 6; -webkit-column-count: 6; column-count: 6;">
+  <ul>
+    <li><a href="https://www.centos.org/" link="_blank"><img src="/images/Logos/CentOS.svg" style="width:25px" alt="CentOS Logo" /> <b>CentOS</b></a>&#42;
+</li>
+    <li><a href="http://www.debian.org/" link="_blank"><img src="/images/Logos/Debian.svg" style="width:25px" alt="Debian Logo" /> <b>Debian</b></a>&#42;
+</li>
+    <li><a href="https://getfedora.org" link="_blank"><img src="/images/Logos/Fedora.svg" style="width:25px" alt="Fedora Logo" /> <b>Fedora</b></a>
+</li>
+    <li><a href="http://www.mageia.org/en/" link="_blank"><img src="/images/Logos/Mageia.svg" style="width:20px" alt="Mageia Logo" /> <b>Mageia</b></a>
+</li>
+    <li><a href="http://www.ubuntu.com" link="_blank"><img src="/images/Logos/Ubuntu.svg" style="width:25px" alt="Ubuntu Logo" /> <b>Ubuntu</b></a>&#42;
+</li>
+  </ul>
+</div>
+<p>those with a sufficiently recent version of Node.js / npm in their official repositories include:</p>
+<div class="div-col columns column-count column-count-5" style="-moz-column-count: 5; -webkit-column-count: 5; column-count: 5;">
+  <ul>
+    <li><a href="https://www.archlinux.org" link="_blank"><img src="/images/Logos/ArchLinux.svg" style="width:25px" alt="Arch Linux Logo" /> <b>Arch Linux</b></a>
+</li>
+    <li><a href="https://www.gentoo.org" link="_blank"><img src="/images/Logos/GentooLinux.svg" style="width:25px" alt="Gentoo Linux Logo" /> <b>Gentoo Linux</b></a>
+</li>
+    <li><a href="https://www.opensuse.org/" link="_blank"><img src="/images/Logos/openSUSE.svg" style="width:40px" alt="openSUSE Logo" /> <b>openSUSE</b></a>
+</li>
+    <li><a href="https://www.sabayon.org" link="_blank"><img src="/images/Logos/Sabayon.svg" style="width:25px" alt="Sabayon Logo" /> <b>Sabayon</b></a>
+</li>
+  </ul>
+</div>
+
+<p>Distributions marked with an asterisk (*) can be installed using the distribution’s respective package manager, using the distribution’s respective NodeSource repository. This method can also be used by older versions of Fedora (namely ≤21). For details see <a href="https://nodejs.org/en/download/package-manager/">here</a>. Fedora &gt;21 users could install a sufficiently recent version of Node.js via another method using their package manager. It involves finding a Copr repository containing a sufficiently recent version of Node.js, for example the <code class="highlighter-rouge">nibbler/nodejs</code> Copr. To add this particular Copr and install Node.js and npm from it, run:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf copr enable nibbler/nodejs<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf install -y nodejs-devel npm</div>
+
+<p>On other platforms, one has two main options for installing Node.js and npm: building and installing Node.js from source code (which should automatically also build npm along with it) and installing these packages using the generalized Node.js Linux binary tarballs (GNLBT) officially released by the Node.js project. The latest release of Node.js can be found <a href="http://nodejs.org/dist/latest/">here</a> (and this link should remain valid indefinitely, even with the release of more recent releases of Node.js). The tarballs relevant to Linux users are (where <code class="highlighter-rouge">x.y.z</code> refers to the latest version of Node.js, presently at the time of writing this post this is <code class="highlighter-rouge">5.10.1</code>):</p>
+
+<div class="div-col columns column-count column-count-2" style="-moz-column-count: 2; -webkit-column-count: 2; column-count: 2;">
+  <ul>
+    <li><code>node-vx.y.z-linux-x86.tar.gz</code></li>
+    <li><code>node-vx.y.z-linux-x86.tar.xz</code></li>
+    <li><code>node-vx.y.z-linux-x64.tar.gz</code></li>
+    <li><code>node-vx.y.z-linux-x64.tar.xz</code></li>
+    <li><code>node-vx.y.z.tar.gz</code></li>
+    <li><code>node-vx.y.z.tar.xz</code></li>
+  </ul>
+</div>
+
+<p>The first two are the generalized Linux binary tarballs for 32-bit systems, the second two are the generalized Linux binary tarballs for 64-bit systems and the final two are the source code tarballs. I personally recommend installing Node.js using the generalized Linux binary tarballs, as the source code method is more tedious and failure-prone. To install Node.js 5.10.1 from the GNLBT on a 32-bit system, for example, one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;curl http://nodejs.org/dist/v5.10.1/node-v5.10.1-linux-x86.tar.xz | tar -xJ<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd node-v5.10.1-linux-x86<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo cp -a {bin,include,lib,share} /usr/</div>
+
+<p>Before you do this, ensure that an older Node.js package is not already installed on your system via your package manager, as otherwise you will end up overwriting files belonging to this package and this could lead to problems down-the-track. To install Node.js 5.10.1 from the GNLBT for a 64-bit system one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;curl http://nodejs.org/dist/v5.10.1/node-v5.10.1-linux-x64.tar.xz | tar -xJ<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd node-v5.10.1-linux-x64<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo cp -a {bin,include,lib,share} /usr/</div>
+
+<p>While to build and install Node.js from source code, assuming you have all the required dependencies already installed (including clang and GCC, both with C++ support, Python 2.6 or 2.7 and GNU Make), one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;curl http://nodejs.org/dist/v5.10.1/node-v5.10.1.tar.xz | tar -xJ<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd node-v5.10.1<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;./configure --prefix=/usr<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;make<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo make install</div>
+
+<h4 id="summary">Summary</h4>
+<p>On <a href="https://www.centos.org/" link="_blank"><img src="/images/Logos/CentOS.svg" style="width:25px" alt="CentOS Logo" /> <b>CentOS</b></a>
+ / <strong>Oracle Linux</strong> / <strong>Red Hat Enterprise Linux</strong> running:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;curl --silent --location https://rpm.nodesource.com/setup_5.x | bash -<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;yum install -y python nodejs-devel npm gcc gcc-c++ make glibc-devel git-core</div>
+
+<p>should install all of Atom’s build and runtime dependencies.</p>
+
+<p>On <a href="http://www.debian.org/" link="_blank"><img src="/images/Logos/Debian.svg" style="width:25px" alt="Debian Logo" /> <b>Debian</b></a>
+ / <a href="http://www.ubuntu.com" link="_blank"><img src="/images/Logos/Ubuntu.svg" style="width:25px" alt="Ubuntu Logo" /> <b>Ubuntu</b></a>,
+ running:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;curl -sL https://deb.nodesource.com/setup_5.x | bash -<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;apt-get install -y nodejs npm build-essential git libgnome-keyring-dev fakeroot</div>
+
+<p>should install all of Atom’s build and runtime dependencies.</p>
+
+<p>On <a href="https://getfedora.org" link="_blank"><img src="/images/Logos/Fedora.svg" style="width:25px" alt="Fedora Logo" /> <b>Fedora</b></a>
+ running:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf copr enable nibbler/nodejs<br /><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf install -y nodejs-devel npm glibc-devel python gcc gcc-c++ make git-core libgnome-keyring-devel</div>
+
+<p>should install all of Atom’s build and runtime dependencies.</p>
+
+<p>On <a href="https://www.opensuse.org/" link="_blank"><img src="/images/Logos/openSUSE.svg" style="width:40px" alt="openSUSE Logo" /> <b>openSUSE</b></a>
+ running:</p>
+
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;zypper in -y npm make gcc gcc-c++ glibc-devel git-core libgnome-keyring-devel</div>
+
+<p>should install all of Atom’s build and runtime dependencies.</p>
+
+<h3 id="building-atom">Building Atom</h3>
+<p>Building Atom from source code involves of the same basic steps on every distribution. After installing the required build and runtime dependencies, they are:</p>
+
+<ol>
+  <li>
+<p>Getting the source code. There are several different ways to do this, including via git cloning Atom’s GitHub repository and via downloading the source code tarball of the latest Atom release. Source code tarballs are far smaller downloads (&lt;10 MB) than Atom’s GitHub repository (&gt;250 MB), so usually I would recommend building Atom from source code tarballs. To get the source code tarball of version <code class="highlighter-rouge">$ver</code> of Atom with cURL, extract its contents, and change directory into it, run:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;curl https://github.com/atom/atom/archive/v$ver.tar.gz | tar -xz<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;cd atom-v$ver</div>
+
+</li>
+  <li>
+<p>Compiling the source, which is done by running:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;script/build</div>
+
+</li>
+  <li>
+<p>Installing Atom to one’s live file system, specifically to <code class="highlighter-rouge">/usr</code> (as opposed to the default location of <code class="highlighter-rouge">/usr/local/</code>) which is done by running:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo script/grunt install --install-dir /usr</div>
+
+<p>Alternatively, you can install Atom to a local directory instead of to one’s root file system. This can be helpful, as it is easier to undo (that is, to uninstall Atom). To do this run:</p>
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;mkdir install<br /><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;script/grunt install --install-dir install</div>
+
+</li>
+</ol>
+
+<h2>Footnotes</h2>
+<ol>
+  <li id="fn:1">
+<p>Licensed under the permissive MIT License.<a href="#fnref:1" class="reversefootnote">↩</a></p>
+</li>
+  <li id="fn:2">
+<p>Garen Torikian (29 October 2015). “<a href="http://flight-manual.atom.io/getting-started/sections/why-atom/">Why Atom?</a>”. <em>Flight Manual</em>: Atom Community. Retrieved 25 March 2016.<a href="#fnref:2" class="reversefootnote">↩</a></p>
+</li>
+  <li id="fn:3">
+<p>This level of schooling is also known as “elementary school” in North America.<a href="#fnref:3" class="reversefootnote">↩</a></p>
+</li>
+  <li id="fn:4">
+<p>In contrast with both GNU Emacs and Vim, which have a steep learning curve and usually take even seasoned programmers at least weeks to pick up.<a href="#fnref:4" class="reversefootnote">↩</a></p>
+</li>
+  <li id="fn:5">
+<p>Ben Ogle (25 June 2015). “<a href="blog.atom.io/2015/06/25/atom-1-0.html">Atom 1.0</a>”. <em>Atom Blog</em>: Atom Community. Retrieved 25 March 2016.<a href="#fnref:5" class="reversefootnote">↩</a></p>
+</li>
+  <li id="fn:6">
+<p>Also licensed under the permissive MIT License.<a href="#fnref:6" class="reversefootnote">↩</a></p>
+</li>
+</ol>
+
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

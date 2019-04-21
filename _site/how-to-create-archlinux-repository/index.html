@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>How to Create Your Own Arch Linux Package Repository, For Free</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">How to Create Your Own Arch Linux Package Repository, For Free</h1>
+    <p class="post-meta">
+      <b>Revision</b>:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;24 (Friday, 23 February 2018).<br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/archlinux/" link="_blank">archlinux</a></span><span class="tag"><a href="/tag/package-development/" link="_blank">package-development</a></span><span class="tag"><a href="/tag/software-repositories/" link="_blank">software-repositories</a></span><br/>-->
+      <time datetime="2016-07-08T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Friday, 8 July 2016.</time>
+      <time datetime="02:29:30 AM, Friday 23 February 2018 " itemprop="dateModified"><br/><b><abbr title="Note that most modifications past the publication date will be largely cosmetic, like fixing spelling, grammar and links, not necessarily updating the content itself.">Last modified</abbr></b>: &nbsp;&nbsp;&nbsp;02:29 AM Friday, 23 February 2018 (<abbr title="Australian Eastern Standard Time, or UTC+10">AEST</abbr>).</time>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <p><strong>Arch Linux</strong> is my favourite Linux distribution (LD), especially when it comes to building packages. This is because the PKGBUILD format is very intuitive, simple and written in my favourite programming language — Shell. Writing a PKGBUILD also does not require an awful lot of preliminary knowledge, unlike the other Linux packaging source file written in Shell, that I have a fair amount of experience with, ebuilds. They (ebuilds) require you understand eclasses, in a fair degree of detail, in order to effectively and efficiently write them. The fact that Arch Linux package development only requires that you have a functioning PKGBUILD and does not require a whole intricate directory of syntactically-correct source files to be written by you, the packager, makes Arch Linux packages easier to develop compared to say Debian packages. The packaging source files they most closely resemble are SlackBuilds for Slackware packages, which I have fairly minimal experience with.</p>
+
+<p>As a little aside, Shell is my favourite programming language as it is the one that is the most intuitive to me. I have found Python to be too touchy,<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup> and challenging to debug, while I have found JavaScript (JS) too non-intuitive and challenging to pick up. Granted, I work best by trying out some practical examples and the only examples I can come up with for myself, when it comes to JS and Python, are those in a previous area of study of mine — technical computing. Unfortunately, I have no clear concept of a program I want to write, besides from examples from technical computing, so it is challenging for me to feel motivated to keep persevering when trying to learn these languages and obstacles arise. If you have a way around this for me, that is free,<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> I would love to hear it, so please email these suggestions to <a href="mailto:brentonhorne77@gmail.com">brentonhorne77@gmail.com</a>.</p>
+
+<h2 id="pkgbuild-format">PKGBUILD Format</h2>
+
+<div class="note">
+
+<div class="note-title">NOTE</div>
+<ul>
+  <li>This is a brief introduction, but if you want any degree of detail I would probably see the <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a> article at <em>The Arch Wiki</em>. Alternatively, refer to the <a href="/man/PKGBUILD.5.html">PKGBUILD(5)</a> man page.</li>
+</ul>
+
+
+</div>
+
+<p>PKGBUILDs are fairly simple shell scripts, usually no longer than 50 lines long, but it is still important that their formatting is correct, as otherwise they will fail to build when <code class="highlighter-rouge">makepkg</code> is run, or they will produce unexpected results. PKGBUILDs have the following components to them, in order:</p>
+
+<ul>
+  <li><strong>Header</strong> — these are comments that, while not strictly necessary for the PKGBUILD to work, they can be handy to define important information about the PKGBUILD like who is maintaining it, who has contributed to it and their contact information. For example, my PKGBUILDs usually have the header:</li>
+</ul>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><span class="c"># Maintainer: Brenton Horne &lt;brentonhorne77 at gmail dot com&gt;</span></pre></div>
+
+<ul>
+  <li>
+    <p><strong>Variable definitions</strong> — these are specified in the first ten or so lines after the header. The default fields include:<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup><sup>,</sup><sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup><sup>,</sup><sup id="fnref:5"><a href="#fn:5" class="footnote">5</a></sup><sup>,</sup><sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup></p>
+
+    <ul>
+      <li><code class="highlighter-rouge">pkgname</code> <sup>AM</sup> — the name of the package(s). Sometimes a PKGBUILD will build more than one package, in these instances the packages are usually interconnected and often use the same sources.</li>
+      <li><code class="highlighter-rouge">pkgdesc</code> <sup>P</sup> — a description of the package. Usually no longer than one sentence long.</li>
+      <li><code class="highlighter-rouge">pkgver</code> <sup>MP</sup> — the upstream version of the package. No hyphems or whitespaces are allowed here,</li>
+      <li><code class="highlighter-rouge">pkgrel</code> <sup>MP</sup> — the revision number of the Arch Linux package,<sup id="fnref:7"><a href="#fn:7" class="footnote">7</a></sup> since the last <code class="highlighter-rouge">pkgver</code> update.</li>
+      <li><code class="highlighter-rouge">arch</code> <sup>AMP</sup> — the supported architecture(s) for the package. Only <code class="highlighter-rouge">i686</code> and <code class="highlighter-rouge">x86_64</code> are officially supported, although a project to port Arch Linux to Raspberry Pi PCs is underway and packages for these PCs have support for <code class="highlighter-rouge">arm</code> family processors. Architecture-independent packages (which are mostly themes and small packages) will have <code class="highlighter-rouge">any</code> in the <code class="highlighter-rouge">arch</code> field.</li>
+      <li><code class="highlighter-rouge">url</code> <sup>A</sup> — the website of the package. Its source <a href="https://en.wikipedia.org/wiki/Version*control">Version Control System</a> (VCS) repository can also be used. For example, the <code class="highlighter-rouge">atom-editor</code> package uses the URL of Atom’s GitHub repository — <code class="highlighter-rouge">https://github.com/atom/atom</code>.</li>
+      <li><code class="highlighter-rouge">depends</code> <sup>AP</sup> — where the run-time dependency(s) of the package are defined.</li>
+      <li><code class="highlighter-rouge">makedepends</code> <sup>AP</sup> — where the build (or make) dependency(s) of the package are defined, <strong>if</strong> they are <em>not</em> also run-time dependencies.</li>
+      <li><code class="highlighter-rouge">license</code> <sup>AP</sup> — the license of the package’s upstream source(s). Not strictly mandatory but <code class="highlighter-rouge">makepkg</code> will whinge if you leave it undefined and your package will not be accepted if you upload it to the Arch User Repository (AUR). Run <code class="highlighter-rouge">ls /usr/share/licenses/common</code> to list the licenses available by default. The copy of other licenses (e.g., BSD, MIT, <em>etc.</em>) that comes with your package’s upstream source(s) will need to be installed in your <code class="highlighter-rouge">package()</code> function to <code class="highlighter-rouge">/usr/share/licenses/${pkgname}</code>.</li>
+      <li><code class="highlighter-rouge">conflicts</code> <sup>AP</sup> — package(s) that conflict with the package being built.</li>
+      <li><code class="highlighter-rouge">provides</code> <sup>AP</sup> — what does this package provide?<sup id="fnref:8"><a href="#fn:8" class="footnote">8</a></sup> For example, <code class="highlighter-rouge">efl</code> would be an appropriate field for <code class="highlighter-rouge">efl-git</code>.</li>
+      <li><code class="highlighter-rouge">replaces</code> <sup>AP</sup> — which package(s) does this package replace? This is appropriate when naming changes between package versions, or when a program is renamed. For example, the Electron framework on which the Atom text editor and Visual Studio Code are built was previously called “Atom Shell”. So it would be appropriate for an Electron PKGBUILD to include <code class="highlighter-rouge">atom-shell</code> in its <code class="highlighter-rouge">replaces</code> field.</li>
+      <li><code class="highlighter-rouge">source</code> <sup>A</sup> — the upstream source(s) for the package, along with any patches, desktop configuration files, <em>etc.</em> you intend to use to build the package.</li>
+      <li><code class="highlighter-rouge">md5sums/sha1sums/sha256sums/sha512sums</code> <sup>A</sup> — checksums for the sources specified in <code class="highlighter-rouge">source</code>. If you are wondering how to fill out this field, just pick one checksum type (e.g., <code class="highlighter-rouge">md5sums</code>) and write it as <code class="highlighter-rouge">md5sums=('SKIP')</code> and then run <code class="highlighter-rouge">updpkgsums</code> in the PKGBUILD’s directory and it will generate the checksums for you.</li>
+      <li><code class="highlighter-rouge">validpgpkeys</code> <sup>A</sup> — this is very much an optional field and is seldom ever included, except for in packages that pose significant security threats if invalid, or for core system components (like the kernel). If used the upstream source likely provides the signing files (usually with the <code class="highlighter-rouge">.asc</code> or <code class="highlighter-rouge">.sig</code> file extensions), which must be specified in the <code class="highlighter-rouge">source</code> array.</li>
+      <li><code class="highlighter-rouge">install</code> <sup>A</sup> — install file(s) for the package(s), which contains functions run before, during and after the installation of the package(s). Most of these relate to icon caches and desktop configuration databases.</li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Function definitions</strong> — these are lines that come after variable definitions wherein functions recognized by <code class="highlighter-rouge">makepkg</code> are defined. Some extra variables are available for use in these functions, such as <code class="highlighter-rouge">$srcdir</code>, <code class="highlighter-rouge">$pkgdir</code>, <em>etc.</em>. <code class="highlighter-rouge">$srcdir</code> is the directory where the sources are to be extracted, prepared and compiled. <code class="highlighter-rouge">$pkgdir</code> is where the package’s files are stored before they are compressed, metadata files created and added to the package archive and finally the package is built. <code class="highlighter-rouge">$pkgdir</code> has the structure <code class="highlighter-rouge">pkg/$pkgname/&lt;FS&gt;</code> where <code class="highlighter-rouge">&lt;FS&gt;</code> are the contents of the package in the location relative to <code class="highlighter-rouge">pkg/$pkgname</code> they are to be installed to your live file system. Such functions include, in order of their usual appearance:</p>
+
+    <ul>
+      <li><code class="highlighter-rouge">pkgver()</code> — a function that nearly only ever appears in packages that are built from VCS sources. Whatever it returns will be used to replace the <code class="highlighter-rouge">pkgver</code> value defined earlier in the PKGBUILD.</li>
+      <li><code class="highlighter-rouge">prepare()</code> — a function that prepares the package sources, making them ready for the functions that come afterwards. <code class="highlighter-rouge">makepkg</code> will automatically extract any archives (including <code class="highlighter-rouge">.deb</code> and <code class="highlighter-rouge">.rpm</code> archives, although it will <strong>not</strong> decompress any archives contained within them) for you before running what you define in your <code class="highlighter-rouge">prepare()</code> function. Usually the <code class="highlighter-rouge">prepare()</code> involves applying patches, editing source files (like with <code class="highlighter-rouge">sed</code>), decompressing source contents, <em>etc.</em></li>
+      <li><code class="highlighter-rouge">build()</code> — a function that compiles the source code. This usually involves running <code class="highlighter-rouge">./autogen.sh ...</code> and/or <code class="highlighter-rouge">./configure ...</code> and <code class="highlighter-rouge">make</code> in the source directory.</li>
+      <li><code class="highlighter-rouge">package()</code> — a function that moves the package components to the appropriate locations in the <code class="highlighter-rouge">$pkgdir</code> directory. If your PKGBUILD builds more than one package there should be more than one <code class="highlighter-rouge">package()</code> function. Named <code class="highlighter-rouge">package_&lt;PKG1&gt;()</code>, <code class="highlighter-rouge">package_&lt;PKG2&gt;()</code>, <code class="highlighter-rouge">package_&lt;PKG3&gt;()</code>, <em>etc.</em> Where <code class="highlighter-rouge">&lt;PKG1&gt;</code> is the name of the first package in the <code class="highlighter-rouge">pkgname</code> array, <code class="highlighter-rouge">&lt;PKG2&gt;</code> is the name of the second package, <em>etc.</em></li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="writing-a-pkgbuild">Writing a PKGBUILD</h2>
+<p>Now that we understand the basics of a PKGBUILD’s layout, I will discuss some which <a href="#text-editors">text editors</a> are best adept at writing PKGBUILDs and where to get <a href="#help">help</a>, if you get stuck.</p>
+
+<h3 id="text-editors">Text Editors</h3>
+<p>Most modern text editors have in-built syntax-highlighting support for Shell, a few of them even automatically syntax-highlight PKGBUILDs as shell scripts. Open-source text editors that I know<sup id="fnref:9"><a href="#fn:9" class="footnote">9</a></sup> that automatically syntax-highlight opened PKGBUILDs as shell scripts, include:<sup id="fnref:10"><a href="#fn:10" class="footnote">10</a></sup><sup>,</sup><sup id="fnref:11"><a href="#fn:11" class="footnote">11</a></sup><sup>,</sup><sup id="fnref:12"><a href="#fn:12" class="footnote">12</a></sup></p>
+
+<ul>
+  <li><a href="https://aur.archlinux.org/packages/atom-editor">Atom</a><sup>AUR,W</sup></li>
+  <li><a href="https://www.archlinux.org/packages/extra/x86_64/emacs">GNU Emacs</a></li>
+  <li><a href="https://www.archlinux.org/packages/extra/x86_64/kate">Kate</a></li>
+  <li><a href="https://www.archlinux.org/packages/extra/x86_64/kwrite">KWrite</a></li>
+  <li><a href="https://www.archlinux.org/packages/extra/x86_64/vim">Vim</a></li>
+  <li><a href="https://aur.archlinux.org/packages/visual-studio-code-oss">Visual Studio Code</a><sup>AUR,W</sup> (VSCode)</li>
+</ul>
+
+<h4 id="atom">Atom</h4>
+<p>Atom is definitely the best text editor for the job — at least, in my opinion, this is, in part, because its syntax-highlighting, with my <a href="https://atom.io/packages/language-unix-shell"><code class="highlighter-rouge">language-unix-shell</code></a> package is far more detailed than syntax-highlighting by other packages. It is also because my <a href="https://atom.io/packages/language-archlinux"><code class="highlighter-rouge">language-archlinux</code></a> package provides extra commands for performing common Arch Linux development tasks in Atom. In my opinion, it is best to get Atom from my PKGBUILDs repository, as these packages contain a package of mine that provides better, more comprehensive, syntax-highlighting for Shell, and extra commands for working with PKGBUILDs, <em>etc.</em> My most helpful packages at the time of writing this, includes:</p>
+
+<ul>
+  <li><code><a href="https://github.com/fusion809/arch-atom" link="_blank">atom-bleeding</a></code> &mdash; the latest stable build of Atom designed to work on the latest stable releases of APM and Electron, both built from source and provided by different packages. If you use this package with 64-bit Arch Linux, I would strongly recommend you use my binary repository and do not build everything yourself from source code. This is because the total compile time can easily take over 3 hours, during much of this time your PC will be grinding to a hault, speed-wise. This package has several core packages missing, so that they can be managed with APM. This will allow your packages to be more up-to-date. To install it and all packages I recommend (especially for Arch Linux package development) running: <div class="language-bash highlighter-rouge"><pre class="highlight"><span class="codeu"><abbr title="This is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash <span class="opt">-c</span> <span class="s2">"</span><span class="k">$(</span><span class="si">curl</span> <span class="opt">-sL</span> <a href="https://git.io/vKvcY" link="_blank">https://git.io/vKvcY</a><span class="k">)</span><span class="s2">"</span></pre></div></li>
+  <li><code><a href="https://github.com/fusion809/atom-editor-arch" link="_blank">atom-editor-arch</a></code> &mdash; the latest stable build of Atom, build with the default versions of APM and Electron. Has a few extra packages installed for Arch Linux development.</li>
+  <li><code><a href="https://github.com/fusion809/atom-editor-base" link="_blank">atom-editor-base</a></code> &mdash; the latest stable build of Atom, build with the default versions of APM and Electron. All non-essential packages removed so that they can be managed with APM. All core packages have been replaced with the latest versions available.</li>
+</ul>
+
+<h4 id="visual-studio-code">Visual Studio Code</h4>
+<p>The <a href="https://aur.archlinux.org/packages/visual-studio-code"><code class="highlighter-rouge">visual-studio-code</code></a> AUR package is not free and open-source, rather it is licensed under a proprietary End-User License Agreement (EULA). The link I provided earlier for a VSCode AUR package was for the open-source version of this package, which is built from source code. This OSS build has no extension installer, which can make it a pain to install extra extensions. If you want, an extension installer, yet still OSS build of VSCode, I recommend using my <a href="https://github.com/fusion809/code-oss"><code class="highlighter-rouge">code-oss</code></a> package. You can install it via running (as standard, not super, user):</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><span class="k">if</span> <span class="sb">`</span><span class="s">cat</span> /etc/pacman.conf | <span class="s">grep</span> <span class="s2">"pkgbuild-current"</span> &gt; /dev/null 2&gt;&amp;1<span class="sb">`</span>; <span class="k">then
+  </span><span class="gt">sudo</span> <span class="nb">printf</span> <span class="s1">'[pkgbuild-current]\nServer = https://github.com/fusion809/PKGBUILDs/releases/download/current/\nSigLevel = PackageOptional'</span> &gt;&gt; /etc/pacman.conf
+<span class="k">fi</span>
+
+<span class="gt">sudo</span> <span class="na">pacman</span> <span class="opt">-Syuu</span> code-oss <span class="opt">--noconfirm</span> <span class="opt">--needed</span></pre></div>
+
+<h3 id="help">Help</h3>
+<p>When writing your own PKGBUILD it is usually best to attempt to debug your package yourself, when you can. This is because the experience and knowledge it will give you will likely be well worth the extra effort. Plus, of course, we have to be mindful of our (by “our”, I mean the free and open-source software community) limited resources, the most relevant resource when it comes to getting help is, of course, other people’s spare time. If you fail to fix the error yourself, Google it, see if anyone else has experienced a similar error and if so, was it handled in a way that may be of use to you? If these two separate attempts to fix the problem fail, you have two main options as to how to proceed:</p>
+
+<ul>
+  <li>
+    <p>Ask for help at the Arch Linux forums. The Arch Linux forums can be an obstacle to newcomers, the key is:</p>
+
+    <ul>
+      <li>Give them every detail you can. The bare minimums are your PKGBUILD and your error message(s). With your error message(s) it is important to include at least ten extra lines of output that precedes the actual error message, in order to give those that wish to help you, some much-needed context for the error.</li>
+      <li>Explain your efforts to fix the problem so far. This is especially important as in my experience, if you do not do this, you will have some people calling you a help vampire.</li>
+    </ul>
+  </li>
+  <li>
+    <p>Ask someone you know, for help. I am willing to help, if I can but keep in mind I am not perfect, sometimes I will not have an answer for you. Other times I may be too busy with my own work to help you.</p>
+  </li>
+</ul>
+
+<h3 id="external-links">External Links</h3>
+<ul>
+  <li><a href="https://wiki.archlinux.org/index.php/Arch_packaging_standards">Arch Linux Packaging Guidelines</a></li>
+</ul>
+
+<h2 id="building-a-package">Building a Package</h2>
+<p>After you have written a PKGBUILD you would like to build a package from (beware odds are you will encounter the odd error while doing this, especially if you are new to Arch Linux packaging) run <code class="highlighter-rouge">makepkg</code> from the directory in which your PKGBUILD is stored. If your package has some build dependencies that you do not have installed you will need to run <code class="highlighter-rouge">makepkg -s</code> instead, provided these packages are in your presently-enabled (in <code class="highlighter-rouge">/etc/pacman.conf</code>) list of package repositories. This will, if successful, build a binary package for your current PC architecture in your present working directory. It will be called:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><span class="nv">$pkgname</span>-<span class="nv">$pkgver</span>-<span class="nv">$pkgrel</span>-<span class="nv">$ARCH</span>.pkg.tar.xz</pre></div>
+
+<p>where all these variables are as they were defined in the previous section, except <code class="highlighter-rouge">$ARCH</code> which is your current system’s architecture. If the package is architecture-independent <code class="highlighter-rouge">$ARCH</code> will be replaced with <code class="highlighter-rouge">any</code>. If your package builds successfully I recommend you run <code class="highlighter-rouge">namcap</code> on it, to search for some common packaging errors you may have made. This may include missing dependencies, or dependencies included that are not needed, missing license files, <em>etc.</em> Beware it is <strong>not</strong> infalliable, sometimes it will miss dependencies and falsely report unneeded dependencies. You can also run <code class="highlighter-rouge">namcap</code> on your PKGBUILD, to check if it is correctly-written. See <a href="/aa04e92372414e3a05ddf7020c5d905f/">this gist</a> for an example output of <code class="highlighter-rouge">makepkg</code> running successfully. <code class="highlighter-rouge">makepkg</code>, when run, does the following actions (which it tells you about, so you can skip the rest of this section if you want, this is for those that want some details), in order (if I am missing some actions feel free to <a href="mailto:brentonhorne77@gmail.com">email me</a>):</p>
+
+<ul>
+  <li>It downloads any needed sources, or if the sources are a VCS repository that has already been downloaded, it will update the local copy of this repository.</li>
+  <li>It verifies the sources using the checksums provided, and (optionally) the GPG keys provided.</li>
+  <li>It runs <code class="highlighter-rouge">prepare()</code> on the sources.</li>
+  <li>It runs <code class="highlighter-rouge">pkgver()</code> if provided. Then it updates the <code class="highlighter-rouge">pkgver</code> field in the PKGBUILD, accordingly.</li>
+  <li>It removes any existing <code class="highlighter-rouge">$pkgdir</code> directory(s).</li>
+  <li>It runs <code class="highlighter-rouge">build()</code> if provided.</li>
+  <li>For each package specified in the PKGBUILD it:
+    <ul>
+      <li>Enters the fakeroot environment. This is designed as a safety measure against potential security threads in the <code class="highlighter-rouge">package()</code> function.</li>
+      <li>It runs <code class="highlighter-rouge">package()</code> and variations thereof (like <code class="highlighter-rouge">package_&lt;PKG1&gt;</code>, <code class="highlighter-rouge">package_&lt;PKG2&gt;</code>, <code class="highlighter-rouge">package_&lt;PKG3&gt;</code>, <em>etc.</em>).</li>
+      <li>It ‘tidies’ the install, which means:
+        <ul>
+          <li>It removes libtool files, static library files and other unwanted files</li>
+          <li>Compresses man and info pages</li>
+          <li>Removes unneeded symbols and libraries from the binaries and libraries.</li>
+        </ul>
+      </li>
+      <li>It checks for packaging issues, like <code class="highlighter-rouge">$srcdir</code> and <code class="highlighter-rouge">$pkgdir</code> being mentioned in files in the <code class="highlighter-rouge">$pkgdir</code> directory. If there is one, you will be left to fix it yourself. NPM packages with several dependencies are bad for this, see quite often the <code class="highlighter-rouge">package.json</code> of these dependencies will have <code class="highlighter-rouge">$srcdir</code> specified in them.</li>
+      <li>Generates the <code class="highlighter-rouge">.MTREE</code>, <code class="highlighter-rouge">.BUILDINFO</code> and <code class="highlighter-rouge">.PKGINFO</code> files, and adds any install file specified.</li>
+      <li>Compresses the package using tar and xzip.</li>
+      <li>Exits the fakeroot environment.</li>
+    </ul>
+  </li>
+</ul>
+
+<h2 id="setup-a-repository">Setup A Repository</h2>
+<p>You can set up an unofficial Arch Linux package repository, given that you can provide the following:</p>
+
+<ul>
+  <li>A <strong>server</strong> you have reliable<sup id="fnref:13"><a href="#fn:13" class="footnote">13</a></sup> write access to, but that no one else, aside from some trusted individuals that may be collaborating on your repository with you, has write access to. This server should have a reliable and high-speed network connection, so that packages can be easily and rapidly downloaded from it. This is where the cost element comes in. Setting up your own web server is costly, hence the significance of this post.</li>
+  <li>An <strong>Arch Linux system</strong>, or some other Linux distribution with the required tools (such as pacman’s <code class="highlighter-rouge">makepkg</code> and <code class="highlighter-rouge">updpkgsums</code> utilities) for building Arch Linux packages. This system is one you need to have easy access to and it must be easily possible to transfer your package files (which may be quite large in some instances) to your server. An Arch Linux <code class="highlighter-rouge">namcap</code> can be handy for checking packages for common errors.</li>
+</ul>
+
+<p>Now this post is about setting up a free Arch Linux package repository, and there are only two ways of doing this that I have experience with and are aware of (if there are more ways of doing this, especially ones that can be managed from the command-line and have great download speeds, please do tell me in an email <a href="mailto:brentonhorne77@gmail.com">brentonhorne77@gmail.com</a>). These methods are:</p>
+
+<ul>
+  <li><a href="#github"><strong>GitHub</strong></a></li>
+  <li><a href="#open-build-service"><strong>Open Build Service</strong></a></li>
+</ul>
+
+<h3 id="open-build-service">Open Build Service</h3>
+<p>Via the <strong>Open Build Service</strong> (<strong>OBS</strong>) — this is a great method if you are packaging free software,<sup id="fnref:14"><a href="#fn:14" class="footnote">14</a></sup> that is infrequently updated, does not require a network connection in the <code class="highlighter-rouge">build()</code> function and if you are only building a small number of packages. The OBS itself requires you to gain some extra knowledge, in order to use it effectively. The main advantage of this method over the GH method, in my opinion, is that it can be managed from the command-line, so you can automate package updates using shell scripts. It can also be accessed from a web interface (<a href="https://build.opensuse.org">https://build.opensuse.org</a>), which is mostly handy when you are on system where the command-line client, <code class="highlighter-rouge">osc</code>, is either not available or not working. Its major disadvantages are that:</p>
+
+<ol>
+  <li>It does not provide internet access during the <code class="highlighter-rouge">build()</code>, or any other function.</li>
+  <li>Package databases can take awfully long to update after a package is updated. This is especially true if you have quite a few packages you are building.</li>
+  <li>If you have more than a small handful of packages to build, the download speeds and build speeds of your packages can really lag behind what you would likely expect or want. Sometimes packages will fail to download altogether!</li>
+  <li>The help available for OBS-related issues is via the <a href="https://forums.opensuse.org/forumdisplay.php/692-Open-Build-Service-(OBS)">OBS Forums</a> (which is hosted by the openSUSE Forums) and while they try to help,<sup id="fnref:15"><a href="#fn:15" class="footnote">15</a></sup> I have found that unless your issue also affects the building of openSUSE packages, they are unlikely to be of much help.</li>
+</ol>
+
+<h4 id="external-resources">External Resources</h4>
+<ul>
+  <li><a href="https://en.opensuse.org/openSUSE:Build_Service_Tips_and_Tricks">Build Service Tips and Tricks</a> at <em>The openSUSE Wiki</em>.</li>
+  <li><a href="https://en.opensuse.org/openSUSE:Build_Service_Tutorial">Build Service Tutorial</a> at <em>The openSUSE Wiki</em>.</li>
+  <li><a href="https://en.opensuse.org/openSUSE:OSC">OSC Wiki Article</a></li>
+</ul>
+
+<h3 id="github">GitHub</h3>
+<p>Via <strong>GitHub</strong> (<strong>GH</strong>) — this is my favourite method of hosting binary packages. You can tag a release in GitHub and add binary packages to a tagged release (<a href="https://help.github.com/articles/creating-releases/">here</a> is the official GitHub documentation on how to do this from a web-browser). Although it is important to remember to include your Arch Linux package database files (of which there should be four). These are files generated using the command: <code class="highlighter-rouge">repo-add &lt;ALRN&gt;.db.tar.gz &lt;PACKAGES&gt;</code>. Where <code class="highlighter-rouge">&lt;ALRN&gt;</code> is the name of your Arch Linux repository<sup id="fnref:16"><a href="#fn:16" class="footnote">16</a></sup> and <code class="highlighter-rouge">&lt;PACKAGES&gt;</code> is the relative (or absolute, but relative is good enough) path of each of your binary package(s). Then your Arch repository will have the <code class="highlighter-rouge">Server=</code> field (for your <code class="highlighter-rouge">/etc/pacman.conf</code> file):</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight">Server <span class="o">=</span> https://github.com/&lt;USER&gt;/&lt;REPO&gt;/releases/download/&lt;TAG&gt;/</pre></div>
+
+<p>where <code class="highlighter-rouge">&lt;USER&gt;</code> is the username field of the repo (that is, who owns it, or if it belongs to an organization, which organization owns it). <code class="highlighter-rouge">&lt;REPO&gt;</code> is the name of the repository. <code class="highlighter-rouge">&lt;TAG&gt;</code> is the name of the tag. For example for my (fusion809) <code class="highlighter-rouge">PKGBUILDs</code> repo’s <code class="highlighter-rouge">current</code> tag I would use the <code class="highlighter-rouge">Server</code> field:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight">Server <span class="o">=</span> https://github.com/fusion809/PKGBUILDs/releases/download/current/</pre></div>
+
+<p>A natural question is, “How do I update my tagged release so that it is for the latest commit, without loosing the binary packages I have already attached?” The answer is that I do not know. I do not think it is possible, especially considering <a href="http://stackoverflow.com/a/8044605/1876983">this StackOverflow Answer</a>, which seems to indicate that to do this you need to delete your original tag and create a new tag of the same name. I have found their download speeds amazing (up to 3 MB/s), and they have no specific limit on the total size of the packages you upload to a release. The maximum size of an individual package is capped at 2 GB and quite frankly I have never heard of an individual Arch Linux package that is even 1 GB in size.</p>
+
+<p>GH package databases are updated as soon as your binaries and database files have been uploaded, so this is certainly an efficient means of disseminating your packages to your friends, colleagues and others.</p>
+
+<p>There are no officially-supported means of attaching binaries from the command-line, I know this as I have sent an email to GitHub asking for help. Their reply did provide a helpful alternative, however — there is a program written in Go that provides the ability to edit tags and releases, including attaching binaries, from the command-line. It is called <a href="https://github.com/aktau/github-release"><code class="highlighter-rouge">github-release</code></a> and I have created two AUR packages for it, <a href="https://aur.archlinux.org/packages/github-release-bin"><code class="highlighter-rouge">github-release-bin</code></a> and <a href="https://aur.archlinux.org/packages/github-release"><code class="highlighter-rouge">github-release</code></a>. I have not quite mastered using it yet, so I am afraid I cannot share much information about using it. I have added <code class="highlighter-rouge">github-release</code> to my <code class="highlighter-rouge">pkgbuild-current</code> repository. To install it run:</p>
+
+<div class="language-bash highlighter-rouge"><pre class="highlight"><span class="k">if</span> <span class="sb">`</span><span class="s">cat</span> /etc/pacman.conf | <span class="s">grep</span> <span class="s2">"pkgbuild-current"</span> &gt; /dev/null 2&gt;&amp;1<span class="sb">`</span>; <span class="k">then
+  </span><span class="gt">sudo</span> <span class="nb">printf</span> <span class="s1">'[pkgbuild-current]\nServer = https://github.com/fusion809/PKGBUILDs/releases/download/current/\nSigLevel = PackageOptional'</span> &gt;&gt; /etc/pacman.conf
+<span class="k">fi</span>
+
+<span class="gt">sudo</span> <span class="na">pacman</span> <span class="opt">-Syuu</span> github-release <span class="opt">--noconfirm</span> <span class="opt">--needed</span></pre></div>
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>That is, it does not take much of an error to stuff an entire script up. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>As I may later mention, I am a cheap so-and-so, always opting for the free option where possible. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:3">
+      <p>Presented in their <em>usual</em>, but <strong>not</strong> mandatory order. Not every single default variable is listed, if you want a list see the <a href="/man/PKGBUILD.5.html">PKGBUILD(5)</a> man page. <a href="#fnref:3" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:4">
+      <p>An <sup>A</sup> superscript denotes that this variable can be an <strong>array</strong>. <a href="#fnref:4" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:5">
+      <p><sup>M</sup> superscripts denote a mandatory field. <a href="#fnref:5" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:6">
+      <p>A <sup>P</sup> superscript denotes that this variable should be defined under the individual package’s <code class="highlighter-rouge">package_...()</code> function, <strong>if</strong> the <code class="highlighter-rouge">pkgname</code> variable is an array. If the variable is defined outside of the package’s individual package_…() function, then it will be applied to <strong>all</strong> packages specified in the PKGBUILD. <a href="#fnref:6" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:7">
+      <p>This version number does <strong>not</strong> come from the upstream source, it is a revision number for the PKGBUILD. <a href="#fnref:7" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:8">
+      <p><strong>Excluding</strong> <code class="highlighter-rouge">$pkgname</code> — this is automatically added to this array when <code class="highlighter-rouge">makepkg</code> is run. <a href="#fnref:8" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:9">
+      <p>If there are some open-source text editors I am missing that you know for a fact can run on Arch Linux (that is, you have installed them yourself and they run fine) and have automatic syntax-highlighting for PKGBUILDs. <a href="#fnref:9" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:10">
+      <p>Hyperlinks are to the editor’s Arch Linux package description page, if there are more than one due to architecture differences I will link to the 64-bit version of the package. <a href="#fnref:10" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:11">
+      <p>An <sup>AUR</sup> superscript indicates that this package is only provided by the AUR and other unofficial sources. <a href="#fnref:11" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:12">
+      <p>A <sup>W</sup> superscript indicates that I would not recommend installing the version of this package linked, as I have a better build. See the editor’s respective section for details. <a href="#fnref:12" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:13">
+      <p>That is, one you can communicate with easily, without fear that the server will be down for server hours at a time and not available for you to communicate with. <a href="#fnref:13" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:14">
+      <p>It cannot be licensed under a proprietary license, even if it is a freeware license! <a href="#fnref:14" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:15">
+      <p>Keeping in mind that these people are all volunteers — they are not being paid a cent for this! <a href="#fnref:15" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:16">
+      <p>Which, for your information, can be different from your GitHub repository’s name. <a href="#fnref:16" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

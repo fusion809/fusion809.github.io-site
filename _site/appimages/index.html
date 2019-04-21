@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta name="ocs-site-verification" content="258042f12fef44bd95f4798e681e3daf" />
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main2.css" rel="stylesheet" type="text/css">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png">
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc2.js" type="text/javascript"></script>
+  <script src="/js/raphael.min.js" type="text/javascript"></script>
+  <script src="/js/flowchart-latest.js" type="text/javascript"></script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript"></script>
+  <title>AppImages: the Linux packaging format of the future</title>
+  </head>
+
+  <body>
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+    <div class="page-content">
+      <div class="wrapper1">
+        <article class="page">
+  <header class="page-header">
+    <h1 itemprop="name headline">AppImages: the Linux packaging format of the future</h1>
+    <p class="page-meta">
+      <time><b>First published</b>: Tuesday, 1 November 2016.</time>
+      <time datetime="01:50:01 PM, Friday 31 March 2017 " itemprop="dateModified"><br/><b>Last modified</b>: &nbsp;&nbsp;&nbsp;01:50 PM Friday, 31 March 2017 (AEST).</time>
+    </p>
+  </header>
+  <div class="page-content">
+    <div id="toc"></div>
+
+    
+    <p><a href="http://appimage.org/"><strong>AppImages</strong></a> are a type of <em>cross-distribution packaging format</em> (CDPF), that are not installed and need no special tools to be run. They contain all the libraries, binaries, desktop configuration files and icons that cannot be reasonably expected to be provided out-of-the-box by the target systems (that is, the Linux distributions one would run them on), the application provided by the AppImage requires. In essence they are self-mounting disk image files, that run the application contained within them. They are most similar to the disk image package format (file extension: <code class="highlighter-rouge">.dmg</code>) of macOS. Usually, all that is required to run them is for them to be made executable (using <code class="highlighter-rouge">chmod +x &lt;AppImage&gt;</code>, where <code class="highlighter-rouge">&lt;AppImage&gt;</code> is the file name [with file extension] of the AppImage) and run (with <code class="highlighter-rouge">./&lt;AppImage&gt;</code>). Although one does not need to make them executable if the <code class="highlighter-rouge">appimaged</code> daemon is running. I personally have not contributed to the development of the AppImage package format itself (as I am not competent enough a programmer, to be honest), but I have collaborated with the developer of the AppImage format, Simon Peter (or <a href="https://github.com/probonopd">@probonopd</a> as he is known as on GitHub) on creating AppImages for popular Linux apps like <a href="https://github.com/probonopd/AppImages/issues/107">Code::Blocks</a>, <a href="https://github.com/probonopd/AppImages/issues/94">GNU Emacs</a>, <a href="https://github.com/probonopd/AppImages/issues/105">NetBeans</a> and <a href="https://github.com/probonopd/AppImages/issues/113">SuperTux</a>.</p>
+
+<h2 id="available-open-source-appimages">Available Open-Source AppImages</h2>
+
+<div class="note">
+
+<div class="note-title">NOTE</div>
+<ul>
+  <li><em>If you notice an open-source Linux app missing from this section or linked pages, that you would like to see provided as an AppImage, please request it from the upstream developers.</em></li>
+</ul>
+
+
+</div>
+
+<p>I personally have built a few AppImages, such as my <a href="https://github.com/fusion809/GVim.AppImage/releases/tag/continuous">GVim (GTK+2)</a> and <a href="https://github.com/fusion809/AppImages/releases/tag/netbeans8.2">NetBeans packages</a>, although the per <a href="https://github.com/vim/vim/issues/1204">vim/vim#1204</a> they (the Vim maintainers) now provide their own GVim AppImage too. Mine is smaller (so hence also a smaller download), however, by about 5 MB. I also came up with the <a href="https://github.com/probonopd/AppImages/issues/112">qBittorrent AppImage</a> that @probonopd provides and collaborated on a few others. We have also failed at building other AppImages such as one for <a href="https://github.com/probonopd/AppImages/issues/108">CodeLite</a>, <a href="https://github.com/probonopd/AppImages/issues/106">OpenRA</a> (although the upstream developers are still considering <a href="https://github.com/OpenRA/OpenRA/issues/12257">providing one themselves</a>) and <a href="https://github.com/probonopd/AppImages/issues/110">RuneScape’s NXT Client</a>. The <a href="https://www.kdevelop.org">KDevelop</a> development team also provides an official AppImage release of their newer releases (namely for versions ≥5.0.0). A list of further AppImages can be found <a href="https://github.com/probonopd/AppImageKit/wiki/AppImages">here</a>. I have also created the following AppImage GitHub repositories with the AppImages uploaded by Travis CI to their continuous tag (so when you go to the repository links provided go to the “Releases” section and find the <code class="highlighter-rouge">continuous</code> tag. Attached to this tag should be the AppImage I built using Travis CI and the shell scripts in said repository): <a href="https://github.com/fusion809/Code-OSS.AppImage">Code-OSS.AppImage</a> and <a href="https://github.com/fusion809/GVim.AppImage">GVim.AppImage</a>.</p>
+
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <tbody style="width:500px;">
+    <caption id="table-1">
+      <p>Table 1: @probonopd’s Example AppImages</p>
+
+    </caption>
+    <tr class="green">
+      <td class="title1">AppImage</td>
+      <td class="title1">Download</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://bintray.com/probono/AppImages/AppImageUpdate" link="_blank">AppImageUpdate</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/AppImageUpdate/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/AppImageUpdate/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.arduino.cc/" link="_blank">Arduino</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Arduino/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Arduino/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.arduino.cc/" link="_blank">Arduino_IDE</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Arduino_IDE/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Arduino_IDE/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.aseprite.org/" link="_blank">Aseprite</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Aseprite/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Aseprite/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://atom.io/" link="_blank">Atom</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Atom/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Atom/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.audacityteam.org/" link="_blank">Audacity</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Audacity/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Audacity/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://avahi.org/" link="_blank">AvahiDiscover</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/AvahiDiscover/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/AvahiDiscover/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.blender.org/" link="_blank">Blender</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Blender/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Blender/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="bluefish.openoffice.nl/index.html" link="_blank">Bluefish_Editor</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Bluefish_Editor/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Bluefish_Editor/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://bluegriffon.org/" link="_blank">BlueGriffon</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/BlueGriffon/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/BlueGriffon/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://brackets.io/" link="_blank">Brackets</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Brackets/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Brackets/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://calibre-ebook.com/" link="_blank">Calibre</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Calibre/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Calibre/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.chromium.org/" link="_blank">Chromium</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Chromium/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Chromium/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.clementine-player.org/" link="_blank">Clementine</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Clementine/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Clementine/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.codeblocks.org/" link="_blank">Code::Blocks</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Code::Blocks_IDE/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Code::Blocks_IDE/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://corebird.baedert.org/" link="_blank">Corebird</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Corebird/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Corebird/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://ultimaker.com/en/products/cura-software" link="_blank">Cura</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Cura/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Cura/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.darktable.org/" link="_blank">Darktable</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Darktable/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Darktable/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.demonsaw.com/" link="_blank">Demonsaw</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Demonsaw/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Demonsaw/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://dia-installer.de/" link="_blank">Dia</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Dia/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Dia/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.dosemu.org/" link="_blank">DOS Emulator</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/DOS_emulator/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/DOS_emulator/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://evpo.net/encryptpad/" link="_blank">EncryptPad</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/EncryptPad/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/EncryptPad/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://markummitchell.github.io/engauge-digitizer/" link="_blank">Engauge</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Engauge/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Engauge/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.etcher.io/" link="_blank">Etcher</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Etcher/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Etcher/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://fbreader.org/" link="_blank">FBReader</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/FBReader/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/FBReader/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.mozilla.org/en-US/firefox/new/" link="_blank">Firefox</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Firefox/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Firefox/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://jliljebl.github.io/flowblade/" link="_blank">Flowblade_Movie_Editor</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Flowblade_Movie_Editor/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Flowblade_Movie_Editor/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://fontforge.github.io/en-US/" link="_blank">FontForge</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/FontForge/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/FontForge/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://freemind.sourceforge.net/wiki/index.php/Main_Page" link="_blank">FreeMind</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/FreeMind/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/FreeMind/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://fritzing.org/home/" link="_blank">Fritzing</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Fritzing/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Fritzing/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.geany.org/" link="_blank">Geany</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Geany/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Geany/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.gimp.org/" link="_blank">GIMP</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/GIMP/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/GIMP/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.gnu.org/software/pspp/" link="_blank">GNU_PSPP</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/GNU_PSPP/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/GNU_PSPP/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://godotengine.org/" link="_blank">Godot</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Godot/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Godot/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://manuel-kehl.de/projects/go-for-it/" link="_blank">Go For It</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Go_For_It/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Go_For_It/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://gpodder.org/" link="_blank">gPodder</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/gPodder/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/gPodder/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://gqrx.dk/" link="_blank">Gqrx</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Gqrx/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Gqrx/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://graphmonkey.sourceforge.net/" link="_blank">Graphmonkey</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Graphmonkey/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Graphmonkey/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://hugin.sourceforge.net/" link="_blank">Hugin</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Hugin/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Hugin/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.hydrogen-music.org/" link="_blank">Hydrogen</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Hydrogen/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Hydrogen/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.jetbrains.com/idea/" link="_blank">IDEA</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/IDEA/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/IDEA/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://inkscape.org/en/" link="_blank">Inkscape</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Inkscape/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Inkscape/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://iridiumbrowser.de/" link="_blank">Iridium</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Iridium/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Iridium/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.harctoolbox.org/IrScrutinizer.html" link="_blank">IrScrutinizer</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/IrScrutinizer/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/IrScrutinizer/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://itch.io/app" link="_blank">itch</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/itch/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/itch/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://jekyllrb.com/" link="_blank">jekyll</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/jekyll/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/jekyll/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://kicad-pcb.org/" link="_blank">KiCad</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/KiCad/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/KiCad/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://krita.org/en/" link="_blank">Krita</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Krita/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Krita/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://lmms.io/" link="_blank">LMMS</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/LMMS/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/LMMS/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://tarot.freeshell.org/leafpad/" link="_blank">Leafpad</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Leafpad/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Leafpad/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.libreoffice.org/" link="_blank">LibreOffice</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/LibreOffice/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/LibreOffice/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.libreoffice.org/" link="_blank">LibreOfficeDev</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/LibreOfficeDev/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/LibreOfficeDev/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.linphone.org/" link="_blank">Linphone</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Linphone/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Linphone/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://github.com/visualfc/liteide" link="_blank">LiteIDE</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/LiteIDE/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/LiteIDE/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://zdfmediathk.sourceforge.net/" link="_blank">MediathekView</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/MediathekView/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/MediathekView/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://meldmerge.org/" link="_blank">Meld</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Meld/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Meld/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://wiki.mumble.info/wiki/Main_Page" link="_blank">Mumble</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Mumble/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Mumble/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://natron.fr/" link="_blank">Natron</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Natron/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Natron/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://github.com/nuttyartist/notes" link="_blank">Notes</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Notes/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Notes/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://github.com/LazyT/obpm" link="_blank">OBPM</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/OBPM/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/OBPM/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.ocenaudio.com/" link="_blank">ocenaudio</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/ocenaudio/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/ocenaudio/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.openscad.org/" link="_blank">OpenSCAD</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/OpenSCAD/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/OpenSCAD/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.openttd.org/en/" link="_blank">OpenTTD</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/OpenTTD/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/OpenTTD/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://otter-browser.org/" link="_blank">Otter</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Otter/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Otter/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://pandoc.org/" link="_blank">Pandoc</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Pandoc/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Pandoc/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://github.com/phw/peek" link="_blank">Peek</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Peek/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Peek/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://msdn.microsoft.com/en-us/powershell/mt173057.aspx" link="_blank">PowerShell</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/PowerShell/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/PowerShell/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://docs.puddletag.net/" link="_blank">puddletag</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/puddletag/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/puddletag/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.qbittorrent.org/" link="_blank">qBittorrent</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/qBittorrent/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/qBittorrent/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.qcad.org/en/" link="_blank">QCAD</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Qcad/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Qcad/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://qgroundcontrol.com/" link="_blank">QGroundControl</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/QGroundControl/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/QGroundControl/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.qt.io/ide/" link="_blank">QtCreator</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/QtCreator/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/QtCreator/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://quassel-irc.org/" link="_blank">Quassel</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Quassel/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Quassel/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://terkelg.github.io/ramme/" link="_blank">Ramme</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Ramme/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Ramme/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.libretro.com/index.php/retroarch-2/" link="_blank">RetroArch</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/RetroArch/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/RetroArch/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://ricochet.im/" link="_blank">Ricochet</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Ricochet/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Ricochet/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.scilab.org/" link="_blank">Scilab</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Scilab/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Scilab/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.scribus.net/" link="_blank">Scribus</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Scribus/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Scribus/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://sites.google.com/site/astropipp/ser-player" link="_blank">SER</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/SER/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/SER/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.shotcutapp.com/" link="_blank">Shotcut</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Shotcut/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Shotcut/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://sigil-ebook.com/" link="_blank">Sigil</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Sigil/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Sigil/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.maartenbaert.be/simplescreenrecorder/" link="_blank">SimpleScreenRecorder</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/SimpleScreenRecorder/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/SimpleScreenRecorder/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://solvespace.com/index.pl" link="_blank">SolveSpace</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/SolveSpace/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/SolveSpace/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://spdrs60.sourceforge.net/" link="_blank">SpDrS60</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/SpDrS60/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/SpDrS60/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.stellarium.org/" link="_blank">Stellarium</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Stellarium/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Stellarium/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://subsurface-divelog.org/" link="_blank">Subsurface</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Subsurface/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Subsurface/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://supertux.github.io/" link="_blank">SuperTux</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/SuperTux_2/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/SuperTux_2/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://github.com/gnunn1/terminix" link="_blank">Terminix</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Terminix/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Terminix/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.texstudio.org/" link="_blank">TeXstudio</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/TeXstudio/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/TeXstudio/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://github.com/travis-ci/travis.rb" link="_blank">travis</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/travis/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/travis/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.mozilla.org/en-US/thunderbird/" link="_blank">Thunderbird</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Thunderbird/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Thunderbird/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.videolan.org/vlc/" link="_blank">VLC Media Player</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/VLC/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/VLC/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.kohaupt-online.de/hp/" link="_blank">vokoscreen</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/vokoscreen/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/vokoscreen/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.vsxu.com/" link="_blank">VSXu</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/VSXu/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/VSXu/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://thomas101.github.io/wmail/" link="_blank">WMail</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/WMail/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/WMail/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://wire.com/" link="_blank">Wire</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Wire/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Wire/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.wireshark.org/" link="_blank">Wireshark</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Wireshark/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Wireshark/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.wxhexeditor.org/" link="_blank">wxHexEditor</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/wxHexEditor/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/wxHexEditor/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://xchat.org/" link="_blank">XChat</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/XChat_IRC/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/XChat_IRC/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://github.com/xdgurl/xdgurl" link="_blank">xdgurl</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/xdgurl/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/xdgurl/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://zealdocs.org/" link="_blank">Zeal</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Zeal/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Zeal/images/download.svg" /></a></td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.zim-wiki.org/" link="_blank">Zim Desktop Wiki</a></td>
+      <td class="green"><a href="https://bintray.com/probono/AppImages/Zim_Desktop_Wiki/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/probono/AppImages/Zim_Desktop_Wiki/images/download.svg" /></a></td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <tbody style="width:500px;">
+    <caption id="table-1">
+      <p>Table 2: My AppImages at Bintray</p>
+
+    </caption>
+    <tr class="green">
+      <td class="title1">AppImage</td>
+      <td class="title1" style="width:230px;">Download</td>
+      <td class="title1">Source</td>
+      <td class="title1">Build Details</td>
+      <td class="title1">Description</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://atom.io" link="_blank">Atom</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Atom/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Atom/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/atom" link="_blank">Link</a></td>
+      <td class="green">Built from official binary tarball releases.</td>
+      <td class="green">The Atom text editor, an open-source, hackable text editor for the 21st Century.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://atom.io" link="_blank">Atom (Beta)</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Atom_Beta/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Atom_Beta/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/atom-beta" link="_blank">Link</a></td>
+      <td class="green">Also built from official binary tarball releases.</td>
+      <td class="green">The Atom text editor, an open-source, hackable text editor for the 21st Century - beta channel.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://bluefish.openoffice.nl/index.html" link="_blank">Bluefish</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Bluefish_Editor/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Bluefish_Editor/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/bluefish" link="_blank">Link</a></td>
+      <td class="green">Built from 12.04 ingredients using the klaus-vormweg/bluefish-gtk2 PPA.</td>
+      <td class="green">An open-source IDE for web development.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://brackets.io" link="_blank">Brackets</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Brackets/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Brackets/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/brackets" link="_blank">Link</a></td>
+      <td class="green">Built from official 64-bit Debian package release and Debian 7 (Wheezy) ingredients.</td>
+      <td class="green">An open-source code editor from Adobe for web languages.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://calibre-ebook.com/" link="_blank">Calibre</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Calibre/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Calibre/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/calibre" link="_blank">Link</a></td>
+      <td class="green">Built from official binary tarball releases.</td>
+      <td class="green">A free ebook library management program.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://code.visualstudio.com" link="_blank">code-oss</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/code-oss/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/code-oss/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/code-oss" link="_blank">Link</a></td>
+      <td class="green">Built from an unofficial Debian binary I myself build.</td>
+      <td class="green">An open-source code editor from Microsoft built on the Electron framework.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.codeblocks.org/" link="_blank">Code::Blocks</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Code::Blocks_IDE/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Code::Blocks_IDE/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/codeblocks-precise" link="_blank">Link</a></td>
+      <td class="green">Built from 12.04 ingredients with the damien-moore/codeblocks-stable PPA.</td>
+      <td class="green">An open-source C/C++/Fortran IDE written in C++.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://electron.atom.io/" link="_blank">Electron</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Electron/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Electron/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/electron" link="_blank">Link</a></td>
+      <td class="green">Built from official binary tarball releases.</td>
+      <td class="green">An open-source framework for building desktop applications using web technologies.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.mozilla.org/en-US/firefox/new/" link="_blank">Firefox</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Firefox/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Firefox/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/firefox" link="_blank">Link</a></td>
+      <td class="green">Built from official binary tarball releases.</td>
+      <td class="green">An open-source web browser created by the Mozilla Foundation.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.geany.org" link="_blank">Geany</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Geany/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Geany/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/geany-trusty" link="_blank">Link</a></td>
+      <td class="green">Built from packages in my brentonhorne/geany2 PPA, along with other 14.04 ingredients.</td>
+      <td class="green">A lightweight, free and open-source IDE with support for several different programming languages and built on the GTK+ toolkit.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.gnu.org/software/emacs/" link="_blank">GNU Emacs</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/GNU_Emacs/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/GNU_Emacs/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/Emacs.AppImage" link="_blank">Link</a></td>
+      <td class="green">Built from source code on Ubuntu 12.04.</td>
+      <td class="green">A free and open-source, extensible and self-documenting text editor with IDE features.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.gnu.org/software/octave/about.html" link="_blank">GNU Octave</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/GNU_Octave/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/GNU_Octave/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/octave-trusty" link="_blank">Link</a></td>
+      <td class="green">Built from packages in the brentonhorne/octave PPA, along with other 14.04 ingredients.</td>
+      <td class="green">A free and open-source environment for technical computing.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.gnu.org/software/pspp/" link="_blank">GNU PSPP</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/GNU_PSPP/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/GNU_PSPP/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/pspp" link="_blank">Link</a></td>
+      <td class="green">Built from the adamzammit/pspp PPA and other 12.04 ingredients.</td>
+      <td class="green">A free and open-source replacement for SPSS, with tools for statistical analysis</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://www.vim.org/" link="_blank">gvim</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/gvim/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/gvim/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/gvim" link="_blank">Link</a></td>
+      <td class="green">Built from packages in the jonathonf/vim PPA and other 14.04 ingredients.</td>
+      <td class="green">An open-source, modal and extensible text editor.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://jekyllrb.com/" link="_blank">jekyll</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/jekyll/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/jekyll/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/jekyll" link="_blank">Link</a></td>
+      <td class="green">Built from bundler package.</td>
+      <td class="green">An open-source static site generator written in Ruby.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.libreoffice.org/" link="_blank">LibreOffice</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/LibreOffice/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/LibreOffice/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/libreoffice" link="_blank">Link</a></td>
+      <td class="green">Built from official binary tarballs.</td>
+      <td class="green">An open-source office suite.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://messengerfordesktop.com/" link="_blank">Messenger for Desktop</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Messenger_for_Desktop/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Messenger_for_Desktop/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/messengerfordesktop" link="_blank">Link</a></td>
+      <td class="green">Built from official Debian package release.</td>
+      <td class="green">An open-source messenger for Facebook on the Linux desktop.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="http://qbittorrent.org/" link="_blank">qBittorrent</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/qBittorrent/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/qBittorrent/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/qbittorrent" link="_blank">Link</a></td>
+      <td class="green">Built from packages in qbittorrent-team/qbittorrent-stable PPA and 14.04 ingredients.</td>
+      <td class="green">An open-source BitTorrent client built using the Qt widget toolkit.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://github.com/gnunn1/terminix" link="_blank">Terminix</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Terminix/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Terminix/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/meta/terminix" link="_blank">Link</a></td>
+      <td class="green">Built from the official binary zip archive.</td>
+      <td class="green">An open-source tiling terminal emulator written in D.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://www.mozilla.org/en-US/thunderbird/" link="_blank">Thunderbird</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Thunderbird/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Thunderbird/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/thunderbird" link="_blank">Link</a></td>
+      <td class="green">Built from the official binary tarballs.</td>
+      <td class="green">An open-source email client from Mozilla.</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="green"><a href="https://transmissionbt.com/" link="_blank">Transmission-GTK</a></td>
+      <td class="green"><a href="https://bintray.com/fusion809/AppImages/Transmission-GTK/_latestVersion#files" link="_blank"><img src="https://api.bintray.com/packages/fusion809/AppImages/Transmission-GTK/images/download.svg" /></a></td>
+      <td class="green"><a href="https://github.com/fusion809/AppImages/tree/master/recipes/transmission" link="_blank">Link</a></td>
+      <td class="green">Built from source code using a CentOS 7 Docker container.</td>
+      <td class="green">An open-source BitTorrent client built using the GTK+ toolkit.</td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<h2 id="see-also">See Also</h2>
+<ul>
+  <li><a href="https://bintray.com/probono/AppImages/">probonopd’s Collection of Example AppImages</a></li>
+</ul>
+
+  </div>
+</article>
+
+      </div>
+    </div>
+    <footer class="site-footer1">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+  </body>
+</html>

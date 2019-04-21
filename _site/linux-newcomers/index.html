@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>What's the best Linux distribution for newcomers?</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">What's the best Linux distribution for newcomers?</h1>
+    <p class="post-meta">
+      <br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/linux/" link="_blank">linux</a></span><span class="tag"><a href="/tag/newcomers/" link="_blank">newcomers</a></span><br/>-->
+      <time datetime="2016-01-30T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Saturday, 30 January 2016.</time>
+      
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <p>A few days ago I saw a post in the Arch and Manjaro Facebook Group (that has since been deleted) asking what would be the best Linux distribution for a computer science student to try as a first distribution. The replies varied quite significantly from Gentoo Linux (which is a real turn off even for the most experienced Linux users, due to how much work it is to setup and then maintain a Gentoo system, some die-hard fans of the system exist, but for me at least Gentoo is just too much of a headache) to Linux Mint and Ubuntu. While I have done a <a href="/2016/01/07/comparison-of-free-operating-systems">comparison of free operating systems</a>, I felt this query deserved its own post.</p>
+
+<p>When I first started using Linux in mid 2012, the only distribution that I could possibly handle without becoming totally discouraged by the apparent difficulty for me to transition from Windows NT systems to Linux systems, was Ubuntu. But that was me, someone with limited knowledge and little aptitude for computers and technology in general and even less patience for a system that did not work out-of-the-box, while a computer science student on the other hand probably would not mind getting pushed a little further into the deep end of Linux than myself. This post is designed to offer suggestions as to the best Linux distribution for people with specific skill sets, interests, levels of patience, <em>etc.</em></p>
+
+<p>In general, if you are uncertain as to which distribution I mention here, to try (all of which are available free of charge — I do not endorse proprietary software or operating systems), I suggest you try all those you think, based on what I am saying, would be best for you, in a VirtualBox Virtual Machine. <a href="https://www.virtualbox.org/">Oracle VM VirtualBox</a> (or VB for short) is a free and open-source cross-platform software application in which you can run almost any and every Linux distribution you could run on a physical machine, without ever logging out or fiddling with your partitions. If you go the <a href="https://www.virtualbox.org/wiki/Downloads">download page</a> for VirtualBox you will find binary packages you can use to install VB on a variety of platforms including Linux, OS X, Solaris and Windows NT (Vista or later). Every Linux distribution mentioned in this post can be run in a VirtualBox VM (I know because I have tried them all).</p>
+
+<h2 id="glossary">Glossary</h2>
+
+<h3 id="bsd-ports-system">BSD Ports System</h3>
+<p>On BSD derivatives, especially FreeBSD, a common form of package management is the so called “Ports” system. These ports are a series of subdirectories in the <code class="highlighter-rouge">/usr/ports</code> folder, each containing the source code of available packages that can be installed via this ports system. To install a package the user merely changes into the port of the package they want (this must be done as root, by-the-way, otherwise permission issues will be encountered later on in this process), configures the source code so that the package will be built with the features they want, and runs <code class="highlighter-rouge">make install</code>. The <code class="highlighter-rouge">/usr/ports</code> folder has a characteristic directory hierarchy inside it. See each individual package’s build directory (which contains the source code) is found at <code>/usr/ports/<i>CAT</i>/<i>PACKAGE</i></code>, where <code><i>CAT</i></code> refers to the category the package belongs to (e.g., <code class="highlighter-rouge">www</code> for the Firefox web browser) and <code><i>PACKAGE</i></code> refers to the package’s name (in the example of Firefox this would be simply <code class="highlighter-rouge">firefox</code>).</p>
+
+<h3 id="creating-a-live-medium">Creating a Live Medium</h3>
+<p>In order to install any of the distributions mentioned in this post on a physical machine (as opposed to a virtual machine like through VirtualBox) you need to first create a live medium (which is either a CD, DVD or USB) from the ISO image (with the file extension <code class="highlighter-rouge">.iso</code>) provided by the distribution. Several more user-friendly distributions have their own set of tools for creating a live medium from such an ISO, the most popular tools that work with a variety of different distributions are the graphical <a href="https://unetbootin.github.io/">UNetBootin</a> program which is designed specifically for creating live USBs for Linux (I would only recommend using it, if you are uncomfortable with the command-line, as in my experience it is not unusual for it to create unusable live USBs) and the textual <code class="highlighter-rouge">dd</code> Unix command. To create one using the <code class="highlighter-rouge">dd</code> command, run the following (from the command-line of any *nix system or Cygwin on Windows):</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dd bs=4M if=<i>/path/to/media.iso</i> of=/dev/sd<i>x</i> status=progress &amp;&amp; sync</div>
+
+<p>where what is <em>italicized</em>, needs to be substituted with the corresponding values for the situation at hand. For example, I keep my live ISOs in my <code class="highlighter-rouge">/home/fusion809/VirtualBox VMs/ISOs</code> folder, so if I wanted to create a live USB for an ISO file <code class="highlighter-rouge">/home/fusion809/VirtualBox VMs/ISOs/archlinux.iso</code>, with my live USB being at <code class="highlighter-rouge">/dev/sdb</code> on my file system, then I would run (note the use of quotation marks around the ISO file’s location, due to the appearance of spaces in the file’s location, which makes quotation marks necessary. While their use around <code class="highlighter-rouge">/dev/sdb</code> is strictly not necessary, it is good practise):</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dd bs=4M if=&quot;/home/fusion809/VirtualBox VMs/ISOs/archlinux.iso&quot; of=&quot;/dev/sdb&quot; status=progress &amp;&amp; sync</div>
+
+<p>For a guide on creating live USBs I would recommend the <a href="https://wiki.archlinux.org/index.php/USB_flash_installation_media">ArchWiki article on this topic</a>, although keep in mind this guide is primarily written with creating a live USB for Arch Linux in mind and hence some methods described in it may not be applicable to all Linux distributions.</p>
+
+<h3 id="long-term-support-lts">Long-Term Support (LTS)</h3>
+<p><strong>Long-term support</strong> (<strong>LTS</strong>), refers to software releases that have a longer than normal support lifetime (that is, the time period over which the program is still supported by its developer). Examples include Ubuntu (LTS) releases and Linux kernel (LTS) releases, which are supported for longer periods of time than standard releases.</p>
+
+<h2 id="patient-techies">Patient Techies</h2>
+
+<h3 id="gentoo-linux">Gentoo Linux</h3>
+<p>If you know a lot about technology, are great at figuring out what to do based on online documentation, are <em>very</em> patient, do not need your Linux system to run out-of-the-box, love freedom in deciding the characteristics of your operating system and are willing to spend hours of your time just trying to install and configure your system to your liking, then <a href="https://www.gentoo.org"><strong>Gentoo Linux</strong></a> maybe the Linux distribution for you. Although I would definitely suggest you try it in a VirtualBox VM before you try to install it on your physical machine because it is possible that it will frustrate you so much that you will give up on it early on.</p>
+
+<p>I find Gentoo a nightmare to be honest, as upgrading your system is nowhere near as simple as running a single command from the command-line like it is on most Linux distributions, updating your kernel may make you become violent in frustration and system breakage is definitely not unheard of. Despite this, it is very customizable, in fact it is so customizable that Gentoo has been called a meta-family of distributions, to refer to the fact that two systems built on the same date, from the same live ISO for Gentoo Linux, can end up becoming so different from one another that they can even be considered distinct Linux distributions. This customizability is due to Gentoo’s unique package management system, <strong>Portage</strong>, which is also a source of most of the frustration I have experienced with Gentoo.</p>
+
+<h4 id="package-management">Package Management</h4>
+<p>Portage, unlike all the other package managers mentioned in this post which all install software from binary packages by default, installs software the longer, more error-prone and CPU/RAM-intensive way: from source code. Installing software from source code is what is key to Gentoo’s customizability, as this means that every package installed can be installed just the way the user wants. See when you install software from source code generally speaking you will go through five major stages, which Portage handles wire to wire:</p>
+<ol>
+  <li>Getting the dependencies.</li>
+  <li>Preparing the source code, applying any necessary patches in order for the following steps to go smoothly.</li>
+  <li>Configuring the source code.</li>
+  <li>Compiling the source code.</li>
+  <li>Installing the compiled program.
+step 3 is where Portage really distinguishes itself from other package managers, see step 3 is where one usually decides which features of the software will be built and which will not be built, by providing the program’s <code class="highlighter-rouge">configure</code> or <code class="highlighter-rouge">autogen.sh</code> script with what I will call “configuration parameters”. Portage gives users full control over this step by use of “USE Flags” which are keywords that tell Portage which features of a software package it should and should not build. They essentially correspond to the “configuration parameters” I mentioned earlier. Package managers working with binary packages, on the other hand, usually only ship with software packages built with a single set of maintainer-selected configuration parameters, which essentially means end-users are stuck with the configuration parameters the maintainer(s) of the package wanted, with no freedom to set these parameters themselves.</li>
+</ol>
+
+<p>Portage building software from source code is also key to Gentoo’s name. See Gentoo Linux is named after Gentoo penguins — the fastest species of penguin, to refer to the fact that by installing all its software from source code, instead of relying on binary packages, it is hoped that Gentoo systems will be the faster than their binary counterparts. I have set up VirtualBox VMs with Gentoo installed on them and never have I noticed any striking improvement in speed or performance of software running under Gentoo, as opposed to it running under binary distributions like Arch Linux. Then again, any speed improvement between Gentoo and binary distribution is likely to be modest — less than I can even notice. The only speed-related issue I have noticed on these VMs is the increased time it takes to install software with Portage, as opposed to the time it takes with binary package managers like pacman.</p>
+
+<p>Portage builds software using instructions set forth in a specialized type of Bash script called an <strong>ebuild</strong>, which are a feat in themselves to learn, even with some prior Bash knowledge. Each individual ebuild has instructions telling Portage how to build a specific software package, and by a specific package I mean a specific program with a specific version number, for example, one ebuild may tell Portage how to build the 1.4.0 release of the Atom text editor, while another may tell it how to build the 1.4.1 release of Atom. Portage uses its own type of repository, called an overlay, to contain its ebuilds. The default Portage overlay is called the Portage Tree and is found in <code class="highlighter-rouge">/usr/portage</code>. In here are ebuilds developed and maintained by the Gentoo Foundation. Gentoo also has a tool for adding extra Portage overlays called layman, which adds new overlays to <code class="highlighter-rouge">/var/lib/layman</code>, some of these extra Portage overlays are maintained by members of the Gentoo Foundation, but the vast majority are not and are instead maintained by Gentoo users with no affiliation with the Gentoo Foundation. For example, I have my own Portage overlay called <a href="https://github.com/fusion809/sabayon-tools"><code class="highlighter-rouge">sabayon-tools</code></a>.</p>
+
+<p>Both the Portage Tree and the overlays managed by layman have a hierarchial directory structure of the form <code>.../<i>CAT</i>/<i>PACKAGE</i></code> where <code class="highlighter-rouge">...</code> denotes the parent directory in question (either <code class="highlighter-rouge">/usr/portage</code> or <code>/var/lib/layman/<i>OVERLAY</i></code>, where <code><i>OVERLAY</i></code> is the overlay’s name) and as for the BSD Ports System <code><i>CAT</i></code> and <code><i>PACKAGE</i></code> refer to the package’s category and name, respectively. The <code><i>CAT</i></code>s used by Portage are distinct (more detailed in my opinion) from the the <code><i>CAT</i></code>s used by the BSD Ports System. What also distinguishes Portage from the BSD Ports System is that the BSD Ports System does <strong>not</strong> do dependency resolution for you, rather you have to install all dependencies manually yourself, while Portage will install all the required dependencies itself, before installing the target package (that is, the package you tell Portage you want to install) itself.</p>
+
+<p>The Portage Tree, along with the other available overlays maintained by layman, also contain several different release versions of the same software package, which is something that distinguishes them from the vast majority of binary distributions, which usually only have a single version of each software in their repositories. For example, see <a href="https://packages.gentoo.org/packages/sys-kernel/gentoo-sources">here</a> for the different versions of the package <code class="highlighter-rouge">sys-kernel/gentoo-sources</code> available from the Portage Tree, this package if you are wondering as to its significance, is the kernel for Gentoo Linux. These different available software versions also adds to the freedom of Gentoo.</p>
+
+<p>The fact that Portage builds software from source code also allows Gentoo to run on a large number of different computer architectures. The number of different CPU architectures supported by Gentoo is, to my knowledge, second only to Debian in the Linux world. The list of supported processor architectures, according to <em>DistroWatch</em>, are:</p>
+<div class="div-col columns column-count column-count-4" style="-moz-column-count: 4; -webkit-column-count: 4; column-count: 4;">
+  <ul>
+    <li>i486</li>
+    <li>i586</li>
+    <li>i686</li>
+    <li>x86_64</li>
+    <li>alpha</li>
+    <li>arm</li>
+    <li>hppa</li>
+    <li>mips</li>
+    <li>powerpc</li>
+    <li>ppc64</li>
+    <li>sparc64</li>
+  </ul>
+</div>
+
+<p>Portage has even been ported to a few different non-Linux Unix/Unix-like operating systems including the *BSDs (especially FreeBSD). Portage is also written in Python, which allows advanced users to script with Portage more freely.</p>
+
+<p>Something else that distinguishes Gentoo from most, but not all, binary distributions is its <strong>release model</strong>. See Gentoo follows the rolling release model, which means there is never any need to upgrade one’s Gentoo system by deleting the old version of the operating system and installing the new version over it. Rather updates are performed via running one’s package manager.</p>
+
+<p>I personally would give Portage two or three stars out of five, as a package manager, as while it is designed to automate processes like installing software and upgrading software, for me it just gives me headaches as a lot of this stuff I am forced to do myself.</p>
+
+<h4 id="helpful-links-and-resources">Helpful Links and Resources</h4>
+<ul>
+  <li><a href="http://distrowatch.com/table.php?distribution=gentoo">DistroWatch Article on Gentoo</a></li>
+  <li><a href="https://www.gentoo.org/downloads/">Download Page</a>, from which you can get a live ISO for Gentoo.</li>
+  <li><a href="https://forums.gentoo.org/">Gentoo Forums</a></li>
+  <li><a href="http://gpo.zugaina.org/">gpo.zugaina.org</a>, a website from which you can search for ebuilds in the Portage Tree and the Portage overlays found in the Layman remote list.</li>
+  <li><a href="https://wiki.gentoo.org/wiki/Handbook:X86/Installation/About">Installation Handbook for X86 Systems</a> (note, the architecture of this guide is irrelevant, that is, you should be able to install Gentoo on say an AMD64 system while still following this X86 installation guide)</li>
+  <li><a href="irc://irc.freenode.net/#gentoo"><span class="irc">#gentoo</span></a>
+ — Gentoo IRC support channel.</li>
+  <li><a href="https://packages.gentoo.org/">packages.gentoo.org</a>, a web interface from which you can browse packages in the Portage Tree.</li>
+</ul>
+
+<h2 id="busy-techies">Busy Techies</h2>
+
+<h3 id="arch-linux">Arch Linux</h3>
+<p>If you have less free time to install and then configure your Linux system, but still want a great degree of freedom over it and would like the very latest software, the same day it is released, then I think <a href="https://www.archlinux.org"><strong>Arch Linux</strong></a> will be the distribution for you. While it is still challenging for newcomers to set up Arch Linux (as there is no automated installer and it comes with no pre-installed GUI, so everything must be done from the command-line) and it can take a while (for me installing it and setting it up for everyday use probably took at least a couple of hours, but this was partly because I was using a laptop which used a Wi-Fi chipset not supported out-of-the-box by the Linux kernel, so I had to install some extra firmware), it is nowhere near as challenging or tedious as Gentoo is to install and maintain. Like Gentoo, Arch follows a rolling release model, but unlike Gentoo upgrading an Arch system is as simple as issuing a single command:
+<span class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span>  pacman -Syu –noconfirm</span>
+. Arch is also more limited in the CPU architectures it supports, with support for only arm, i686 and x86_64 architectures.</p>
+
+<h4 id="package-management-1">Package Management</h4>
+<p>Arch Linux uses its own binary package manager called <strong>pacman</strong>, which also comes with a command-line tool (called <code class="highlighter-rouge">makepkg</code>) to build binary packages from source code using the instructions found in a specialized type of Bash script called a <strong>PKGBUILD</strong>. The pacman package also provides other commands, to list them all run:
+<span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  pacman -Qlq pacman | grep /usr/bin</span>
+. Arch Linux has its own online repository (that since August 2015 has been managed by git) of PKGBUILDs provided by the community, for use installing software not in the pacman binary package repository, it is called the <strong>Arch User Repository</strong> (<strong>AUR</strong>). Writing PKGBUILDs, I can tell you from personal experience writing both ebuilds (if you passed by the Gentoo section these are the Gentoo equivalent to PKGBUILDs) and PKGBUILDs, is far simpler than writing ebuilds. If I see a package I want to install on my Arch system that is not in the pacman repos or the AUR, odds are within an hour I would have written a working PKGBUILD, and using makepkg created and installed a binary package from it. The same can most certainly not be said for ebuilds on my Gentoo VMs, odds are I will not be able to write a functioning ebuild for the package at all and if I do manage it, it is likely it would take me several hours. Even bumping existing ebuilds to a later version of the package they provide, is something I sometimes fail to do properly.</p>
+
+<p>I usually find the software in Arch’s official repositories tends to be a little more up-to-date than the latest version in the Portage Tree. Although if you want to always have the latest Linux kernel, then I would suggest you use Gentoo Linux instead of Arch Linux, because I tend to find there is quite a delay between the release of the latest kernel and its addition to Arch’s core repository. Although usually the latest kernel will be added to the Portage Tree within a few hours of it being released. This being said, it is worthwhile noting that the Portage Tree took over two months to get the 3.18 release of GNOME, so I still stand by my previous statement that Arch’s repository tends to be a little more up-to-date than that in the Portage Tree. If you want/need the latest kernels, but do not want to use Gentoo due to how long installing software and maintaining the system takes, I would suggest you use <a href="https://www.sabayon.org/"><strong>Sabayon Linux</strong></a> instead as it is a Gentoo derivative that also has its own binary package manager which has repositories that contain the vast majority of packages you probably want/need on your system, including the latest kernels. It still has Portage, however, although if you use Portage on Sabayon you cannot expect any support from the Sabayon community, according to the developers of Sabayon.</p>
+
+<p>pacman is, in my opinion, by far the fastest package manager in terms of how quickly it installs software. It is written predominantly in C and its binary packages are xz-compressed, with the file extension <code class="highlighter-rouge">.pkg.tar.xz</code>. I personally would give pacman five stars out of five, in terms of how much I like it as a package manager. There are also several community-provided (not officially supported by the Arch Linux development team) programs available to automate the process of installing packages from the AUR and to search the AUR. See <a href="https://wiki.archlinux.org/index.php/AUR_helpers">here</a> for an article on these AUR tools (or “AUR helpers” as they are referred to in this article) at <em>The ArchWiki</em>. I personally prefer the AUR helpers:</p>
+
+<ul>
+  <li><strong>pacaur</strong> — a command-line tool with a similar syntax to pacman itself, it is written in Bash and C. It can be used to do everything with AUR packages that pacman can be used to do with packages in the pacman repositories.</li>
+  <li><strong>trizen</strong> — a command-line tool written in Perl that also shares a similar syntax to pacman. It is fairly similar to pacaur.</li>
+  <li><strong>yaourt</strong> — a Bash wrapper for pacman that shares most of its syntax with pacman. It was the only AUR helper I used until pacman 5.0.0 came out. See yaourt depends on the <code class="highlighter-rouge">package-query</code> package, which is imcompatible with pacman 5.0.0. pacaur and trizen are compatible with pacman 5.0.0, however.</li>
+</ul>
+
+<h4 id="useful-resources">Useful Resources</h4>
+<ul>
+  <li><a href="https://aur.archlinux.org/"><strong>Arch User Repository</strong></a> — where you can search the AUR for packages.</li>
+  <li><a href="https://wiki.archlinux.org"><strong>The ArchWiki</strong></a>, which is the best (most detailed, largest, best-maintained, <em>etc.</em>) Wiki pertaining to any particular Linux distribution that I have seen.</li>
+  <li><a href="https://bbs.archlinux.org"><strong>Forums</strong></a></li>
+  <li><a href="https://www.archlinux.org/"><strong>Home Page</strong></a> — where you can also search for packages in the pacman repositories. Alternatively you can run the command <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  pacman -Ss &lt;TERM&gt;</span>
+ to search for packages with <code class="highlighter-rouge">&lt;TERM&gt;</code> appearing either in their description or name.</li>
+  <li><a href="irc://irc.freenode.net/#archlinux"><span class="irc">#archlinux</span></a>
+ — I have only tried to use it once and that one time, suffice it to say they were less than polite, although it is possible that I could have gotten the wrong end of the stick.</li>
+</ul>
+
+<h3 id="fedora">Fedora</h3>
+<p><a href="https://getfedora.org/"><strong>Fedora</strong></a> comes with an automated installer (which can be run from both the command-line and graphically), which makes it easier to install. This installer requires like five minutes worth of user attention before the rest of the process, while tedious, is automatic and requires no user intervention. So suffice it to say that Fedora is a good choice for the very busy. Fedora uses the DNF package manager for package management, with PackageKit (and its derivatives GNOME Software and Apper) being a popular front-end. DNF is essentially a faster version of yum, it shares most of yum’s source code the only significant difference is that DNF uses some of openSUSE’s ZYpp package manager’s components to speed up its notoriously slow dependency resolution. System maintenance on Fedora is as simple as running a couple of commands every week or so (if you do so less frequently nothing bad is likely to happen besides any software updates will likely be greater in download size and the time they take to be downloaded and installed).</p>
+
+<p>Despite this it is often said to be a developer’s distribution, because it uses the very latest software for the most part. In fact Linus Torvalds, the developer of the Linux kernel, is said to use Fedora on all his PCs. Although I should warn you that it does <strong>not</strong> follow a rolling release model, so new releases need to be installed over older releases, which can become a pain seeing how a new release comes out roughly every six months. When new releases of Fedora come out they usually have the very latest kernel and desktop environments (its default desktop is GNOME), although as time passes after the latest release is made, the kernel of this latest release will usually become out-of-date. For example, I have a VM for Fedora 23 which is running the 4.3.3 kernel as of 30 January 2015, even though the 4.4.0 kernel was released 10 January 2015.</p>
+
+<p>I would probably give DNF three to four stars out of five, as it is fairly slow, despite it being an improvement over yum. One feature I like about it are package groups, which can be used to install a whole set of required packages. Like to install the KDE desktop one would run:</p>
+<div class="console"><span class="coder"><abbr title="This command is to be run as root user; to enter root run the su command">root #</abbr></span> &nbsp;dnf install -y @kde-desktop</div>
+
+<p>Fedora presently only supports armhfp, i686 and x86_64 architectures. It does have several different official editions which vary mostly in their pre-installed desktop environment. So if your PC does not have much CPU power/RAM to work with, you may wish to use the LXDE edition. A netinstall edition also exists, which you can install and customize to your liking.</p>
+
+<h4 id="useful-resources-1">Useful Resources</h4>
+<ul>
+  <li><a href="https://ask.fedoraproject.org/">Ask Fedora</a> — an AskBot-powered Q&amp;A website for Fedora that is similar, but not quite as swift and high-quality in its responses, in my opinion at least, as Ask Ubuntu is for Ubuntu-related queries.</li>
+  <li><a href="https://fedoraproject.org/wiki/Fedora_Project_Wiki">Fedora Project Wiki</a> — a MediaWiki-powered Wiki that I consider a dinosaur in that its information nearly exclusively pertains to older releases of Fedora. Most pages still refer to the <code class="highlighter-rouge">yum</code> command for package management.</li>
+  <li><a href="http://fedoraforum.org/">Forums</a> — never had the pleasure or displeasure of using it myself, so cannot comment on it.</li>
+  <li><a href="irc://irc.freenode.net/#fedora"><span class="irc">#fedora</span></a>
+ — also never had the pleasure/displeasure of using this channel.</li>
+</ul>
+
+<h3 id="sabayon-linux">Sabayon Linux</h3>
+<p><strong>Sabayon Linux</strong> as previously mentioned is a Linux distribution with both a binary package manager and source code package manager, Entropy and Portage, respectively. Sabayon also comes with its own automated installer, which was previously the Anaconda installer (used by Fedora) but is now Calamares (which unlike Anaconda can only be run graphically, installation from the command-line impossible). Like Anaconda, however, Calamares requires like five minutes of user attention (in which they mostly just punch in their hostname, username, password, <em>etc.</em>) before the rest of the roughly 30 minutes - 1 hour automated installation process occurs during which the user is free to do whatever they want to pass the time. Installing and maintaining Sabayon using Calamares and Entropy, respectively, is simple enough for me to believe that non-techies could manage it without a problem. There are seven major editions of Sabayon, each with a different set of pre-installed packages: GNOME, KDE, MATE, Minimal (Fluxbox), Server, SpinBase and Xfce. The Server and SpinBase editions are largely free of a pre-installed GUI, although the Server edition does have the graphical Calamares installer available.</p>
+
+<h4 id="package-management-2">Package Management</h4>
+<p>Both Entropy and Portage are written in Python and to a lesser extent, Bash script. Entropy’s repositories contain binary packages created using Portage and then converted from Portage binary packages to Entropy packages using Entropy itself. The ebuilds these packages are built from come either from the Portage Tree or the <code class="highlighter-rouge">sabayon</code>/<code class="highlighter-rouge">sabayon-distro</code> overlays maintained by the Sabayon development team. I find Entropy fairly slow at dependency resolution, package decompression and installation, which I suspect may be related to the fact it is written in an interpreted language like Python instead of a compiled language such as C and C++ like the faster package managers, APT, pacman and ZYpp, are. Users that want packages not in the Entropy repositories can use Portage to install them from either the Portage Tree or the unofficial Portage overlays. Sometimes, however, you may find packages you want that are not in the Portage Tree or unofficial overlays, in these cases you would do what you would do on Gentoo, that is, write an ebuild for the package you want.</p>
+
+<p>Entropy would receive four stars out of five from me. It is fairly easy to use, but it is also fairly slow. The Entropy repositories are usually fairly up-to-date, but you will find the odd piece of out-of-date software in them. See only two people maintain these repositories, in their spare time (to my knowledge they both have full-time jobs too, so needless to say their spare time is not a vast resource) and there are over 13,000 packages in there so it is inevitable that a few will slip through the cracks. This is as opposed to over a dozen different developers that main Arch and Fedora’s package repositories. Although rest assured, the desktop and system software (like the kernel, coreutils package, KDE desktop components, GNOME desktop components, <em>etc.</em>) in the Entropy repositories is usually updated within a day or two of the update being released upstream. Where upstream is either the Portage Tree or one of the Sabayon overlays (<code class="highlighter-rouge">sabayon</code>/<code class="highlighter-rouge">sabayon-distro</code>).</p>
+
+<p>Sabayon unlike Gentoo only supports armhf and x86_64 architectures, although i686 support did exist until 2014.</p>
+
+<h4 id="useful-resources-2">Useful Resources</h4>
+<ul>
+  <li><a href="http://www.sabayon.org/latest">Download Page</a></li>
+  <li><a href="https://forum.sabayon.org/">Forums</a></li>
+  <li><a href="https://wiki.sabayon.org/index.php?title=Main_Page">Sabayon Wiki</a> — its Wiki’s quality is far less than that of Arch or Gentoo Linux.</li>
+  <li><a href="irc://irc.freenode.net/#sabayon"><span class="irc">#sabayon</span></a>
+ — support channel. Beware though, if you make any suggestions to the Sabayon team, or criticisms, or request a package there, you risk having your head bitten off! I know this from personal experience. Granted I was only bitten at by one guy and it was for offering suggestions and requesting a package update more than once, but still it is not a pleasant experience.</li>
+</ul>
+
+<h3 id="other-distributions">Other Distributions</h3>
+<p>This section really just mentioned some distributions that are a little more challening for non-techies to grasp but easier and faster to setup and maintain than Gentoo. It is possible that some techies may like to use <a href="#debian">Debian</a>, <a href="#manjaro-linux">Manjaro Linux</a> or <a href="#opensuse">openSUSE</a> as their first distribution, which are discussed in the sections they were hyperlinked to. All three come with automated installers, are easy to maintain and give users some room to grow and learn.</p>
+
+<h2 id="non-techies">Non-Techies</h2>
+<p>If you are not so technologically-talented I would suggest you use a beginner distribution like <a href="https://manjaro.github.io/"><strong>Manjaro Linux</strong></a>, <a href="https://www.opensuse.org/"><strong>openSUSE</strong></a> or <a href="http://www.ubuntu.com"><strong>Ubuntu</strong></a> (or one of its derivatives like Linux Mint). If you are ambitious you may try a slightly more challenging distribution like Sabayon, which is fairly beginner-friendly but its documentation and online support is poorer than all four distributions previously mentioned in this section. Manjaro Linux is best suited for individual use, not for server or business use. openSUSE and Ubuntu can be used for server or business use too, but if you want to use Linux for server or business use I suggest you go to the next section.</p>
+
+<h3 id="manjaro-linux">Manjaro Linux</h3>
+<p><strong>Manjaro Linux</strong> is an Arch Linux derivative that features two graphical installers (Calamares and its own installer, Thus) and <a href="https://wiki.manjaro.org/index.php?title=Manjaro_Hardware_Detection">mhwd</a> (Manjaro Hardware Detection), a tool for managing kernels and hardware drivers and out-of-the-box support for Broadcom Wi-Fi chipsets. It uses its own repositories (although the same package manager as Arch — pacman) that are updated once per week, roughly, and for the most part contain the same software in the Arch Linux pacman repositories, except a few Manjaro-specific tools and packages. It also has access to the AUR. The <a href="https://wiki.archlinux.org/index.php/Yaourt">Yaourt</a> wrapper for pacman with access to the AUR comes pre-installed on Manjaro Linux.</p>
+
+<p>Due to these similarities with Arch Linux, it is possible for people to learn some of the ropes of Arch Linux, by using Manjaro. Like you can learn how to write functioning PKGBUILDs under Manjaro, which is a skill you may use when you later make the transition to Arch Linux.</p>
+
+<p>Like Arch Linux, Manjaro also follows a rolling release model. It only supports i686 and x86_64 architectures.</p>
+
+<h4 id="useful-resources-3">Useful Resources</h4>
+<ul>
+  <li><a href="http://manjaro.github.io/download/">Download Page</a></li>
+  <li><a href="https://forum.manjaro.org/">Forums</a></li>
+  <li>
+    <p><a href="irc://irc.freenode.net/#manjaro"><span class="irc">#manjaro</span></a></p>
+  </li>
+  <li><a href="http://sourceforge.net/projects/manjarolinux/">Manjaro SourceForge Site</a></li>
+  <li><a href="https://wiki.manjaro.org/index.php?title=Main_Page">Manjaro Wiki Home Page</a></li>
+</ul>
+
+<h3 id="opensuse">openSUSE</h3>
+<p><strong>openSUSE</strong> is an originally German Linux distribution that uses RPM binary packages (with the <code class="highlighter-rouge">.rpm</code> file extension) and the <strong>ZYpp</strong> package manager (along with a graphical front end for ZYpp — <strong>YaST2</strong>). It features an automated installer (also YaST2), during installation one is given choice of several different desktop environments, with the two major choices being GNOME and KDE Plasma, although the lightweight desktop (which uses less CPU and RAM), LXDE. Since 2015 openSUSE has two editions — the standard edition following a standard release model and a tumbleweed edition which follows a rolling release model. I personally prefer the tumbleweed edition, but if you prefer system stability (which means you will have to deal with fewer bugs) over having the very latest software I would recommend you use the standard release model edition.</p>
+
+<p>Its out-of-the-box support for proprietary multimedia codecs (required for playing some media files, especially video files) and device drivers (including for Broadcom chips) is virtually non-existent, so this may stump some non-techies. It may be possible to install some proprietary programs from the <a href="http://packman.links2linux.org/">PackMan repositories</a>, or from repositories in the <a href="https://build.opensuse.org">Open Build Service</a>.</p>
+
+<h4 id="package-management-3">Package Management</h4>
+<p>As far as package managers go I would give ZYpp four stars out of five, it is a little slower than pacman and one feature (or lack of a feature rather) I dislike about it is that you cannot pass a flag (e.g., for pacman this flag is <code class="highlighter-rouge">--noconfirm</code>, while for APT, DNF and yum this flag is <code class="highlighter-rouge">-y</code>) to ZYpp to get it to skip asking you for confirmation before performing the action it is about to do. Apparently this feature used to exist, but it was removed. I like this feature in a package manager because it makes writing Bash scripts for package management easier.</p>
+
+<p>RPM packages are created using spec files (that is, files with the file extension <code class="highlighter-rouge">.spec</code>), which I must say I find even more confusing and difficult-to-write than ebuilds. So if you plan on later doing some developer stuff on the distribution you pick in this section, I would probably pick Manjaro instead of openSUSE.</p>
+
+<p>It only supports armhf, i586 and x86_64 architectures.</p>
+
+<h4 id="useful-resources-4">Useful Resources</h4>
+<ul>
+  <li><a href="https://software.opensuse.org">Download Page for the Latest Standard Release of openSUSE</a></li>
+  <li><a href="http://doc.opensuse.org/">Documentation for openSUSE</a> — I have heard good things about this documentation from other sources but I have never really found the documentation of good quality, partly because of how up-to-date much of it is (as it refers to older releases of openSUSE, instead of the latest, at times) and it is not really extensive like <em>The ArchWiki</em> is.</li>
+  <li><a href="https://forums.opensuse.org/forum.php">English openSUSE Forums</a></li>
+  <li><a href="https://en.opensuse.org/Main_Page">English openSUSE Wiki</a></li>
+  <li><a href="https://software.opensuse.org/search">openSUSE Package Search Site</a></li>
+  <li>
+    <p><a href="irc://irc.freenode.net/#opensuse"><span class="irc">#opensuse</span></a></p>
+  </li>
+  <li><a href="https://en.opensuse.org/openSUSE:Tumbleweed_installation">Tumbleweed Installation Guide</a></li>
+</ul>
+
+<h3 id="ubuntu">Ubuntu</h3>
+<p><strong>Ubuntu</strong> has a reputation for being the beginner’s distribution, and for me this was most certainly the case. It was the first distribution I even tried and it was the only distribution I used for three straight years. If you cannot make the transition from OS X/Windows to Ubuntu without running back to mummy (that is, your first OS) due to difficulties adjusting, then you probably will not be able to make the transition to any Linux distribution. Ubuntu has two types of releases, Long-Term Support (LTS) releases which come in April of even-numbered years (e.g., April 2014, April 2016, April 2018, <em>etc.</em>) and standard releases which come out every six months. LTS releases are supported for up to five years, so if you stick to them you will need to perform a system upgrade (where you install the new version of Ubuntu over the old version, which is a time-consuming, error-prone and generally unpleasant process) far less frequently, although the price you will pay for this is you will be using outdated software.</p>
+
+<h4 id="derivative-distributions">Derivative Distributions</h4>
+<p><a href="http://linuxmint.com/"><strong>Linux Mint</strong></a> and <a href="http://zorinos.com/"><strong>Zorin OS</strong></a> (although Zorin comes with both a free and paid edition) are two distributions based on Ubuntu (otherwise I find them basically the same, Linux Mint is based on the LTS releases, however) that may feel more like home to Windows users, as they look similar to Windows 7 and 10. <a href="http://elementary.io/"><strong>elementary OS</strong></a> is a distribution that is derived from Ubuntu (LTS) and it has a vaguely OS X-like look, namely it has a dock at the bottom of the screen. If you like an OS X-like dock, though, I would personally recommend the <a href="http://www.deepin.org/?lang=en">deepin</a> distribution that was previously a Ubuntu (LTS) derivative, but is now a Debian (Unstable branch) derivative.</p>
+
+<p>If you are using a PC with limited system resources, specifically CPU and RAM then I would suggest you consider using <strong>Lubuntu</strong>, an official flavour of Ubuntu (for which you can still receive support via the links provided at the end of this section on Ubuntu) that uses the LXDE desktop environment and hence should chew up less CPU and RAM.</p>
+
+<h4 id="package-management-4">Package Management</h4>
+<p>As far as package management goes, well Ubuntu is a Debian derivative, so it uses the same package manager, <strong>APT</strong> and the same package format, Deb (file extension: <code class="highlighter-rouge">.deb</code>). Although graphical front-ends for APT (in other words they run APT in the background, but you install the packages without ever touching the command-line) are available for Ubuntu users, such as <strong>Synaptic</strong> and the <strong>Ubuntu Software Center</strong>. I would give APT three to four stars out of five, it is not as fast as pacman, but still performance is not too big an issue. Creating Debian packages, however, is something I tried in my Ubuntu days and it gave me headaches. See Debian packages unlike pacman and RPM packages are not created using a text file, rather you create a directory with several files in it which you must edit into the correct format for your package.</p>
+
+<p>Paid support is available for Ubuntu from the company behind its development, Canonical Ltd. This paid support is best for businesses using Ubuntu. If you are using Ubuntu merely for individual use odds are the free support detailed below will more than suffice.</p>
+
+<p>It supports only armhf, i686, powerpc, ppc64el and x86_64 architectures.</p>
+
+<h4 id="useful-resources-5">Useful Resources</h4>
+<ul>
+  <li><a href="http://askubuntu.com/">AskUbuntu</a> — a StackExchange (the family of websites for which the original and most popular member is StackOverflow) website focused on Ubuntu. When I used Ubuntu it was my first port of call and I would say 9 times out of 10 I would either find an answer there before even asking a question, or get an answer within hours of asking a question there.</li>
+  <li><a href="https://help.ubuntu.com/community/CommunityHelpWiki">Community Help Wiki</a></li>
+  <li><a href="http://www.ubuntu.com/download/desktop">Download Page</a></li>
+  <li>
+    <p><a href="irc://irc.freenode.net/#ubuntu"><span class="irc">#ubuntu</span></a></p>
+  </li>
+  <li><a href="https://help.ubuntu.com/">Ubuntu Documentation Centre</a></li>
+  <li><a href="http://ubuntuforums.org/">Ubuntu Forums</a></li>
+</ul>
+
+<h2 id="businessserver-use">Business/Server Use</h2>
+<p>The best distributions for these purposes usually use fairly out-of-date software and follow standard release cycles. This is because older software is usually better-tested, hence it is better established that such software is stable without any apparent bugs. Standard release cycles are used for a reason that escapes me, my guess is it is because rolling release cycles are traditionally used for distributions using the very latest software, so maybe they do not wish to break with tradition.</p>
+
+<h3 id="centos">CentOS</h3>
+<p><a href="https://www.centos.org/"><strong>CentOS</strong></a>, a Fedora derivative, that essentially looks like and has the same software as Fedora did two years ago, which includes the older package manager, yum. CentOS has a few notable derivatives too like Oracle Linux (which comes with optional paid support), Red Hat Enterprise Linux (RHEL, I do not promote this distro as you need to buy it to use it) and Scientific Linux that are suitable for server use. I have created a VirtualBox VM for CentOS and have booted it at least once a week for several months, I personally find it very similar to older Fedora releases. It also uses Fedora’s anaconda installer.</p>
+
+<h4 id="useful-resources-6">Useful Resources</h4>
+<ul>
+  <li><a href="https://wiki.centos.org/">CentOS Wiki</a></li>
+  <li><a href="http://www.centos.org/forums/">Forums</a></li>
+  <li><a href="irc://irc.freenode.net/#centos"><span class="irc">#centos</span></a></li>
+</ul>
+
+<h3 id="debian">Debian</h3>
+<p><a href="https://www.debian.org/"><strong>Debian</strong></a>, which is the eldest Linux distribution mentioned in this post, was first founded in 1993 by the now deceased Ian Murdock (who, if you are unaware died 28 December 2015, by undisclosed yet suspicious means). It has four major software branches, each varying in their level of stability and the currency of their software (in the following list they are ordered in ascending level of stability): experimental, unstable, testing and stable. Most users use the default stable branch which contains software between 1 and 3 years old. The stable branch is very stable and is a popular server distribution, in fact it is roughly tied with Ubuntu for the position of most popular server distro. It has a command-line and graphical installer too. You can also create a very customized distro from the netinstall ISO image of Debian, as it is very minimalistic, although setting up a system like this is more difficult than using the other ISO images for Debian.</p>
+
+<p>Debian has some of the largest software repositories of any Linux distribution, in fact, it is roughly tied with its child distribution, Ubuntu (that is distribution derived from it) for the number of packages it has in its repositories which is in the neighbourhood of 50,000. Although it is worthwhile noting that it is unfair to compare this figure to the number of packages in the Arch Linux pacman repositories, which presently stands at roughly 13,900, as Debian has a tradition of splitting its packages up, especially larger packages, into debug, dev, doc, lib, <em>etc.</em> sub-packages. For example, an interpreter for the Lua programming language is not provided by a single Debian package, rather it has been split up into five separate packages. While Arch Linux usually does not split its packages up. I know from personal experience that setting up a web server on Debian can be easily done within a matter of minutes, using packages in the Debian repositories.</p>
+
+<p>The architecture support of Debian includes for arm64, armel, armhf, i386, mips, mipsel, powerpc, ppc64el, s390x and x86_64 processor types.</p>
+
+<h4 id="useful-resources-7">Useful Resources</h4>
+<ul>
+  <li><a href="http://ask.debian.net/">ask.debian.net</a></li>
+  <li><a href="http://forums.debian.net/">Debian User Forums</a></li>
+  <li><a href="https://wiki.debian.org/">Debian Wiki</a></li>
+  <li><a href="http://www.debianhelp.org/">debianHELP forums</a></li>
+  <li><a href="https://www.debian.org/doc/">Documentation</a></li>
+  <li><a href="https://www.debian.org/distrib/">Download Page</a></li>
+</ul>
+
+<h3 id="mageia">Mageia</h3>
+<p><a href="http://www.mageia.org/en/"><strong>Mageia</strong></a> is a free fork of the now defunct proprietary Mandriva Linux distribution. Mageia is developed by several ex-employees of the company that developed Mandriva, that were laid off when the company collapsed in 2011. It uses RPM packages like Fedora and openSUSE, but it uses Mandriva’s package manager, urpmi. It also features a graphical installer, Draklive-Install. It uses the latest LTS kernel and its software is usually fairly out-of-date. You will also find its software repositories are significantly less comprehensive than the other distributions mentioned in this post. For example, Mageia has no Apache, awesome, Fluxbox, MariaDB or MySQL package. So I personally would <strong>not</strong> recommend it for use as a server distribution, but it is still sometimes used.</p>
+
+<h3 id="others">Others</h3>
+<p>I have heard of Arch Linux, Fedora and Gentoo Linux being used by servers, although I would not recommend this in the case of Arch and Fedora due to the potential stability issues. Gentoo Linux I could see as a reasonable server option for incredibly experienced Linux users, with a lot of free time, as it is possible to install only the most stable versions of all one’s software, hence potentially giving Gentoo the required stability of a Linux server.</p>
+
+<h3 id="useful-resources-8">Useful Resources</h3>
+<ul>
+  <li><a href="https://www.mageia.org/en/doc/">Documentation</a></li>
+  <li><a href="https://www.mageia.org/en-gb/downloads/">Download Page</a></li>
+  <li><a href="https://wiki.mageia.org/en/Main_Page">English Mageia Wiki</a></li>
+  <li><a href="https://forums.mageia.org/en/">Forums</a></li>
+  <li><a href="irc://irc.freenode.net/#mageia"><span class="irc">#mageia</span></a></li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+<p>As mentioned at the start of this post, if you are unsure as to which Linux distribution you should start off with, I would suggest you install each distribution you think might be best for you, on a VirtualBox VM and test them out. If you are looking for a distribution to replace Windows, and you want as little hassle (like dealing with bugs and lengthy and difficult installation processes for the system and for new packages on said system) as possible I would suggest you use CentOS, Debian, openSUSE (standard, not Tumbleweed edition) or Ubuntu. openSUSE and Ubuntu are probably best if you need some hand-holding through the transition from Linux to Windows. If you are intending to install Linux on a laptop which uses Wi-Fi for its Internet connection, then I would strongly recommend you use Ubuntu or one of its derivatives like Linux Mint, as openSUSE may (although it does depend on the specifics of your laptop) have difficulty connecting to your Wi-Fi.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

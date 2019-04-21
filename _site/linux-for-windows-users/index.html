@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/colors.css">
+  <link href="https://fusion809.github.io/ttf/font-mfizz-2.3.0/dist/font-mfizz.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc.js" type="text/javascript"></script>
+  <title>An Introduction to Linux for Windows Users</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">An Introduction to Linux for Windows Users</h1>
+    <p class="post-meta">
+      <br/>
+      <!--<span itemprop="categories"><b>Category(s)</b>: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="tag"><a href="/tag/linux/" link="_blank">linux</a></span><span class="tag"><a href="/tag/newcomers/" link="_blank">newcomers</a></span><span class="tag"><a href="/tag/simplified/" link="_blank">simplified</a></span><br/>-->
+      <time datetime="2016-02-24T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Wednesday, 24 February 2016.</time>
+      <time datetime="12:26:53 PM, Friday 04 March 2016 " itemprop="dateModified"><br/><b><abbr title="Note that most modifications past the publication date will be largely cosmetic, like fixing spelling, grammar and links, not necessarily updating the content itself.">Last modified</abbr></b>: &nbsp;&nbsp;&nbsp;12:26 PM Friday, 04 March 2016 (<abbr title="Australian Eastern Standard Time, or UTC+10">AEST</abbr>).</time>
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <p>A few days ago, I was asked by a long-time Windows user, how steep the learning curve for Linux is, as he wanted to make the transition from Windows to Linux, due to privacy concerns relating to Windows 10. This post is essentially a longer and more thorough answer than the answer I originally gave him. As such this post is oriented towards the average Windows user whom knows little, if anything, about Linux and is not necessarily otherwise technologically-knowledgeable. On this site there is a <a href="/glossary/">glossary page</a>, to which I would like to ask you to refer if any term I use is unknown to you. If you cannot find a definition for any term that confuses you there, please <a href="/contributing/">contact me</a>.</p>
+
+<h2 id="what-is-linux">What is Linux?</h2>
+
+<div class="note">
+
+<div class="note-title">NOTE</div>
+<ul>
+  <li><em>Further information about Linux can be found in the <a href="/glossary/#linux">glossary</a></em></li>
+</ul>
+
+
+</div>
+
+<p><strong>Linux</strong> is a &gt;300-member family of <a href="/glossary/#unix-like">Unix-like</a> <a href="/glossary/#operating-system">operating systems</a>, that share one common, defining characteristic: they use the Linux kernel as their operating system (OS) kernel. The majority of these operating systems also use <a href="/glossary/#gnu">GNU Project software</a> for their basic Unix utilities and hence have also been referred to as <strong>GNU/Linux</strong> systems. Each individual member of the Linux family of operating systems, is called a “Linux distribution” (for which I will be using the acronym, LD and the abbreviation “distro”). The most important differences between Linux and Windows from the point of view of standard users:<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<ul>
+  <li>
+<p>Most LDs are available <strong>free of charge</strong>,<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup>
+ while Windows is not. If you have bought a new computer with Windows preinstalled and you are thinking, “I did not pay for Windows, it came with the computer.” I am afraid you are mistaken. Part of the cost of your computer was likely for the Windows operating system that came preinstalled on it. Unless otherwise stated, all LDs mentioned by name in this post are available free of charge.</p>
+
+<p>Unfortunately, however, the vast majority of computers (if not all of them), that you can purchase from your local technology store will have either OS X or Windows preinstalled, so while you can still install Linux on these machines (either alongside OS X/Windows, or over them) for free, you will still end up paying for a proprietary OS like OS X/Windows anyway. You can buy computers with no OS pre-installed from selected vendors online, the problem with these computers is that by-and-large they will be barebones PCs, which you will need to assemble yourself. This process (I should mention, I have never done this myself, so this is second-hand information I am relaying) requires some technical know-how, so it may not be suitable for standard Windows users. Barebones PCs usually cost substantially less than their pre-assembled counterparts, though, and it is not just because of the fact they often include no preinstalled operating systems. So if you are desperate to cut costs, it is an option, provided you can spare the time.</p>
+
+</li>
+  <li>
+<p><strong>Linux is <a href="https://fusion809.github.io/glossary/#unix-like">Unix-like</a>, Windows is not</strong>. Windows systems do not follow the Unix design philosophy and as such have fundamental differences from corresponding *nix systems such as Linux. These differences are most evident by examining the file system structure of Windows and comparing it to that of Unix-like systems such as Linux. Windows uses single-letter, with a colon afterward, prefixes to distinguish between hard disks. <code class="highlighter-rouge">C:</code> is used for the hard drive on which the presently-running Windows system is booting from. Folders in Windows are denoted using back-slashes <code class="highlighter-rouge">\</code>, for example, a user named Brenton’s home directory may be located at <code class="highlighter-rouge">C:\Users\Brenton</code>. Linux’s file system, on the other hand, does not use any prefixes and rather uses forward-slashes to denote directories. For example, a user named Brenton would have a home directory at <code class="highlighter-rouge">/home/Brenton</code>. Unix also has its own set of command-line utilities (which vary from operating system to operating system; Linux distributions by-in-large use GNU command-line utilities) and an interpreter called an Unix shell (which also varies according to one’s Unix system; the default on most Linux distributions is Bash, although I feel more comfortable using Zsh, myself).</p>
+
+</li>
+  <li>
+<p>A <strong>variety</strong> of <strong>desktop environments</strong> (<strong>DEs</strong>) to choose from. On Windows systems you are stuck with one desktop or graphical user interface (which looks a little different between Windows versions), your customization options beyond changing your wallpaper and theme, are fairly limited, unless you use some DLL hacks which can be damaging to your system. Linux systems have a variety of different desktop environments available, each can be customized according to your own preferences, without damaging your system. The most popular Linux desktop environments, include: Cinnamon, Enlightenment, GNOME, KDE, LXDE, LXQt, MATE and Xfce. Of these Cinnamon, KDE, LXDE and Xfce look the most like Windows NT. KDE and Xfce are the most popular of these DEs, while LXDE and Xfce uses up the least CPU and RAM of these. If you would like to have an OS X-like look to your Linux system I suggest using the less popular Deepin or Pantheon desktop environments, which are the default on the deepin and elementary OS distros.</p>
+
+</li>
+  <li>
+<p><strong>Different software</strong>. You will not be able to take some of your applications with you when transitioning from Windows to Linux. Some applications run solely on Windows while others run only on Windows and OS X. Most <a href="https://fusion809.github.io/glossary/#proprietary-software">proprietary games</a> you have run on Windows will not run on Linux, or if they do they will likely not run as well. The only real exception are games written in the Java programming language (for example, <em>RuneScape</em>), as they run on any Java-capable platform, including Linux. Some Windows applications can be run on Linux by use of emulation software such as VirtualBox and Wine. For further details see the <a href="#running-windows-apps">running Windows applications under Linux</a> section. Most <a href="https://fusion809.github.io/glossary/#free-and-open-source-software">free and open-source software</a> (FOSS), however, will run most natively on Linux.</p>
+
+</li>
+  <li>
+<p><strong>Freedom</strong>. Linux has far more customizability options, for both the aesthetics of the system and its programs, and how its programs work and behave. You can make your Linux system look like OS X, Windows or something completely different.</p>
+
+</li>
+  <li>
+<p><strong>How software is installed</strong>. Windows software is usually installed via downloading, double-clicking and going through their automated installer of files with the <code class="highlighter-rouge">.exe</code> or <code class="highlighter-rouge">.msi</code> file extensions. Installing Linux software is usually a little different and most software is installed via the specific distribution’s package manager. For some distributions, it may be possible to install applications via downloading (e.g., in a web browser) a software package (with a file extension that is dependent on the specific distribution in question), double-clicking it and going through the graphical package manager of the distribution.</p>
+
+</li>
+</ul>
+
+<h2 id="transferring-software">Transferring Software</h2>
+<p>Most free programs you use on Windows you can take with you to Linux. The following table mentions some common categories of program, frequently-used Windows members of said category and some frequently-used Linux alternatives. Windows applications for which a suitable Linux alternative cannot be found in these tables or via other sources (Google is your friend, people) may be usable on Linux via methods outlined in the <a href="#running-windows-apps">next section</a>.</p>
+
+<table class="green" style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption><strong><p>Table 1: Transferring from Windows Applications to Linux Applications</p>
+</strong></caption>
+  <tbody>
+    <tr class="green">
+      <td class="title1">Category</td>
+      <td class="title1" style="width:200px;">Windows<sup id="fnref:3"><a href="#fn:3" class="footnote">3</a></sup></td>
+      <td class="title1" style="width:200px;">Linux<sup id="fnref:4"><a href="#fn:4" class="footnote">4</a></sup></td>
+      <td class="title1">Notes</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="title1"><p>BitTorrent client</p>
+</td>
+      <td class="green"><p>μTorrent†, Tixati†.</p>
+</td>
+      <td class="green"><p>Deluge, KTorrent, qBittorrent, Vuze.</p>
+</td>
+      <td class="green"><p>qBittorrent will likely be the most intuitive to μTorrent users. A browser-based version of μTorrent is available in Debian-based distros like Ubuntu, but I would not recommend it personally as it can be more trouble than it is worth.</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="title1"><p>Computer algebra <br />system</p>
+</td>
+      <td class="green"><p>Maple*, Mathematica*, MATLAB* (with the symbolic toolbox).</p>
+</td>
+      <td class="green"><p>Maple*, Mathematica*, MATLAB* (with the symbolic toolbox), Maxima, SageMath.</p>
+</td>
+      <td class="green"><p>SageMath is my personal preference, as it integrates over a hundred different free mathematics programs in a single command-line or notebook (browser-based) interface. It has numerical analysis and statistical analysis capabilities too.</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="title1"><p>Document viewer</p>
+</td>
+      <td class="green"><p>Adobe Acrobat*/Reader†, Foxit Reader†, Nitro PDF†, SumatraPDF.</p>
+</td>
+      <td class="green"><p>Adobe Reader†, Atril, Evince, MuPDF, Okular.</p>
+</td>
+      <td class="green"><p>Okular (the official document viewer of KDE) in my opinion, is the best FOSS document viewer as it is compatible with the greatest number of document formats.</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="title1"><p>Email client</p>
+</td>
+      <td class="green"><p>Microsoft Outlook*.</p>
+</td>
+      <td class="green"><p>KMail, Mozilla Thunderbird.</p>
+</td>
+      <td class="green"><p>KMail is the default KDE Mail Client, while Thunderbird is developed by the <em>Mozilla Foundation</em>, the same foundation that provides the Firefox web browser. You can use Thunderbird on Windows, but it is not particularly popular on Windows.</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="title1"><p>Multimedia player</p>
+</td>
+      <td class="green"><p>Media Player Classic†, MPlayer, SMPlayer, VLC, Windows Media Player†.</p>
+</td>
+      <td class="green"><p>GNOME Videos (Totem), Kodi, MPlayer, Rage, SMPlayer, VLC.</p>
+</td>
+      <td class="green"><p>SMPlayer and VLC are the most feature-packed (including the greatest support for a variety of media files) of these, in my experience. VLC can be buggy on Gentoo and Sabayon, however, in my experience.</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="title1"><p>Numerical analysis <br />software</p>
+</td>
+      <td class="green"><p>MATLAB*, Scilab.</p>
+</td>
+      <td class="green"><p>GNU Octave, MATLAB*, Scilab.</p>
+</td>
+      <td class="green"><p>MATLAB is the gold (or benchmark) standard piece of application software for numerical analysis and is extensively used in academia and industry. GNU Octave and Scilab are free clones of MATLAB. GNU Octave is the most compatible, of these, in terms of its syntax and is easier to install on most Linux distributions.</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="title1"><p>Office suite</p>
+</td>
+      <td class="green"><p>Apache OpenOffice, LibreOffice, Microsoft Office*.</p>
+</td>
+      <td class="green"><p>Apache OpenOffice, Calligra Suite, LibreOffice.</p>
+</td>
+      <td class="green"><p>IMO, the best Linux-compatible office suite is LibreOffice (LO), although IMO it is not as good as MS Office for my purposes (although, fair warning, I write a lot of equations in my word documents, and doing this in MS Word is easier than doing the same in LO Writer, due to the availability of keyboard-shortcuts for this in MS Word).</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="title1"><p>Statistical analysis <br />software</p>
+</td>
+      <td class="green"><p>PSPP, R, SPSS*.</p>
+</td>
+      <td class="green"><p>PSPP, R, SPSS*.</p>
+</td>
+      <td class="green"><p>PSPP and R are GNU Projects, with R being primarily a programming language intended for statistical analysis. SPSS is a proprietary statistical analysis program, developed by IBM and written in Java. PSPP is a free clone of SPSS still in beta testing (i.e., a 1.0 release has not been made yet), that is written in C.</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="title1"><p>Text editor</p>
+</td>
+      <td class="green"><p>Atom, GNU Emacs, gVim, Notepad†, Notepad++, Sublime Text*, Vim.</p>
+</td>
+      <td class="green"><p>Atom, Geany, gedit, GNU Emacs, GNU nano, gVim, jEdit, Kate, KWrite, Leafpad, SciTE, Sublime Text*, Vim.</p>
+</td>
+      <td class="green"><p>As you can see most Linux-compatible text editors will also run on Windows and while the reverse is mostly true there are exceptions. Atom is my favourite text editor, as it is extensively customizable, yet free and simple enough for my grandmother, who I think has probably never even used a computer, to use. [Truncated, click <a href="#fn:5">here</a> for the full note]</p>
+</td>
+    </tr>
+    
+    <tr class="green">
+      <td class="title1"><p>Web browser</p>
+</td>
+      <td class="green"><p>Google Chrome†, Internet Explorer†, Mozilla Firefox, Opera†, Safari†.</p>
+</td>
+      <td class="green"><p>Chromium, Google Chrome†, Konqueror, Midori, Mozilla Firefox, Opera†.</p>
+</td>
+      <td class="green"><p>Konqueror also has file manager features and is the default web browser of KDE. Midori is noteworthy for being particularly fast and having a lighter memory footprint than most browsers. Chromium is the open-source software project, sponsored by Google, on which they build the proprietary Google Chrome browser.</p>
+</td>
+    </tr>
+    
+    
+    <tr class="green">
+      <td class="green" colspan="4" style="padding:5px;"><p>* is used to denote programs that must be purchased.<br /> † is used to denote freeware (that is, you can use them without paying for them, but the developers do not allow free access to the software’s source code).<br /> <strong>IMO</strong>: In my opinion.<br /> <strong>MS</strong>: Microsoft.</p>
+</td>
+    </tr>
+    
+  </tbody>
+</table>
+<p><br /></p>
+
+<h2 id="running-windows-apps">Running Windows Apps</h2>
+<p>As previously mentioned emulation software can be used to run Windows applications under Linux. The most popular free and open-source examples of such software are VirtualBox and Wine. Both of which are available from the software repositories of most Linux distributions.</p>
+
+<p><strong>VirtualBox</strong> can be used to run Windows applications, if and only if you have the installation media (like a live CD/DVD) and the product key required for the Windows system you need to run the application under. This installation media costs money, however, so beware. Plus running Windows applications under VirtualBox means that your program will have less CPU processing power and RAM available for it to use. See your Windows Virtual Machine (VM) will be able to use at most one-third of your computer’s total RAM, and one-forth of your processor cores (e.g., my Lenovo Laptop has four cores, so I can only give my VMs one core to use). VirtualBox VMs also take a fair amount of hard disk drive space too.</p>
+
+<p><strong>Wine</strong> can be used to run some Windows applications, but not all. To see a list of applications known to run flawlessly under Wine see <a href="https://appdb.winehq.org/">here</a>. If the Windows application you wish to run takes a lot of CPU or RAM, than I would not hold your breath that it will run natively under Wine though, most Wine-compatible applications are fairly lightweight.</p>
+
+<h2 id="which-pc">Which PC?</h2>
+<p>Which computer should you run Linux on? Well the answer is not clear-cut, virtually any computer <em>can</em> run Linux (several computers that are not even compatible with Windows or OS X can even run Linux), but some computers will have some devices that are off-limits to Linux. See one area in which Linux really lags behind the two more popular operating systems, Windows and OS X, is the availability of compatible device drivers. <strong>Device drivers</strong> (or just <strong>drivers</strong>) are computer programs that operate or control a particular type of device that is attached to a computer. Many devices require proprietary drivers. Example devices that sometimes require, or work better with, proprietary device drivers include some graphics cards and Wi-Fi chips. My Lenovo Laptop has a Broadcom BCM43228 Wi-Fi chip (which I, of course, use to connect to my Wi-Fi), which requires a proprietary driver usually referred to on Linux platforms as <code class="highlighter-rouge">broadcom-wl</code>, while my graphics cards (one is Intel, the other is NVIDIA) both have free and open-source device drivers available. Hence the only one of these that causes me much grief when I install a new distro is my BCM43228 chip.</p>
+
+<p>Linux is so flexible in the variety of computers it can run on because it supports a larger variety of different CPU types (or architectures) than Windows or OS X. Linux can even run on older computers that do not meet the CPU or RAM requirements of the latest releases of Windows or OS X.</p>
+
+<h2 id="which-distro-is-best">Which Distro is Best?</h2>
+<p>The best distribution for you to start out with, greatly depends on several variables. So many, that I cannot give you a straight answer, rather you will have to find out which distribution is best for you via experience. The easiest distribution for Windows users to use as a first distribution would have the following characteristics:</p>
+
+<div class="image-box" style="width:500px; float: right;">
+<figure>
+  <img src="https://fusion809.github.io/images/Terminals/Yakuake-OT-command-line.png" alt="The Linux command-line on my openSUSE Tumbleweed installation." style="width:500px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(500px-5px); float: right;"><p>The Linux command-line on my openSUSE Tumbleweed installation.</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<ol>
+  <li>A graphical and easy-to-use package manager. Most Windows users are not particularly comfortable with using the command-line for installing software packages and this is why a graphical package manager is probably best.</li>
+  <li>Large software repositories containing thousands of at least fairly up-to-date software packages. This way the user will need to use alternate methods to install the software they need in fewer cases. These alternate methods are usually more difficult and error-prone.</li>
+  <li>Liberal requirements on software package licensing. Some distributions only have FOSS in their software repositories, while others are more liberal and have some freeware in there too. Many programs you may wish to install are not FOSS. For example, most graphics cards and Wi-Fi chips have <a href="https://en.wikipedia.org/wiki/Device_driver">proprietary drivers</a> or firmware that either outperforms their corresponding open-source driver/firmware or for which there is no corresponding open-source driver/firmware. My Lenovo Laptop, for example, has dual Intel and NVIDIA graphics cards as well as a Broadcom BCM43228 Wi-Fi chip. There are FOSS drivers for my graphics cards, which usually have inferior performance to their corresponding proprietary drivers. My Wi-Fi chip, however, requires proprietary firmware from the Broadcom corporation itself, so in order to access my Wi-Fi I need to install this firmware.</li>
+  <li>A graphical installer. A graphical program for installing the distro, this is as opposed to distros that must be installed from the command-line, which can be quite disconcerting to Windows users.</li>
+  <li>Out-of-the-box support for most hardware, like popular graphics cards and Wi-Fi chips. “Out-of-the-box” in this context, at least, means that this support exists by default, it is there as soon as you boot the live DVD or USB you are using to install the distro, you do not have to do anything to get this support yourself.</li>
+  <li>A large and friendly online support community. This way if you encounter any errors with your installation, you can easily and quickly get free help. Beware though, many people in these support sites will believe that Linux is supposed to be a “do it yourself” (DIY) operating system, that is, if you have a problem that needs fixing, you have to work as hard as you can to fix it yourself (and gather evidence of this — often these people will <strong>not</strong> take your word!) before asking others for help. This is a belief they will often force on others, including newcomers to the distro. I personally think that DIY better describes the Arch Linux and Gentoo Linux distributions and FreeBSD than Linux, in general. Unfortunately, this view is not shared by everyone.</li>
+</ol>
+
+<p>Most distributions fulfill at most four of these requirements.</p>
+
+<h3 id="specific-distributions">Specific Distributions</h3>
+<p>Examples of distributions that fulfill at least four of the aforementioned requirements, are mentioned in the sections below, with the requirements they fulfill listed in brackets.</p>
+
+<h4 id="fedora">Fedora</h4>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/operating-systems/Fedora-23-GNOME.png" alt="Fedora 23 with its default desktop, GNOME 3" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Fedora 23 with its default desktop, GNOME 3</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><a href="https://getfedora.org/"><strong>Fedora</strong></a> (1, 2, 4, 6), a distribution developed by its own FOSS community, but sponsored by Red Hat, the largest Linux company in the world. It has strict licensing requirements for all software in its official repositories, which means that many proprietary multimedia codecs, graphics drivers and Wi-Fi drivers will need to be installed from third-party sources like <a href="http://rpmfusion.org/">RPM Fusion</a>. Fortunately, I have found one method that manages to install the drivers for my BCM43228 chip is running: <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  wget http://git.io/vuLC7 -v -O fedora23_broadcom_wl_install.sh &amp;&amp; sh ./fedora23_broadcom_wl_install.sh</span>
+<sup id="fnref:6"><a href="#fn:6" class="footnote">6</a></sup>
+, from the command-line (although this is designed for Fedora 23 specifically, future releases may not be compatible with this command). Granted this command, in and of itself, does require a working Internet connection in order to succeed (to get such an Internet connection I borrow an Ethernet cable, usually).</p>
+
+<p>I personally have found it more difficult to pick up than Ubuntu (partly because of inferior community support), but it uses, generally more up-to-date software than Ubuntu. The main support site for it that I have used is <a href="https://ask.fedoraproject.org/">Ask Fedora</a>. There is also an IRC channel for support questions, called <a href="irc://irc.freenode.net/#fedora"><span class="irc">#fedora</span></a>.
+ It has a less popular derivative with more liberal software licensing requirements and out-of-the-box support for Broadcom chips, <a href="http://chapeaulinux.org/">Chapeau</a>.</p>
+
+<p>It is recommended that if you use Fedora, you upgrade your system to the latest release of Fedora (this upgrade process is called a <em>distribution upgrade</em>) at least once every nine-months. This process can be quite unpleasant, as software breakage (that is, when software you have installed on your PC, including device drivers, potentially, simply will not work anymore) is not unheard of after doing a distribution upgrade. Plus, there will be times when your computer will be practically unusable (due to how slow it is) during the upgrade.</p>
+
+<p>If you would prefer to upgrade less frequently, but otherwise would like to have a Fedora-like system, I would recommend using <a href="https://centos.org"><strong>CentOS</strong></a>. Distribution upgrades are only required for this distribution as infrequently as once every seven years. The main disadvantage of using CentOS as opposed to Fedora, is that CentOS’s system software is usually fairly outdated (roughly 1-3 years out-of-date I have found). Additionally the latest release of CentOS (CentOS 7), has support for only the x86-64 processor instruction set (while Fedora also supports processors with armhfp and i686 instruction sets), so older computers may be incompatible with CentOS. CentOS also uses Fedora’s old command-line package manager, yum, which means in the commands shown below for package management with DNF, one would substitute <code class="highlighter-rouge">dnf</code> with <code class="highlighter-rouge">yum</code>.</p>
+
+<p>Fedora uses <strong>DNF</strong> for command-line package management, which installs RPM packages (file extension: <code class="highlighter-rouge">.rpm</code>), although the <strong>GNOME Software</strong> and <strong>Apper</strong> graphical front-ends are also available. To install software from the command-line, one merely runs:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo dnf install $package</div>
+
+<p>while to remove said software one runs:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo dnf remove $package</div>
+
+<p>to synchronize one’s packages with those in the online repositories and upgrade all of one’s packages that have become out-of-date run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo dnf update</div>
+
+<h4 id="linux-mint">Linux Mint</h4>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/operating-systems/Linux-Mint-17.3.png" alt="Linux Mint 17.3 with its default Cinnamon desktop" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Linux Mint 17.3 with its default Cinnamon desktop</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><a href="http://linuxmint.com/"><strong>Linux Mint</strong></a> (1-6), a Ubuntu-based distribution developed by a community of unpaid volunteers. It is built on the Long-Term Support (LTS) releases of Ubuntu which come out in April of even-numbered years (e.g., the latest one was in April 2014 and was numbered 14.04) and are designed to be especially stable, although their software tends to lag behind that of newer Ubuntu releases (a new Ubuntu release comes out every six months, in April and October of every year). Its chief advantage, in my opinion, over Ubuntu is that it has better out-of-the-box support for several proprietary multimedia codecs (codecs are programs required to play certain multimedia files) and graphics drivers. It does <strong>not</strong> have out-of-the-box support for Broadcom chips with proprietary drivers like mine.</p>
+
+<p>I have not used its community support, personally, so I cannot comment on its quality. It has a Windows-like look, though, with a task bar (or panel) across the bottom of the screen. If you need free support with Linux Mint I would recommend using their <a href="https://forums.linuxmint.com/">forums</a> or IRC channel (<a href="irc://irc.freenode.net/#linuxmint-help"><span class="irc">#linuxmint-help</span></a>).
+ It has two official editions, the standard (which features the Cinnamon desktop) and the lighter edition (which features the MATE desktop).</p>
+
+<p>Linux Mint, like its parent Ubuntu, uses the Advanced Packaging Tool (APT) for command-line package management, which installs software from Deb (file extension: <code class="highlighter-rouge">.deb</code>) packages. APT has several graphical front-ends available on Linux Mint, the most popular is developed by the Linux Mint developers themselves, MintInstall. Alternatively, you can use the command-line front-end (which is more beginner-friendly than APT, according to some), aptitude. To install a software package with APT run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get install $package</div>
+
+<p>while to remove a software package with APT, one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get remove $package</div>
+
+<p>and to update one’s local software repository indexes, one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get update</div>
+
+<p>Finally, to install all software upgrades that are available from enabled repositories (which should be done <strong>after</strong> running the aforementioned <code class="highlighter-rouge">sudo apt-get update</code> command, to update local repository indexes), one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get upgrade</div>
+
+<h4 id="manjaro-linux">Manjaro Linux</h4>
+<div class="image-box" style="width:850px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/operating-systems/manjaro-kde-15.12.jpg" alt="Manjaro Linux 15.12 KDE Edition" style="width:850px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(850px-5px); float: none;"><p>Manjaro Linux 15.12 KDE Edition</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><a href="https://manjaro.github.io/"><strong>Manjaro Linux</strong></a> (1-6), an Arch Linux-based distribution that unlike Arch Linux itself is very beginner-friendly. It too is developed by its own FOSS community. It has out-of-the-box support for most graphics cards, multimedia codecs and Broadcom chips like mine. It has even more up-to-date software than Fedora, so if you want the latest software I would recommend using Manjaro. Bugs may be more frequent under Manjaro than under more stable distributions such as CentOS and Ubuntu (LTS). It has three official editions: a netinstall edition (which contains the bare minimum software that constitutes a Manjaro system, it is so bare, in fact, that it has no desktop environment preinstalled), a KDE edition (featuring the KDE desktop) and a Xfce edition (which is faster and a smaller download than the KDE edition, it is fairly Windows-like in its appearance too).</p>
+
+<p>You can install just about any Linux-compatible program (including proprietary programs) on Manjaro, either from its own repositories or from the <a href="https://aur.archlinux.org">Arch User Repository</a> (AUR) of Arch Linux, which I am afraid is best accessed from the command-line. Fortunately, the most popular and arguably best tool for installing packages from the AUR, Yaourt (<code class="highlighter-rouge">yaourt</code> from the command-line) comes pre-installed on Manjaro Linux. If you find a package in the AUR you wish to install you simply need to run <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  yaourt -S $package</span>,
+ where <code class="highlighter-rouge">$package</code> is to be replaced with the package’s name. I would personally say that Manjaro has the greatest number of software packages available for easy installation of all distributions mentioned in this post. Manjaro Linux, like its parent Arch Linux, follows a rolling release model. What this means is that you never need to perform a distribution upgrade (that is, the type of upgrade mentioned in the Fedora section). Simply run your package manager (Octopi, Pamac or Yaourt) regularly to ensure your software is up-to-date.</p>
+
+<p>If you need free support for Manjaro I recommend you use either <a href="https://forum.manjaro.org">their forums</a> or their IRC channel (<a href="irc://irc.freenode.net/#manjaro"><span class="irc">#manjaro</span></a>).
+ Their forums has at least one person, I have come across, that believes that Manjaro should be DIY, and hence requires anyone looking for support to show extensive attempts to fix their own problem before he will help.</p>
+
+<p>Manjaro Linux uses the pacman (and yes, I got the case right, it is stylized such that lower case letters are appropriate) command-line package manager of Arch Linux, by default, although Yaourt is also pre-installed, on at least most Manjaro Linux installations. pacman installs packages with the <code class="highlighter-rouge">.pkg.tar.xz</code> file extension. These packages are generated using a utility provided by the pacman program, which is invoked from the command-line by the command <code class="highlighter-rouge">makepkg</code>. <code class="highlighter-rouge">makepkg</code> looks for files in the present working directory (PWD), with the name “PKGBUILD” and, following the instructions therein, attempts to build a <code class="highlighter-rouge">.pkg.tar.xz</code> package. The graphical pacman front-ends, Octopi and Pamac also come pre-installed on Manjaro. As previously mentioned one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;yaourt -S $package</div>
+
+<p>to install a package.</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;yaourt -Rs $package</div>
+
+<p>to remove a package (beware, due to dependency issues, sometimes <code class="highlighter-rouge">yaourt -Rsc $package</code> may be necessary) and:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;yaourt -Syua</div>
+
+<p>to upgrade all installed packages, after first synchronizing the local pacman repository databases checking for AUR package updates.</p>
+
+<h4 id="opensuse">openSUSE</h4>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/operating-systems/openSUSE-42.1-desktop-screenshot.png" alt="openSUSE 42.1 (the latest Leap release) running the KDE desktop" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>openSUSE 42.1 (the latest Leap release) running the KDE desktop</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><a href="https://www.opensuse.org/"><strong>openSUSE</strong></a> (1, 2, 4, 6), a distribution developed by its own FOSS community and sponsored by Novell, another Linux company. It has the largest installation ISOs (that is, the files you use to install it) of any distribution mentioned here, with its live DVD ISO being 4.3 GB. Despite this, it has similarly poor out-of-the-box support for most proprietary codecs and drivers. openSUSE comes in two main flavours: Leap and Tumbleweed. Leap is more stable and popular, yet uses older software. Tumbleweed uses later software (usually a little less up-to-date than Manjaro Linux, though) but is maybe a little less stable (although I am presently using it and have never noticed any stability issues). Leap also has more limited architecture (processor instruction set) support than Tumbleweed, as Leap only supports x86-64 processors. While Tumbleweed also supports armhf and i586 architectures.</p>
+
+<p>On the plus side its online support community is amongst the friendliest I have come across. I have asked roughly ten questions on their forums and I have not yet encountered anyone forcing the DIY philosophy on others. openSUSE’s official repositories are, at least, mostly FOSS, but several user-maintained unofficial repositories housed by the <a href="https://build.opensuse.org">Open Build Service</a> (OBS) and the community-maintained <a href="http://packman.links2linux.org/">PackMan repository</a> contain proprietary software, including Spotify. Its main support IRC channel is <a href="irc://irc.freenode.net/suse">here</a>.</p>
+
+<p>openSUSE uses the ZYpp package manager (which like DNF uses RPM packages), which is invoked from the command-line using the <code class="highlighter-rouge">zypper</code> command, although a graphical front-end for it called YaST2 (which is also used as openSUSE’s installer) is also available. To install software using <code class="highlighter-rouge">zypper</code> one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo zypper install $package</div>
+
+<p>or, to remove a package one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo zypper remove $package</div>
+
+<p>while to update all packages to the latest version available, one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo zypper update</div>
+
+<h4 id="sabayon-linux">Sabayon Linux</h4>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/operating-systems/Sabayon-Linux Xfce.png" alt="Sabayon Linux Xfce edition" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Sabayon Linux Xfce edition</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><a href="http://sabayon.org/"><strong>Sabayon Linux</strong></a> (1-5), a distribution with similarly extensive, out-of-the-box support to Manjaro. Like Manjaro, however, it is also based on a non-beginner-friendly distro, except in Sabayon’s case this distro is Gentoo Linux and not Arch Linux. Most of Sabayon’s software is as up-to-date as the corresponding Manjaro software, although some programs may lag behind. It follows a rolling release model, so you never have to perform traditional distribution upgrades. Its chief disadvantage is its small online support community, which I have found can be a little more testy (more prone to bite your head off) than that of openSUSE. Its official software repositories contain some freeware packages like Spotify too.</p>
+
+<p>Its official repositories (that is, the ones you can access and install packages from using its main package manager, Entropy) may be missing some packages you would like to use, most of these packages you can get via more challenging methods (most notably by using Gentoo’s package manager, Portage, which also comes pre-installed on Sabayon), which for the most part have to be done from the command-line. For example, when I first started using this distribution, I wanted to install SageMath, a mathematics program not in the official Entropy repositories, to do this I needed to use Portage and the <a href="https://github.com/cschwan/sage-on-gentoo"><code class="highlighter-rouge">sage-on-gentoo</code></a> overlay (which is an unofficial Gentoo repository). Its forums are <a href="https://forum.sabayon.org/">here</a> and its main support IRC channel is <a href="irc://irc.freenode.net/sabayon">here</a>.</p>
+
+<p>It has seven main editions:</p>
+
+<ul>
+  <li>GNOME</li>
+  <li>KDE</li>
+  <li>MATE</li>
+  <li>Minimal (which uses the Fluxbox window manager, sort of like a lighter weight desktop environment than LXDE or Xfce)</li>
+  <li>Server (useful for servers, I would not recommend using this edition as it has no desktop environment, by default)</li>
+  <li>Spinbase (pretty useless since the Anaconda installer was ditched. See it just has the command-line and its new installer cannot be run from the command-line)</li>
+  <li>Xfce</li>
+</ul>
+
+<p>Its officially supported package manager is Entropy, which installs packages with the <code class="highlighter-rouge">.tbz2</code> file extension. It has a command-line interface invoked by the command <code class="highlighter-rouge">equo</code> and a graphical user interface (GUI) called Rigo. To install a program with equo one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo equo install $package</div>
+
+<p>while to uninstall (or remove) a program with Entropy, one simply runs:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo equo remove $package</div>
+
+<p>to update one’s local package repositories, one runs:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo equo update</div>
+
+<p>to upgrade all software packages (which is best done after updating the local repositories, with the aforementioned command), one runs:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo equo upgrade</div>
+
+<h4 id="ubuntu">Ubuntu</h4>
+<div class="image-box" style="width:1130px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/operating-systems/Ubuntu-15.10.png" alt="Ubuntu 15.10 featuring the Unity desktop" style="width:1130px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1130px-5px); float: none;"><p>Ubuntu 15.10 featuring the Unity desktop</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><a href="http://ubuntu.com"><strong>Ubuntu</strong></a> (1, 2, 4, 6), a distribution that is well-known for its beginner-friendliness. It is developed by a Linux company called Canonical Ltd. Its software is usually more out-of-date than all other distributions mentioned in this post, except for openSUSE Leap. It has got the best support community, in terms of response times, in my opinion. Specifically it has a StackExchange website called <a href="http://askubuntu.com">AskUbuntu</a> that I find quite good. Its official repositories contain mostly FOSS, along with some proprietary drivers, if my memory serves me correctly. Several unofficial Personal Package Repositories (PPAs) exist, however, although I am yet to find one containing Spotify, probably because a Spotify repository is provided and maintained Spotify AB (the company that develops Spotify), to find details go <a href="https://www.spotify.com/uk/download/">here</a>. Its main support IRC channel is <a href="irc://irc.freenode.net/ubuntu">#ubuntu</a>.</p>
+
+<p>The Ubuntu (LTS) releases I mentioned under the <a href="#linux-mint">Linux Mint section</a>, comes with support (like maintenance and security upgrades) for five years. Consequently, you do not have to (although if you want the latest software you will probably want to every six-months, roughly) perform distribution upgrades for up to five years after the version of Ubuntu (LTS) you are using was initially released. So they form a more beginner-friendly alternative to CentOS for those that dislike performing distribution upgrades.</p>
+
+<p>As previously mentioned, Ubuntu uses the Advanced Packaging Tool (APT) for command-line package management, which installs software from Deb (file extension: <code class="highlighter-rouge">.deb</code>) packages. The main, officially-supported graphical front-end available for APT on Ubuntu is the Ubuntu Software Center. Alternatively, you can use the command-line front-end (which is more beginner-friendly than APT, according to some), aptitude. To install a software package with APT, run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get install $package</div>
+
+<p>while to remove a software package with APT, one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get remove $package</div>
+
+<p>and to update one’s local software repository indexes, one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get update</div>
+
+<p>Finally, to install all available software upgrades from enabled repositories (which should be done <strong>after</strong> running the aforementioned <code class="highlighter-rouge">sudo apt-get update</code> command, to update local repository indexes), one would run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;sudo apt-get upgrade</div>
+
+<h3 id="distros-for-older-computers">Distros for Older Computers</h3>
+<p>If you have a <strong>fairly old computer</strong>, with an older CPU, little RAM (say &lt;2 GB) and hard drive space to spare then odds are you will be best to stick to one of the following:</p>
+
+<ul>
+  <li>Fedora (namely, the LXDE edition).</li>
+  <li>openSUSE Tumbleweed (in the automated installer you will need to choose the LXDE desktop, however).</li>
+  <li><a href="http://www.puppylinux.com/">Puppy Linux</a>, an Australian distro that is designed to run from a live USB. I personally find it a buggy distro, so buggy I have not even managed to install it on a VirtualBox VM.</li>
+  <li>Ubuntu (namely, the official Lubuntu spin; the unofficial spins called <a href="http://www.bodhilinux.com/">Bodhi Linux</a> and <a href="http://lxle.net/">LXLE</a> may also be suitable in these cases. Note, if you use an unofficial spin, you cannot get support in the #ubuntu IRC channel or askubuntu.com website).</li>
+</ul>
+
+<h3 id="other-distros">Other Distros</h3>
+<p>While if you have a preference for an <strong>OS X-like look</strong> to your PC, then I would recommend using <a href="https://www.deepin.org/?language=en">deepin</a> or <a href="http://elementary.io/">elementary OS</a>. deepin is a Chinese distribution based on Debian’s unstable branch, while elementary OS is an American distribution based on Ubuntu’s LTS releases. It is possible to get such a look on other systems but the OS X-like look is not the default for these other systems, rather you need to customize their look to get them this way.</p>
+
+<h3 id="testing-out">Testing Out</h3>
+<iframe width="1100" height="618" src="https://www.youtube.com/embed/QkJmahizwO4" frameborder="0" allowfullscreen=""></iframe>
+<p>In order to pick the best distribution for you, I would recommend trying out whichever distributions you think might be best for you in VirtualBox (<a href="https://www.virtualbox.org/wiki/Downloads">here</a> is the Download page), before installing it on your hard drive. A nice video tutorial on installing VirtualBox on Windows 7 and then installing Ubuntu 14.04 in VirtualBox is shown above. VirtualBox is best run on a PC with at least 4 GB RAM, 4 CPUs, and 20 GB hard drive space free.</p>
+
+<h2 id="summary">Summary</h2>
+<p>If you want a Linux distribution, that gives you as much a “free-ride”, that is, it holds your hand through as much of the journey, as possible, then I would recommend using one of the following three distributions:</p>
+
+<ul>
+  <li>Linux Mint. This one has the most Windows-like look to it, although if you have a Broadcom Wi-Fi chip you may need some help setting your Wi-Fi up.</li>
+  <li>Manjaro Linux. This one is the most “out-of-the-box” of these three. Although, some software you may want (e.g., Spotify) must be installed from the command-line, which can be intimidating for Windows users. It is best for those that dislike performing distribution upgrades, like myself.</li>
+  <li>Ubuntu. This one has the best community support, in-my-opinion, and is (arguably) the most stable of the three.</li>
+</ul>
+
+<p>Ubuntu (specifically the Lubuntu spin) is probably the best for older computers.</p>
+
+<h2>Footnotes</h2>
+<div class="footnotes">
+<ol>
+  <li id="fn:1">
+    <p>
+      That is, users that just want a functioning PC, they are not software developers, programmers, or otherwise advanced users.
+      <a href="#fnref:1" class="reversefootnote">↩</a>
+    </p>
+  </li>
+  <li id="fn:2">
+    <p>
+      That is, you pay nothing to obtain them legally.
+      <a href="#fnref:2" class="reversefootnote">↩</a>
+    </p>
+  </li>
+  <li id="fn:3">
+    <p>
+      Popular Windows Example(s).
+      <a href="#fnref:3" class="reversefootnote">↩</a>
+    </p>
+  </li>
+  <li id="fn:4">
+    <p>
+      Popular Linux Example(s).
+      <a href="#fnref:4" class="reversefootnote">↩</a>
+    </p>
+  </li>
+  <li id="fn:5">
+    <p>
+      As you can see most Linux-compatible text editors will also run on Windows and while the reverse is mostly true there are exceptions. Atom is my favourite text editor, as it is extensively customizable, yet free and simple enough for my grandmother, who I think has probably never even used a computer, to use. Atom is fairly heavy, in terms of its memory footprint (heavier than all other text editors mentioned in this table, actually), download and installed size (~50-60 MB and ~200-250 MB, respectively) and its startup time.<br /><br />
+
+      GNU Emacs and gVim/Vim are the most popular text editors amongst seasoned programmers, however. GNU Emacs is the most customizable and extensible, thanks to the Emacs Lisp programming language, while Vim is more portable, uses less RAM and CPU, is faster and, for those with enough experience with it, it may have productivity advantages over GNU Emacs, as it relies less on a mouse and keyboard-shortcuts than GNU Emacs. Vim's programming language, VimL (or Vim script), is simpler and easier to learn, IMO, than Emacs Lisp and Vim also has better package management, IMO, than GNU Emacs.<a href="#fnref:5" class="reversefootnote">↩</a>
+    </p>
+  </li>
+  <li id="fn:6">
+    <p>
+      Source: https://onpub.com/install-broadcom-linux-wi-fi-driver-on-fedora-23-s7-a192.<a href="#fnref:6" class="reversefootnote">↩</a>
+    </p>
+  </li>
+</ol>
+
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>

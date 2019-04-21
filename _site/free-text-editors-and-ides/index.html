@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <link href="/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/css/main.css" rel="stylesheet">
+  <link href="/css/my.css" rel="stylesheet">
+  <link href="/css/custom-font.css" rel="stylesheet">
+  <link href="/css/font-awesome.css" rel="stylesheet">
+  <link href="https://fusion809.github.io/images/favicon.png" rel="shortcut icon" type="image/png" >
+  <script src="/js/jquery-1.12.4.js" type="text/javascript"></script>
+  <script src="/js/jquery-ui.js" type="text/javascript"></script>
+  <script src="/js/jquery.easyListSplitter.js" type="text/javascript"></script>
+  <script src="/js/columnize-list.js" type="text/javascript"></script>
+  <script src="/js/toc3.js" type="text/javascript"></script>
+  <title>An Overview of my Eight Favourite Text Editors and IDEs</title>
+  </head>
+
+  <body>
+
+    <header class="site-header">
+  <div class="wrapper">
+
+  <i class="fa fa-linux site-title" style="font-size: 40px;" aria-hidden="true"></i><a class="site-title" style="font-size: 40px;" href="/">The Hornery</a>
+
+  <nav class="site-nav">
+    <a href="#" class="menu-icon">
+      <svg viewBox="0 0 18 15">
+        <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+        <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+        <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+      </svg>
+    </a>
+    <div class="trigger">
+    <div class="pages-nav">Information Pages</div>
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/about-me/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/contributing/">Corrections</a>
+        
+      
+        
+        <a class="page-link" href="/copyright/">Copyright</a>
+        
+      
+        
+        <a class="page-link" href="/glossary/">Glossary</a>
+        
+      
+        
+        <a class="page-link" href="/repositories/">Repositories</a>
+        
+      
+    </div>
+  </nav>
+
+</div>
+
+</header>
+
+
+    <div class="page-content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">An Overview of my Eight Favourite Text Editors and IDEs</h1>
+    <p class="post-meta">
+      <br/>
+      <time datetime="2016-05-24T00:00:00+10:00" itemprop="datePublished"><b>First published</b>: Tuesday, 24 May 2016.</time>
+      
+    </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <div id="toc"></div>
+
+    
+    <!-- Introduction-->
+<p>This post will cover some of <em>my favourite</em> <strong>text editors</strong> (<strong>TEs</strong>) and <strong>integrated development environments</strong> (<strong>IDEs</strong>). It is not meant to be a comprehensive overview of text editors and IDEs and rather just goes over some of my favourite ones. All of them are available free of monetary charge and all but one of them is also open-source. They are also all cross-platform and capable of running on Linux, OS X and Windows, although provided they can run on my favourite Linux distributions I do not really care about their ability to run on other platforms. These TEs and IDEs are:</p>
+
+<div class="div-col columns column-count column-count-3" style="-moz-column-count: 3; -webkit-column-count: 3; column-count: 3;">
+<ul>
+  <li><a href="#atom"><strong>Atom</strong></a></li>
+  <li><a href="#brackets"><strong>Brackets</strong></a></li>
+  <li><a href="#gnu-emacs"><strong>GNU Emacs</strong></a></li>
+  <li><a href="#komodo-edit"><strong>Komodo Edit</strong></a></li>
+  <li><a href="#lighttable"><strong>LightTable</strong></a></li>
+  <li><a href="#sublime-text"><strong>Sublime Text</strong></a></li>
+  <li><a href="#vim"><strong>Vim</strong></a></li>
+  <li><a href="#visual-studio-code"><strong>Visual Studio Code</strong></a> (<strong>VSCode</strong>)</li>
+</ul>
+</div>
+
+<p>For each TE/IDE I will mention their merits with respect to:</p>
+
+<ul>
+  <li><strong>General text editing</strong> — how wide a range of markup/programming/style sheet languages does this editor support, in terms of syntax highlighting, auto-indentation, auto-completion, <em>etc.</em>? How many general-purpose features does this editor have? For example, does it have an embedded terminal?</li>
+  <li><strong>Blog writing</strong> — how comprehensive is this editor’s support for markup/style sheet/web programming languages? Does it have the in-built ability to run SSG servers and deploy a SSG-powered site? Can it do grammar/spell-checking or markup language previews? Does it have an embedded web browser for previewing the changes to your site you have made in it?</li>
+  <li><strong>Programming</strong> / <strong>Software development</strong> — how many IDE features does this editor have? Like the ability to manage version control systems, project-building/script-running tasks, debug code, diagnose program problems, <em>etc.</em></li>
+  <li><strong>Package development</strong> — how many tools exist specifically for helping Linux package developers.</li>
+</ul>
+
+<p>I will also provide a section providing numerical ratings (out of 10; 1 being the worst/non-existent and 10 being perfect) as to the following characteristics of the editor in question:</p>
+
+<ul>
+  <li><strong>Availability</strong> (<strong>AV</strong>): how easy is it to obtain this text editor on most Linux distributions? If it is in the official software repositories of most popular Linux distributions and can be easily installed from them it will earn a 10 here. If it is only available to those that are willing to compile its source code manually themselves and go through the whole troubleshooting process associated with this when something goes wrong, it will likely earn a 1-3.</li>
+  <li><strong>Beginner-Friendliness</strong> (<strong>BF</strong>): how easy is it to use this text editor efficiently? How much of a learning curve does this editor have? Is the level of effort and commitment you need to put into learning how to use this editor similar to that you would spend getting a bachelor degree at university?</li>
+  <li><strong>Customizability</strong> (<strong>CMB</strong>): how easily and extensively can this editor be customized and extended in its capabilities?</li>
+  <li><strong>Features</strong> (<strong>FT</strong>): how extensive is its existing feature set?</li>
+  <li><strong>Stability &amp; System Resource Usage</strong> (<strong>SSRU</strong>): this is a composite of how long it takes for this editor to start up, how much CPU/RAM it uses once running, how stable it is once running and how great the program’s installed size is. The more CPU/RAM it uses, the larger its installed size and the more buggy it is the lower the rating.</li>
+  <li><strong>Overall</strong> (<strong>OA</strong>): how impressed or satisfied am I with this editor?</li>
+</ul>
+
+<!-- Atom-->
+
+<h2 id="atom">Atom</h2>
+<div class="image-box" style="width:100%; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Atom/Atom-1.7.2.png" alt="The Atom text editor (v1.7.2) opened to this very blog post, with an embedded terminal (provided by the `terminal-plus` package) shown" style="width:100%" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(100%-5px); float: none;"><p>The Atom text editor (v1.7.2) opened to this very blog post, with an embedded terminal (provided by the <code class="highlighter-rouge">terminal-plus</code> package) shown</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><strong>Atom</strong> is a free, MIT-licensed text editor that is built using web technologies and developed by GitHub. It started out as a side project of Chris Wanstrath, one of GitHub’s founders, in mid 2008. It is built using the <a href="https://electron.atom.io"><strong>Electron framework</strong></a> (previously called Atom Shell) for buildng cross-platform desktop applications using web technologies. It is extensively customizable, yet also simple enough, for someone that has never used a text editor in their life, to pick up in no time without help. Despite this it is a large application with its binaries being &gt;50 MB and taking up &gt;200 MB hard drive space when installed, additionally its boot times are fairly long and it is only in the official repositories of two Linux distributions that I am aware of, namely, Gentoo Linux and Sabayon Linux. Further details about it can be found in the <a href="https://fusion809.github.io/running-atom-on-linux"><em>Running Atom on Linux</em></a> post.</p>
+
+<p>The Electron framework that Atom is built on, includes Chromium (the open-source project from which Google Chrome gets most of its source code) in its source code. Electron is also based on and utilizes the <a href="https://nodejs.org/en/">Node.js</a> JavaScript runtime engine. Electron is open-source and licensed under the MIT License. Electron apps, under Linux, use the GTK+ 2 toolkit. This framework essentially allows developers to create cross-platform desktop applications using web technologies.</p>
+
+<p>Like many other advanced text editors (such as Sublime Text and Visual Studio Code) it has a command pallette that is opened by the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>. It also has the ability to use tabs and panes for working on more than one file at a time.</p>
+
+<h3 id="installation">Installation</h3>
+<p>Details on installing Atom on Linux can be found in the <a href="https://fusion809.github.io/running-atom-on-linux/#installing-atom"><em>Installing Atom</em></a> section of the <em>Running Atom on Linux</em> post. Most notably I have developed a GitHub repository of installer scripts for Atom on Linux, to use them (assuming cURL is installed):</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash -c &quot;$(curl -sL https://git.io/vwEIX)&quot;</div>
+
+<p>while if you do not have cURL installed but you do have wget installed run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash -c &quot;$(wget -cqO- https://git.io/vwEIX)&quot;</div>
+
+<h3 id="customization">Customization</h3>
+<p>In my opinion Atom’s main advantages over other text editors are that despite being simple enough for a primary school (or elementary school as it is referred to in some countries) student to use it, it can be customized to one’s heart’s content. This customization can be done via the following methods:</p>
+
+<ul>
+  <li>Editing one’s <strong>own configuration files</strong> — these are files found in one’s <code class="highlighter-rouge">~/.atom</code> folder and include (if these files are missing for you personally, you can create them): <code class="highlighter-rouge">config.cson</code> (the main configuration file), <code class="highlighter-rouge">keymap.cson</code> (the keymap configuration file), <code class="highlighter-rouge">init.coffee</code> (the init script file) and <code class="highlighter-rouge">styles.less</code> (the custom stylesheet). My personal configuration files are found in <a href="https://github.com/fusion809/atom">this</a> GitHub repository.</li>
+  <li>Changing <strong>Atom themes</strong> to one already available in the <a href="https://atom.io/themes">Atom theme repository</a>. This will change how Atom looks, but it will not add any extra functionalities to Atom (as extra functionalities are provided by <em>packages</em> not themes).</li>
+  <li>Installing an existing <strong>Atom package</strong> found in the <a href="https://atom.io/packages">Atom package repository</a>. This should not change the aesthetics of Atom, but it will modify the behaviours and feature-set of Atom.</li>
+  <li>Writing one’s <strong>own Atom package</strong> — this can be used to modify (or add to) the behaviour of Atom or add new features to Atom. In order to do this you need to be well-versed in the CoffeeScript (CS) and JavaScript (JS) programming languages, unless you fork an existing package and merely make minor modifications to said package. You can share your packages publically in Atom’s own package registry. The best tutorial on writing Atom packages that I have seen can be found <a href="http://www.sitepoint.com/how-to-write-a-syntax-highlighting-package-for-atom/">here</a>.</li>
+  <li>Writing one’s <strong>own Atom theme</strong> — themes modify the aesthetics (or appearance) of Atom. In order to do this well it is best to have a good understanding of the CSS and Less stylesheet languages. I have created my own Atom theme (<a href="https://atom.io/themes/fusion-ui"><code class="highlighter-rouge">fusion-ui</code></a>)
+ by forking an existing Atom theme (<a href="https://atom.io/themes/accents-ui"><code class="highlighter-rouge">accents-ui</code></a>),
+ so I understand this somewhat.</li>
+</ul>
+
+<div class="image-box" style="width:100%; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Atom/Install-circled-packages-themes.png" alt="Atom 1.7.3 showing the Install menu in the Preferences Tab" style="width:100%" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(100%-5px); float: none;"><p>Atom 1.7.3 showing the Install menu in the Preferences Tab</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p>Installing Atom themes and packages can be done via the command-line with <span class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span>  apm install $PLUGIN</span>
+ where <code class="highlighter-rouge">$PLUGIN</code> is to be replaced with the name of the package or theme in question (case is important! No spaces are allowed), or it can be done from within Atom itself. To install a package/theme from within Atom open your <strong>Preferences Tab</strong> (which can be done by going to <strong>Edit→Preferences</strong>). Then, open the <strong>Install</strong> menu. Then depending on whether you want to install a theme or a package you will want to click the appropriate button (that is, either the <strong>Packages</strong> or <strong>Themes</strong> options) right of the search box. After you have clicked the appropriate button merely type in some words to describe the package/theme you want and press <kbd>Enter</kbd> to search for them. Once you have found a package/theme you want press the “Install” button shown here <img src="https://fusion809.github.io/images/Atom/Install-Button.png" />. After installing a new theme you will need to go to the <strong>Themes</strong> menu on the left-hand side of the Preferences Tab and select the theme you want from the UI or Syntax Theme drop-down menus.</p>
+
+<div class="image-box" style="width:1050px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Atom/Themes-Tab.png" alt="The Themes menu of the Preferences Tab" style="width:1050px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(1050px-5px); float: none;"><p>The Themes menu of the Preferences Tab</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<h3 id="features-and-merits">Features and Merits</h3>
+
+<h4 id="general">General</h4>
+<p>Atom’s <strong>general merits</strong> include:</p>
+
+<ul>
+  <li>In-built <strong>embedded file/directory browser</strong> called <strong>tree view</strong> and provided by the <a href="https://atom.io/packages/tree-view"><span class="package">tree-view</span></a>
+ package.</li>
+  <li>In-built support for <strong>running git commands</strong> in Atom, using the <a href="https://atom.io/packages/git-plus"><span class="package">git-plus</span></a>
+ package.</li>
+  <li>In-built <strong>syntax-highlighting</strong>, <strong>auto-indentation</strong>, <strong>auto-completion</strong>, <strong>snippets</strong>, <em>etc.</em> support for the majority of markup, programming and style sheet languages.</li>
+</ul>
+
+<p>Additional <strong>general-purpose features</strong> that Atom can gain by the installation of extra packages include (in brackets are the package(s) that provide this feature):</p>
+
+<ul>
+  <li>
+    <p>Insertion of an <strong>embedded terminal emulator</strong> into Atom (<a href="https://atom.io/packages/terminal-plus"><span class="package">terminal-plus</span></a>).</p>
+  </li>
+  <li>
+    <p>Searching through <strong>past git commits</strong> in a repository (<a href="https://atom.io/packages/git-time-machine"><span class="package">git-time-machine</span></a>).</p>
+  </li>
+  <li>
+    <p><strong>Suggesting improvements</strong> on existing code or markup in one’s opened files (provided by <a href="https://atom.io/packages/linter"><span class="package">linter</span></a>
+ and <a href="https://atom.io/packages/atom-beautify"><span class="package">atom-beautify</span></a>)</p>
+  </li>
+  <li>
+    <p><strong>Running hg commands</strong> in Atom, using the <a href="https://atom.io/packages/atom-hg"><span class="package">atom-hg</span></a>
+ package.</p>
+  </li>
+</ul>
+
+<h4 id="blog-writing">Blog Writing</h4>
+<p>For the purpose of blog writing Atom has the following helpful features:</p>
+
+<ul>
+  <li>It has in-built syntax-highlighting, previewing and snippeting support for GitHub-flavoured markdown (GFM). It also has in-built syntax-highlighting, auto-indentation and snippet support for HTML and, with the help of a plugin (<a href="https://atom.io/packages/atom-html-preview"><span class="package">atom-html-preview</span></a>),
+ it is also possible to preview HTML files in Atom. Syntax-highlighting, previewing and snippet support is also obtainable, using plugins, for asciidoc and textile.</li>
+  <li>It can apply language-specific syntax highlighting to pieces of code (belonging to separate, non-markdown languages like YAML for front-matter) within markdown documents. If you insert a code block (denoted by triple ticks (<code>&#96;</code>) or tildes (<code class="highlighter-rouge">~</code>) at the start and end of the block, with the name of the computer language enclosed by the block after the first triple of ticks/tildes) Atom will highlight the code enclosed according to its respective computer language.</li>
+  <li>The in-built git support and embedded terminal mentioned earlier can be handy for those writing blogs hosted by GitHub and other sites using the git version control system. The embedded terminal can also be handy for those using static site generators (SSGs) that need to be re-generated manually before you make any git commits (e.g., Hexo).</li>
+  <li>One can also run certain SSGs from within Atom itself without using the embedded terminal, using plugins. For example, for Jekyll there is a plugin called <a href="https://atom.io/packages/jekyll"><span class="package">jekyll</span></a>
+ that can be used to run the Jekyll server.</li>
+  <li>Keyboard shortcuts for bolding and italicizing text, inserting code blocks, <em>etc.</em> in markdown. This capability is provided by the <a href="https://atom.io/packages/markdown-writer"><span class="package">markdown-writer</span></a>
+ package.</li>
+  <li>It has in-built spell-checking abilities (provided by the <a href="https://atom.io/packages/spell-check"><span class="package">spell-check</span></a>
+ package)</li>
+  <li>You can also open a web browser embedded in Atom using the <a href="https://atom.io/packages/browser-plus"><span class="package">browser-plus</span></a>
+ package. I personally have limited experience with this package as it has a <a href="https://github.com/skandasoft/browser-plus/issues/71">graphical bug</a> that I have noticed on Arch Linux.</li>
+</ul>
+
+<p>Personally I think it is the best text editor out there for writing a blog.</p>
+
+<h4 id="programming">Programming</h4>
+<p>Atom has several optional plugins that can be used to turn Atom into an efficient IDE for a variety of different programming languages. These plugins include:</p>
+
+<ul>
+  <li><a href="https://atom.io/packages/build"><span class="package">build</span></a>
+ — a plugin to automate the process of building projects in Atom. It has a support for most major compiled  programming languages, for a list of such languages see <a href="https://atombuild.github.io/">here</a>. Projects written in other compiled languages can likely be built via the use of other more language-specific packages, like <a href="https://atom.io/packages/builder-go"><span class="package">builder-go</span></a>
+ for Go.</li>
+  <li><a href="https://atom.io/packages/hydrogen"><span class="package">hydrogen</span></a>
+ — a plugin for running scripts using any installed Jupyter kernels you have available.</li>
+  <li><a href="https://atom.io/packages/nuclide"><span class="package">nuclide</span></a>
+ — a plugin developed by Facebook that adds features mentioned in greater detail <a href="http://nuclide.io/docs/quick-start/getting-started/">here</a>. These features include debugging, test running, problem diagnosing, difference viewing,
+<em>etc.</em> primarily for the Hack and PHP programming languages. It also includes in-built support for Mercurial versioning control. I personally would not recommend it as for me it makes Atom either incredibly laggy and prone to crashes.</li>
+  <li><a href="https://atom.io/packages/platformio-ide"><span class="package">platformio-ide</span></a>
+ — a plugin to turn Atom into a more efficient IDE for IoT. It includes, “intelligent code completions” for C/C++, along with debugging, building and version control features typical of most IDEs. It also makes Atom slower, but it does not slow it down quite as much as <code class="highlighter-rouge">nuclide</code>.</li>
+  <li><a href="https://atom.io/packages/script"><span class="package">script</span></a>
+ — for package for executing files (or scripts) written in an interpreted language like JavaScript or Python.</li>
+</ul>
+
+<h4 id="package-development">Package Development</h4>
+<p>Atom also has a few packages that can make it an attractive editor for package developers and maintainers of certain Linux distributions. These distributions include:</p>
+
+<ul>
+  <li><a href="https://www.archlinux.org"><strong>Arch Linux</strong></a> / <a href="https://manjaro.github.io"><strong>Manjaro Linux</strong></a> — for Arch developers I recommend the installation of the <a href="https://atom.io/packages/terminal-plus"><span class="package">terminal-plus</span></a>
+ package only. The bundled <a href="https://atom.io/packages/language-shellscript"><span class="package">language-shellscript</span></a>
+ package automatically provides syntax highlighting for PKGBUILDs upon opening, so you need not worry about installing extra packages to provide the necessary syntax highlighting of PKGBUILDs. The <code class="highlighter-rouge">terminal-plus</code> package would likely be helpful as it allows you update package checksums from the command-line (using the <code class="highlighter-rouge">updpkgsums</code> command) and if you are more comfortable with running git commands from the command-line like I am it also allows you to commit your changes to Arch source files (like PKGBUILDs, install files, patch files, <em>etc.</em>).</li>
+  <li><a href="https://www.centos.org/"><strong>CentOS</strong></a> / <a href="https://getfedora.org"><strong>Fedora</strong></a> / <a href="https://www.opensuse.org/"><strong>openSUSE</strong></a> / <strong>other RPM distributions</strong> — RPM developers are probably best using the <a href="https://atom.io/packages/language-rpm-spec"><span class="package">language-rpm-spec</span></a>
+ package for syntax highlighting of RPM spec files.</li>
+  <li><a href="http://www.debian.org"><strong>Debian</strong></a> / <a href="http://www.ubuntu.com/"><strong>Ubuntu</strong></a> / <strong>other distributions using Debian packages</strong> — Deb package developers may benefit from the <a href="https://atom.io/packages/language-debian"><span class="package">language-debian</span></a>
+ package, as it provides grammars and snippets for Debian rules and control files. I have never used this package so I personally cannot comment on how helpful it really is.</li>
+  <li><a href="https://www.gentoo.org/"><strong>Gentoo Linux</strong></a> / <a href="https://www.sabayon.org"><strong>Sabayon Linux</strong></a> — Gentoo developers are probably best off installing the <a href="https://atom.io/packages/language-gentoo"><span class="package">language-gentoo</span></a>
+ package as it allows them to more easily update ebuild manifests, provides syntax highlighting for ebuilds and allows one to test out ebuilds by building packages from them. Personally I think this is the best Atom package for package development out there, so Gentoo developers are certainly blessed when it comes to Atom.</li>
+</ul>
+
+<h3 id="ratings">Ratings</h3>
+
+<ul>
+  <li><strong>Availability</strong>: 7. Official binary releases exist for most popular 64-bit distributions. Unofficial repositories containing Atom exist for most other popular distributions (e.g., Atom can be installed from the Arch User Repository for Arch/Manjaro users). My installer should (hopefully) make this installation process easier.</li>
+  <li><strong>Beginner-Friendliness</strong>: 9. Considering its feature-set it is very beginner-friendly.</li>
+  <li><strong>Customizability</strong>: 9. Very customizable.</li>
+  <li><strong>Features</strong>: 9.</li>
+  <li><strong>Stability &amp; System Resource Usage</strong>: 4. On Arch Linux Atom 1.7.3 had the installed size of 222.91 MiB, where Atom was built from a <a href="https://github.com/fusion809/PKGBUILDs/tree/master/atom-editor">PKGBUILD</a> in my GitHub repository. The amount of RAM it used while running in safe mode (where no packages or themes, beyond the in-built or bundled ones are loaded) was 276.5 MB for one window and one tab.</li>
+  <li><strong>Overall</strong>: 9.</li>
+</ul>
+
+<h3 id="links">Links</h3>
+<div class="div-col columns column-count column-count-3" style="-moz-column-count: 3; -webkit-column-count: 3; column-count: 3;">
+<ul>
+  <li><a href="http://blog.atom.io/">Blog</a></li>
+  <li><a href="https://discuss.atom.io/">Discuss</a></li>
+  <li><a href="https://atom.io/docs">Documentation</a></li>
+  <li><a href="https://electron.atom.io">Electron Home Page</a></li>
+  <li><a href="https://github.com/atom/atom">GitHub Repository</a>
+    <ul>
+      <li><a href="https://github.com/atom/atom/issues">Issues</a></li>
+      <li><a href="https://github.com/atom/atom/pulls">Pull Requests</a></li>
+      <li><a href="https://github.com/atom/atom/releases">Releases</a></li>
+    </ul>
+  </li>
+  <li><a href="https://atom.io">Home Page</a></li>
+  <li><a href="https://atom.io/packages">Packages</a></li>
+  <li><a href="https://atom.io/releases">Releases</a></li>
+  <li><a href="https://atom.io/themes">Themes</a></li>
+</ul>
+</div>
+
+<!-- Brackets-->
+
+<h2 id="brackets">Brackets</h2>
+<div class="image-box" style="width:100%; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Brackets/Brackets-1.6.png" alt="The Brackets text editor (v1.6) running on Arch Linux opened to my [JScripts](https://github.com/fusion809/JScripts) GitHub repository" style="width:100%" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(100%-5px); float: none;"><p>The Brackets text editor (v1.6) running on Arch Linux opened to my <a href="https://github.com/fusion809/JScripts">JScripts</a> GitHub repository</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p>The <strong>Brackets</strong> text editor is a free and open-source (MIT-licensed) text editor developed by Adobe and built using web technologies. Brackets is unlike most other editors compared in this post in that it is specifically designed for web development and is not intended for general-purpose programming or text editing like Atom, Komodo Edit or VSCode. Brackets is built using its own framework (<a href="https://github.com/adobe/brackets-shell">Brackets Shell</a>), much like Atom with its Electron framework and Komodo Edit with its Firefox backbone. Brackets also uses the GTK+ 2 toolkit on Linux.</p>
+
+<p>Brackets is designed to be a <strong>lightweight editor</strong>, the biggest problem with it, in my opinion, is that it has <strong>difficulty handling large numbers of files</strong> (even when those files are all opened by the editor, but just present in the directory the editor is opened to) like that present in most git repositories. I have found that I cannot use it to edit <em>The Hornery</em> due to this very issue. Brackets is also known to be missing some features on Linux that it has while working on the more popular proprietary operating systems, OS X and Windows NT.</p>
+
+<h3 id="installation-1">Installation</h3>
+<p>Brackets is more challenging than most other editors mentioned in this post to install on Linux distributions that do not use the <code class="highlighter-rouge">APT</code>/<code class="highlighter-rouge">dpkg</code> package managers, this is because on most distributions you either have to install Brackets from the Debian binaries provided by the Bracket’s GitHub repository (on non Debian-based distributions this can still be done via extracting these binaries and moving the files within to the appropriate locations on one’s system) or build Brackets from source code. You can find these Debian binaries provided by the Bracket’s GitHub repository on their <a href="https://github.com/adobe/brackets/releases">releases</a> page.</p>
+
+<p>I have created a <a href="https://github.com/fusion809/brackets-installer">shell script installer</a> for Brackets, that should work on most popular Linux distributions (see its <a href="https://github.com/fusion809/brackets-installer/blob/master/README.md">README</a> for details on which distributions are supported). To use it, run (assuming cURL is installed):</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash -c "$(curl -sL https://git.io/vrYlf)"</div>
+
+<p>or, if cURL is not installed but wget is, run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash -c "$(wget -cqO- https://git.io/vrYlf)"</div>
+
+<h3 id="customization-1">Customization</h3>
+<div class="image-box" style="width:100%; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Brackets/Plugin-dialog.png" alt="Brackets Plugin Dialog" style="width:100%" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(100%-5px); float: none;"><p>Brackets Plugin Dialog</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p>Customizing Brackets is done via plugins, to install a new plugin open the plugin dialog as shown in the screenshot above.</p>
+
+<h3 id="ratings-1">Ratings</h3>
+
+<ul>
+  <li><strong>Availability</strong>: 6. My installer should make its installation easier.</li>
+  <li><strong>Beginner-Friendliness</strong>: ~9. It is a fairly beginner-friendly editor when used within its scope of web development.</li>
+  <li><strong>Customizability</strong>: 7. Some customization can be done via plugins, although the editor is designed just for web development so there is only so much customization you can do with it.</li>
+  <li><strong>Features</strong>: ~8.</li>
+  <li><strong>Stability &amp; System Resource Usage</strong>: 6. Bugs are its main issue, but otherwise it is fairly light. The installed size of Brackets 1.6 (built from the <a href="https://github.com/fusion809/PKGBUILDs/blob/master/brackets/PKGBUILD">PKGBUILD</a> in my GitHub repository) on Arch Linux is 138.38 MB. For me it used 259.9 MB RAM while opened to my JScripts GitHub repository, with no optional (that is, those that do not come pre-installed with Brackets) plugins installed.</li>
+  <li><strong>Overall</strong>: 7. In my books the fact it is difficult to get on most distributions and that its scope is limited to web development, is a weakness of this particular editor.</li>
+</ul>
+
+<h3 id="links-1">Links</h3>
+<ul>
+  <li><a href="https://github.com/adobe/brackets">GitHub Repository</a>
+    <ul>
+      <li><a href="https://github.com/adobe/brackets/issues">Issues</a></li>
+      <li><a href="https://github.com/adobe/brackets/pulls">Pull Requests</a></li>
+      <li><a href="https://github.com/adobe/brackets/releases">Releases</a></li>
+    </ul>
+  </li>
+  <li><a href="https://brackets.io">Home Page</a></li>
+</ul>
+
+<!-- GNU Emacs-->
+
+<h2 id="gnu-emacs">GNU Emacs</h2>
+<div class="image-box" style="width:760px; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Emacs/GNU-Emacs-24.5.png" alt="GNU Emacs 24.5 running under Arch Linux" style="width:760px" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(760px-5px); float: none;"><p>GNU Emacs 24.5 running under Arch Linux</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><strong>GNU Emacs</strong> is a free, GPL-licensed, extendable text editor developed as part of the GNU Project. It was originally developed in the mid 1980s by Richard Stallman, the founder of the GNU Project. It is written in C and its own purpose-built language, Emacs Lisp, and has both a command-line and graphical user interface (GUI). Its GUI is built using the GTK+ toolkit (presently GTK+ 3 is being used) on Linux. At its heart is an interpreter for the Emacs Lisp programming language and it is through this language that users can extend Emacs’ functionalities with plugins and configuration scripts (with its main configuration script being <code class="highlighter-rouge">~/.emacs</code>, by default).</p>
+
+<p>As far as its start-up time goes it is faster than Atom and uses less RAM and hard disk drive (HDD) space, but has a longer start-up time and uses more RAM/HDD space than Vim. For example, on Arch Linux emacs 24.5-3 takes up 99.43 MB HDD space.</p>
+
+<p>Emacs is a much more difficult editor to learn and use efficiently than the beginner-friendly editors Atom, gedit, Kate and Notepad. Most actions in Emacs are controlled by combination keyboard shortcuts. This as opposed to Vim that is controlled by keyboard inputs that need not be provided simultaneously (that is, they can be successive, one after the other). Although the GUI of Emacs has a toolbar with drop-down menus in it, like most graphical text editors. There is also a plugin for Emacs that gives Emacs more Vim-like keyboard shortcuts, it is called <a href="http://spacemacs.org/">Spacemacs</a>. It uses buffers (as opposed to tabs or panes) for working on more than one file, or action (e.g., one buffer might be for a terminal emulator) at a time. You can navigate through your various buffers using keyboard shortcuts.</p>
+
+<h3 id="installation-2">Installation</h3>
+<p>GNU Emacs is easily installed on most (if not all) Linux distributions as it is found in the official software repositories of most distributions. Distributions with it in their official repositories include:<sup id="fnref:1"><a href="#fn:1" class="footnote">1</a></sup></p>
+
+<div class="div-col columns column-count column-count-3" style="-moz-column-count: 3; -webkit-column-count: 3; column-count: 3;">
+<ul>
+  <li><strong>Arch Linux</strong></li>
+  <li><strong>CentOS</strong></li>
+  <li><strong>Debian</strong></li>
+  <li><strong>Fedora</strong></li>
+  <li><strong>Gentoo Linux</strong></li>
+  <li><strong>Linux Mint</strong></li>
+  <li><strong>Mageia</strong></li>
+  <li><strong>Manjaro Linux</strong></li>
+  <li><strong>openSUSE</strong></li>
+  <li><strong>Sabayon Linux</strong></li>
+  <li><strong>Ubuntu</strong></li>
+</ul>
+</div>
+
+<h3 id="customization-2">Customization</h3>
+<p>Virtually every facet of Emacs’ appearance and behaviour can be customized via modifying its configuration script, <code class="highlighter-rouge">~/.emacs</code>, or by installing extra packages. In fact, from what I hear<sup id="fnref:2"><a href="#fn:2" class="footnote">2</a></sup> Emacs is more extendable than Vim. In my opinion, however, the Emacs Lisp language is more complicated than the CoffeeScript, CSS, JavaScript and Less computer languages that Atom is extended with. I also find it more difficult to understand than the Vim script (or VimL) language used to extend Vim. Although, as always, it is really dependent on the individual in question as to which language(s) are more or less complicated, with respect to Emacs Lisp.</p>
+
+<p>I personally use the <a href="http://spacemacs.org/">Spacemacs</a> package, which gives Emacs a new (in my opinion, better) look and turns it into a modal editor like Vim. It also changes the default configuration script from <code class="highlighter-rouge">~/.emacs</code> to <code class="highlighter-rouge">~/.spacemacs</code>. If you would like to see my Spacemacs file see <a href="https://github.com/fusion809/spacemacs">this GitHub repository</a> of mine.</p>
+
+<h3 id="features-and-merits-1">Features and Merits</h3>
+
+<h4 id="general-1">General</h4>
+<p>Emacs’s <strong>general merits</strong> include:</p>
+
+<ul>
+  <li>In-built support for <strong>running git commands</strong> without a terminal.</li>
+  <li><strong>Syntax-highlighting</strong> for a <strong>wide range</strong> of different <strong>computer languages</strong>. Languages that are not supported by default can be supported by the installation of optional packages.</li>
+  <li>In-built <strong>terminal buffer</strong> for running shell commands. I use the <a href="https://www.emacswiki.org/emacs/term-toggle.el"><code class="highlighter-rouge">term-toggle</code></a> package to make it easier to toggle the terminal buffer.</li>
+  <li><strong>Web browser buffer</strong> for searching the web, this is not in-built (that is, it does not come bundled with Emacs, by default). Further information on this can be found <a href="https://www.emacswiki.org/emacs/CategoryWebBrowser">here</a> at the <em>EmacsWiki</em>.</li>
+  <li><strong>File manager</strong>, you can get an embedded file manager within Emacs using the <a href="https://github.com/jaypei/emacs-neotree"><code class="highlighter-rouge">neotree</code></a> package.</li>
+</ul>
+
+<h4 id="blog-writing-1">Blog Writing</h4>
+<p>GNU Emacs can be turned into a reasonable blog writer, particularly for the markdown format using the <a href="https://www.emacswiki.org/emacs/MarkdownMode"><code class="highlighter-rouge">markdown-mode</code></a> package.</p>
+
+<h3 id="ratings-2">Ratings</h3>
+
+<ul>
+  <li><strong>Availability</strong>: 10. Every Linux distribution I am familiar with has it in their official repositories.</li>
+  <li><strong>Beginner-Friendliness</strong>: 4. Not quite as challenging for newcomers to use as Vim, in my opinion.</li>
+  <li><strong>Customizability</strong>: 9. Probably the single most configurable text editor available.</li>
+  <li><strong>Features</strong>: 9. I essentially think of it as a Swiss army knife, with several features built-in that are not usually associated with a text editor.</li>
+  <li><strong>Stability &amp; System Resource Usage</strong>: 7-8. Version 24.5-3 used 121.5 MB RAM on my Arch Linux machine, with Spacemacs installed. Its installed size was 99.43 MB.</li>
+  <li><strong>Overall</strong>: 7. Its low level of beginner-friendliness is a bit of a deal-breaker to me.</li>
+</ul>
+
+<h3 id="links-2">Links</h3>
+
+<ul>
+  <li><a href="https://www.gnu.org/software/emacs/manual/html_node/elisp/index.html">Emacs Lisp Reference Manual</a></li>
+  <li><a href="https://www.gnu.org/software/emacs/manual/html_node/emacs/index.html">Emacs Manual</a></li>
+  <li><a href="https://www.gnu.org/software/emacs/">Home Page</a></li>
+</ul>
+
+<!-- Komodo Edit-->
+
+<h2 id="komodo-edit">Komodo Edit</h2>
+<div class="image-box" style="width:100%; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Komodo/Komodo-Edit-10.0.0.png" alt="Komodo Edit 10.0.0 running on Arch Linux" style="width:100%" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(100%-5px); float: none;"><p>Komodo Edit 10.0.0 running on Arch Linux</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><strong>Komodo Edit</strong> is a free (licensed under the Mozilla Public License) text editor built on the source code of Mozilla Firefox and developed by ActiveState. It is written in JavaScript, Python and C++ and is the open-source version of the proprietary <strong>Komodo IDE</strong> integrated development environment. It has a repository of themes and packages that can be found <a href="http://komodoide.com/packages">here</a>. I personally find it fairly extensible, but not as extensible as Atom, Emacs or Vim. I have also found it a real pain to compile from source code, so much of a pain that in a cross-distribution shell script installer I wrote for it (<a href="https://github.com/fusion809/komodo-installer"><code class="highlighter-rouge">komodo-installer</code></a>)
+ I decided to omit a source code install option. This is because it requires an older version of autotools (2.13) than presently in the official repositories of the more up-to-date distributions like day-to-day one, Arch Linux.</p>
+
+<h3 id="installation-3">Installation</h3>
+<p>Komodo Edit while not in the official repositories of any Linux distribution I am aware of, can be easily installed on x86 and x86_64 Linux systems from the binary tarball releases on the Komodo Edit home page. You can browse available binary tarballs <a href="http://downloads.activestate.com/Komodo/releases/">here</a>, although beware half of the binary tarballs are for Komodo IDE. I have written a shell script installer (<a href="https://github.com/fusion809/komodo-installer"><code class="highlighter-rouge">komodo-installer</code></a>)
+ for Komodo Edit that should work on most major Linux distributions (including all distributions in the top 10 most popular, as ranked by <em>DistroWatch</em>). If you experience any errors with it feel free to file <a href="https://github.com/fusion809/komodo-installer/issues/new">a new issue</a>, or if you have a solution to any problems you experience you may file a new pull request. To use this installer with cURL run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash -c "$(curl -sL https://git.io/vrGbs)"</div>
+
+<p>while to use it with <code class="highlighter-rouge">wget</code>, run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash -c "$(wget -cqO- https://git.io/vrGbs)"</div>
+
+<h3 id="customization-3">Customization</h3>
+<p>Customization of Komodo Edit is done via the Preferences dialog. In it you can select skins, packages and themes for the editor. Which are usually written in web languages, like CSS, JavaScript, Less, <em>etc.</em> It uses the same extension format as Mozilla Firefox does, xpi.</p>
+
+<h3 id="ratings-3">Ratings</h3>
+
+<ul>
+  <li><strong>Availability</strong>: 7. This is mostly thanks to my installer and official binary tarball releases.</li>
+  <li><strong>Beginner-Friendliness</strong>: ~8. It is a fairly beginner-friendly editor.</li>
+  <li><strong>Customizability</strong>: 7. Some customization can be done via plugins, but as its is the free version of a proprietary editor some customization is off-limit.</li>
+  <li><strong>Features</strong>: ~8.</li>
+  <li><strong>Stability &amp; System Resource Usage</strong>: 6. Bugs are its main issue, but otherwise it is fairly light. The installed size of Komodo Edit 10.0.0 (built from the <a href="https://github.com/fusion809/PKGBUILDs/blob/master/komodo-edit/PKGBUILD">PKGBUILD</a> in my GitHub repository) on Arch Linux is 264.66 MiB. For me it used 219.3 MB RAM while opened to my hexo-site GitHub repository, with no optional (that is, those that do not come pre-installed with Brackets) plugins installed.</li>
+  <li><strong>Overall</strong>: 7. Its limited customizability is its main weakness.</li>
+</ul>
+
+<h3 id="links-3">Links</h3>
+<ul>
+  <li><a href="https://github.com/Komodo/KomodoEdit">GitHub Repository</a>
+    <ul>
+      <li><a href="https://github.com/Komodo/KomodoEdit/issues">Issues</a></li>
+      <li><a href="https://github.com/Komodo/KomodoEdit/pulls">Pull Requests</a></li>
+      <li><a href="https://github.com/Komodo/KomodoEdit/releases">Releases</a></li>
+    </ul>
+  </li>
+  <li><a href="https://komodoide.com/komodo-edit/">Home Page</a></li>
+  <li><a href="http://komodoide.com/packages">Package Repository</a></li>
+</ul>
+
+<!-- LightTable-->
+
+<h2 id="lighttable">LightTable</h2>
+<div class="image-box" style="width:100%; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/IDEs/LightTable-0.8.1.png" alt="LightTable 0.8.1" style="width:100%" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(100%-5px); float: none;"><p>LightTable 0.8.1</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><strong>LightTable</strong> is a free and open-source IDE written in Clojure that is primarily intended for web development. It is built on the Electron framework too. So far it is in beta development, without a 1.0 release so far. Something that is unique about it is that it is fairly architecture-independent with an official binary tarball released for each new version that supports both 32-bit and 64-bit architectures. I have created a cross-distribution installer for LightTable on Linux and the major drama with installing it, in my opinion, is getting the dependencies. These dependencies are usually fairly old and out-dated (like the system library libudev.so.0) and hence can be challenging to get on newer distributions.</p>
+
+<h3 id="installation-4">Installation</h3>
+<p>As previously mentioned I have created a cross-distribution installer for LightTable. Its GitHub repository is <a href="https://github.com/fusion809/lighttable-installer">here</a>. To use it, run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash -c "$(curl -sL https://git.io/vr3pT)"</div>
+
+<p>or:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash -c "$(wget -cqO- https://git.io/vr3pT)"</div>
+
+<h3 id="customization-4">Customization</h3>
+<p>LightTable has an in-built plugin manager, which can be opened by going to <code>View&rarr;Plugin Manager</code>.</p>
+
+<h3 id="features">Features</h3>
+<p>It has syntax-highlighting, auto-indentation, <em>etc.</em> for most web computer languages and has an embedded web browser and file manager.</p>
+
+<h3 id="ratings-4">Ratings</h3>
+
+<ul>
+  <li><strong>Availability</strong>: 7. This is mostly thanks to my installer and official binary tarball releases.</li>
+  <li><strong>Beginner-Friendliness</strong>: ~8. It is a fairly beginner-friendly editor.</li>
+  <li><strong>Customizability</strong>: 7. Some customization can be done via plugins, but as it is intended just for web development there is some inherit limitations to its customizability.</li>
+  <li><strong>Features</strong>: ~8.</li>
+  <li><strong>Stability &amp; System Resource Usage</strong>: 8. The installed size of LightTable 0.8.1 (built from the <a href="https://github.com/fusion809/PKGBUILDs/blob/master/lighttable/PKGBUILD">PKGBUILD</a> in my GitHub repository) on Arch Linux is 128.83 MiB. For me it used 30.5 MB RAM while opened to my hexo-site GitHub repository, with no optional (that is, those that do not come pre-installed with Brackets) plugins installed.</li>
+  <li><strong>Overall</strong>: 7. Its limited customizability is its main weakness.</li>
+</ul>
+
+<h3 id="links-4">Links</h3>
+<ul>
+  <li><a href="https://github.com/LightTable/LightTable">GitHub Repository</a>
+    <ul>
+      <li><a href="https://github.com/LightTable/LightTable/issues">Issues</a></li>
+      <li><a href="https://github.com/LightTable/LightTable/pulls">Pull Requests</a></li>
+      <li><a href="https://github.com/LightTable/LightTable/releases">Releases</a></li>
+    </ul>
+  </li>
+  <li><a href="http://lighttable.com">Home Page</a></li>
+</ul>
+
+<!-- Sublime Text-->
+
+<h2 id="sublime-text">Sublime Text</h2>
+<div class="image-box" style="width:100%; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/text-editors/Sublime-Text-3.png" alt="Sublime Text 3.3103 running on Arch Linux" style="width:100%" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(100%-5px); float: none;"><p>Sublime Text 3.3103 running on Arch Linux</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><strong>Sublime Text</strong> is a proprietary text editor that is available free of charge, although it will occasionally prompt the user asking for them to pay for a license until they do. It costs around $70 USD to purchase a license. It is written in C++ and Python, although its Python component is mostly for the purpose of allowing users to extend the editor with plugins. Sublime Text’s positive points compared to say Atom are that it starts faster and uses less RAM once started than Atom. It is more extendable than Brackets and LightTable, in my opinion, but roughly extendable as Visual Studio Code and less extendable than Atom, Emacs or Vim. At this point in time there are two major releases of Sublime Text, Sublime Text 2 (<em>stable version</em>) and Sublime Text 3 (<em>development version</em>). I mostly use Sublime Text 3, as it has more features.</p>
+
+<h3 id="installation-5">Installation</h3>
+<p>Stable and development releases are provided as both Debian and tarball binaries for 32- and 64-bit Linux systems. I have not written an installer for it due to the fact it is a proprietary editor and I want my installers to only be for free and open-source editors.</p>
+
+<h3 id="customization-5">Customization</h3>
+<p>As previously mentioned Sublime Text can be customized and extended using plugins written in Python. To install new packages go to <code>Preferences&rarr;Package Control</code> and select “Install Package” in menu that pops up.</p>
+
+<h3 id="merits-and-features">Merits and Features</h3>
+<p>Sublime Text has in-built syntax-highlighting for the vast majority of popular computer languages out there. As mentioned earlier Sublime Text’s feature set can be extended using plugins. There are some limitations, for one, there is no embedded browser available for previews or no embedded terminal emulator.</p>
+
+<h3 id="ratings-5">Ratings</h3>
+
+<ul>
+  <li><strong>Availability</strong>: 8. The Debian and tarball binaries make it fairly easy to install on Linux.</li>
+  <li><strong>Beginner-Friendliness</strong>: ~8. It is a fairly beginner-friendly editor.</li>
+  <li><strong>Customizability</strong>: 8-9.</li>
+  <li><strong>Features</strong>: ~8. Fairly feature-packed, but unfortunately no embedded terminal.</li>
+  <li><strong>Stability &amp; System Resource Usage</strong>: 7-8. The installed size of Sublime Text 3.3103 (built from the <a href="https://github.com/fusion809/PKGBUILDs/blob/master/sublime-text-dev/PKGBUILD">PKGBUILD</a> in my GitHub repository) on Arch Linux is 16.35 MiB. For me it used 92.2 MB RAM while opened to my hexo-site GitHub repository, with no optional (that is, those that do not come pre-installed with Brackets) plugins installed.</li>
+  <li><strong>Overall</strong>: 8. Its being proprietary-licensed is its main weakness, in my opinion.</li>
+</ul>
+
+<h3 id="links-5">Links</h3>
+<ul>
+  <li><a href="http://www.sublimetext.com/">Sublime Text</a>
+    <ul>
+      <li><a href="http://www.sublimetext.com/2">Download Page ST2</a></li>
+      <li><a href="http://www.sublimetext.com/3">Download Page ST3</a></li>
+    </ul>
+  </li>
+</ul>
+
+<!-- Vim-->
+
+<h2 id="vim">Vim</h2>
+<div class="image-box" style="width:100%; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/Vim/gVim-7.4.1825.png" alt="gVim 7.4.1825 GTK+ 2 interface." style="width:100%" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(100%-5px); float: none;"><p>gVim 7.4.1825 GTK+ 2 interface.</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><strong>Vim</strong> (short for <strong>Vi iMproved</strong>) is a free and incredibly extensible text editor that can be run from both the command-line and as a graphical editor called gVim. It is based on the original Vi UNIX text editor developed by Bill Joy in the mid 1970s, with several extra features built into it, such as syntax-highlighting support. Vim was first publically released in 1991 and is developed by Dutch programmer, Bram Moolenar. Presently the source code of Vim is hosted by <a href="https://github.com/vim/vim">GitHub</a>. Its graphical version, gVim is built on Linux using the GTK+ toolkit, one can pass configure flags before its build to set which version of GTK+ (that is, GTK+ 2 vs. GTK+ 3) is used to build the graphical interface of the editor. It is licensed under its own charityware license that while free and open-source encourages users to give money to orphans in Uganda. Vim is written in C and its own programming language, through which the editor can also be extended, Vim script (VimL).</p>
+
+<p>Vim’s chief advantage is that it is fairly lightweight, using fairly minimal hard disk space/RAM and having a negligible start-up time, especially when used from the command-line. It is also very cross-platform and can run on embedded systems, through SSH, and in several other situations wherein other editors seldom venture. Likewise Vim is very stable and I have never myself noticed any bugs in it not related to plugins I have installed.</p>
+
+<p>Vim is a <strong>modal editor</strong>, which serves as both a blessing and a curse, depending on whom you ask. The term <em>modal editor</em> refers to the fact that Vim has two main modes: <em>insert</em> mode and <em>normal</em> mode. As you may guess you use insert mode to insert text and do most of your general editing. Normal mode, on the other hand, is the default mode (that is, the mode you Vim starts with) and is the one you use to perform several functions in Vim using your keyboard. Its modality is what makes Vim such a challenging editor to learn, but also a powerful editor once you have learnt its ways. If you have no prior experience with modal editors when you first start using Vim, you are in for quite the learning curve. I would recommend starting out with gVim, because at least with gVim you can use the drop-down menus to guide you on how to use it when you start off. After this I recommend running <code class="highlighter-rouge">vimtutor</code> as it will teach you the ropes, as it were of Vim.</p>
+
+<h3 id="installation-6">Installation</h3>
+<p>Vim, both its command-line and graphical variants, is easy to install on the vast majority of Linux distributions via one’s package manager, as well as many *BSD derivatives such as FreeBSD, NetBSD and OpenBSD. The latest version of Vim at the time of writing is 7.4 (which was released in 2013), although patches (that are designed to make minor improvements on the editor and fix bugs) are released on a semi-daily basis. The latest patch version at the time of writing is number &gt;1800 (making the overall latest version of Vim &gt;7.4.1800). Most Linux distributions have at least Vim 7.4.300 in their official repositories.</p>
+
+<h3 id="customization-6">Customization</h3>
+<p>Vim can be extensively customized via plugins written in VimL, although it is generally considered less extensible than GNU Emacs, due to limitations in this programming language. The way I usually customize Vim whenever I install it is I install the solarized colours theme, along with the NERDTree plugin (which inserts an embedded file browser into Vim) and Markdown support, so that I can edit <em>The Hornery</em> in it.</p>
+
+<h3 id="merits-and-features-1">Merits and Features</h3>
+<p>Vim is extensible via plugins written in VimL, these plugins are enabled by using plugin managers like <a href="https://github.com/VundleVim/Vundle.vim">Vundle</a>. You can install extra plugins via editing your <code class="highlighter-rouge">~/.vimrc</code> file. Some plugins I know and love include:</p>
+
+<ul>
+  <li><a href="http://vimawesome.com/plugin/fugitive-vim"><strong>fugitive.vim</strong></a>, a plugin that adds git support for Vim.</li>
+  <li><a href="https://github.com/scrooloose/nerdtree"><strong>NERDTree</strong></a>, a plugin that adds an embedded file browser into Vim.</li>
+  <li><a href="https://github.com/Firef0x/PKGBUILD.vim"><strong>PKGBUILD.vim</strong></a>, a plugin that adds syntax-highlighting support for PKGBUILDs.</li>
+  <li><a href="https://github.com/vim-scripts/spec.vim"><strong>spec.vim</strong></a>, a plugin that adds syntax-highlighting and snippets support for spec (file extension: <code class="highlighter-rouge">.spec</code>) files.</li>
+  <li><a href="https://github.com/altercation/vim-colors-solarized"><strong>vim-colors-solarized</strong></a>, a theme for Vim.</li>
+</ul>
+
+<p>You can run terminal commands in it using the <code class="highlighter-rouge">:! &lt;COMMAND&gt;</code> command (where <code class="highlighter-rouge">&lt;COMMAND&gt;</code> is to be replaced with your shell command(s)). You can also add a tab bar to Vim to make it easier to switch between opened files using the <a href="https://github.com/vim-scripts/TabBar">TabBar</a> plugin.</p>
+
+<h3 id="ratings-6">Ratings</h3>
+
+<ul>
+  <li><strong>Availability</strong>: 10. Available from official repositories of most Linux distributions and *BSDs.</li>
+  <li><strong>Beginner-Friendliness</strong>: ~2. Odds are you will not even be able to use it at all until you learn more about this unique editor.</li>
+  <li><strong>Customizability</strong>: 9.</li>
+  <li><strong>Features</strong>: 8-9. Fairly feature-packed, but unfortunately no embedded terminal.</li>
+  <li><strong>Stability &amp; System Resource Usage</strong>: 9. The installed size of gVim 7.4.1828 (built from the <a href="https://github.com/fusion809/PKGBUILDs/blob/master/gvim/PKGBUILD">PKGBUILD</a> in my GitHub repository) on Arch Linux is 28.98 MiB. For me it used just 15.6MB RAM with its GTK+ 3 GUI.</li>
+  <li><strong>Overall</strong>: 8. Its lack of beginner-friendliness is its chief disadvantage, in my books.</li>
+</ul>
+
+<h3 id="links-6">Links</h3>
+<ul>
+  <li><a href="https://github.com/vim/vim">GitHub Repository</a>
+    <ul>
+      <li><a href="https://github.com/vim/vim/issues">Issues</a></li>
+      <li><a href="https://github.com/vim/vim/pulls">Pull Requests</a></li>
+      <li><a href="https://github.com/vim/vim/releases">Releases</a></li>
+    </ul>
+  </li>
+  <li><a href="http://www.vim.org/">Home Page</a></li>
+  <li><a href="http://vimawesome.com/">VimAwesome Plugin Repository</a></li>
+</ul>
+
+<!-- VScode-->
+
+<h2 id="visual-studio-code">Visual Studio Code</h2>
+<div class="image-box" style="width:100%; float: none;">
+<figure>
+  <img src="https://fusion809.github.io/images/VScode/VScode-1.0.0.png" alt="Visual Studio Code 1.0.0" style="width:100%" />
+  
+    <figcaption align="bottom" style="width:-webkit-calc(100%-5px); float: none;"><p>Visual Studio Code 1.0.0</p>
+</figcaption>
+  
+</figure>
+</div>
+
+<p><strong>Visual Studio Code</strong> (or <strong>VSCode</strong>) is a free (MIT-Licensed) text editor that is written in CSS, JavaScript and TypeScript and built using the Electron framework. It is developed by Microsoft, and while its source code is MIT-Licensed, pre-compiled Linux binaries for it are licensed under a proprietary End-User License Agreement (EULA). I only learnt about it through a friend, in fact, when I wrote the <a href="https://fusion809.github.io/comparison-of-text-editors/"><em>A Comparison of Free and Open-Source Text Editors and IDEs for Manjaro and Sabayon Linux</em></a> post I did not know about it. VSCode is designed to be a lighter-weight editor (although whether its developers succeeded in this, is a matter for debate) than more feature-packed editors like Atom, despite being fairly feature-filled. I personally think of VSCode as an inferior, yet similar product to Atom. The only respect I have found it superior to Atom is that it is has a grammar- and spell-checking package for markup files, as opposed to Atom which only has a spell-checker. Its inferiority is with respect to the fact that it does not have extensions that give it an embedded terminal. Plus it generally has fewer packages/themes than Atom.</p>
+
+<h3 id="installation-7">Installation</h3>
+<p>VSCode can be installed via a number of different methods, although it is not in the official repositories of any Linux distribution I am aware of. The closest thing to a distribution with VSCode in its official repositories that I have come across is Arch Linux, which has VSCode (provided by several different packages) in the Arch User Repository. To simplify the installation process I have created my own shell installer for VSCode (GitHub repository: <a href="https://github.com/fusion809/vscode-installer">vscode-installer</a>). It provides users with two main options, for most Linux distributions, they are:</p>
+
+<ul>
+  <li>Install from a binary package (usually a Debian, RPM package or zip binary provided by Microsoft)</li>
+  <li>Install from source code</li>
+</ul>
+
+<p>To use this installer run:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash -c "$(curl -sL https://git.io/vrLNn)"</div>
+
+<p>or, alternatively, if you would rather use wget to get the quick-install script:</p>
+
+<div class="console"><span class="codeu"><abbr title="This command is to be run as standard, non-root, user">user $</abbr></span> &nbsp;/bin/bash -c "$(wget -cqO- https://git.io/vrLNn)"</div>
+
+<h3 id="customization-7">Customization</h3>
+<p>VSCode can be extensively customized using plugins written in CSS, JavaScript and TypeScript. Unfortunately, VSCode does not have support for an embedded terminal or web browser, regardless of any installed extensions. Plugins are search for and installed via opening the command pallette (with the keyboard shortcut <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>P</kbd>) and typing <code class="highlighter-rouge">ext install</code>, then pressing <kbd>Enter</kbd>. Users can also customize VSCode’s behaviour by editing the user’s settings by going to <code>File&rarr;Preferences&rarr;User Settings</code> and editing one’s <code class="highlighter-rouge">~/.config/Code/User/settings.json</code> file. For example, here’s a settings.json file to get VSCode to syntax-highlight <code class="highlighter-rouge">.desktop</code>, <code class="highlighter-rouge">.directory</code>, <code class="highlighter-rouge">.install</code> and <code class="highlighter-rouge">PKGBUILD</code> files:</p>
+
+<div class="language-json highlighter-rouge"><pre class="highlight"><span class="p">{</span><span class="w">
+    </span><span class="nt">"files.associations"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"PKGBUILD"</span><span class="p">:</span><span class="w">    </span><span class="s2">"shellscript"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"&#42;.install"</span><span class="p">:</span><span class="w">   </span><span class="s2">"shellscript"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"&#42;.desktop"</span><span class="p">:</span><span class="w">   </span><span class="s2">"ini"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"&#42;.directory"</span><span class="p">:</span><span class="w"> </span><span class="s2">"ini"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></pre></div>
+
+<h3 id="features-1">Features</h3>
+<p>It has syntax-highlighting for the vast majority of programming, markup and stylesheet languages. It also has code auto-suggestions for a variety of programming languages. It also has in-built support for running git commands without a terminal, as well as an in-built debugger. Additionally it has an in-built file browser. By default, if more than one file is to be opened simultaneously, additional files will be opened in a new pane. Despite this, it has no tabs, no embedded terminal or web browser, not even with extensions can these capabilities be added. Although tabs are <a href="http://code.visualstudio.com/Updates#_editor">planned</a> for a future release.</p>
+
+<h3 id="ratings-7">Ratings</h3>
+
+<ul>
+  <li><strong>Availability</strong>: 7.</li>
+  <li><strong>Beginner-Friendliness</strong>: ~8.</li>
+  <li><strong>Customizability</strong>: 8.</li>
+  <li><strong>Features</strong>: 8-9. Fairly feature-packed, but unfortunately no embedded terminal.</li>
+  <li><strong>Stability &amp; System Resource Usage</strong>: 7. The installed size of Visual Studio Code 1.1.1 (built from the <a href="https://github.com/fusion809/PKGBUILDs/blob/master/visual-studio-code-oss/PKGBUILD">PKGBUILD</a> in my GitHub repository) on Arch Linux is 131.43 MiB. For me it used just 486.5 MB RAM when running, opened to a single file with a single working directory.</li>
+  <li><strong>Overall</strong>: 8.</li>
+</ul>
+
+<h3 id="links-7">Links</h3>
+<ul>
+  <li><a href="https://github.com/Microsoft/vscode">GitHub Repository</a>
+    <ul>
+      <li><a href="https://github.com/Microsoft/vscode/issues">Issues</a></li>
+      <li><a href="https://github.com/Microsoft/vscode/pulls">Pull Requests</a></li>
+      <li><a href="https://github.com/Microsoft/vscode/releases">Releases</a></li>
+    </ul>
+  </li>
+  <li><a href="http://code.visualstudio.com/">Home Page</a></li>
+  <li><a href="https://marketplace.visualstudio.com/VSCode">Package Repository</a></li>
+</ul>
+
+<!-- Table1-->
+<h2>Summary</h2>
+<table style="width: 100%; border: 1px; padding: 1em; vertical-align: middle;">
+  <caption><p>Table 1: A Comparison of Text Editors and Integrated Development Environments</p>
+</caption>
+  <tbody>
+    <tr class="cyan">
+      <td class="cyan">Program</td>
+      <td class="cyan">
+        <abbr title="This is the version of the program that is being evaluated for its installed size and RAM usage on Arch Linux. Any hyperlink given in this column is to the PKGBUILD I installed it from on Arch Linux, if I did not install it from the official Arch Linux repositories.">Version</abbr>
+      </td>
+      <td class="cyan">License</td>
+      <td class="cyan">Developer</td>
+      <td class="cyan">
+        <abbr title="The computer languages this editor is written in; bold are the languages it is extended with">Written In</abbr>
+      </td>
+      <td class="cyan">
+        <abbr title="Availability; rating from 1 to 10 to reflect how easy it is to obtain this editor on desktop Linux distributions.">AV</abbr>
+      </td>
+      <td class="cyan">
+        <abbr title="Beginner-Friendliness; rating from 1 to 10 to reflect how easy this editor is to pick up for those that have never even used a text editor.">BF</abbr>
+      </td>
+      <td class="cyan">
+        <abbr title="Customizability; rating from 1 to 10 to reflect how extensively this editor can be customized.">CMB</abbr>
+      </td>
+      <td class="cyan">Tabs</td>
+      <td class="cyan">Panes</td>
+      <td class="cyan">
+        <abbr title="Embedded File Manager">FM?</abbr>
+      </td>
+      <td class="cyan">
+        <abbr title="Embedded Web Browser">WB?</abbr>
+      </td>
+      <td class="cyan">
+        <abbr title="Embedded Terminal Emulator">TE?</abbr>
+      </td>
+      <td class="cyan">
+        <abbr title="Hard Disk Drive space taken when program is installed on Arch Linux">HDD</abbr>
+      </td>
+      <td class="cyan">
+        <abbr title="Random Access Memory used by this program, when no optional packages are loaded and only one file is opened">RAM</abbr>
+      </td>
+      <td class="cyan">
+        <abbr title="Overall rating from 1 to 10; 10 being the best editor ever, 1 being a terrible editor.">OA</abbr>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="program">
+        <a href="https://atom.io" link="_blank">Atom</a>
+      </td>
+      <td class="version">
+        <a href="https://github.com/fusion809/PKGBUILDs-old6/tree/01d09cf0093afc90d198d12bd22c90b77eb5dbdf/atom-editor" link="_blank">1.7.3</a>
+      </td>
+      <td class="license">
+        <a href="https://github.com/atom/atom/blob/master/LICENSE.md" link="_blank">MIT</a>
+      </td>
+      <td class="developer">
+        GitHub
+      </td>
+      <td class="languages">
+        <b>CoffeeScript</b>, <b>CSS</b>, <abbr title="JavaScript"><b>JS</b></abbr>, <b>Less</b>
+      </td>
+      <td class="subjective">
+        <abbr title="Not in the official repositories of most distributions, but fairly easy to get using my atom-installer scripts.">7</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="Very beginner-friendly.">9</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="Atom is extensively customizable, via packages/themes/configuration scripts/stylesheets written in web languages.">9</abbr>
+      </td>
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="optional">
+        <a href="https://atom.io/packages/browser-plus" link="_blank">Optional</a>
+      </td>
+      
+      
+      <td class="optional">
+        <a href="https://atom.io/packages/terminal-plus" link="_blank">Optional</a>
+      </td>
+      
+      <td class="version">
+        222.91
+      </td>
+      <td class="version">
+        276.5
+      </td>
+      <td class="subjective">
+        <abbr title="It is all-around the best editor in my opinion. I use it routinely to edit &lt;i&gt;The Hornery&lt;/i&gt; and work on my other GitHub projects.">9</abbr>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="program">
+        <a href="http://brackets.io/" link="_blank">Brackets</a>
+      </td>
+      <td class="version">
+        <a href="https://github.com/fusion809/PKGBUILDs-old6/tree/01d09cf0093afc90d198d12bd22c90b77eb5dbdf/brackets" link="_blank">1.6</a>
+      </td>
+      <td class="license">
+        <a href="https://github.com/adobe/brackets/blob/master/LICENSE" link="_blank">MIT</a>
+      </td>
+      <td class="developer">
+        Adobe
+      </td>
+      <td class="languages">
+        <b>CSS</b>, HTML and <abbr title="JavaScript"><b>JS</b></abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="Not in the official repositories of any distributions and can be challenging to install on non-Debian based distributions.">6</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is very beginner-friendly.">9</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="Fairly customizable, but there are limitations as it is only designed to be used for web development.">8</abbr>
+      </td>
+      
+      <td class="No">
+        No
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="optional">
+        <a href="https://github.com/artoale/brackets-terminal" link="_blank">Optional</a>
+      </td>
+      
+      <td class="version">
+        138.38
+      </td>
+      <td class="version">
+        259.9
+      </td>
+      <td class="subjective">
+        <abbr title="In my opinion, Brackets, is a project who's Linux version is still in its infancy, in my opinion, and not suited for production use.">7</abbr>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="program">
+        <a href="https://www.gnu.org/software/emacs/" link="_blank">GNU Emacs</a>
+      </td>
+      <td class="version">
+        24.5-3
+      </td>
+      <td class="license">
+        <a href="https://github.com/emacs-mirror/emacs/blob/master/COPYING" link="_blank">GPLv3</a>
+      </td>
+      <td class="developer">
+        GNU Project
+      </td>
+      <td class="languages">
+        C, <b>Emacs Lisp</b>
+      </td>
+      <td class="subjective">
+        <abbr title="It is easy to obtain both the command-line and graphical version of Emacs.">10</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is simple enough for someone to start using it without reading any documentation or without any help. It is just in the early days of using it, you will likely not be as efficient using it than a simpler or more intuitive editor like Atom.">4</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is probably the most customizable text editor available, due to the power of the Emacs Lisp programming language.">9</abbr>
+      </td>
+      
+      <td class="optional">
+        <a href="https://www.emacswiki.org/emacs/TabBarMode" link="_blank">Optional</a>
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="optional">
+        <a href="https://github.com/jaypei/emacs-neotree" link="_blank">Optional</a>
+      </td>
+      
+      
+      <td class="optional">
+        <a href="https://www.emacswiki.org/emacs/CategoryWebBrowser" link="_blank">Optional</a>
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      <td class="version">
+        99.43
+      </td>
+      <td class="version">
+        121.5
+      </td>
+      <td class="subjective">
+        <abbr title="It is probably the single most powerful editor available today, it is just in order to use its more advanced features some programming knowledge and experience with its keyboard shortcuts is required. ">8</abbr>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="program">
+        <a href="http://komodoide.com/komodo-edit/" link="_blank">Komodo Edit</a>
+      </td>
+      <td class="version">
+        <a href="https://github.com/fusion809/PKGBUILDs-old6/tree/f0633763f7dbe446e8e602d867a4071264baf392/komodo-edit" link="_blank">10.0.0</a>
+      </td>
+      <td class="license">
+        <a href="https://github.com/Komodo/KomodoEdit/blob/master/LICENSE.txt" link="_blank">MPL</a>
+      </td>
+      <td class="developer">
+        ActiveState
+      </td>
+      <td class="languages">
+        C, <b>CSS</b>, <b>HTML</b>, <abbr title="JavaScript"><b>JS</b></abbr>, <b>Python</b>
+      </td>
+      <td class="subjective">
+        <abbr title="It can be installed from a cross-distribution binary tarball, so it is fairly easy to install. It is not found in the official software repositories of any Linux distribution I am aware of.">7</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is fairly simple to use and you can easily use it for your day-to-day editing without spending too much time mastering it.">8-9</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is fairly extensible, although several functionalities can only be gained if you purchase/start a free trial of the proprietary Komodo IDE editor.">8</abbr>
+      </td>
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="partial">
+        <abbr title="Only splits horizontally">Yes (H)</abbr>
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      <td class="version">
+        264.66
+      </td>
+      <td class="version">
+        219.3
+      </td>
+      <td class="subjective">
+        <abbr title="Its main advantage is its simplicity of use, while its chief disadvantage is that several features are off-limits, unless you upgrade to the proprietary version of Komodo.">8</abbr>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="program">
+        <a href="http://lighttable.com/" link="_blank">LightTable</a>
+      </td>
+      <td class="version">
+        <a href="https://github.com/fusion809/PKGBUILDs-old6/tree/f0633763f7dbe446e8e602d867a4071264baf392/lighttable" link="_blank">0.8.1</a>
+      </td>
+      <td class="license">
+        <a href="https://github.com/LightTable/LightTable/blob/master/LICENSE.md" link="_blank">MIT</a>
+      </td>
+      <td class="developer">
+        Kodowa
+      </td>
+      <td class="languages">
+        Clojure, <b>CSS</b>, <abbr title="JavaScript"><b>JS</b></abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="A binary tarball for it is available, but it is not found in the official repositories of any Linux distributions I am aware of.">6</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is fairly simple to use.">8-9</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is not very customizable, due to its limitation to use in web development.">7</abbr>
+      </td>
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="partial">
+        <abbr title="Only splits vertically">Yes (V)</abbr>
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="No">
+        No
+      </td>
+      
+      <td class="version">
+        128.83
+      </td>
+      <td class="version">
+        30.3
+      </td>
+      <td class="subjective">
+        <abbr title="It is a decent editor, but the fact it can only really be used for web development.">8</abbr>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="program">
+        <a href="http://www.sublimetext.com/" link="_blank">Sublime Text</a>
+      </td>
+      <td class="version">
+        <a href="https://github.com/fusion809/PKGBUILDs-old6/tree/f0633763f7dbe446e8e602d867a4071264baf392/sublime-text-dev" link="_blank">3.3103</a>
+      </td>
+      <td class="license">
+        <a href="https://www.sublimetext.com/eula" link="_blank"><abbr title="End-User License Agreement">EULA</abbr></a>
+      </td>
+      <td class="developer">
+        Sublime HQ
+      </td>
+      <td class="languages">
+        C++, <b>Python</b>
+      </td>
+      <td class="subjective">
+        <abbr title="Binary tarballs and Debian packages are available for download from their website. It is not in the official repositories of most distributions, likely due to its proprietary licensing.">7</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is very easy to use, in my opinion.">9</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is extensible via Python scripts, but it is not as customizable as Atom, Emacs or Vim.">8</abbr>
+      </td>
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="No">
+        No
+      </td>
+      
+      
+      <td class="No">
+        No
+      </td>
+      
+      <td class="version">
+        16.35
+      </td>
+      <td class="version">
+        92.2
+      </td>
+      <td class="subjective">
+        <abbr title="Its chief disadvantage, in my opinion, is its proprietary licensing.">8</abbr>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="program">
+        <a href="http://www.vim.org/" link="_blank">Vim</a>
+      </td>
+      <td class="version">
+        <a href="https://github.com/fusion809/PKGBUILDs-old6/blob/88059ac50a4ca4e39b4a5a0f51d2eb5790e39c6a/gvim" link="_blank">7.4.1828</a>
+      </td>
+      <td class="license">
+        <a href="https://github.com/vim/vim/blob/master/runtime/doc/uganda.txt" link="_blank">Vim</a>
+      </td>
+      <td class="developer">
+        Bram Moolenaar
+      </td>
+      <td class="languages">
+        C, C++, <b>VimL</b>
+      </td>
+      <td class="subjective">
+        <abbr title="It is available from the official software repositories of every Linux distribution I am aware of, in both command-line and graphical versions.">10</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is so challenging to use that newcomers will likely not even be able to edit using it, until they do some research or use the vimtutor program.">2</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is extensively customizable via scripts written in the VimL programming language.">9</abbr>
+      </td>
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="optional">
+        <a href="https://github.com/scrooloose/nerdtree" link="_blank">Optional</a>
+      </td>
+      
+      
+      <td class="optional">
+        <a href="https://github.com/mjbrownie/browser.vim" link="_blank">Optional</a>
+      </td>
+      
+      
+      <td class="partial">
+        <abbr title="No embedded terminal, but typing `:! &lt;COMMAND&gt;`, where &lt;COMMAND&gt; is your shell command">Partial</abbr>
+      </td>
+      
+      <td class="version">
+        28.98
+      </td>
+      <td class="version">
+        15.6
+      </td>
+      <td class="subjective">
+        <abbr title="Its lack of beginner-friendliness is its chief disadvantage in my books.">8</abbr>
+      </td>
+    </tr>
+    
+    <tr>
+      <td class="program">
+        <a href="http://code.visualstudio.com/" link="_blank">Visual Studio Code</a>
+      </td>
+      <td class="version">
+        <a href="https://github.com/fusion809/PKGBUILDs-old6/blob/88059ac50a4ca4e39b4a5a0f51d2eb5790e39c6a/visual-studio-code-oss" link="_blank">1.1.1</a>
+      </td>
+      <td class="license">
+        <a href="https://github.com/Microsoft/vscode/blob/master/LICENSE.txt" link="_blank">MIT</a>
+      </td>
+      <td class="developer">
+        Microsoft
+      </td>
+      <td class="languages">
+        <b>CSS</b>, <abbr title="JavaScript"><b>JS</b></abbr>, TypeScript
+      </td>
+      <td class="subjective">
+        <abbr title="VScode is not found in the official repositories of any Linux distribution I am aware of. Official binary tarball releases do not exist for VScode. Despite this official 32- and 64-bit Debian and RPM binaries are available from the VScode website.">7</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is very ease-to-use for newcomers.">9</abbr>
+      </td>
+      <td class="subjective">
+        <abbr title="It is fairly customizable.">8</abbr>
+      </td>
+      
+      <td class="No">
+        No
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="Yes">
+        Yes
+      </td>
+      
+      
+      <td class="No">
+        No
+      </td>
+      
+      
+      <td class="No">
+        No
+      </td>
+      
+      <td class="version">
+        131.43
+      </td>
+      <td class="version">
+        486.5
+      </td>
+      <td class="subjective">
+        <abbr title="The fact it lacks tabs, an embedded web browser and terminal emulator are its main disadvantages, in my opinion.">8</abbr>
+      </td>
+    </tr>
+    
+  </tbody>
+</table>
+
+<!-- Footnotes-->
+
+<h2 id="footnotes">Footnotes</h2>
+
+<div class="footnotes">
+  <ol>
+    <li id="fn:1">
+      <p>But are not limited to, if I listed every single distribution with emacs in their official repositories I would be here all day. <a href="#fnref:1" class="reversefootnote">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p>Keeping in mind that this is second-hand knowledge, not my own, as I simply do not understand Emacs Lisp or VimL enough to know this in my own right. <a href="#fnref:2" class="reversefootnote">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+  </div>
+
+</article>
+
+      </div>
+    </div>
+
+    <footer class="site-footer">
+  <div class="wrapper">
+  <div class="footer-col-wrapper">
+    <span style="width:550px;" class="footer-col footer-col-2">
+      <b class="site-title" style="font-size:25px;">The Hornery</b> <span style="font-size:12px;">(<a href="https://github.com/fusion809/fusion809.github.io" link="_blank">source</a>)</span>
+      <p>Where Brenton (fusion809) stores his thoughts, tutorials and news relating to technology.</p>
+    </span>
+
+    <span class="footer-col footer-col-2" style="width:550px">
+      <ul class="contact-list">
+        <li>Like reading <i>The Hornery</i>? Star us on <a href="https://github.com/fusion809/fusion809.github.io">GitHub</a>!</li>
+        <li>Got corrections or improvement ideas? Great, <a href="/contributing/">Tell me!</a></li>
+        <li>Want notifications on new posts? Like us on <a href="https://www.facebook.com/sabayon.blog.77/">Facebook</a> or follow our <a href="/feed">Atom feed</a>.</li>
+      </ul>
+    </span>
+
+    <span class="footer-col footer-col-3" style="width:230px;">
+      <ul class="social-media-list">
+        
+
+        
+        <li>
+          <a href="https://www.facebook.com/sabayon.blog.77"><span class="icon icon--twitter"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+   xml:space="preserve"
+   width="333.61624"
+   height="333.61749"
+   viewBox="0 0 333.61624 333.61749"
+   sodipodi:docname="FB-logo.svg"><metadata
+     id="metadata8"><rdf:RDF><cc:Work
+         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+     id="defs6" /><sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="677"
+     inkscape:window-height="480"
+     id="namedview4"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="0.37012621"
+     inkscape:cx="230.33798"
+     inkscape:cy="-37.449297"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="g12" /><g
+     id="g10"
+     inkscape:groupmode="layer"
+     inkscape:label="ink_ext_XXXXXX"
+     transform="matrix(1.25,0,0,-1.25,-376.24988,501.82961)"><g
+       id="g12"
+       transform="matrix(0.1,0,0,0.1,274.50095,320.43125)"><path
+         d="m 2786.6195,-1858.6156 c 81.35,0 147.3,65.95 147.3,147.3 l 0,2374.33997 c 0,81.37 -65.95,147.30001 -147.3,147.30001 l -2374.31998,0 c -81.38,0 -147.31,-65.93001 -147.31,-147.30001 l 0,-2374.33997 c 0,-81.35 65.93,-147.3 147.31,-147.3 l 2374.31998,0"
+         style="fill:#3d529e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path46"
+         inkscape:connector-curvature="0" /><path
+         d="m 2106.5095,-1858.6156 0,1033.54997 346.92,0 51.94,402.8 -398.86,0 0,257.17 c 0,116.620004 32.38,196.090004 199.62,196.090004 l 213.3,0.1 0,360.259996 c -36.91,4.9 -163.51,15.87 -310.81,15.87 -307.53,0 -518.07,-187.71 -518.07,-532.44 l 0,-297.05 -347.81,0 0,-402.8 347.81,0 0,-1033.54997 415.96,0"
+         style="fill:#ffffff;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         id="path48"
+         inkscape:connector-curvature="0" /></g></g></svg></span><span class="username">&nbsp;The Hornery</span></a>
+
+        </li>
+        
+
+        
+
+        
+        <li>
+          <a href="https://github.com/fusion809"><span class="icon icon--github"><svg viewBox="0 0 16 16"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">fusion809</span></a>
+
+        </li>
+        
+
+        
+
+        
+      </ul>
+    </span>
+
+    <span class="copyright footer-col">
+      <p></p>
+    </span>
+  </div>
+
+</div>
+
+</footer>
+
+
+  </body>
+</html>
